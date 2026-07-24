@@ -1,8 +1,10 @@
-# Configuration Netlify — site statique MK Phone
+# Configuration Netlify — app React (Vite) MK Phone
 [build]
-  publish = "."
+  command = "npm run build"
+  publish = "dist"
 
-[[headers]]
-  for = "/assets/img/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+# SPA : rediriger toutes les routes vers index.html (HashRouter fonctionne aussi sans ça)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

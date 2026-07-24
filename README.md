@@ -1,42 +1,53 @@
 # MK Phone — Réparation de téléphone en Île-de-France
 
-Site web de la boutique **MK Phone** : réparation de smartphones, tablettes et PC,
-avec **prise de rendez-vous en ligne** et **grille de tarifs par modèle**.
+Site web de la boutique **MK Phone**, développé en **React + Vite** : réparation de
+smartphones, tablettes et PC, avec **prise de rendez-vous en ligne** et **grille de
+tarifs par modèle**. Design clair, minimaliste et moderne.
 
 - 📞 07 51 48 43 92
 - ✉️ aminemekhfi45@gmail.com
 - 📍 Toute l'Île-de-France
 
-## Contenu
+## Démarrer en local
 
-| Fichier | Rôle |
-|---|---|
-| `index.html` | Structure de la page (hero, services, tarifs, RDV, contact) |
-| `assets/styles.css` | Design (thème sombre, tech, responsive) |
-| `assets/data.js` | **Catalogue des réparations et prix** — à personnaliser |
-| `assets/script.js` | Icônes, tableau de tarifs et formulaire de rendez-vous |
-| `assets/img/` | Photos de l'atelier |
+```bash
+npm install      # installe les dépendances
+npm run dev      # serveur de développement (http://localhost:5173)
+npm run build    # build de production dans dist/
+npm run preview  # prévisualise le build
+```
+
+## Structure
+
+```
+index.html            Point d'entrée Vite
+vite.config.js        Configuration Vite
+public/img/           Photos de l'atelier
+src/
+  main.jsx            Montage React + routes (Accueil, Mentions légales)
+  App.jsx             Assemblage des sections
+  data.js             Catalogue des réparations, avis, FAQ, contact  ← à personnaliser
+  icons.jsx           Icônes SVG
+  index.css           Styles (thème clair)
+  components/         Nav, Hero, Services, Pricing, Process, About,
+                      Reviews, Faq, Booking, Footer, MentionsLegales
+```
 
 ## Fonctionnalités
 
-- 🖥️ Design moderne, sobre et responsive (mobile / tablette / desktop).
-- 🔧 Grille de tarifs par **marque et modèle** (iPhone 7 → 16, Galaxy S/A), filtrable.
+- 🔧 Grille de tarifs par **marque et modèle** (Apple, Samsung, Xiaomi, Huawei, Pixel, iPad), filtrable et cherchable.
 - 📅 **Prise de rendez-vous** : appareil + réparation + date + créneau, estimation
-  automatique du prix, confirmation et e-mail pré-rempli.
-- 💶 **-15 €** déjà appliqués sur chaque tarif (variable `REMISE` dans `data.js`).
+  automatique du prix, confirmation et e-mail pré-rempli. Envoi réel possible via Formspree.
+- 💶 **-15 €** déjà appliqués sur chaque tarif (constante `REMISE` dans `src/data.js`).
+- ⭐ Avis clients, FAQ, section « à propos », étapes, mentions légales.
 
 ## Personnaliser
 
-- **Prix / modèles** : tableau `CATALOGUE` dans `assets/data.js` (remise de 15 € déjà incluse).
-- **Coordonnées** : dans `index.html` (pied de page) et `EMAIL_BOUTIQUE` dans `assets/script.js`.
-- **Couleurs** : variables CSS en haut de `assets/styles.css`.
-- **Photos** : remplace les fichiers de `assets/img/` par tes propres photos.
+- **Prix / modèles / coordonnées** : `src/data.js`.
+- **Couleurs** : variables CSS en haut de `src/index.css` (`--accent`, `--bg`…).
+- **Photos** : remplace les fichiers de `public/img/`.
+- **Recevoir les RDV par e-mail** : voir `DEPLOIEMENT.md` (Formspree).
 
-## Mettre en ligne
+## Mise en ligne
 
-Site 100 % statique : ouvre `index.html` dans un navigateur, ou héberge le dossier
-sur Netlify, Vercel, GitHub Pages, OVH…
-
-Pour recevoir les demandes de rendez-vous automatiquement, branche le formulaire sur
-un service comme [Formspree](https://formspree.io) ou un module de réservation
-(Calendly, agenda en ligne).
+Voir **`DEPLOIEMENT.md`** (Netlify / Vercel / GitHub Pages).

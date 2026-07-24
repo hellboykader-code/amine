@@ -1,20 +1,20 @@
 # Mettre le site MK Phone en ligne
 
-Le site est **100 % statique** : aucun serveur à gérer. Choisis une des options ci-dessous.
+Le site est une **application React (Vite)**. Il faut donc un *build* (`npm run build`),
+qui génère un dossier `dist/` 100 % statique à héberger.
 
 ---
 
 ## Option 1 — Netlify (recommandé, gratuit)
 
-1. Va sur [netlify.com](https://www.netlify.com) et crée un compte gratuit.
-2. Clique **Add new site → Import an existing project** et connecte ton dépôt GitHub
+1. Compte gratuit sur [netlify.com](https://www.netlify.com).
+2. **Add new site → Import an existing project**, connecte le dépôt GitHub
    `hellboykader-code/amine`, branche `mk-phone-site`.
-3. Laisse les réglages par défaut (le fichier `netlify.toml` s'en occupe) → **Deploy**.
-4. En quelques secondes tu obtiens une adresse du type `https://mk-phone.netlify.app`.
-5. (Facultatif) **Domain settings** pour brancher ton propre nom de domaine (ex. `mkphone.fr`).
-
-Glisser-déposer possible aussi : va sur [app.netlify.com/drop](https://app.netlify.com/drop)
-et dépose le dossier du projet.
+3. Netlify lit le fichier `netlify.toml` :
+   - **Build command** : `npm run build`
+   - **Publish directory** : `dist`
+4. **Deploy** → adresse du type `https://mk-phone.netlify.app`.
+5. (Facultatif) **Domain settings** pour brancher ton nom de domaine (ex. `mkphone.fr`).
 
 ---
 
@@ -22,37 +22,40 @@ et dépose le dossier du projet.
 
 1. Compte sur [vercel.com](https://vercel.com).
 2. **Add New → Project**, importe le dépôt, branche `mk-phone-site`.
-3. Framework : **Other** → **Deploy**.
+3. Framework détecté : **Vite** (build `npm run build`, sortie `dist`) → **Deploy**.
 
 ---
 
 ## Option 3 — GitHub Pages (gratuit)
 
-1. Dépôt GitHub → **Settings → Pages**.
-2. Source : branche `mk-phone-site`, dossier `/ (root)` → **Save**.
-3. Le site sera publié sur `https://hellboykader-code.github.io/amine/`.
+Le routage utilise `HashRouter`, compatible GitHub Pages.
+
+1. Build : `npm run build` (dossier `dist/`).
+2. Publie le contenu de `dist/` sur la branche `gh-pages`, ou via une action GitHub
+   (ex. `peaceiris/actions-gh-pages`).
+3. Settings → Pages → source `gh-pages`.
 
 ---
 
 ## Recevoir les rendez-vous par e-mail (Formspree)
 
 Par défaut, le formulaire affiche une confirmation et propose un e-mail pré-rempli.
-Pour recevoir chaque demande **automatiquement dans ta boîte mail** :
+Pour recevoir chaque demande **automatiquement par mail** :
 
-1. Crée un compte gratuit sur [formspree.io](https://formspree.io).
-2. Crée un formulaire relié à `aminemekhfi45@gmail.com` → copie son URL
+1. Compte gratuit sur [formspree.io](https://formspree.io).
+2. Crée un formulaire relié à `aminemekhfi45@gmail.com`, copie son URL
    (ex. `https://formspree.io/f/abcdwxyz`).
-3. Ouvre `assets/script.js` et colle l'URL dans :
+3. Dans `src/data.js`, renseigne :
    ```js
-   const FORMSPREE_URL = "https://formspree.io/f/abcdwxyz";
+   export const FORMSPREE_URL = "https://formspree.io/f/abcdwxyz";
    ```
-4. Enregistre, pousse : les demandes arrivent désormais par e-mail.
+4. Rebuild / redeploy : les demandes arrivent par e-mail.
 
 ---
 
 ## Avant la mise en ligne — à vérifier
 
-- [ ] Prix réels dans `assets/img` → `assets/data.js` (marques et montants).
-- [ ] Coordonnées exactes (déjà : 07 51 48 43 92 · aminemekhfi45@gmail.com).
-- [ ] Compléter `mentions-legales.html` (SIRET, adresse, hébergeur).
-- [ ] Remplacer les photos de `assets/img/` par tes vraies photos si tu préfères.
+- [ ] Prix réels dans `src/data.js` (marques et montants).
+- [ ] Coordonnées (déjà : 07 51 48 43 92 · aminemekhfi45@gmail.com).
+- [ ] Compléter les mentions légales (`src/components/MentionsLegales.jsx` : SIRET, adresse, hébergeur).
+- [ ] Remplacer les photos de `public/img/` par tes vraies photos si tu préfères.
