@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Amine Réparation — Réparation de téléphone express & rendez-vous en ligne</title>
-  <meta name="description" content="Réparation de smartphones, tablettes et PC. Écran, batterie, connecteur de charge, caméra. Réparation express en 30 minutes, garantie 2 ans. Prise de rendez-vous en ligne." />
+  <title>MK Phone — Réparation de téléphone en Île-de-France | RDV en ligne</title>
+  <meta name="description" content="MK Phone : réparation de smartphones, tablettes et PC en Île-de-France. Écran, batterie, connecteur de charge, caméra. Réparation express, garantie 2 ans. Prise de rendez-vous en ligne." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body>
@@ -16,7 +16,7 @@
   <header class="nav" id="haut">
     <div class="container nav__inner">
       <a href="#haut" class="brand">
-        <span class="brand__dot"></span> Amine<span class="brand__light">Réparation</span>
+        <span class="brand__mark">MK</span> Phone
       </a>
       <nav class="nav__links" id="navLinks">
         <a href="#services">Services</a>
@@ -33,11 +33,12 @@
   <!-- ===================== HERO ===================== -->
   <section class="hero">
     <div class="container hero__inner">
-      <p class="hero__eyebrow">Réparation express · Garantie 2 ans</p>
-      <h1 class="hero__title">Votre téléphone réparé<br /><em>en 30 minutes.</em></h1>
+      <div class="hero__text">
+      <p class="hero__eyebrow">Île-de-France · Garantie 2 ans</p>
+      <h1 class="hero__title">La réparation de votre téléphone,<br /><em>simple et rapide.</em></h1>
       <p class="hero__sub">
-        Écran cassé, batterie usée, connecteur de charge défaillant… Nos techniciens
-        réparent iPhone, Samsung, tablettes et PC sur place, avec des pièces garanties.
+        MK Phone répare iPhone, Samsung, tablettes et PC partout en Île-de-France.
+        Écran, batterie, connecteur de charge&nbsp;: des pièces garanties, un tarif clair.
       </p>
       <div class="hero__actions">
         <a href="#rdv" class="btn btn--primary btn--lg">Prendre rendez-vous</a>
@@ -48,6 +49,11 @@
         <div><strong>2 ans</strong><span>Garantie pièces</span></div>
         <div><strong>-15 €</strong><span>Sur tous les tarifs</span></div>
       </div>
+      </div>
+      <div class="hero__media">
+        <img src="assets/img/hero.jpg" alt="Technicien MK Phone réparant un smartphone" loading="eager" />
+        <div class="hero__badge"><span class="dot"></span> <span>Ouvert&nbsp;· <b>Île-de-France</b></span></div>
+      </div>
     </div>
   </section>
 
@@ -57,6 +63,21 @@
       <p class="section__eyebrow">Nos services</p>
       <h2 class="section__title">Toutes les réparations, un seul atelier</h2>
       <div class="cards" id="servicesCards"><!-- injecté par JS --></div>
+
+      <div class="gallery">
+        <figure>
+          <img src="assets/img/reparation-ecran.jpg" alt="Remplacement d'écran de smartphone" loading="lazy" />
+          <figcaption>Remplacement d'écran</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/img/reparation-batterie.jpg" alt="Changement de batterie de téléphone" loading="lazy" />
+          <figcaption>Changement de batterie</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/img/atelier.jpg" alt="Atelier de réparation MK Phone" loading="lazy" />
+          <figcaption>Notre atelier</figcaption>
+        </figure>
+      </div>
     </div>
   </section>
 
@@ -71,7 +92,7 @@
       </p>
 
       <div class="tarifs__filtres">
-        <label for="filtreMarque">Marque :</label>
+        <label for="filtreMarque">Marque</label>
         <select id="filtreMarque"></select>
         <input type="search" id="rechercheModele" placeholder="Rechercher un modèle…" />
       </div>
@@ -94,14 +115,7 @@
     <div class="container">
       <p class="section__eyebrow">Pourquoi nous choisir</p>
       <h2 class="section__title">La réparation sereine</h2>
-      <div class="cards cards--3">
-        <div class="feature"><span class="feature__ic">⚡</span><h3>Express</h3><p>La plupart des réparations sont réalisées en 30 minutes, pendant que vous attendez.</p></div>
-        <div class="feature"><span class="feature__ic">🛡️</span><h3>Garantie 2 ans</h3><p>Pièces vérifiées et testées, garanties jusqu'à 2 ans sur nos prestations.</p></div>
-        <div class="feature"><span class="feature__ic">💶</span><h3>-15 € partout</h3><p>Des tarifs parmi les plus compétitifs : 15 € de moins sur chaque réparation.</p></div>
-        <div class="feature"><span class="feature__ic">🏠</span><h3>À domicile</h3><p>Pas le temps de vous déplacer ? Nous proposons aussi la réparation à domicile.</p></div>
-        <div class="feature"><span class="feature__ic">🔧</span><h3>Techniciens experts</h3><p>iPhone, Samsung, Xiaomi, Huawei, tablettes et PC : tout est pris en charge.</p></div>
-        <div class="feature"><span class="feature__ic">📦</span><h3>Par correspondance</h3><p>Envoyez-nous votre appareil, on le répare et on vous le renvoie.</p></div>
-      </div>
+      <div class="cards cards--3" id="featuresCards"><!-- injecté par JS --></div>
     </div>
   </section>
 
@@ -113,12 +127,12 @@
         <h2 class="section__title">Réservez votre créneau</h2>
         <p class="section__lead">
           Choisissez votre appareil, la réparation et un créneau. Nous vous confirmons
-          par téléphone. C'est gratuit et sans engagement.
+          par téléphone. C'est gratuit et sans engagement, partout en Île-de-France.
         </p>
         <ul class="rdv__points">
-          <li>✅ Confirmation rapide</li>
-          <li>✅ Devis clair avant toute intervention</li>
-          <li>✅ Aucun frais si vous ne réparez pas</li>
+          <li>Confirmation rapide par téléphone</li>
+          <li>Devis clair avant toute intervention</li>
+          <li>Aucun frais si vous ne réparez pas</li>
         </ul>
       </div>
 
@@ -172,7 +186,7 @@
         </div>
         <div class="field">
           <label for="message">Message (facultatif)</label>
-          <textarea id="message" name="message" rows="3" placeholder="Décrivez la panne…"></textarea>
+          <textarea id="message" name="message" rows="3" placeholder="Décrivez la panne, votre ville…"></textarea>
         </div>
         <div class="rdv__estimation" id="estimation" hidden></div>
         <button type="submit" class="btn btn--primary btn--lg btn--block">Confirmer le rendez-vous</button>
@@ -186,20 +200,19 @@
     <div class="container footer__inner">
       <div>
         <a href="#haut" class="brand brand--footer">
-          <span class="brand__dot"></span> Amine<span class="brand__light">Réparation</span>
+          <span class="brand__mark">MK</span> Phone
         </a>
-        <p class="footer__desc">Réparation de smartphones, tablettes et PC. Express, garantie 2 ans.</p>
+        <p class="footer__desc">Réparation de smartphones, tablettes et PC en Île-de-France. Express, garantie 2 ans.</p>
       </div>
       <div class="footer__col">
         <h4>Contact</h4>
-        <p><a href="tel:+33600000000">06 00 00 00 00</a></p>
-        <p><a href="mailto:contact@amine-reparation.fr">contact@amine-reparation.fr</a></p>
-        <p>123 rue de la République, 75000 Paris</p>
+        <p><a href="tel:+33751484392">07 51 48 43 92</a></p>
+        <p><a href="mailto:aminemekhfi45@gmail.com">aminemekhfi45@gmail.com</a></p>
       </div>
       <div class="footer__col">
-        <h4>Horaires</h4>
+        <h4>Zone & horaires</h4>
+        <p>Toute l'Île-de-France</p>
         <p>Lun – Sam : 9h00 – 19h00</p>
-        <p>Dimanche : fermé</p>
       </div>
       <div class="footer__col">
         <h4>Liens</h4>
@@ -209,7 +222,7 @@
       </div>
     </div>
     <div class="container footer__bottom">
-      <span>© <span id="annee"></span> Amine Réparation. Tous droits réservés.</span>
+      <span>© <span id="annee"></span> MK Phone. Tous droits réservés.</span>
       <span>Réparation express · Garantie 2 ans</span>
     </div>
   </footer>
