@@ -3,6 +3,11 @@
 // ------- Coordonnées de la boutique (à personnaliser) -------
 const EMAIL_BOUTIQUE = "aminemekhfi45@gmail.com";
 
+// ------- Envoi réel des rendez-vous (facultatif) -------
+// Crée un formulaire gratuit sur https://formspree.io, colle l'URL ci-dessous
+// (ex. "https://formspree.io/f/xxxxxx"). Laisse "" pour garder l'envoi par e-mail manuel.
+const FORMSPREE_URL = "";
+
 const fmt = (n) => (n == null ? null : `${n} €`);
 const marques = [...new Set(CATALOGUE.map((m) => m.marque))];
 
@@ -58,6 +63,50 @@ function renderFeatures() {
   if (!wrap) return;
   wrap.innerHTML = FEATURES.map(
     (f) => `<article class="feature">${svgIc(f.ic)}<h3>${f.titre}</h3><p>${f.texte}</p></article>`
+  ).join("");
+}
+
+// ============================================================
+// 1c. AVIS CLIENTS
+// ============================================================
+const AVIS = [
+  { nom: "Sarah L.", ville: "Paris 15e", texte: "Écran d'iPhone 13 changé en 25 minutes, nickel et moins cher qu'ailleurs. Je recommande !" },
+  { nom: "Karim B.", ville: "Créteil", texte: "Batterie de Samsung remplacée à domicile. Ponctuel, pro et sympa. Rien à redire." },
+  { nom: "Émilie D.", ville: "Boulogne", texte: "Mon iPad ne chargeait plus, réparé le jour même. Service au top et prix honnête." },
+];
+function etoiles() {
+  return `<div class="avis__stars">${"★".repeat(5)}</div>`;
+}
+function renderAvis() {
+  const wrap = document.getElementById("avisCards");
+  if (!wrap) return;
+  wrap.innerHTML = AVIS.map(
+    (a) => `<article class="feature avis">
+      ${etoiles()}
+      <p class="avis__texte">« ${a.texte} »</p>
+      <div class="avis__auteur"><strong>${a.nom}</strong><span>${a.ville}</span></div>
+    </article>`
+  ).join("");
+}
+
+// ============================================================
+// 1d. FAQ
+// ============================================================
+const FAQ = [
+  { q: "Combien de temps dure une réparation ?", r: "La plupart des réparations courantes (écran, batterie) sont réalisées en 30 minutes environ, pendant que vous attendez." },
+  { q: "Vos réparations sont-elles garanties ?", r: "Oui, nos prestations et pièces sont garanties jusqu'à 2 ans. La garantie couvre tout défaut lié à la pièce ou à la pose." },
+  { q: "Intervenez-vous à domicile ?", r: "Oui, nous nous déplaçons partout en Île-de-France, à votre domicile ou sur votre lieu de travail, sur rendez-vous." },
+  { q: "Que se passe-t-il si vous ne pouvez pas réparer ?", r: "Le diagnostic est gratuit. Si la réparation n'est pas possible ou si vous refusez le devis, vous ne payez rien." },
+  { q: "Quels moyens de paiement acceptez-vous ?", r: "Espèces et carte bancaire. Un reçu vous est remis à chaque intervention." },
+];
+function renderFaq() {
+  const wrap = document.getElementById("faqList");
+  if (!wrap) return;
+  wrap.innerHTML = FAQ.map(
+    (f) => `<details class="faq__item">
+      <summary>${f.q}<span class="faq__plus">+</span></summary>
+      <p>${f.r}</p>
+    </details>`
   ).join("");
 }
 
@@ -154,10 +203,11 @@ function reserverDepuisTable(marque, modele) {
 }
 
 // Soumission
-function soumettreRdv(e) {
+async function soumettreRdv(e) {
   e.preventDefault();
   const f = e.target;
   const confirm = document.getElementById("rdvConfirm");
+  const bouton = f.querySelector("button[type=submit]");
 
   const requis = ["nom", "tel", "marque", "modele", "reparation", "date", "creneau"];
   const manquant = requis.find((id) => !f[id].value.trim());
@@ -172,8 +222,8 @@ function soumettreRdv(e) {
   const repOpt = document.getElementById("reparation").selectedOptions[0];
   const repNom = repOpt.textContent.split(" — ")[0];
   const prix = repOpt.dataset.prix ? `${repOpt.dataset.prix} €` : "sur devis";
+  const prenom = f.nom.value.split(" ")[0];
 
-  // Récapitulatif + e-mail pré-rempli pour la boutique
   const sujet = `Demande de RDV — ${f.marque.value} ${f.modele.value}`;
   const corps =
     `Nom: ${f.nom.value}\n` +
@@ -184,10 +234,50 @@ function soumettreRdv(e) {
     `Date: ${f.date.value} — Créneau: ${f.creneau.value}\n` +
     `Message: ${f.message.value || "—"}`;
 
+  const succes = () => {
+    confirm.hidden = false;
+    confirm.className = "rdv__confirm";
+    confirm.innerHTML =
+      `✅ Merci ${prenom} ! Votre demande pour la réparation ` +
+      `<strong>${repNom}</strong> de votre <strong>${f.marque.value} ${f.modele.value}</strong> ` +
+      `le <strong>${f.date.value}</strong> (${f.creneau.value}) est bien enregistrée.<br/>` +
+      `Nous vous confirmons rapidement par téléphone.`;
+    confirm.scrollIntoView({ behavior: "smooth", block: "center" });
+    f.reset();
+    remplirModeles(marques[0]);
+  };
+
+  // Envoi réel via Formspree si configuré
+  if (FORMSPREE_URL) {
+    bouton.disabled = true;
+    bouton.textContent = "Envoi en cours…";
+    try {
+      const rep = await fetch(FORMSPREE_URL, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: new FormData(f),
+      });
+      if (!rep.ok) throw new Error("échec");
+      succes();
+    } catch (err) {
+      confirm.hidden = false;
+      confirm.className = "rdv__confirm error";
+      confirm.innerHTML =
+        `Une erreur est survenue lors de l'envoi. Vous pouvez nous joindre au ` +
+        `<strong>07 51 48 43 92</strong> ou ` +
+        `<a href="mailto:${EMAIL_BOUTIQUE}?subject=${encodeURIComponent(sujet)}&body=${encodeURIComponent(corps)}">par e-mail</a>.`;
+    } finally {
+      bouton.disabled = false;
+      bouton.textContent = "Confirmer le rendez-vous";
+    }
+    return;
+  }
+
+  // Sans Formspree : confirmation locale + e-mail pré-rempli
   confirm.hidden = false;
   confirm.className = "rdv__confirm";
   confirm.innerHTML =
-    `✅ Merci ${f.nom.value.split(" ")[0]} ! Votre demande pour la réparation ` +
+    `✅ Merci ${prenom} ! Votre demande pour la réparation ` +
     `<strong>${repNom}</strong> de votre <strong>${f.marque.value} ${f.modele.value}</strong> ` +
     `le <strong>${f.date.value}</strong> (${f.creneau.value}) est enregistrée.<br/>` +
     `Nous vous confirmons par téléphone. ` +
@@ -206,6 +296,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   renderServices();
   renderFeatures();
+  renderAvis();
+  renderFaq();
 
   // Filtre marque du tableau
   const filtreMarque = document.getElementById("filtreMarque");

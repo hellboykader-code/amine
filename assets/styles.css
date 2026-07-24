@@ -145,6 +145,30 @@ select:focus, input:focus, textarea:focus { outline: none; border-color: var(--a
 .gallery figure:hover img { transform: scale(1.05); }
 .gallery figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: .8rem 1rem; font-size: .9rem; font-weight: 600; background: linear-gradient(transparent, rgba(0, 0, 0, .8)); }
 
+/* ---------- À propos ---------- */
+.apropos { display: grid; grid-template-columns: 1fr 1.1fr; gap: 3rem; align-items: center; }
+.apropos__media img { width: 100%; border-radius: var(--radius-lg); border: 1px solid var(--line); box-shadow: var(--shadow); }
+.apropos__stats { display: flex; gap: 2.4rem; margin-top: 1.5rem; flex-wrap: wrap; }
+.apropos__stats strong { display: block; font-size: 1.6rem; font-weight: 700; font-family: "Space Grotesk", sans-serif; }
+.apropos__stats span { color: var(--muted); font-size: .88rem; }
+
+/* ---------- Avis ---------- */
+.avis__stars { color: #f5b301; letter-spacing: .1em; margin-bottom: .8rem; }
+.avis__texte { color: var(--text); font-size: .98rem; margin-bottom: 1rem; }
+.avis__auteur { display: flex; flex-direction: column; }
+.avis__auteur strong { font-weight: 600; }
+.avis__auteur span { color: var(--muted); font-size: .85rem; }
+
+/* ---------- FAQ ---------- */
+.faq__list { display: grid; gap: .8rem; max-width: 820px; margin-top: 2rem; }
+.faq__item { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 0 1.3rem; transition: border-color .2s; }
+.faq__item[open] { border-color: rgba(59, 130, 246, .45); }
+.faq__item summary { list-style: none; cursor: pointer; padding: 1.1rem 0; font-weight: 600; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.faq__item summary::-webkit-details-marker { display: none; }
+.faq__plus { color: var(--accent-soft); font-size: 1.3rem; transition: transform .2s; flex-shrink: 0; }
+.faq__item[open] .faq__plus { transform: rotate(45deg); }
+.faq__item p { color: var(--muted); padding-bottom: 1.1rem; margin: 0; font-size: .95rem; }
+
 /* ---------- RDV ---------- */
 .rdv { display: grid; grid-template-columns: 1fr 1.05fr; gap: 3rem; align-items: start; }
 .rdv__points { list-style: none; margin-top: 1.4rem; display: grid; gap: .6rem; color: var(--muted); }
@@ -161,6 +185,13 @@ select:focus, input:focus, textarea:focus { outline: none; border-color: var(--a
 .rdv__confirm a { color: var(--accent-soft); font-weight: 600; }
 .rdv__confirm.error { background: rgba(239, 68, 68, .1); border-color: #ef4444; }
 
+/* ---------- Page légale ---------- */
+.legal { max-width: 780px; }
+.legal__note { color: var(--muted); font-style: italic; margin-bottom: 2rem; }
+.legal h2 { font-size: 1.2rem; margin: 1.8rem 0 .6rem; font-weight: 600; }
+.legal p { color: var(--muted); }
+.legal a { color: var(--accent-soft); }
+
 /* ---------- Footer ---------- */
 .footer { background: var(--bg-alt); border-top: 1px solid var(--line); padding-top: 3rem; }
 .footer__inner { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 2rem; padding-bottom: 2.5rem; }
@@ -176,6 +207,8 @@ select:focus, input:focus, textarea:focus { outline: none; border-color: var(--a
   .hero__inner { grid-template-columns: 1fr; }
   .hero__media { order: -1; }
   .hero__media img { max-height: 320px; }
+  .apropos { grid-template-columns: 1fr; }
+  .apropos__media { order: -1; }
   .rdv { grid-template-columns: 1fr; }
   .footer__inner { grid-template-columns: 1fr 1fr; }
 }

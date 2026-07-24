@@ -42,6 +42,32 @@ const CATALOGUE = [
   { marque: "Samsung", modele: "Galaxy A53",       ecran: 94,  batterie: 44, charge: 44, camera: 54, vitre: 59,  desox: 49 },
   { marque: "Samsung", modele: "Galaxy A34",       ecran: 89,  batterie: 44, charge: 44, camera: 54, vitre: 59,  desox: 49 },
   { marque: "Samsung", modele: "Galaxy A14",       ecran: 64,  batterie: 39, charge: 39, camera: 44, vitre: 49,  desox: 44 },
+
+  // ---------------------------- XIAOMI --------------------------------------
+  { marque: "Xiaomi", modele: "Xiaomi 13",          ecran: 134, batterie: 54, charge: 49, camera: 64, vitre: 74, desox: 54 },
+  { marque: "Xiaomi", modele: "Xiaomi 12",          ecran: 119, batterie: 49, charge: 49, camera: 59, vitre: 69, desox: 54 },
+  { marque: "Xiaomi", modele: "Redmi Note 13",      ecran: 84,  batterie: 44, charge: 44, camera: 49, vitre: 54, desox: 49 },
+  { marque: "Xiaomi", modele: "Redmi Note 12",      ecran: 74,  batterie: 39, charge: 39, camera: 44, vitre: 49, desox: 49 },
+  { marque: "Xiaomi", modele: "Redmi 12",           ecran: 64,  batterie: 39, charge: 39, camera: 44, vitre: 44, desox: 44 },
+
+  // ---------------------------- HUAWEI --------------------------------------
+  { marque: "Huawei", modele: "P40 Pro",            ecran: 129, batterie: 54, charge: 49, camera: 64, vitre: 74, desox: 54 },
+  { marque: "Huawei", modele: "P30 Pro",            ecran: 104, batterie: 49, charge: 44, camera: 59, vitre: 64, desox: 49 },
+  { marque: "Huawei", modele: "P30 Lite",           ecran: 74,  batterie: 39, charge: 39, camera: 44, vitre: 49, desox: 44 },
+  { marque: "Huawei", modele: "Mate 20 Pro",        ecran: 94,  batterie: 44, charge: 44, camera: 54, vitre: 59, desox: 49 },
+
+  // ------------------------- GOOGLE PIXEL -----------------------------------
+  { marque: "Google", modele: "Pixel 8 Pro",        ecran: 154, batterie: 59, charge: 54, camera: 74, vitre: 84, desox: 54 },
+  { marque: "Google", modele: "Pixel 8",            ecran: 129, batterie: 54, charge: 49, camera: 64, vitre: 74, desox: 54 },
+  { marque: "Google", modele: "Pixel 7",            ecran: 104, batterie: 49, charge: 49, camera: 59, vitre: 64, desox: 49 },
+  { marque: "Google", modele: "Pixel 6",            ecran: 94,  batterie: 44, charge: 44, camera: 54, vitre: 59, desox: 49 },
+
+  // ---------------------- APPLE iPad (tablettes) ----------------------------
+  { marque: "iPad", modele: "iPad Pro 12.9\"",      ecran: 224, batterie: 89, charge: 74, camera: 84, vitre: null, desox: 74 },
+  { marque: "iPad", modele: "iPad Pro 11\"",        ecran: 194, batterie: 79, charge: 69, camera: 79, vitre: null, desox: 74 },
+  { marque: "iPad", modele: "iPad Air",             ecran: 154, batterie: 69, charge: 59, camera: 69, vitre: null, desox: 64 },
+  { marque: "iPad", modele: "iPad 10 / 9",          ecran: 104, batterie: 59, charge: 54, camera: 59, vitre: null, desox: 59 },
+  { marque: "iPad", modele: "iPad mini",            ecran: 114, batterie: 59, charge: 54, camera: 59, vitre: null, desox: 59 },
 ];
 
 // Libellés des types de réparation (clé -> nom affiché + icône)
