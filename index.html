@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amine Réparation — Réparation de téléphone express & rendez-vous en ligne</title>
+  <meta name="description" content="Réparation de smartphones, tablettes et PC. Écran, batterie, connecteur de charge, caméra. Réparation express en 30 minutes, garantie 2 ans. Prise de rendez-vous en ligne." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <header class="nav" id="haut">
+    <div class="container nav__inner">
+      <a href="#haut" class="brand">
+        <span class="brand__dot"></span> Amine<span class="brand__light">Réparation</span>
+      </a>
+      <nav class="nav__links" id="navLinks">
+        <a href="#services">Services</a>
+        <a href="#tarifs">Tarifs</a>
+        <a href="#pourquoi">Pourquoi nous</a>
+        <a href="#rdv">Rendez-vous</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="#rdv" class="btn btn--primary nav__cta">Prendre RDV</a>
+      <button class="nav__burger" id="burger" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <p class="hero__eyebrow">Réparation express · Garantie 2 ans</p>
+      <h1 class="hero__title">Votre téléphone réparé<br /><em>en 30 minutes.</em></h1>
+      <p class="hero__sub">
+        Écran cassé, batterie usée, connecteur de charge défaillant… Nos techniciens
+        réparent iPhone, Samsung, tablettes et PC sur place, avec des pièces garanties.
+      </p>
+      <div class="hero__actions">
+        <a href="#rdv" class="btn btn--primary btn--lg">Prendre rendez-vous</a>
+        <a href="#tarifs" class="btn btn--ghost btn--lg">Voir les tarifs</a>
+      </div>
+      <div class="hero__stats">
+        <div><strong>30 min</strong><span>Réparation express</span></div>
+        <div><strong>2 ans</strong><span>Garantie pièces</span></div>
+        <div><strong>-15 €</strong><span>Sur tous les tarifs</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SERVICES ===================== -->
+  <section class="section" id="services">
+    <div class="container">
+      <p class="section__eyebrow">Nos services</p>
+      <h2 class="section__title">Toutes les réparations, un seul atelier</h2>
+      <div class="cards" id="servicesCards"><!-- injecté par JS --></div>
+    </div>
+  </section>
+
+  <!-- ===================== TARIFS ===================== -->
+  <section class="section section--alt" id="tarifs">
+    <div class="container">
+      <p class="section__eyebrow">Tarifs</p>
+      <h2 class="section__title">Grille de prix par modèle</h2>
+      <p class="section__lead">
+        Prix TTC, pièce et main-d'œuvre comprises. <strong>Remise de 15 € déjà déduite</strong>
+        sur chaque tarif. Cliquez sur « Réserver » pour préremplir votre rendez-vous.
+      </p>
+
+      <div class="tarifs__filtres">
+        <label for="filtreMarque">Marque :</label>
+        <select id="filtreMarque"></select>
+        <input type="search" id="rechercheModele" placeholder="Rechercher un modèle…" />
+      </div>
+
+      <div class="table__wrap">
+        <table class="table" id="tableTarifs">
+          <thead><!-- injecté par JS --></thead>
+          <tbody><!-- injecté par JS --></tbody>
+        </table>
+      </div>
+      <p class="tarifs__note">
+        Modèle non listé ou réparation spécifique (carte mère, haut-parleur, micro…) ?
+        <a href="#rdv">Demandez un devis gratuit</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== POURQUOI NOUS ===================== -->
+  <section class="section" id="pourquoi">
+    <div class="container">
+      <p class="section__eyebrow">Pourquoi nous choisir</p>
+      <h2 class="section__title">La réparation sereine</h2>
+      <div class="cards cards--3">
+        <div class="feature"><span class="feature__ic">⚡</span><h3>Express</h3><p>La plupart des réparations sont réalisées en 30 minutes, pendant que vous attendez.</p></div>
+        <div class="feature"><span class="feature__ic">🛡️</span><h3>Garantie 2 ans</h3><p>Pièces vérifiées et testées, garanties jusqu'à 2 ans sur nos prestations.</p></div>
+        <div class="feature"><span class="feature__ic">💶</span><h3>-15 € partout</h3><p>Des tarifs parmi les plus compétitifs : 15 € de moins sur chaque réparation.</p></div>
+        <div class="feature"><span class="feature__ic">🏠</span><h3>À domicile</h3><p>Pas le temps de vous déplacer ? Nous proposons aussi la réparation à domicile.</p></div>
+        <div class="feature"><span class="feature__ic">🔧</span><h3>Techniciens experts</h3><p>iPhone, Samsung, Xiaomi, Huawei, tablettes et PC : tout est pris en charge.</p></div>
+        <div class="feature"><span class="feature__ic">📦</span><h3>Par correspondance</h3><p>Envoyez-nous votre appareil, on le répare et on vous le renvoie.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PRISE DE RENDEZ-VOUS ===================== -->
+  <section class="section section--alt" id="rdv">
+    <div class="container rdv">
+      <div class="rdv__intro">
+        <p class="section__eyebrow">Rendez-vous</p>
+        <h2 class="section__title">Réservez votre créneau</h2>
+        <p class="section__lead">
+          Choisissez votre appareil, la réparation et un créneau. Nous vous confirmons
+          par téléphone. C'est gratuit et sans engagement.
+        </p>
+        <ul class="rdv__points">
+          <li>✅ Confirmation rapide</li>
+          <li>✅ Devis clair avant toute intervention</li>
+          <li>✅ Aucun frais si vous ne réparez pas</li>
+        </ul>
+      </div>
+
+      <form class="rdv__form" id="rdvForm" novalidate>
+        <div class="field">
+          <label for="nom">Nom complet *</label>
+          <input type="text" id="nom" name="nom" required />
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="tel">Téléphone *</label>
+            <input type="tel" id="tel" name="tel" required placeholder="06 12 34 56 78" />
+          </div>
+          <div class="field">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="vous@exemple.fr" />
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="marque">Marque *</label>
+            <select id="marque" name="marque" required></select>
+          </div>
+          <div class="field">
+            <label for="modele">Modèle *</label>
+            <select id="modele" name="modele" required></select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="reparation">Réparation *</label>
+          <select id="reparation" name="reparation" required></select>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="date">Date souhaitée *</label>
+            <input type="date" id="date" name="date" required />
+          </div>
+          <div class="field">
+            <label for="creneau">Créneau *</label>
+            <select id="creneau" name="creneau" required>
+              <option value="">—</option>
+              <option>09:00 – 10:00</option>
+              <option>10:00 – 11:00</option>
+              <option>11:00 – 12:00</option>
+              <option>14:00 – 15:00</option>
+              <option>15:00 – 16:00</option>
+              <option>16:00 – 17:00</option>
+              <option>17:00 – 18:00</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="message">Message (facultatif)</label>
+          <textarea id="message" name="message" rows="3" placeholder="Décrivez la panne…"></textarea>
+        </div>
+        <div class="rdv__estimation" id="estimation" hidden></div>
+        <button type="submit" class="btn btn--primary btn--lg btn--block">Confirmer le rendez-vous</button>
+        <p class="rdv__confirm" id="rdvConfirm" hidden></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT / FOOTER ===================== -->
+  <footer class="footer" id="contact">
+    <div class="container footer__inner">
+      <div>
+        <a href="#haut" class="brand brand--footer">
+          <span class="brand__dot"></span> Amine<span class="brand__light">Réparation</span>
+        </a>
+        <p class="footer__desc">Réparation de smartphones, tablettes et PC. Express, garantie 2 ans.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Contact</h4>
+        <p><a href="tel:+33600000000">06 00 00 00 00</a></p>
+        <p><a href="mailto:contact@amine-reparation.fr">contact@amine-reparation.fr</a></p>
+        <p>123 rue de la République, 75000 Paris</p>
+      </div>
+      <div class="footer__col">
+        <h4>Horaires</h4>
+        <p>Lun – Sam : 9h00 – 19h00</p>
+        <p>Dimanche : fermé</p>
+      </div>
+      <div class="footer__col">
+        <h4>Liens</h4>
+        <p><a href="#services">Services</a></p>
+        <p><a href="#tarifs">Tarifs</a></p>
+        <p><a href="#rdv">Rendez-vous</a></p>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <span>© <span id="annee"></span> Amine Réparation. Tous droits réservés.</span>
+      <span>Réparation express · Garantie 2 ans</span>
+    </div>
+  </footer>
+
+  <script src="assets/data.js"></script>
+  <script src="assets/script.js"></script>
+</body>
+</html>
