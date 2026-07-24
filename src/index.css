@@ -59,9 +59,14 @@ h1, h2, h3, h4, .brand { font-family: "Space Grotesk", "Inter", sans-serif; lett
   display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 8px;
   background: var(--accent); color: #fff; font-size: .8rem; font-weight: 700;
 }
-.nav__links { display: flex; gap: 1.7rem; }
-.nav__links a { color: var(--muted); font-weight: 500; font-size: .95rem; transition: color .2s; }
-.nav__links a:hover { color: var(--text); }
+.nav__links { display: flex; gap: 1.7rem; align-items: center; }
+.nav__links a, .nav__link {
+  color: var(--muted); font-weight: 500; font-size: .95rem; transition: color .2s;
+  background: none; border: none; cursor: pointer; font-family: inherit; padding: 0;
+}
+.nav__links a:hover, .nav__link:hover { color: var(--text); }
+.linklike { background: none; border: none; padding: 0; cursor: pointer; font: inherit; color: var(--muted); }
+.linklike:hover { color: var(--text); }
 .nav__burger { display: none; background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer; }
 
 /* ---------- Hero ---------- */
@@ -144,6 +149,14 @@ select:focus, input:focus, textarea:focus { outline: none; border-color: var(--a
 .table__reserver:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
 .tarifs__note { color: var(--muted); margin-top: 1rem; font-size: .93rem; }
 .tarifs__note a { color: var(--accent); font-weight: 600; }
+
+/* ---------- Encart Tarifs (accueil) ---------- */
+.tarifs-cta {
+  display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+  background: var(--accent-soft); border: 1px solid #dbe6ff; border-radius: var(--radius-lg);
+  padding: 2.2rem 2.4rem; flex-wrap: wrap;
+}
+.tarifs-cta .btn { flex-shrink: 0; }
 
 /* ---------- Process (étapes) ---------- */
 .steps { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; margin-top: 2rem; }

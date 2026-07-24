@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom";
 import { CONTACT } from "../data.js";
+import { useSectionNav } from "../useSectionNav.js";
 
 export default function Footer() {
   const annee = new Date().getFullYear();
+  const go = useSectionNav();
   return (
     <footer className="footer" id="contact">
       <div className="container footer__inner">
         <div>
-          <a href="#top" className="brand brand--footer"><span className="brand__mark">MK</span> Phone</a>
+          <Link to="/" className="brand brand--footer"><span className="brand__mark">MK</span> Phone</Link>
           <p className="footer__desc">Réparation de smartphones, tablettes et PC en Île-de-France. Express, garantie 2 ans.</p>
         </div>
         <div className="footer__col">
@@ -22,9 +24,9 @@ export default function Footer() {
         </div>
         <div className="footer__col">
           <h4>Liens</h4>
-          <p><a href="#tarifs">Tarifs</a></p>
-          <p><a href="#faq">FAQ</a></p>
-          <p><a href="#rdv">Rendez-vous</a></p>
+          <p><Link to="/tarifs">Tarifs</Link></p>
+          <p><button className="linklike" onClick={() => go("faq")}>FAQ</button></p>
+          <p><button className="linklike" onClick={() => go("rdv")}>Rendez-vous</button></p>
           <p><Link to="/mentions-legales">Mentions légales</Link></p>
         </div>
       </div>

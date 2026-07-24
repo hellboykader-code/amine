@@ -1,4 +1,8 @@
+import { Link } from "react-router-dom";
+import { useSectionNav } from "../useSectionNav.js";
+
 export default function Hero() {
+  const go = useSectionNav();
   return (
     <section className="hero" id="top">
       <div className="container hero__inner">
@@ -13,8 +17,8 @@ export default function Hero() {
             Écran, batterie, connecteur de charge : des pièces garanties, un tarif clair.
           </p>
           <div className="hero__actions">
-            <a href="#rdv" className="btn btn--primary btn--lg">Prendre rendez-vous</a>
-            <a href="#tarifs" className="btn btn--ghost btn--lg">Voir les tarifs</a>
+            <button className="btn btn--primary btn--lg" onClick={() => go("rdv")}>Prendre rendez-vous</button>
+            <Link to="/tarifs" className="btn btn--ghost btn--lg">Voir les tarifs</Link>
           </div>
           <div className="hero__stats">
             <div><strong>30 min</strong><span>Réparation express</span></div>
