@@ -8,6 +8,7 @@ import About from "./components/About.jsx";
 import Reviews from "./components/Reviews.jsx";
 import Faq from "./components/Faq.jsx";
 import Booking from "./components/Booking.jsx";
+import FinalCTA from "./components/FinalCTA.jsx";
 import Footer from "./components/Footer.jsx";
 
 function TarifsCTA() {
@@ -57,6 +58,7 @@ export default function App() {
         <Reviews />
         <Faq />
         <Booking prefill={prefill} />
+        <FinalCTA />
       </main>
       <Footer />
     </>

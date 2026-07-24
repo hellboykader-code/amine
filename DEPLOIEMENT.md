@@ -26,14 +26,21 @@ qui génère un dossier `dist/` 100 % statique à héberger.
 
 ---
 
-## Option 3 — GitHub Pages (gratuit)
+## Option 3 — GitHub Pages (automatique, gratuit) ✅ déjà configuré
 
-Le routage utilise `HashRouter`, compatible GitHub Pages.
+Un workflow GitHub Actions (`.github/workflows/deploy.yml`) build et publie le site
+**automatiquement à chaque push** sur `mk-phone-site`. Le routage `HashRouter` est
+compatible GitHub Pages.
 
-1. Build : `npm run build` (dossier `dist/`).
-2. Publie le contenu de `dist/` sur la branche `gh-pages`, ou via une action GitHub
-   (ex. `peaceiris/actions-gh-pages`).
-3. Settings → Pages → source `gh-pages`.
+**À faire une seule fois** pour l'activer :
+
+1. Sur GitHub → dépôt `amine` → **Settings → Pages**.
+2. **Build and deployment → Source** : choisis **GitHub Actions**.
+3. C'est tout : au prochain push (ou relance le workflow dans l'onglet **Actions**),
+   le site est publié sur `https://hellboykader-code.github.io/amine/`.
+
+> Le workflow peut aussi être lancé à la main : onglet **Actions → Déploiement GitHub
+> Pages → Run workflow**.
 
 ---
 

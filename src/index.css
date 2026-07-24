@@ -78,7 +78,12 @@ h1, h2, h3, h4, .brand { font-family: "Space Grotesk", "Inter", sans-serif; lett
     linear-gradient(180deg, #fbfcfe, #ffffff);
 }
 .hero__inner { display: grid; grid-template-columns: 1.1fr .9fr; gap: 3rem; align-items: center; }
-.hero__eyebrow { color: var(--accent); font-weight: 600; letter-spacing: .04em; text-transform: uppercase; font-size: .78rem; margin-bottom: 1rem; }
+.hero__eyebrow, .section__eyebrow {
+  display: inline-block; color: var(--accent); font-weight: 600; letter-spacing: .03em;
+  text-transform: uppercase; font-size: .72rem; background: var(--accent-soft);
+  border: 1px solid #dbe6ff; padding: .32rem .7rem; border-radius: 999px;
+}
+.hero__eyebrow { margin-bottom: 1rem; }
 .hero__title { font-size: clamp(2.2rem, 4.8vw, 3.7rem); font-weight: 700; line-height: 1.06; }
 .hero__title em { font-style: normal; color: var(--accent); }
 .hero__sub { color: var(--muted); font-size: 1.1rem; max-width: 540px; margin: 1.3rem 0 2rem; }
@@ -99,8 +104,7 @@ h1, h2, h3, h4, .brand { font-family: "Space Grotesk", "Inter", sans-serif; lett
 /* ---------- Sections ---------- */
 .section { padding: clamp(3.5rem, 7vw, 6rem) 0; }
 .section--alt { background: var(--bg-alt); }
-.section__eyebrow { color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: .04em; font-size: .78rem; }
-.section__title { font-size: clamp(1.8rem, 3.8vw, 2.6rem); font-weight: 700; margin: .5rem 0 1rem; }
+.section__title { font-size: clamp(1.8rem, 3.8vw, 2.6rem); font-weight: 700; margin: .8rem 0 1rem; }
 .section__lead { color: var(--muted); max-width: 640px; margin-bottom: 2rem; }
 
 /* ---------- Cards / services ---------- */
@@ -149,6 +153,26 @@ select:focus, input:focus, textarea:focus { outline: none; border-color: var(--a
 .table__reserver:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
 .tarifs__note { color: var(--muted); margin-top: 1rem; font-size: .93rem; }
 .tarifs__note a { color: var(--accent); font-weight: 600; }
+
+/* ---------- Boutons sur fond sombre (CTA finale) ---------- */
+.btn--white { background: #fff; color: var(--accent-dark); }
+.btn--white:hover { background: #f0f4ff; transform: translateY(-2px); }
+.btn--outline-white { background: transparent; border-color: rgba(255, 255, 255, .5); color: #fff; }
+.btn--outline-white:hover { border-color: #fff; background: rgba(255, 255, 255, .1); transform: translateY(-2px); }
+
+/* ---------- CTA finale ---------- */
+.finalcta {
+  background: linear-gradient(135deg, var(--accent), #1e40af); color: #fff;
+  border-radius: var(--radius-lg); padding: clamp(2.5rem, 5vw, 4rem);
+  text-align: center; box-shadow: 0 24px 60px rgba(37, 99, 235, .28);
+}
+.finalcta__eyebrow {
+  display: inline-block; text-transform: uppercase; letter-spacing: .04em; font-size: .74rem;
+  font-weight: 600; background: rgba(255, 255, 255, .16); padding: .32rem .8rem; border-radius: 999px; margin-bottom: 1rem;
+}
+.finalcta__title { color: #fff; font-size: clamp(1.6rem, 3.4vw, 2.4rem); font-weight: 700; max-width: 640px; margin: 0 auto .8rem; }
+.finalcta__sub { color: rgba(255, 255, 255, .85); max-width: 520px; margin: 0 auto 1.8rem; }
+.finalcta__actions { display: flex; gap: .9rem; justify-content: center; flex-wrap: wrap; }
 
 /* ---------- Encart Tarifs (accueil) ---------- */
 .tarifs-cta {
