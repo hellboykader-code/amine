@@ -10,6 +10,12 @@
   --accent: #2563eb;
   --accent-dark: #1d4ed8;
   --accent-soft: #eff4ff;
+  --violet: #7c3aed;
+  --pink: #ec4899;
+  --teal: #06b6d4;
+  --amber: #f59e0b;
+  --grad: linear-gradient(135deg, #2563eb, #7c3aed 55%, #ec4899);
+  --grad-2: linear-gradient(135deg, #06b6d4, #2563eb);
   --radius: 14px;
   --radius-lg: 22px;
   --shadow-sm: 0 1px 2px rgba(16, 24, 40, .05);
