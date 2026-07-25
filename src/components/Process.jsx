@@ -2,7 +2,7 @@ const ETAPES = [
   { n: "01", titre: "Vous réservez", texte: "Choisissez l'appareil, la réparation et un créneau en ligne, ou appelez-nous." },
   { n: "02", titre: "Diagnostic gratuit", texte: "On identifie la panne et on vous donne un devis clair, sans engagement." },
   { n: "03", titre: "Réparation express", texte: "La plupart des réparations sont faites en 30 minutes, avec pièces garanties." },
-  { n: "04", titre: "Garantie 2 ans", texte: "Vous repartez avec un appareil comme neuf et une garantie jusqu'à 2 ans." },
+  { n: "04", titre: "Garantie incluse", texte: "Écrans garantis de 3 mois à 1 an selon la gamme, batteries garanties 6 mois." },
 ];
 
 export default function Process() {

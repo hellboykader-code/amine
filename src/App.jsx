@@ -8,8 +8,11 @@ import About from "./components/About.jsx";
 import Reviews from "./components/Reviews.jsx";
 import Faq from "./components/Faq.jsx";
 import Booking from "./components/Booking.jsx";
+import BuySell from "./components/BuySell.jsx";
 import FinalCTA from "./components/FinalCTA.jsx";
 import Footer from "./components/Footer.jsx";
+import Aurora from "./components/Aurora.jsx";
+import { useScrollReveal } from "./useScrollReveal.js";
 
 function TarifsCTA() {
   return (
@@ -17,13 +20,13 @@ function TarifsCTA() {
       <div className="container tarifs-cta">
         <div>
           <p className="section__eyebrow">Tarifs</p>
-          <h2 className="section__title">Des prix clairs, -15 € sur tout</h2>
+          <h2 className="section__title">Des prix clairs, 30 à 40 € moins chers</h2>
           <p className="section__lead" style={{ marginBottom: 0 }}>
-            Consultez notre grille complète par marque et modèle (Apple, Samsung, Xiaomi,
-            Huawei, Pixel, iPad), pièce et main-d'œuvre comprises.
+            Choisissez votre marque (Apple, Samsung, Xiaomi, Huawei, Pixel, iPad) et découvrez
+            le tarif de chaque modèle, pièce et main-d'œuvre comprises.
           </p>
         </div>
-        <Link to="/tarifs" className="btn btn--primary btn--lg">Voir la grille des tarifs →</Link>
+        <Link to="/tarifs" className="btn btn--primary btn--lg">Voir les tarifs →</Link>
       </div>
     </section>
   );
@@ -31,6 +34,7 @@ function TarifsCTA() {
 
 export default function App() {
   const [prefill, setPrefill] = useState(null);
+  useScrollReveal();
 
   // Au chargement : appliquer un préremplissage / scroll demandé depuis une autre page
   useEffect(() => {
@@ -48,12 +52,14 @@ export default function App() {
 
   return (
     <>
+      <Aurora />
       <Nav />
       <main>
         <Hero />
         <Services />
         <TarifsCTA />
         <Process />
+        <BuySell />
         <About />
         <Reviews />
         <Faq />

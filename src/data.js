@@ -78,11 +78,16 @@ export const AVIS = [
 
 export const FAQ = [
   { q: "Combien de temps dure une réparation ?", r: "La plupart des réparations courantes (écran, batterie) sont réalisées en 30 minutes environ, pendant que vous attendez." },
-  { q: "Vos réparations sont-elles garanties ?", r: "Oui, nos prestations et pièces sont garanties jusqu'à 2 ans. La garantie couvre tout défaut lié à la pièce ou à la pose." },
+  { q: "Vos réparations sont-elles garanties ?", r: "Oui. Les batteries sont garanties 6 mois. Pour les écrans, nous proposons plusieurs gammes : la garantie va de 3 à 6 mois pour les gammes compatibles, et jusqu'à 1 an pour les gammes premium." },
+  { q: "Êtes-vous vraiment moins chers ?", r: "Oui : nos tarifs sont en moyenne 30 à 40 € moins chers que la concurrence, à qualité de pièce équivalente." },
   { q: "Intervenez-vous à domicile ?", r: "Oui, nous nous déplaçons partout en Île-de-France, à votre domicile ou sur votre lieu de travail, sur rendez-vous." },
+  { q: "Rachetez-vous les téléphones ?", r: "Oui, nous rachetons votre ancien téléphone (fonctionnel ou en panne) avec une estimation gratuite et un paiement immédiat. Nous vendons aussi des téléphones reconditionnés et testés." },
   { q: "Que se passe-t-il si vous ne pouvez pas réparer ?", r: "Le diagnostic est gratuit. Si la réparation n'est pas possible ou si vous refusez le devis, vous ne payez rien." },
   { q: "Quels moyens de paiement acceptez-vous ?", r: "Espèces et carte bancaire. Un reçu vous est remis à chaque intervention." },
 ];
+
+// Politique de garantie (réutilisée à plusieurs endroits)
+export const GARANTIE = "Écrans garantis de 3 mois à 1 an selon la gamme · Batteries garanties 6 mois";
 
 // Coordonnées
 export const CONTACT = {

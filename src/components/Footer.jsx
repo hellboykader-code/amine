@@ -10,7 +10,7 @@ export default function Footer() {
       <div className="container footer__inner">
         <div>
           <Link to="/" className="brand brand--footer"><span className="brand__mark">MK</span> Phone</Link>
-          <p className="footer__desc">Réparation de smartphones, tablettes et PC en Île-de-France. Express, garantie 2 ans.</p>
+          <p className="footer__desc">Réparation, vente et rachat de smartphones, tablettes et PC. Déplacements dans toute l'Île-de-France.</p>
         </div>
         <div className="footer__col">
           <h4>Contact</h4>
@@ -25,14 +25,14 @@ export default function Footer() {
         <div className="footer__col">
           <h4>Liens</h4>
           <p><Link to="/tarifs">Tarifs</Link></p>
-          <p><button className="linklike" onClick={() => go("faq")}>FAQ</button></p>
+          <p><button className="linklike" onClick={() => go("vente")}>Vente &amp; rachat</button></p>
           <p><button className="linklike" onClick={() => go("rdv")}>Rendez-vous</button></p>
           <p><Link to="/mentions-legales">Mentions légales</Link></p>
         </div>
       </div>
       <div className="container footer__bottom">
         <span>© {annee} MK Phone. Tous droits réservés.</span>
-        <span>Réparation express · Garantie 2 ans</span>
+        <span>Réparation express · Vente & rachat · Île-de-France</span>
       </div>
     </footer>
   );

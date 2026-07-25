@@ -48,8 +48,9 @@ export default function MentionsLegales() {
 
           <h2>Garantie</h2>
           <p>
-            Les réparations sont garanties jusqu'à 2 ans selon la pièce concernée. La garantie ne
-            couvre pas les dommages ultérieurs (chocs, oxydation, casse).
+            Les batteries sont garanties 6 mois. Les écrans sont garantis de 3 mois à 1 an selon
+            la gamme choisie (compatible ou premium). La garantie ne couvre pas les dommages
+            ultérieurs (chocs, oxydation, casse).
           </p>
         </div>
       </main>

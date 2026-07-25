@@ -14,7 +14,7 @@ export default function Nav() {
         <nav className={`nav__links ${open ? "open" : ""}`}>
           <button className="nav__link" onClick={() => click("services")}>Services</button>
           <Link className="nav__link" to="/tarifs" onClick={() => setOpen(false)}>Tarifs</Link>
-          <button className="nav__link" onClick={() => click("avis")}>Avis</button>
+          <button className="nav__link" onClick={() => click("vente")}>Vente &amp; rachat</button>
           <button className="nav__link" onClick={() => click("faq")}>FAQ</button>
           <button className="nav__link" onClick={() => click("contact")}>Contact</button>
         </nav>

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { CATALOGUE, TYPES_REPARATION, REMISE, CONTACT, FORMSPREE_URL } from "../data.js";
+import { CATALOGUE, TYPES_REPARATION, CONTACT, FORMSPREE_URL } from "../data.js";
 
 const MARQUES = [...new Set(CATALOGUE.map((m) => m.marque))];
 const CRENEAUX = [
@@ -38,7 +38,7 @@ export default function Booking({ prefill }) {
   const repNom = TYPES_REPARATION.find((t) => t.cle === reparation)?.nom || "";
 
   const estimation = prixRep != null
-    ? <>Estimation : <strong>{prixRep} €</strong> <span className="muted">(remise de {REMISE} € déjà appliquée · devis confirmé en atelier)</span></>
+    ? <>Estimation : <strong>{prixRep} €</strong> <span className="muted">(30 à 40 € sous la concurrence · devis confirmé en atelier)</span></>
     : <>Cette réparation est établie <strong>sur devis gratuit</strong>.</>;
 
   async function submit(e) {

@@ -9,9 +9,10 @@ export default function About() {
           <p className="section__eyebrow">À propos</p>
           <h2 className="section__title">MK Phone, votre expert de proximité</h2>
           <p className="section__lead">
-            Chez MK Phone, on répare votre téléphone avec soin, rapidement et à prix juste.
-            Passionnés de tech, nous intervenons dans toute l'Île-de-France : en atelier,
-            à domicile ou par correspondance. Chaque réparation est testée et garantie 2 ans.
+            Chez MK Phone, on répare votre téléphone avec soin, rapidement et à prix juste
+            — 30 à 40 € moins cher que la concurrence. Passionnés de tech, nous nous déplaçons
+            dans toute l'Île-de-France : à domicile, au travail ou en atelier. Chaque réparation
+            est testée et garantie.
           </p>
           <div className="apropos__stats">
             <div><strong>+5 000</strong><span>Appareils réparés</span></div>
