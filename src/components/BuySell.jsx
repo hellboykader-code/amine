@@ -1,28 +1,31 @@
 import { CONTACT } from "../data.js";
 import Icon from "../icons.jsx";
+import RachatEstimator from "./RachatEstimator.jsx";
 
 export default function BuySell() {
   return (
-    <section className="section" id="vente">
+    <section className="section section--alt" id="vente">
       <div className="container">
         <p className="section__eyebrow">Vente &amp; rachat</p>
-        <h2 className="section__title">On rachète et on vend des téléphones</h2>
+        <h2 className="section__title">Estimez la reprise de votre téléphone</h2>
         <p className="section__lead">
-          Envie de changer de téléphone ou de vous séparer de l'ancien ? MK Phone rachète
-          votre appareil et vous propose des smartphones reconditionnés, testés et garantis.
+          Comme sur les grandes plateformes : choisissez votre appareil, son état, et obtenez
+          une estimation immédiate. Reprise même écran cassé, paiement immédiat.
         </p>
 
-        <div className="buysell">
+        <RachatEstimator />
+
+        <div className="buysell" style={{ marginTop: "2.5rem" }}>
           <article className="buysell__card buysell__card--buy">
             <span className="ic"><Icon name="prix" /></span>
             <h3>Nous rachetons votre téléphone</h3>
             <p>Fonctionnel ou en panne, tous modèles. Estimation gratuite et paiement immédiat.</p>
             <ul className="buysell__list">
-              <li>Estimation gratuite en quelques minutes</li>
+              <li>Estimation gratuite en quelques secondes</li>
               <li>Paiement immédiat (espèces ou virement)</li>
               <li>Reprise même en cas d'écran cassé</li>
             </ul>
-            <a className="btn btn--primary" href={`tel:${CONTACT.telLink}`}>Estimer mon téléphone</a>
+            <a className="btn btn--primary" href={`tel:${CONTACT.telLink}`}>Estimer par téléphone</a>
           </article>
 
           <article className="buysell__card buysell__card--sell">

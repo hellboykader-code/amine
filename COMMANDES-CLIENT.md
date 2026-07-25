@@ -30,7 +30,8 @@
 - La **grille de prix n'est PAS sur l'accueil** → page **Tarifs** dédiée
 - Tarifs **par marque** : on clique sur une marque → ses modèles s'affichent
 - **Photo du modèle** à côté de chaque prix (la **bonne** photo pour chaque modèle)
-- Section **Vente & rachat de téléphones**
+- Section **Vente & rachat de téléphones** avec un **estimateur de reprise**
+  style Back Market (marque → modèle → stockage → état → prix estimé)
 - Les **6 cartes de services** ont en fond une **vraie photo de la réparation**
   (écran fissuré, batterie, connecteur, caméra, vitre, désoxydation) — **modèles récents** souhaités
 - Les **3 photos (galerie)** sont placées **juste en dessous des tarifs**
