@@ -5,7 +5,6 @@ import Hero from "./components/Hero.jsx";
 import Services from "./components/Services.jsx";
 import Process from "./components/Process.jsx";
 import About from "./components/About.jsx";
-import Reviews from "./components/Reviews.jsx";
 import Faq from "./components/Faq.jsx";
 import Booking from "./components/Booking.jsx";
 import BuySell from "./components/BuySell.jsx";
@@ -14,12 +13,6 @@ import Footer from "./components/Footer.jsx";
 import Aurora from "./components/Aurora.jsx";
 import ThreeBackground from "./components/ThreeBackground.jsx";
 import { useScrollReveal } from "./useScrollReveal.js";
-
-const GALLERY = [
-  ["./img/reparation-ecran.jpg", "Remplacement d'écran"],
-  ["./img/reparation-batterie.jpg", "Changement de batterie"],
-  ["./img/atelier.jpg", "Notre atelier"],
-];
 
 function TarifsCTA() {
   return (
@@ -34,23 +27,6 @@ function TarifsCTA() {
           </p>
         </div>
         <Link to="/tarifs" className="btn btn--primary btn--lg">Voir les tarifs →</Link>
-      </div>
-    </section>
-  );
-}
-
-function Gallery() {
-  return (
-    <section className="section" style={{ paddingTop: 0 }}>
-      <div className="container">
-        <div className="gallery">
-          {GALLERY.map(([src, cap]) => (
-            <figure key={src}>
-              <img src={src} alt={cap} loading="lazy" />
-              <figcaption>{cap}</figcaption>
-            </figure>
-          ))}
-        </div>
       </div>
     </section>
   );
@@ -83,11 +59,9 @@ export default function App() {
         <Hero />
         <Services />
         <TarifsCTA />
-        <Gallery />
         <Process />
         <BuySell />
         <About />
-        <Reviews />
         <Faq />
         <Booking prefill={prefill} />
         <FinalCTA />
