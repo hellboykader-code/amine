@@ -6,11 +6,11 @@ import * as THREE from "three";
 const PHOTOS = [
   "./img/models/apple.jpg",
   "./img/models/by-model/iphone-15-pro-max.jpg",
-  "./img/models/by-model/iphone-15.jpg",
   "./img/models/by-model/iphone-13.jpg",
   "./img/models/by-model/galaxy-s24.jpg",
   "./img/models/by-model/pixel-8.jpg",
-  "./img/models/by-model/xiaomi-13.jpg",
+  "./img/models/macbook.jpg",
+  "./img/models/watch.jpg",
   "./img/models/by-model/ipad-air.png",
 ];
 
@@ -41,11 +41,8 @@ export default function ThreeBackground() {
     const cards = [];
     const geos = [], mats = [], texs = [];
     const loader = new THREE.TextureLoader();
-    const frameGeo = new THREE.PlaneGeometry(1, 1); geos.push(frameGeo);
-    const frameMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.9, side: THREE.DoubleSide });
-    mats.push(frameMat);
 
-    // Charge chaque photo puis crée des billboards
+    // Charge chaque photo puis crée des billboards (sans contour)
     PHOTOS.forEach((src, idx) => {
       loader.load(src, (tex) => {
         tex.colorSpace = THREE.SRGBColorSpace; texs.push(tex);
@@ -56,10 +53,8 @@ export default function ThreeBackground() {
         const copies = idx < 6 ? 2 : 1;
         for (let c = 0; c < copies; c++) {
           const g = new THREE.Group();
-          const frame = new THREE.Mesh(frameGeo, frameMat);
-          frame.scale.set(ar + 0.08, 1.08, 1); frame.position.z = -0.01;
           const pic = new THREE.Mesh(geo, mat);
-          g.add(frame, pic);
+          g.add(pic);
           const s = 1.1 + Math.random() * 1.3;
           g.scale.setScalar(s);
           g.position.set((Math.random() - 0.5) * 2 * BX, (Math.random() - 0.5) * 2 * BY, (Math.random() - 0.5) * 2 * BZ);

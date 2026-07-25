@@ -44,6 +44,11 @@
 ## Hero (accueil)
 - **Photo principale sur toute la largeur**, en **grand format**
 - **L'écriture est ÉCRITE SUR la photo** (texte superposé sur l'image)
+- Photo = **vraie photo d'un téléphone en réparation** (pas d'IA)
+
+## Fond animé
+- De **vraies photos d'appareils** qui flottent (iPhone, Samsung, Pixel, **MacBook**,
+  **iPad**, **Apple Watch**), **sans contour**
 
 ---
 *Dernière mise à jour : « texte sur la photo + billes métalliques petites et nombreuses ».*
