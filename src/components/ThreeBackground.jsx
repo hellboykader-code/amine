@@ -41,30 +41,62 @@ export default function ThreeBackground() {
     const G = (g) => { geos.push(g); return g; };
     const M = (o) => { const m = new THREE.MeshStandardMaterial({ transparent: true, opacity: 0.97, ...o }); mats.push(m); return m; };
 
-    // Texture d'écran (fond d'écran dégradé) via canvas
-    function screenTexture() {
-      const c = document.createElement("canvas"); c.width = 128; c.height = 256;
-      const x = c.getContext("2d");
-      const g = x.createLinearGradient(0, 0, 128, 256);
-      g.addColorStop(0, "#1d4ed8"); g.addColorStop(0.5, "#7c3aed"); g.addColorStop(1, "#db2777");
-      x.fillStyle = g; x.fillRect(0, 0, 128, 256);
-      x.globalAlpha = 0.18; x.fillStyle = "#fff";
-      x.beginPath(); x.arc(38, 70, 46, 0, 7); x.fill();
+    // Châssis en matériau physique (vernis brillant → reflets premium)
+    const P = (o) => { const m = new THREE.MeshPhysicalMaterial({ transparent: true, opacity: 0.98, clearcoat: 0.55, clearcoatRoughness: 0.25, ...o }); mats.push(m); return m; };
+
+    // Écran → texture canvas (vrai contenu : apps / bureau / heure)
+    const ICONS = ["#34d399", "#60a5fa", "#f472b6", "#fbbf24", "#a78bfa", "#f87171", "#22d3ee", "#4ade80", "#fb923c", "#818cf8"];
+    const rr = (x, px, py, pw, ph, r) => { x.beginPath(); x.moveTo(px + r, py); x.arcTo(px + pw, py, px + pw, py + ph, r); x.arcTo(px + pw, py + ph, px, py + ph, r); x.arcTo(px, py + ph, px, py, r); x.arcTo(px, py, px + pw, py, r); x.closePath(); };
+    function tex(mk, w, hh) {
+      const c = document.createElement("canvas"); c.width = w; c.height = hh; mk(c.getContext("2d"), w, hh);
       const t = new THREE.CanvasTexture(c); texs.push(t); return t;
     }
-    const scrTex = screenTexture();
+    const phoneTex = tex((x, W, H) => {
+      const g = x.createLinearGradient(0, 0, W, H); g.addColorStop(0, "#0b1220"); g.addColorStop(1, "#3b1e63");
+      x.fillStyle = g; x.fillRect(0, 0, W, H);
+      const cols = 4, m = W * 0.1, gap = W * 0.05, s = (W - 2 * m - (cols - 1) * gap) / cols;
+      let k = 0;
+      for (let r = 0; r < 6; r++) for (let cX = 0; cX < cols; cX++) {
+        x.fillStyle = ICONS[k++ % ICONS.length];
+        rr(x, m + cX * (s + gap), H * 0.1 + r * (s + gap), s, s, s * 0.24); x.fill();
+      }
+      x.globalAlpha = 0.25; x.fillStyle = "#fff"; rr(x, m, H - m - s * 1.2, W - 2 * m, s * 1.2, s * 0.3); x.fill();
+      x.globalAlpha = 1;
+      for (let i = 0; i < 4; i++) { x.fillStyle = ICONS[(i + 2) % ICONS.length]; rr(x, m * 1.5 + i * (s + gap * 0.7), H - m - s * 1.05, s * 0.82, s * 0.82, s * 0.2); x.fill(); }
+    }, 200, 400);
+    const laptopTex = tex((x, W, H) => {
+      const g = x.createLinearGradient(0, 0, 0, H); g.addColorStop(0, "#0e254d"); g.addColorStop(1, "#123a6b");
+      x.fillStyle = g; x.fillRect(0, 0, W, H);
+      x.fillStyle = "rgba(255,255,255,.14)"; x.fillRect(0, 0, W, H * 0.07); // barre de menu
+      x.fillStyle = "#fff"; rr(x, W * 0.22, H * 0.2, W * 0.56, H * 0.5, 10); x.fill(); // fenêtre
+      x.fillStyle = "#2563eb"; rr(x, W * 0.22, H * 0.2, W * 0.56, H * 0.1, 10); x.fill();
+      x.globalAlpha = 0.28; x.fillStyle = "#fff"; rr(x, W * 0.3, H * 0.86, W * 0.4, H * 0.09, 12); x.fill(); x.globalAlpha = 1;
+      for (let i = 0; i < 5; i++) { x.fillStyle = ICONS[i]; rr(x, W * 0.32 + i * W * 0.075, H * 0.87, W * 0.05, H * 0.07, 6); x.fill(); }
+    }, 360, 220);
+    const watchTex = tex((x, W, H) => {
+      x.fillStyle = "#05070c"; x.fillRect(0, 0, W, H);
+      x.fillStyle = "#fff"; x.font = `bold ${Math.floor(H * 0.26)}px Arial`; x.textAlign = "center"; x.textBaseline = "middle";
+      x.fillText("10:09", W / 2, H * 0.4);
+      x.fillStyle = "#34d399"; x.font = `${Math.floor(H * 0.09)}px Arial`; x.fillText("LUN 25", W / 2, H * 0.66);
+      x.strokeStyle = "#f472b6"; x.lineWidth = H * 0.05; x.beginPath(); x.arc(W / 2, H * 0.83, H * 0.1, -1.2, 1.6); x.stroke();
+    }, 160, 200);
 
-    const titanium = M({ color: 0xb9bfc7, metalness: 1.0, roughness: 0.34 });
-    const graphite = M({ color: 0x33373d, metalness: 0.95, roughness: 0.4 });
-    const desert = M({ color: 0xccb79a, metalness: 1.0, roughness: 0.36 });
-    const black = M({ color: 0x06080c, metalness: 0.6, roughness: 0.3 });
-    const lensMat = M({ color: 0x0a0d13, metalness: 0.8, roughness: 0.12 });
-    const glass = M({ color: 0x1b2233, metalness: 0.5, roughness: 0.08 });
-    const band = M({ color: 0x39404b, metalness: 0.25, roughness: 0.7 });
-    const screenMat = M({ color: 0xffffff, map: scrTex, emissive: 0xffffff, emissiveMap: scrTex, emissiveIntensity: 0.9, metalness: 0.0, roughness: 0.16, opacity: 1 });
+    const titanium = P({ color: 0xb9bfc7, metalness: 1.0, roughness: 0.32 });
+    const graphite = P({ color: 0x33373d, metalness: 0.95, roughness: 0.4 });
+    const desert = P({ color: 0xccb79a, metalness: 1.0, roughness: 0.34 });
+    const black = M({ color: 0x05070c, metalness: 0.4, roughness: 0.35 });
+    const lensMat = M({ color: 0x0a0d13, metalness: 0.85, roughness: 0.1 });
+    const glass = M({ color: 0x223049, metalness: 0.5, roughness: 0.06 });
+    const band = M({ color: 0x39404b, metalness: 0.2, roughness: 0.75 });
+    const mkScreen = (t) => M({ color: 0x0a0a0a, emissive: 0xffffff, emissiveMap: t, emissiveIntensity: 1.0, metalness: 0.1, roughness: 0.25, opacity: 1 });
+    const screenMat = mkScreen(phoneTex);
+    const tabScreenMat = mkScreen(phoneTex);
+    const lapScreenMat = mkScreen(laptopTex);
+    const watchScreenMat = mkScreen(watchTex);
 
     const rb = (x, y, z, r = 0.05) => G(new RoundedBoxGeometry(x, y, z, 4, r));
     const gPhone = rb(0.64, 1.3, 0.085, 0.13);
+    const gPhoneBezel = G(new THREE.PlaneGeometry(0.62, 1.26));
     const gPhoneScr = G(new THREE.PlaneGeometry(0.58, 1.22));
     const gIsland = rb(0.16, 0.05, 0.012, 0.025);
     const gCamMod = rb(0.26, 0.26, 0.045, 0.06);
@@ -72,11 +104,13 @@ export default function ThreeBackground() {
     const gFlash = G(new THREE.CylinderGeometry(0.02, 0.02, 0.028, 12));
     const gBtn = rb(0.02, 0.12, 0.03, 0.008);
     const gTab = rb(1.0, 1.32, 0.06, 0.06);
+    const gTabBezel = G(new THREE.PlaneGeometry(0.94, 1.26));
     const gTabScr = G(new THREE.PlaneGeometry(0.9, 1.22));
     const gCamDot = G(new THREE.CylinderGeometry(0.028, 0.028, 0.02, 12));
     const gLapBase = rb(1.42, 0.06, 0.96, 0.03);
     const gLapKeys = G(new THREE.PlaneGeometry(1.22, 0.74));
     const gLapLid = rb(1.42, 0.9, 0.045, 0.03);
+    const gLapBezel = G(new THREE.PlaneGeometry(1.34, 0.82));
     const gLapScr = G(new THREE.PlaneGeometry(1.3, 0.78));
     const gWatch = rb(0.42, 0.5, 0.16, 0.12);
     const gWatchScr = G(new THREE.PlaneGeometry(0.32, 0.4));
@@ -89,7 +123,8 @@ export default function ThreeBackground() {
     function iphone(i) {
       const g = new THREE.Group();
       g.add(new THREE.Mesh(gPhone, pick(i)));                       // châssis
-      const scr = new THREE.Mesh(gPhoneScr, screenMat); scr.position.z = 0.044; g.add(scr); // écran
+      const bez = new THREE.Mesh(gPhoneBezel, black); bez.position.z = 0.043; g.add(bez); // contour noir
+      const scr = new THREE.Mesh(gPhoneScr, screenMat); scr.position.z = 0.046; g.add(scr); // écran
       const isl = new THREE.Mesh(gIsland, black); isl.position.set(0, 0.5, 0.05); g.add(isl); // dynamic island
       // module caméra à l'arrière
       const cam = new THREE.Mesh(gCamMod, graphite); cam.position.set(-0.15, 0.44, -0.05); g.add(cam);
@@ -107,7 +142,8 @@ export default function ThreeBackground() {
     function ipad(i) {
       const g = new THREE.Group();
       g.add(new THREE.Mesh(gTab, pick(i)));
-      const scr = new THREE.Mesh(gTabScr, screenMat); scr.position.z = 0.032; g.add(scr);
+      const bz = new THREE.Mesh(gTabBezel, black); bz.position.z = 0.031; g.add(bz);
+      const scr = new THREE.Mesh(gTabScr, tabScreenMat); scr.position.z = 0.033; g.add(scr);
       const dot = new THREE.Mesh(gCamDot, lensMat); dot.rotation.x = Math.PI / 2; dot.position.set(0, 0.58, -0.032); g.add(dot);
       return g;
     }
@@ -117,14 +153,15 @@ export default function ThreeBackground() {
       const keys = new THREE.Mesh(gLapKeys, graphite); keys.rotation.x = -Math.PI / 2; keys.position.set(0, -0.405, 0.5); g.add(keys);
       const hinge = new THREE.Group(); hinge.position.set(0, -0.47, 0.0);
       const lid = new THREE.Mesh(gLapLid, titanium); lid.position.y = 0.45; hinge.add(lid);
-      const scr = new THREE.Mesh(gLapScr, screenMat); scr.position.set(0, 0.45, 0.026); hinge.add(scr);
+      const bz = new THREE.Mesh(gLapBezel, black); bz.position.set(0, 0.45, 0.024); hinge.add(bz);
+      const scr = new THREE.Mesh(gLapScr, lapScreenMat); scr.position.set(0, 0.45, 0.026); hinge.add(scr);
       hinge.rotation.x = -1.22; g.add(hinge);
       g.scale.setScalar(0.9); return g;
     }
     function watch() {
       const g = new THREE.Group();
       g.add(new THREE.Mesh(gWatch, graphite));
-      const scr = new THREE.Mesh(gWatchScr, screenMat); scr.position.z = 0.085; g.add(scr);
+      const scr = new THREE.Mesh(gWatchScr, watchScreenMat); scr.position.z = 0.085; g.add(scr);
       const bTop = new THREE.Mesh(gWBand, band); bTop.position.set(0, 0.41, 0); g.add(bTop);
       const bBot = new THREE.Mesh(gWBand, band); bBot.position.set(0, -0.41, 0); g.add(bBot);
       const cr = new THREE.Mesh(gCrown, titanium); cr.rotation.z = Math.PI / 2; cr.position.set(0.23, 0.07, 0); g.add(cr);
