@@ -1,9 +1,10 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
-// Fond animé 3D : cristaux colorés translucides qui flottent doucement,
-// avec une légère parallaxe à la souris. Optimisé (DPR limité, formes low-poly)
-// et désactivé si l'utilisateur préfère moins d'animations.
+// Fond animé 3D professionnel : un réseau de particules relié par de fines
+// lignes (constellation), lent et sobre, avec parallaxe à la souris.
+// Optimisé (peu de points, DPR limité, pause onglet caché) et désactivé
+// si l'utilisateur préfère moins d'animations.
 export default function ThreeBackground() {
   const ref = useRef(null);
 
@@ -15,87 +16,58 @@ export default function ThreeBackground() {
     const w = () => window.innerWidth;
     const h = () => window.innerHeight;
 
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(60, w() / h(), 0.1, 100);
-    camera.position.z = 16;
-
     let renderer;
     try {
       renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
     } catch {
-      return; // WebGL non disponible : on laisse le fond CSS (aurora)
+      return;
     }
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     renderer.setSize(w(), h());
     renderer.setClearColor(0x000000, 0);
     mount.appendChild(renderer.domElement);
 
-    // Lumières
-    scene.add(new THREE.AmbientLight(0xffffff, 0.7));
-    const dir = new THREE.DirectionalLight(0xffffff, 1.1);
-    dir.position.set(5, 8, 10);
-    scene.add(dir);
-    const p1 = new THREE.PointLight(0x7c3aed, 0.8, 60);
-    p1.position.set(-12, 6, 6);
-    scene.add(p1);
-    const p2 = new THREE.PointLight(0x06b6d4, 0.7, 60);
-    p2.position.set(12, -6, 4);
-    scene.add(p2);
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(60, w() / h(), 0.1, 100);
+    camera.position.z = 18;
 
-    // Cristaux flottants
-    const COLORS = [0x2563eb, 0x7c3aed, 0xec4899, 0x06b6d4, 0x3b82f6];
-    const geos = [
-      new THREE.IcosahedronGeometry(1, 0),
-      new THREE.OctahedronGeometry(1, 0),
-      new THREE.DodecahedronGeometry(1, 0),
-      new THREE.TetrahedronGeometry(1, 0),
-    ];
-    const N = window.innerWidth < 720 ? 11 : 20;
-    const shapes = [];
-    const edgeGeos = [];
-    const group = new THREE.Group();
+    // Bornes de l'espace
+    const BX = 20, BY = 12, BZ = 7;
+    const N = w() < 720 ? 45 : 80;
+    const LINK = 3.4; // distance de liaison
+
+    const pos = new Float32Array(N * 3);
+    const vel = [];
     for (let i = 0; i < N; i++) {
-      const geo = geos[i % geos.length];
-      const color = COLORS[i % COLORS.length];
-      const mat = new THREE.MeshStandardMaterial({
-        color,
-        roughness: 0.25,
-        metalness: 0.35,
-        transparent: true,
-        opacity: 0.82,
-        emissive: color,
-        emissiveIntensity: 0.18,
-        flatShading: true,
-      });
-      const m = new THREE.Mesh(geo, mat);
-      // Arêtes lumineuses pour un rendu "cristal" plus net
-      const eg = new THREE.EdgesGeometry(geo);
-      edgeGeos.push(eg);
-      const edges = new THREE.LineSegments(eg, new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.35 }));
-      m.add(edges);
-      const s = 0.9 + Math.random() * 2.2;
-      m.scale.setScalar(s);
-      m.position.set((Math.random() - 0.5) * 32, (Math.random() - 0.5) * 18, (Math.random() - 0.5) * 10);
-      m.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, 0);
-      m.userData = {
-        rx: (Math.random() - 0.5) * 0.008,
-        ry: (Math.random() - 0.5) * 0.008,
-        fy: 0.3 + Math.random() * 0.5,
-        ph: Math.random() * Math.PI * 2,
-        baseY: m.position.y,
-      };
-      group.add(m);
-      shapes.push(m);
+      pos[i * 3] = (Math.random() - 0.5) * 2 * BX;
+      pos[i * 3 + 1] = (Math.random() - 0.5) * 2 * BY;
+      pos[i * 3 + 2] = (Math.random() - 0.5) * 2 * BZ;
+      vel.push([(Math.random() - 0.5) * 0.02, (Math.random() - 0.5) * 0.02, (Math.random() - 0.5) * 0.012]);
     }
+
+    const group = new THREE.Group();
     scene.add(group);
+
+    // Points
+    const pGeo = new THREE.BufferGeometry();
+    pGeo.setAttribute("position", new THREE.BufferAttribute(pos, 3));
+    const pMat = new THREE.PointsMaterial({ color: 0x2563eb, size: 0.13, transparent: true, opacity: 0.75, sizeAttenuation: true });
+    const points = new THREE.Points(pGeo, pMat);
+    group.add(points);
+
+    // Lignes (recalculées à chaque frame)
+    const maxLineVerts = N * N;
+    const linePos = new Float32Array(maxLineVerts * 3);
+    const lGeo = new THREE.BufferGeometry();
+    lGeo.setAttribute("position", new THREE.BufferAttribute(linePos, 3));
+    const lMat = new THREE.LineBasicMaterial({ color: 0x6b8cff, transparent: true, opacity: 0.22 });
+    const lines = new THREE.LineSegments(lGeo, lMat);
+    group.add(lines);
 
     // Parallaxe souris
     const mouse = { x: 0, y: 0 };
     const target = { x: 0, y: 0 };
-    const onMove = (e) => {
-      mouse.x = (e.clientX / w()) * 2 - 1;
-      mouse.y = (e.clientY / h()) * 2 - 1;
-    };
+    const onMove = (e) => { mouse.x = (e.clientX / w()) * 2 - 1; mouse.y = (e.clientY / h()) * 2 - 1; };
     if (!reduce) window.addEventListener("pointermove", onMove, { passive: true });
 
     const onResize = () => {
@@ -105,35 +77,55 @@ export default function ThreeBackground() {
     };
     window.addEventListener("resize", onResize);
 
-    let raf;
-    const clock = new THREE.Clock();
-    const render = () => {
-      const t = clock.getElapsedTime();
-      for (const m of shapes) {
-        m.rotation.x += m.userData.rx;
-        m.rotation.y += m.userData.ry;
-        m.position.y = m.userData.baseY + Math.sin(t * m.userData.fy + m.userData.ph) * 0.6;
+    const posAttr = pGeo.getAttribute("position");
+    const lineAttr = lGeo.getAttribute("position");
+
+    const step = () => {
+      // Déplacement + rebond dans les bornes
+      for (let i = 0; i < N; i++) {
+        const ix = i * 3;
+        for (let k = 0; k < 3; k++) {
+          pos[ix + k] += vel[i][k];
+          const b = k === 0 ? BX : k === 1 ? BY : BZ;
+          if (pos[ix + k] > b || pos[ix + k] < -b) vel[i][k] *= -1;
+        }
       }
+      posAttr.needsUpdate = true;
+
+      // Lignes entre points proches
+      let v = 0;
+      for (let i = 0; i < N; i++) {
+        const ax = pos[i * 3], ay = pos[i * 3 + 1], az = pos[i * 3 + 2];
+        for (let j = i + 1; j < N; j++) {
+          const dx = ax - pos[j * 3], dy = ay - pos[j * 3 + 1], dz = az - pos[j * 3 + 2];
+          if (dx * dx + dy * dy + dz * dz < LINK * LINK) {
+            linePos[v++] = ax; linePos[v++] = ay; linePos[v++] = az;
+            linePos[v++] = pos[j * 3]; linePos[v++] = pos[j * 3 + 1]; linePos[v++] = pos[j * 3 + 2];
+          }
+        }
+      }
+      lGeo.setDrawRange(0, v / 3);
+      lineAttr.needsUpdate = true;
+
       target.x += (mouse.x - target.x) * 0.04;
       target.y += (mouse.y - target.y) * 0.04;
-      group.rotation.y = target.x * 0.25;
-      group.rotation.x = target.y * 0.15;
-      renderer.render(scene, camera);
-      raf = requestAnimationFrame(render);
+      group.rotation.y = target.x * 0.18;
+      group.rotation.x = target.y * 0.1;
     };
 
+    let raf;
+    const render = () => { step(); renderer.render(scene, camera); raf = requestAnimationFrame(render); };
+
     if (reduce) {
-      renderer.render(scene, camera); // image statique
+      step(); renderer.render(scene, camera);
     } else {
-      // Pause quand l'onglet est masqué (économie)
       const onVis = () => {
         if (document.hidden) cancelAnimationFrame(raf);
-        else { clock.start(); raf = requestAnimationFrame(render); }
+        else raf = requestAnimationFrame(render);
       };
       document.addEventListener("visibilitychange", onVis);
-      raf = requestAnimationFrame(render);
-      // nettoyage du listener de visibilité via closure
       mount._onVis = onVis;
+      raf = requestAnimationFrame(render);
     }
 
     return () => {
@@ -141,12 +133,7 @@ export default function ThreeBackground() {
       window.removeEventListener("pointermove", onMove);
       window.removeEventListener("resize", onResize);
       if (mount._onVis) document.removeEventListener("visibilitychange", mount._onVis);
-      geos.forEach((g) => g.dispose());
-      edgeGeos.forEach((g) => g.dispose());
-      shapes.forEach((m) => {
-        m.material.dispose();
-        m.children.forEach((c) => c.material && c.material.dispose());
-      });
+      pGeo.dispose(); lGeo.dispose(); pMat.dispose(); lMat.dispose();
       renderer.dispose();
       if (renderer.domElement.parentNode) renderer.domElement.parentNode.removeChild(renderer.domElement);
     };

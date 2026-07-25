@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { CATALOGUE, TYPES_REPARATION, GARANTIE } from "../data.js";
+import { MODEL_IMAGES } from "../modelImages.js";
 
 const MARQUES = [...new Set(CATALOGUE.map((m) => m.marque))];
 
@@ -107,7 +108,7 @@ export default function Pricing({ onReserver, onDevis, marque, setMarque }) {
                     modeles.map((m) => (
                       <tr key={m.modele}>
                         <td className="model-cell">
-                          <img className="model-thumb" src={MARQUE_IMG[m.marque]} alt={`Téléphone ${m.modele}`} loading="lazy" />
+                          <img className="model-thumb" src={MODEL_IMAGES[m.modele] || MARQUE_IMG[m.marque]} alt={`Téléphone ${m.modele}`} loading="lazy" />
                           <span>{m.modele}</span>
                         </td>
                         {TYPES_REPARATION.map((t) => (
