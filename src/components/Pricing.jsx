@@ -106,7 +106,10 @@ export default function Pricing({ onReserver, onDevis, marque, setMarque }) {
                   ) : (
                     modeles.map((m) => (
                       <tr key={m.modele}>
-                        <td>{m.modele}</td>
+                        <td className="model-cell">
+                          <img className="model-thumb" src={MARQUE_IMG[m.marque]} alt={`Téléphone ${m.modele}`} loading="lazy" />
+                          <span>{m.modele}</span>
+                        </td>
                         {TYPES_REPARATION.map((t) => (
                           <td key={t.cle} className={m[t.cle] == null ? "na" : "prix"}>
                             {m[t.cle] == null ? "—" : `${m[t.cle]} €`}
