@@ -13,9 +13,11 @@
 ## Style & design
 - Design **tech, moderne, classe**, pas trop chargé
 - Site **vif**, coloré, **animations**, **fluide**
-- **Fond animé 3D dynamique** : réseau de particules + **billes qui bougent**,
-  **petites, nombreuses, de couleur métallisée**
+- **Fond animé 3D dynamique** : réseau de particules + **petits appareils 3D**
+  (iPhone, Samsung, MacBook, iPad, Apple Watch) qui flottent
 - Fond doit rester **réaliste et pro**
+- **Barre de navigation** : Modèle 2 = **pilule flottante centrée**
+- Pas de section **Avis** ; pas de galerie de photos sous les tarifs
 - **Vraies photos** (jamais générées par IA)
 
 ## Technique

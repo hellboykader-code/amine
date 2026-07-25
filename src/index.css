@@ -63,6 +63,18 @@ h1, h2, h3, h4, .brand { font-family: "Space Grotesk", "Inter", sans-serif; lett
   border-bottom: 1px solid var(--line);
 }
 .nav__inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+
+/* Modèle 2 — barre en pilule flottante centrée */
+.nav--pill { background: transparent; backdrop-filter: none; border-bottom: none; padding: 14px 0; }
+.nav__pillwrap { display: flex; }
+.nav__pill {
+  margin: 0 auto; width: fit-content; max-width: 100%;
+  display: flex; align-items: center; gap: 1.3rem;
+  background: rgba(255, 255, 255, .9); backdrop-filter: blur(12px);
+  border: 1px solid var(--line); border-radius: 999px;
+  padding: .5rem .55rem .5rem 1.2rem; box-shadow: 0 12px 32px rgba(16, 24, 40, .14);
+}
+.nav__pill .nav__cta { padding: .58rem 1.2rem; }
 .brand { font-weight: 700; font-size: 1.2rem; display: inline-flex; align-items: center; gap: .55rem; }
 .brand__mark {
   display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 8px;
@@ -397,10 +409,11 @@ select:focus, input:focus, textarea:focus { outline: none; border-color: var(--a
 @media (max-width: 720px) {
   .hero--photo { min-height: 88vh; }
   .hero__scrim { background: linear-gradient(180deg, rgba(8,12,22,.55), rgba(8,12,22,.8)); }
-  .nav__links { display: none; position: absolute; top: 68px; left: 0; right: 0; flex-direction: column; background: #fff; padding: 1rem 6%; border-bottom: 1px solid var(--line); gap: 1rem; }
+  .nav__links { display: none; position: absolute; top: 78px; left: 4%; right: 4%; flex-direction: column; background: #fff; padding: 1rem 1.2rem; border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow); gap: 1rem; }
   .nav__links.open { display: flex; }
   .nav__cta { display: none; }
   .nav__burger { display: block; }
+  .nav__pill { width: 100%; justify-content: space-between; }
   .field-row { grid-template-columns: 1fr; }
   .footer__inner { grid-template-columns: 1fr; }
   .gallery { grid-template-columns: 1fr; }
