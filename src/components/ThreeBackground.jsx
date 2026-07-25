@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
+import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment.js";
 
 // Fond animé 3D professionnel : un réseau de particules relié par de fines
 // lignes (constellation), lent et sobre, avec parallaxe à la souris.
@@ -30,6 +31,11 @@ export default function ThreeBackground() {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(60, w() / h(), 0.1, 100);
     camera.position.z = 18;
+
+    // Environnement neutre : donne aux billes des reflets pour un rendu métallisé
+    const pmrem = new THREE.PMREMGenerator(renderer);
+    const envRT = pmrem.fromScene(new RoomEnvironment(), 0.04);
+    scene.environment = envRT.texture;
 
     // Bornes de l'espace
     const BX = 20, BY = 12, BZ = 7;
@@ -70,21 +76,21 @@ export default function ThreeBackground() {
     dir.position.set(6, 10, 8);
     scene.add(dir);
 
-    // Billes 3D qui flottent
-    const ballColors = [0x2563eb, 0x6366f1, 0x0ea5e9, 0x14b8a6, 0x3b82f6];
-    const NB = w() < 720 ? 6 : 10;
-    const ballGeo = new THREE.SphereGeometry(1, 26, 18);
+    // Billes 3D métallisées qui flottent (petites et nombreuses)
+    const ballColors = [0xcbd5e1, 0x94a3b8, 0xb8c0cc, 0x8fa0c0, 0xdbe2ea, 0x7f8ea3];
+    const NB = w() < 720 ? 18 : 34;
+    const ballGeo = new THREE.SphereGeometry(1, 24, 16);
     const balls = [];
     for (let i = 0; i < NB; i++) {
       const mat = new THREE.MeshStandardMaterial({
         color: ballColors[i % ballColors.length],
-        roughness: 0.18,
-        metalness: 0.1,
+        roughness: 0.15,
+        metalness: 1.0,
         transparent: true,
-        opacity: 0.55,
+        opacity: 0.9,
       });
       const m = new THREE.Mesh(ballGeo, mat);
-      m.scale.setScalar(0.5 + Math.random() * 1.4);
+      m.scale.setScalar(0.16 + Math.random() * 0.42);
       m.position.set((Math.random() - 0.5) * 2 * BX, (Math.random() - 0.5) * 2 * BY, (Math.random() - 0.5) * 2 * BZ);
       m.userData = { v: [(Math.random() - 0.5) * 0.03, (Math.random() - 0.5) * 0.03, (Math.random() - 0.5) * 0.02] };
       group.add(m);
@@ -171,6 +177,7 @@ export default function ThreeBackground() {
       if (mount._onVis) document.removeEventListener("visibilitychange", mount._onVis);
       pGeo.dispose(); lGeo.dispose(); pMat.dispose(); lMat.dispose();
       ballGeo.dispose(); balls.forEach((b) => b.material.dispose());
+      envRT.dispose(); pmrem.dispose();
       renderer.dispose();
       if (renderer.domElement.parentNode) renderer.domElement.parentNode.removeChild(renderer.domElement);
     };

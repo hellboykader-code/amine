@@ -4,7 +4,9 @@ import { useSectionNav } from "../useSectionNav.js";
 export default function Hero() {
   const go = useSectionNav();
   return (
-    <section className="hero" id="top">
+    <section className="hero hero--photo" id="top">
+      <img className="hero__bgimg" src="./img/hero.jpg" alt="Technicien MK Phone réparant un smartphone" />
+      <div className="hero__scrim" />
       <div className="container hero__inner">
         <div className="hero__text">
           <p className="hero__eyebrow">Déplacements dans toute l'Île-de-France</p>
@@ -19,18 +21,13 @@ export default function Hero() {
           </p>
           <div className="hero__actions">
             <button className="btn btn--primary btn--lg" onClick={() => go("rdv")}>Prendre rendez-vous</button>
-            <Link to="/tarifs" className="btn btn--ghost btn--lg">Voir les tarifs</Link>
+            <Link to="/tarifs" className="btn btn--outline-white btn--lg">Voir les tarifs</Link>
           </div>
           <div className="hero__stats">
             <div><strong>30 min</strong><span>Réparation express</span></div>
             <div><strong>−30 à 40 €</strong><span>vs la concurrence</span></div>
             <div><strong>Île-de-France</strong><span>Déplacement à domicile</span></div>
           </div>
-        </div>
-
-        <div className="hero__media hero__media--wide">
-          <img src="./img/hero.jpg" alt="Technicien MK Phone réparant un smartphone" />
-          <div className="hero__badge"><span className="dot" /> <span>On se déplace · <b>toute l'Île-de-France</b></span></div>
         </div>
       </div>
     </section>

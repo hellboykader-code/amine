@@ -13,7 +13,8 @@
 ## Style & design
 - Design **tech, moderne, classe**, pas trop chargé
 - Site **vif**, coloré, **animations**, **fluide**
-- **Fond animé 3D dynamique** : réseau de particules + **billes qui bougent**
+- **Fond animé 3D dynamique** : réseau de particules + **billes qui bougent**,
+  **petites, nombreuses, de couleur métallisée**
 - Fond doit rester **réaliste et pro**
 - **Vraies photos** (jamais générées par IA)
 
@@ -35,8 +36,8 @@
   plusieurs **gammes d'écran**
 
 ## Hero (accueil)
-- **Texte au-dessus**, **photo principale sur toute la largeur**
-- Photo en **grand format** (légèrement plus grande)
+- **Photo principale sur toute la largeur**, en **grand format**
+- **L'écriture est ÉCRITE SUR la photo** (texte superposé sur l'image)
 
 ---
-*Dernière mise à jour : demande « photo pleine largeur + texte au-dessus + billes 3D ».*
+*Dernière mise à jour : « texte sur la photo + billes métalliques petites et nombreuses ».*
