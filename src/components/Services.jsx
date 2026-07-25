@@ -2,12 +2,6 @@ import { CATALOGUE, TYPES_REPARATION } from "../data.js";
 import { SERVICE_IMAGES } from "../serviceImages.js";
 import Icon from "../icons.jsx";
 
-const GALLERY = [
-  ["./img/reparation-ecran.jpg", "Remplacement d'écran"],
-  ["./img/reparation-batterie.jpg", "Changement de batterie"],
-  ["./img/atelier.jpg", "Notre atelier"],
-];
-
 export default function Services() {
   return (
     <section className="section" id="services">
@@ -34,15 +28,6 @@ export default function Services() {
               </article>
             );
           })}
-        </div>
-
-        <div className="gallery">
-          {GALLERY.map(([src, cap]) => (
-            <figure key={src}>
-              <img src={src} alt={cap} loading="lazy" />
-              <figcaption>{cap}</figcaption>
-            </figure>
-          ))}
         </div>
       </div>
     </section>

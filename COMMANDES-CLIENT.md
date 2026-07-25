@@ -29,6 +29,9 @@
 - Tarifs **par marque** : on clique sur une marque → ses modèles s'affichent
 - **Photo du modèle** à côté de chaque prix (la **bonne** photo pour chaque modèle)
 - Section **Vente & rachat de téléphones**
+- Les **6 cartes de services** ont en fond une **vraie photo de la réparation**
+  (écran fissuré, batterie, connecteur, caméra, vitre, désoxydation) — **modèles récents** souhaités
+- Les **3 photos (galerie)** sont placées **juste en dessous des tarifs**
 
 ## Prix & garantie
 - Tarifs **30 à 40 € moins chers que la concurrence** (argument à mettre en avant)
