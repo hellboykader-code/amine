@@ -64,6 +64,33 @@ export default function ThreeBackground() {
     const lines = new THREE.LineSegments(lGeo, lMat);
     group.add(lines);
 
+    // Lumières (pour les billes)
+    scene.add(new THREE.AmbientLight(0xffffff, 0.75));
+    const dir = new THREE.DirectionalLight(0xffffff, 0.9);
+    dir.position.set(6, 10, 8);
+    scene.add(dir);
+
+    // Billes 3D qui flottent
+    const ballColors = [0x2563eb, 0x6366f1, 0x0ea5e9, 0x14b8a6, 0x3b82f6];
+    const NB = w() < 720 ? 6 : 10;
+    const ballGeo = new THREE.SphereGeometry(1, 26, 18);
+    const balls = [];
+    for (let i = 0; i < NB; i++) {
+      const mat = new THREE.MeshStandardMaterial({
+        color: ballColors[i % ballColors.length],
+        roughness: 0.18,
+        metalness: 0.1,
+        transparent: true,
+        opacity: 0.55,
+      });
+      const m = new THREE.Mesh(ballGeo, mat);
+      m.scale.setScalar(0.5 + Math.random() * 1.4);
+      m.position.set((Math.random() - 0.5) * 2 * BX, (Math.random() - 0.5) * 2 * BY, (Math.random() - 0.5) * 2 * BZ);
+      m.userData = { v: [(Math.random() - 0.5) * 0.03, (Math.random() - 0.5) * 0.03, (Math.random() - 0.5) * 0.02] };
+      group.add(m);
+      balls.push(m);
+    }
+
     // Parallaxe souris
     const mouse = { x: 0, y: 0 };
     const target = { x: 0, y: 0 };
@@ -91,6 +118,15 @@ export default function ThreeBackground() {
         }
       }
       posAttr.needsUpdate = true;
+
+      // Billes : déplacement + rebond dans les bornes
+      for (const ball of balls) {
+        const v = ball.userData.v;
+        ball.position.x += v[0]; ball.position.y += v[1]; ball.position.z += v[2];
+        if (ball.position.x > BX || ball.position.x < -BX) v[0] *= -1;
+        if (ball.position.y > BY || ball.position.y < -BY) v[1] *= -1;
+        if (ball.position.z > BZ || ball.position.z < -BZ) v[2] *= -1;
+      }
 
       // Lignes entre points proches
       let v = 0;
@@ -134,6 +170,7 @@ export default function ThreeBackground() {
       window.removeEventListener("resize", onResize);
       if (mount._onVis) document.removeEventListener("visibilitychange", mount._onVis);
       pGeo.dispose(); lGeo.dispose(); pMat.dispose(); lMat.dispose();
+      ballGeo.dispose(); balls.forEach((b) => b.material.dispose());
       renderer.dispose();
       if (renderer.domElement.parentNode) renderer.domElement.parentNode.removeChild(renderer.domElement);
     };

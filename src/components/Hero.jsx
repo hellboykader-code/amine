@@ -27,7 +27,8 @@ export default function Hero() {
             <div><strong>Île-de-France</strong><span>Déplacement à domicile</span></div>
           </div>
         </div>
-        <div className="hero__media">
+
+        <div className="hero__media hero__media--wide">
           <img src="./img/hero.jpg" alt="Technicien MK Phone réparant un smartphone" />
           <div className="hero__badge"><span className="dot" /> <span>On se déplace · <b>toute l'Île-de-France</b></span></div>
         </div>
