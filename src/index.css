@@ -411,7 +411,20 @@ select:focus, input:focus, textarea:focus { outline: none; border-color: var(--a
   .aurora__blob { animation: none !important; }
 }
 
-/* ---------- Hero avec texte SUR la photo ---------- */
+/* ---------- Hero 2 colonnes (texte + vrai iPhone) ---------- */
+.hero--split { padding: clamp(3.5rem, 7vw, 5.5rem) 0; }
+.hero__inner--split { display: grid; grid-template-columns: 1.1fr .9fr; gap: 3rem; align-items: center; }
+.hero__phone { position: relative; display: flex; justify-content: center; }
+.hero__phone-card { position: relative; border-radius: 30px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--line); max-width: 330px; background: #fff; animation: float 6s ease-in-out infinite; }
+.hero__phone-card img { width: 100%; display: block; }
+.hero--split .hero__badge { position: absolute; left: -6px; bottom: 20px; }
+@media (max-width: 900px) {
+  .hero__inner--split { grid-template-columns: 1fr; }
+  .hero__phone { order: -1; }
+  .hero__phone-card { max-width: 240px; }
+}
+
+/* ---------- Hero avec texte SUR la photo (ancien, conservé) ---------- */
 /* Remonte le hero derrière la barre (pilule) → fond de barre 100 % transparent */
 .hero--photo { position: relative; min-height: 86vh; margin-top: -86px; display: flex; align-items: center; overflow: hidden; padding: 0; }
 .hero--photo::before { content: none; }
