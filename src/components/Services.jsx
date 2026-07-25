@@ -1,4 +1,5 @@
 import { CATALOGUE, TYPES_REPARATION } from "../data.js";
+import { SERVICE_IMAGES } from "../serviceImages.js";
 import Icon from "../icons.jsx";
 
 const GALLERY = [
@@ -19,8 +20,13 @@ export default function Services() {
             const prixMin = Math.min(
               ...CATALOGUE.map((m) => m[t.cle]).filter((p) => p != null)
             );
+            const img = SERVICE_IMAGES[t.cle];
             return (
-              <article className="service" key={t.cle}>
+              <article
+                className={`service${img ? " service--photo" : ""}`}
+                key={t.cle}
+                style={img ? { backgroundImage: `url(${img})` } : undefined}
+              >
                 <span className="ic"><Icon name={t.cle} /></span>
                 <h3>{t.nom}</h3>
                 <p>Remplacement et réparation {t.nom.toLowerCase()} sur iPhone, Samsung et autres marques.</p>

@@ -136,6 +136,23 @@ h1, h2, h3, h4, .brand { font-family: "Space Grotesk", "Inter", sans-serif; lett
 .service p, .feature p { color: var(--muted); font-size: .93rem; }
 .service__from { margin-top: .8rem; font-weight: 600; color: var(--accent); font-size: .92rem; }
 
+/* Cartes services avec photo de la réparation en fond */
+.service--photo {
+  position: relative; overflow: hidden; border: none; color: #fff; min-height: 240px;
+  background-size: cover; background-position: center;
+  display: flex; flex-direction: column; justify-content: flex-end;
+}
+.service--photo::before {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(9,13,22,.15) 0%, rgba(9,13,22,.55) 45%, rgba(9,13,22,.9) 100%);
+}
+.service--photo > * { position: relative; z-index: 1; }
+.service--photo:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.service--photo .ic { background: rgba(255,255,255,.18); color: #fff; box-shadow: none; backdrop-filter: blur(4px); }
+.service--photo h3 { color: #fff; }
+.service--photo p { color: rgba(255,255,255,.85); }
+.service--photo .service__from { color: #fff; }
+
 /* ---------- Galerie ---------- */
 .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
 .gallery figure { position: relative; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); aspect-ratio: 4 / 3; }

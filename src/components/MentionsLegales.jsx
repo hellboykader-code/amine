@@ -34,9 +34,10 @@ export default function MentionsLegales() {
 
           <h2>Crédits photos</h2>
           <p>
-            Photos des appareils : Wikimedia Commons, licence CC BY-SA — Apple (Hajoon0102),
-            Samsung (C.Stadler/Bwag), Xiaomi (Maksdroider), Huawei (X-SHLIED), Google (IXTA9839),
-            iPad (ajay_suresh).
+            Photos des appareils et des réparations : Wikimedia Commons, licence CC BY-SA —
+            Apple (Hajoon0102), Samsung (C.Stadler/Bwag), Xiaomi (Maksdroider), Huawei (X-SHLIED),
+            Google (IXTA9839), iPad (ajay_suresh) et divers contributeurs pour les photos de
+            réparation (écran, batterie, connecteur, caméra, vitre, désoxydation).
           </p>
 
           <h2>Propriété intellectuelle</h2>
