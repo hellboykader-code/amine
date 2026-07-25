@@ -12,6 +12,7 @@ import BuySell from "./components/BuySell.jsx";
 import FinalCTA from "./components/FinalCTA.jsx";
 import Footer from "./components/Footer.jsx";
 import Aurora from "./components/Aurora.jsx";
+import ThreeBackground from "./components/ThreeBackground.jsx";
 import { useScrollReveal } from "./useScrollReveal.js";
 
 function TarifsCTA() {
@@ -53,6 +54,7 @@ export default function App() {
   return (
     <>
       <Aurora />
+      <ThreeBackground />
       <Nav />
       <main>
         <Hero />

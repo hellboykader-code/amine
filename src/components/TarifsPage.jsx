@@ -1,25 +1,25 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Nav from "./Nav.jsx";
 import Footer from "./Footer.jsx";
 import Pricing from "./Pricing.jsx";
 import Aurora from "./Aurora.jsx";
+import ThreeBackground from "./ThreeBackground.jsx";
 import { useScrollReveal } from "../useScrollReveal.js";
 
 export default function TarifsPage() {
   const navigate = useNavigate();
-  useScrollReveal();
+  const [marque, setMarque] = useState(null);
+  // Relance l'apparition quand on change de vue (grille de marques ↔ modèles)
+  useScrollReveal([marque]);
 
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+  useEffect(() => { window.scrollTo(0, 0); }, [marque]);
 
-  // « Réserver » depuis la grille : mémorise le choix et retourne à l'accueil (section RDV)
-  function handleReserver(marque, modele) {
-    sessionStorage.setItem("prefill", JSON.stringify({ marque, modele }));
+  function handleReserver(m, modele) {
+    sessionStorage.setItem("prefill", JSON.stringify({ marque: m, modele }));
     sessionStorage.setItem("scrollTo", "rdv");
     navigate("/");
   }
-
-  // « Devis gratuit » : retour à l'accueil, section RDV
   function goDevis() {
     sessionStorage.setItem("scrollTo", "rdv");
     navigate("/");
@@ -28,9 +28,10 @@ export default function TarifsPage() {
   return (
     <>
       <Aurora />
+      <ThreeBackground />
       <Nav />
       <main>
-        <Pricing onReserver={handleReserver} onDevis={goDevis} />
+        <Pricing marque={marque} setMarque={setMarque} onReserver={handleReserver} onDevis={goDevis} />
       </main>
       <Footer />
     </>

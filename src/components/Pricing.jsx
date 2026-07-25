@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { CATALOGUE, TYPES_REPARATION, GARANTIE } from "../data.js";
 
 const MARQUES = [...new Set(CATALOGUE.map((m) => m.marque))];
@@ -15,9 +15,19 @@ const MARQUE_STYLE = {
 const abbr = (m) => MARQUE_STYLE[m]?.abbr ?? m.slice(0, 2).toUpperCase();
 const countModeles = (m) => CATALOGUE.filter((x) => x.marque === m).length;
 
-export default function Pricing({ onReserver, onDevis }) {
-  const [marque, setMarque] = useState(null);
+// Vraies photos des appareils (Wikimedia Commons, CC BY-SA — crédits en mentions légales)
+const MARQUE_IMG = {
+  Apple: "./img/models/apple.jpg",
+  Samsung: "./img/models/samsung.jpg",
+  Xiaomi: "./img/models/xiaomi.jpg",
+  Huawei: "./img/models/huawei.jpg",
+  Google: "./img/models/google.jpg",
+  iPad: "./img/models/ipad.png",
+};
+
+export default function Pricing({ onReserver, onDevis, marque, setMarque }) {
   const [recherche, setRecherche] = useState("");
+  useEffect(() => { setRecherche(""); }, [marque]);
 
   const modeles = useMemo(() => {
     if (!marque) return [];
@@ -31,12 +41,10 @@ export default function Pricing({ onReserver, onDevis }) {
     <section className="section section--alt" id="tarifs">
       <div className="container">
         <p className="section__eyebrow">Tarifs</p>
-        <h2 className="section__title">
-          {marque ? `Réparations ${marque}` : "Choisissez votre marque"}
-        </h2>
 
         {!marque && (
           <>
+            <h2 className="section__title">Choisissez votre marque</h2>
             <p className="section__lead">
               Sélectionnez la marque de votre appareil pour voir le tarif de chaque modèle.
               Des prix <strong>30 à 40 € moins chers que la concurrence</strong>.
@@ -46,7 +54,7 @@ export default function Pricing({ onReserver, onDevis }) {
                 <button
                   key={m}
                   className="brand-card"
-                  onClick={() => { setRecherche(""); setMarque(m); }}
+                  onClick={() => setMarque(m)}
                   style={{ "--bc": MARQUE_STYLE[m]?.c || "#2563eb" }}
                 >
                   <span className="brand-card__logo">{abbr(m)}</span>
@@ -61,8 +69,20 @@ export default function Pricing({ onReserver, onDevis }) {
 
         {marque && (
           <>
+            <button className="btn btn--ghost tarifs__back" onClick={() => setMarque(null)}>← Toutes les marques</button>
+            <div className="tarifs-head">
+              <div className="tarifs-head__photo" style={{ "--bc": MARQUE_STYLE[marque]?.c || "#2563eb" }}>
+                <img src={MARQUE_IMG[marque]} alt={`Téléphone ${marque}`} loading="lazy" />
+              </div>
+              <div>
+                <h2 className="section__title" style={{ marginTop: 0 }}>Réparations {marque}</h2>
+                <p className="section__lead" style={{ marginBottom: 0 }}>
+                  Tarifs par modèle, pièce et main-d'œuvre comprises — 30 à 40 € moins chers
+                  que la concurrence. Cliquez sur « Réserver » pour prendre rendez-vous.
+                </p>
+              </div>
+            </div>
             <div className="tarifs__bar">
-              <button className="btn btn--ghost" onClick={() => setMarque(null)}>← Toutes les marques</button>
               <input
                 type="search"
                 placeholder={`Rechercher un modèle ${marque}…`}

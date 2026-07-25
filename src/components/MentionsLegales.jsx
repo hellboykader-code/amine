@@ -32,6 +32,13 @@ export default function MentionsLegales() {
           <h2>Hébergement</h2>
           <p>Site hébergé par <em>à compléter</em> (ex. Netlify, Vercel, GitHub Pages, OVH).</p>
 
+          <h2>Crédits photos</h2>
+          <p>
+            Photos des appareils : Wikimedia Commons, licence CC BY-SA — Apple (Hajoon0102),
+            Samsung (C.Stadler/Bwag), Xiaomi (Maksdroider), Huawei (X-SHLIED), Google (IXTA9839),
+            iPad (ajay_suresh).
+          </p>
+
           <h2>Propriété intellectuelle</h2>
           <p>
             L'ensemble des contenus de ce site (textes, images, mise en page) est la propriété
