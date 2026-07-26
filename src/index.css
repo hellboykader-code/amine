@@ -314,10 +314,10 @@ select:focus, input:focus, textarea:focus { outline: none; border-color: var(--a
 @keyframes drift3 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(40px,-50px) scale(1.15); } }
 /* Sections opaques posées au-dessus du fond ; on allège certaines pour laisser transparaître la couleur */
 .hero { background: transparent; }
-.section:not(.section--alt) { background: rgba(255, 255, 255, .82); backdrop-filter: blur(7px); }
-.section--alt { background: rgba(244, 246, 249, .82); backdrop-filter: blur(7px); }
+.section:not(.section--alt) { background: rgba(255, 255, 255, .68); backdrop-filter: blur(9px); }
+.section--alt { background: rgba(243, 245, 249, .68); backdrop-filter: blur(9px); }
 .nav:not(.nav--pill) { background: rgba(255, 255, 255, .72); }
-.footer { background: rgba(246, 247, 249, .9); }
+.footer { background: rgba(244, 246, 249, .78); backdrop-filter: blur(9px); }
 
 /* ---------- Apparition au défilement ---------- */
 .reveal-on .service, .reveal-on .feature, .reveal-on .step, .reveal-on .gallery figure,

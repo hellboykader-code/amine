@@ -49,10 +49,12 @@
 ## Fond animé
 - **Tunnel digital « réseaux sociaux »** (inspiré d'une vidéo de référence, refait
   from scratch, **sans le téléphone au centre**) : traînées de lumière bleues/orange
-  qui jaillissent du centre + **icônes néon** (cœur, like, utilisateur, message,
-  étoile, +) qui foncent vers la caméra, sur fond sombre bleu nuit avec halo central.
+  qui jaillissent du centre + **icônes néon d'appareils** (téléphone, ordinateur
+  portable, tablette, montre connectée, casque, engrenage) qui foncent vers la caméra,
+  sur fond sombre bleu nuit avec halo central — thème cohérent avec la boutique.
 - Placé en **fond du site uniquement** (le hero garde sa vraie photo de réparation) ;
-  l'animation transparaît dans les marges, les intervalles et le pied de page.
+  sections **plus transparentes** pour bien laisser voir l'animation dans les marges,
+  les intervalles et le pied de page.
 
 ---
 *Dernière mise à jour : « texte sur la photo + billes métalliques petites et nombreuses ».*

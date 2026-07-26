@@ -7,7 +7,7 @@ import * as THREE from "three";
 const BLUE = "#3d8bff";
 const ORANGE = "#ff8a2a";
 const CYAN = "#38e0ff";
-const KINDS = ["heart", "like", "user", "chat", "star", "plus", "heart", "like"];
+const KINDS = ["phone", "laptop", "tablet", "watch", "gear", "headphone", "phone", "laptop"];
 
 function roundRect(x, X, Y, W, H, r) {
   x.beginPath();
@@ -25,58 +25,40 @@ function iconTexture(kind, color) {
   x.translate(s / 2, s / 2);
   x.strokeStyle = color; x.fillStyle = color;
   x.lineWidth = 9; x.lineJoin = "round"; x.lineCap = "round";
-  x.shadowColor = color; x.shadowBlur = 16;
+  x.shadowColor = color; x.shadowBlur = 11;
   const P = 34;
 
-  if (kind === "heart") {
+  if (kind === "phone") {
+    roundRect(x, -P * 0.5, -P * 0.85, P * 1.0, P * 1.7, 11); x.stroke();
+    x.beginPath(); x.moveTo(-P * 0.14, -P * 0.66); x.lineTo(P * 0.14, -P * 0.66); x.stroke(); // écouteur
+    x.beginPath(); x.arc(0, P * 0.62, 3.4, 0, 7); x.stroke();                                // bouton
+  } else if (kind === "laptop") {
+    roundRect(x, -P * 0.72, -P * 0.64, P * 1.44, P * 0.92, 6); x.stroke();                   // écran
     x.beginPath();
-    x.moveTo(0, P * 0.75);
-    x.bezierCurveTo(-P * 1.45, -P * 0.25, -P * 0.55, -P * 1.15, 0, -P * 0.3);
-    x.bezierCurveTo(P * 0.55, -P * 1.15, P * 1.45, -P * 0.25, 0, P * 0.75);
-    x.closePath(); x.stroke();
-  } else if (kind === "star") {
+    x.moveTo(-P * 0.92, P * 0.42); x.lineTo(P * 0.92, P * 0.42);
+    x.lineTo(P * 0.76, P * 0.64); x.lineTo(-P * 0.76, P * 0.64); x.closePath(); x.stroke();  // base
+  } else if (kind === "tablet") {
+    roundRect(x, -P * 0.82, -P * 0.62, P * 1.64, P * 1.24, 9); x.stroke();
+    x.beginPath(); x.arc(P * 0.64, 0, 3, 0, 7); x.stroke();                                  // caméra
+  } else if (kind === "watch") {
+    roundRect(x, -P * 0.4, -P * 0.4, P * 0.8, P * 0.8, 12); x.stroke();                      // boîtier
+    roundRect(x, -P * 0.26, -P * 0.86, P * 0.52, P * 0.44, 4); x.stroke();                   // bracelet haut
+    roundRect(x, -P * 0.26, P * 0.42, P * 0.52, P * 0.44, 4); x.stroke();                    // bracelet bas
+    x.beginPath(); x.moveTo(P * 0.42, -P * 0.08); x.lineTo(P * 0.52, -P * 0.08); x.stroke(); // couronne
+  } else if (kind === "gear") {
+    const teeth = 8, ro = P * 0.74, ri = P * 0.52;
     x.beginPath();
-    for (let i = 0; i < 5; i++) {
-      const a = -Math.PI / 2 + (i * 2 * Math.PI) / 5;
-      const ox = Math.cos(a) * P, oy = Math.sin(a) * P;
-      i ? x.lineTo(ox, oy) : x.moveTo(ox, oy);
-      const a2 = a + Math.PI / 5;
-      x.lineTo(Math.cos(a2) * P * 0.44, Math.sin(a2) * P * 0.44);
+    for (let i = 0; i < teeth * 2; i++) {
+      const a = (i * Math.PI) / teeth, r = i % 2 ? ri : ro;
+      const px = Math.cos(a) * r, py = Math.sin(a) * r;
+      i ? x.lineTo(px, py) : x.moveTo(px, py);
     }
     x.closePath(); x.stroke();
-  } else if (kind === "check") {
-    x.beginPath();
-    x.moveTo(-P * 0.7, 0); x.lineTo(-P * 0.12, P * 0.55); x.lineTo(P * 0.78, -P * 0.62);
-    x.stroke();
-  } else if (kind === "chat") {
-    roundRect(x, -P, -P * 0.85, P * 2, P * 1.35, 12); x.stroke();
-    x.beginPath();
-    x.moveTo(-P * 0.45, P * 0.5); x.lineTo(-P * 0.62, P * 0.98); x.lineTo(-P * 0.02, P * 0.5);
-    x.closePath(); x.fill();
-    x.fillStyle = color;
-    for (let d = -1; d <= 1; d++) { x.beginPath(); x.arc(d * P * 0.5, -P * 0.15, 3.6, 0, 7); x.fill(); }
-  } else if (kind === "user") {
-    x.beginPath(); x.arc(0, -P * 0.35, P * 0.42, 0, 7); x.stroke();
-    x.beginPath(); x.arc(0, P * 0.95, P * 0.78, Math.PI * 1.15, Math.PI * 1.85); x.stroke();
-  } else if (kind === "plus") {
-    x.beginPath();
-    x.moveTo(0, -P * 0.7); x.lineTo(0, P * 0.7); x.moveTo(-P * 0.7, 0); x.lineTo(P * 0.7, 0);
-    x.stroke();
-  } else { // like (pouce)
-    x.lineWidth = 8;
-    x.beginPath();
-    roundRect(x, -P * 0.85, -P * 0.05, P * 0.5, P * 0.85, 5); x.stroke(); // poignet
-    x.beginPath();
-    x.moveTo(-P * 0.3, P * 0.8);
-    x.lineTo(-P * 0.3, -P * 0.2);
-    x.lineTo(P * 0.05, -P * 0.72);
-    x.quadraticCurveTo(P * 0.22, -P * 0.9, P * 0.28, -P * 0.55);
-    x.lineTo(P * 0.2, -P * 0.12);
-    x.lineTo(P * 0.62, -P * 0.12);
-    x.quadraticCurveTo(P * 0.82, -P * 0.1, P * 0.74, P * 0.14);
-    x.lineTo(P * 0.6, P * 0.66);
-    x.quadraticCurveTo(P * 0.54, P * 0.82, P * 0.34, P * 0.8);
-    x.closePath(); x.stroke();
+    x.beginPath(); x.arc(0, 0, P * 0.24, 0, 7); x.stroke();
+  } else { // headphone
+    x.beginPath(); x.arc(0, 0, P * 0.62, Math.PI * 1.06, Math.PI * 1.94); x.stroke();       // arceau
+    roundRect(x, -P * 0.82, -P * 0.12, P * 0.32, P * 0.62, 6); x.stroke();                   // oreillette g
+    roundRect(x, P * 0.5, -P * 0.12, P * 0.32, P * 0.62, 6); x.stroke();                     // oreillette d
   }
   const t = new THREE.CanvasTexture(c);
   t.colorSpace = THREE.SRGBColorSpace;
@@ -164,7 +146,7 @@ export default function ThreeBackground() {
       sp.userData = {
         x: Math.cos(ang) * rad, y: Math.sin(ang) * rad * 0.62,
         z: -Math.random() * DEPTH, speed: 0.35 + Math.random() * 0.9,
-        size: 1.5 + Math.random() * 1.8,
+        size: 1.9 + Math.random() * 2.3,
       };
       sp.position.set(sp.userData.x, sp.userData.y, sp.userData.z);
       sp.scale.setScalar(sp.userData.size);
