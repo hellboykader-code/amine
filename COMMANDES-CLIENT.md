@@ -47,8 +47,10 @@
 - Photo = **vraie photo d'un téléphone en réparation** (pas d'IA)
 
 ## Fond animé
-- De **vraies photos d'appareils** qui flottent (iPhone, Samsung, Pixel, **MacBook**,
-  **iPad**, **Apple Watch**), **sans contour**
+- Style **« Matrix »** : **pluie de code verte** + **appareils 3D fil-de-fer verts**
+  (iPhone, iPad, **MacBook**, **Apple Watch**) qui flottent et tournent, couleur
+  vert Matrix. Les sections restent sur des panneaux clairs translucides pour la
+  lisibilité ; le vert transparaît dans les marges et les intervalles.
 
 ---
 *Dernière mise à jour : « texte sur la photo + billes métalliques petites et nombreuses ».*
