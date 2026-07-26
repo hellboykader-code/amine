@@ -1,9 +1,10 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
-// Fond animé « Matrix » : pluie de code verte + appareils 3D fil-de-fer verts
-// (iPhone, iPad, MacBook, Apple Watch) qui flottent et tournent.
-const GREEN = 0x00ff66;
+// Fond animé : appareils 3D (iPhone, iPad, MacBook, Apple Watch) dessinés en
+// fil-de-fer vert, qui flottent et tournent doucement. Fond transparent.
+const GREEN = 0x00c853;
+const GLOW = 0x5df2a0;
 
 export default function ThreeBackground() {
   const ref = useRef(null);
@@ -16,58 +17,21 @@ export default function ThreeBackground() {
     const h = () => window.innerHeight;
 
     let renderer;
-    try { renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, powerPreference: "high-performance" }); }
+    try { renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" }); }
     catch { return; }
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     renderer.setSize(w(), h());
-    renderer.setClearColor(0x02100a, 1); // noir-vert Matrix
+    renderer.setClearColor(0x000000, 0); // transparent
     mount.appendChild(renderer.domElement);
 
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(55, w() / h(), 0.1, 200);
+    const camera = new THREE.PerspectiveCamera(55, w() / h(), 0.1, 100);
     camera.position.z = 16;
-
-    // ---------- Pluie de code (Matrix) sur une texture canvas ----------
-    const cvW = 512, cvH = 512;
-    const cnv = document.createElement("canvas"); cnv.width = cvW; cnv.height = cvH;
-    const ctx = cnv.getContext("2d");
-    ctx.fillStyle = "#02100a"; ctx.fillRect(0, 0, cvW, cvH);
-    const fontSize = 16;
-    const cols = Math.floor(cvW / fontSize);
-    const drops = Array.from({ length: cols }, () => Math.floor((Math.random() * cvH) / fontSize));
-    const glyphs = "MKPHONE0123456789ｱｶｻﾀﾅﾊﾏﾔﾗ日月火水木金".split("");
-    const gl = () => glyphs[Math.floor(Math.random() * glyphs.length)];
-
-    const rainTex = new THREE.CanvasTexture(cnv);
-    rainTex.minFilter = THREE.LinearFilter;
-    const rainMat = new THREE.MeshBasicMaterial({ map: rainTex, transparent: true, opacity: 0.92, depthWrite: false });
-    const dist = 40;
-    const vh = 2 * dist * Math.tan(((55 * Math.PI) / 180) / 2);
-    const vw = vh * (w() / h());
-    const rainGeo = new THREE.PlaneGeometry(vw * 1.4, vh * 1.4);
-    const rainPlane = new THREE.Mesh(rainGeo, rainMat);
-    rainPlane.position.z = camera.position.z - dist;
-    scene.add(rainPlane);
-
-    const drawRain = () => {
-      ctx.fillStyle = "rgba(2,16,10,0.16)"; // traînée qui s'estompe
-      ctx.fillRect(0, 0, cvW, cvH);
-      ctx.font = fontSize + "px monospace";
-      for (let i = 0; i < cols; i++) {
-        const x = i * fontSize, y = drops[i] * fontSize;
-        ctx.fillStyle = "#c9ffda"; ctx.fillText(gl(), x, y);            // tête lumineuse
-        ctx.fillStyle = "#00ff66"; ctx.fillText(gl(), x, y - fontSize); // traînée verte
-        if (y > cvH && Math.random() > 0.975) drops[i] = 0;
-        drops[i]++;
-      }
-      rainTex.needsUpdate = true;
-    };
-    drawRain();
 
     // ---------- Appareils 3D fil-de-fer verts ----------
     const world = new THREE.Group(); scene.add(world);
-    const lineMat = new THREE.LineBasicMaterial({ color: GREEN, transparent: true, opacity: 0.85 });
-    const glowMat = new THREE.LineBasicMaterial({ color: 0x7dffb0, transparent: true, opacity: 0.28 });
+    const lineMat = new THREE.LineBasicMaterial({ color: GREEN, transparent: true, opacity: 0.9 });
+    const glowMat = new THREE.LineBasicMaterial({ color: GLOW, transparent: true, opacity: 0.32 });
     const faceMat = new THREE.MeshBasicMaterial({ color: GREEN, transparent: true, opacity: 0.05, side: THREE.DoubleSide, depthWrite: false });
     const geos = [];
 
@@ -76,7 +40,7 @@ export default function ThreeBackground() {
       const eg = new THREE.EdgesGeometry(geo); geos.push(eg);
       const g = new THREE.Group();
       g.add(new THREE.LineSegments(eg, lineMat));
-      const halo = new THREE.LineSegments(eg, glowMat); halo.scale.setScalar(1.04);
+      const halo = new THREE.LineSegments(eg, glowMat); halo.scale.setScalar(1.05);
       g.add(halo);
       g.add(new THREE.Mesh(geo, faceMat));
       return g;
@@ -101,13 +65,13 @@ export default function ThreeBackground() {
       return g;
     };
 
-    const factories = [mkPhone, mkPhone, mkMac, mkTablet, mkWatch, mkPhone, mkMac];
+    const factories = [mkPhone, mkPhone, mkMac, mkTablet, mkWatch, mkPhone, mkMac, mkWatch];
     const NB = w() < 720 ? 7 : 12;
     const BX = 13, BY = 8, BZ = 6;
     const devices = [];
     for (let i = 0; i < NB; i++) {
       const g = factories[i % factories.length]();
-      g.scale.setScalar(0.85 + Math.random() * 1.05);
+      g.scale.setScalar(0.9 + Math.random() * 1.1);
       g.position.set((Math.random() - 0.5) * 2 * BX, (Math.random() - 0.5) * 2 * BY, (Math.random() - 0.5) * 2 * BZ - 2);
       g.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, (Math.random() - 0.5) * 0.5);
       g.userData = {
@@ -124,7 +88,6 @@ export default function ThreeBackground() {
     window.addEventListener("resize", onResize);
 
     const step = () => {
-      if (!reduce) drawRain();
       for (const g of devices) {
         const u = g.userData, v = u.v;
         g.position.x += v[0]; g.position.y += v[1]; g.position.z += v[2];
@@ -141,7 +104,7 @@ export default function ThreeBackground() {
 
     let raf;
     const render = () => { step(); renderer.render(scene, camera); raf = requestAnimationFrame(render); };
-    if (reduce) { drawRain(); renderer.render(scene, camera); }
+    if (reduce) { renderer.render(scene, camera); }
     else {
       const onVis = () => { if (document.hidden) cancelAnimationFrame(raf); else raf = requestAnimationFrame(render); };
       document.addEventListener("visibilitychange", onVis); mount._onVis = onVis;
@@ -155,7 +118,6 @@ export default function ThreeBackground() {
       if (mount._onVis) document.removeEventListener("visibilitychange", mount._onVis);
       geos.forEach((g) => g.dispose());
       lineMat.dispose(); glowMat.dispose(); faceMat.dispose();
-      rainGeo.dispose(); rainMat.dispose(); rainTex.dispose();
       renderer.dispose();
       if (renderer.domElement.parentNode) renderer.domElement.parentNode.removeChild(renderer.domElement);
     };

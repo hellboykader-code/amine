@@ -47,10 +47,9 @@
 - Photo = **vraie photo d'un téléphone en réparation** (pas d'IA)
 
 ## Fond animé
-- Style **« Matrix »** : **pluie de code verte** + **appareils 3D fil-de-fer verts**
-  (iPhone, iPad, **MacBook**, **Apple Watch**) qui flottent et tournent, couleur
-  vert Matrix. Les sections restent sur des panneaux clairs translucides pour la
-  lisibilité ; le vert transparaît dans les marges et les intervalles.
+- **Appareils 3D en fil-de-fer vert** (iPhone, iPad, **MacBook**, **Apple Watch**)
+  qui flottent et tournent doucement. **Pas** de style Matrix / pluie de code.
+  Fond clair transparent (les appareils sont dessinés en lignes vertes).
 
 ---
 *Dernière mise à jour : « texte sur la photo + billes métalliques petites et nombreuses ».*
