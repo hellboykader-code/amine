@@ -380,7 +380,7 @@ select:focus, input:focus, textarea:focus { outline: none; border-color: var(--a
 .estim__etat:hover { border-color: var(--accent); }
 .estim__etat.is-active { border-color: var(--accent); background: var(--accent-soft); box-shadow: 0 0 0 2px rgba(37,99,235,.15); }
 
-.estim__result { background: linear-gradient(160deg, #0d1220, #172033); color: #fff; border-radius: var(--radius-lg); padding: 1.8rem; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: .6rem; text-align: center; }
+.estim__result { background: linear-gradient(160deg, rgba(13,18,32,.60), rgba(23,32,51,.54)); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.14); color: #fff; border-radius: var(--radius-lg); padding: 1.8rem; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: .6rem; text-align: center; }
 .estim__result-label { text-transform: uppercase; letter-spacing: .05em; font-size: .74rem; color: rgba(255,255,255,.65); font-weight: 600; }
 .estim__price { font-family: "Space Grotesk", sans-serif; font-size: clamp(2.6rem, 6vw, 3.6rem); font-weight: 700; line-height: 1; background: linear-gradient(135deg, #60a5fa, #a78bfa); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .estim__note { color: rgba(255,255,255,.8); font-size: .9rem; margin-bottom: .4rem; }
@@ -462,3 +462,12 @@ select:focus, input:focus, textarea:focus { outline: none; border-color: var(--a
   .footer__inner { grid-template-columns: 1fr; }
   .gallery { grid-template-columns: 1fr; }
 }
+
+/* ---------- Surfaces en verre translucide (laisser voir l'animation partout) ---------- */
+.service:not(.service--photo), .feature, .step, .brand-card, .buysell__card,
+.estim__form, .estim__etat, .faq__item, .rdv__form, .table__wrap {
+  background-color: rgba(255, 255, 255, .6);
+  backdrop-filter: blur(8px);
+}
+.tarifs-cta { background-color: rgba(224, 233, 255, .55); backdrop-filter: blur(8px); }
+.estim__etat.is-active { background-color: rgba(37, 99, 235, .16); }

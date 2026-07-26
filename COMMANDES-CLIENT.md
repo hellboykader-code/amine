@@ -52,9 +52,11 @@
   qui jaillissent du centre + **icônes néon d'appareils** (téléphone, ordinateur
   portable, tablette, montre connectée, casque, engrenage) qui foncent vers la caméra,
   sur fond sombre bleu nuit avec halo central — thème cohérent avec la boutique.
-- Placé en **fond du site uniquement** (le hero garde sa vraie photo de réparation) ;
-  sections **plus transparentes** pour bien laisser voir l'animation dans les marges,
-  les intervalles et le pied de page.
+- Placé en **fond du site uniquement** (le hero garde sa vraie photo de réparation).
+- **Fond rendu transparent** (thème clair) : l'animation flotte au-dessus, mélange normal.
+- **Toutes les cartes/panneaux en verre translucide** (services hors photos, étapes,
+  marques, vente & rachat, **carte d'estimation de reprise**, FAQ, formulaire RDV,
+  tableau tarifs, CTA) pour laisser voir l'animation **partout**.
 
 ---
 *Dernière mise à jour : « texte sur la photo + billes métalliques petites et nombreuses ».*
