@@ -4,9 +4,9 @@ import * as THREE from "three";
 // Fond animé : « tunnel » digital façon réseaux sociaux.
 // Traînées de lumière bleues/orange qui jaillissent du centre + icônes néon
 // (cœur, like, utilisateur, message, étoile, +) qui foncent vers la caméra.
-const BLUE = "#3d8bff";
-const ORANGE = "#ff8a2a";
-const CYAN = "#38e0ff";
+const BLUE = "#2f6bff";
+const ORANGE = "#ff7a1a";
+const CYAN = "#10b5c9";
 const KINDS = ["phone", "laptop", "tablet", "watch", "gear", "headphone", "phone", "laptop"];
 
 function roundRect(x, X, Y, W, H, r) {
@@ -96,7 +96,8 @@ export default function ThreeBackground() {
     const sCol = new Float32Array(NS * 2 * 3);
     const sData = []; // {x,y,z,len,speed}
     const cA = new THREE.Color(), cB = new THREE.Color();
-    const palette = [BLUE, CYAN, ORANGE, BLUE, "#8fb4ff"];
+    const WHITE = new THREE.Color(0xffffff);
+    const palette = [BLUE, CYAN, ORANGE, BLUE, ORANGE];
     for (let i = 0; i < NS; i++) {
       const ang = Math.random() * Math.PI * 2;
       const rad = (0.06 + Math.random()) * RES();
@@ -106,15 +107,15 @@ export default function ThreeBackground() {
       const speed = 0.5 + Math.random() * 1.4;
       sData.push({ x, y, z, len, speed });
       const col = palette[(Math.random() * palette.length) | 0];
-      cA.set(col); cB.set(col);
+      cA.set(col); cB.set(col).lerp(WHITE, 0.9); // queue qui s'estompe vers le clair
       const a = i * 6;
       sCol[a] = cA.r; sCol[a + 1] = cA.g; sCol[a + 2] = cA.b;               // tête (vive)
-      sCol[a + 3] = cB.r * 0.15; sCol[a + 4] = cB.g * 0.15; sCol[a + 5] = cB.b * 0.15; // queue (sombre)
+      sCol[a + 3] = cB.r; sCol[a + 4] = cB.g; sCol[a + 5] = cB.b;           // queue (claire)
     }
     const sGeo = new THREE.BufferGeometry();
     sGeo.setAttribute("position", new THREE.BufferAttribute(sPos, 3));
     sGeo.setAttribute("color", new THREE.BufferAttribute(sCol, 3));
-    const sMat = new THREE.LineBasicMaterial({ vertexColors: true, transparent: true, opacity: 0.9, blending: THREE.AdditiveBlending, depthWrite: false });
+    const sMat = new THREE.LineBasicMaterial({ vertexColors: true, transparent: true, opacity: 0.55, depthWrite: false });
     const streaks = new THREE.LineSegments(sGeo, sMat);
     scene.add(streaks);
     const sAttr = sGeo.getAttribute("position");
@@ -138,7 +139,7 @@ export default function ThreeBackground() {
     for (let i = 0; i < NI; i++) {
       const kind = KINDS[(Math.random() * KINDS.length) | 0];
       const color = Math.random() < 0.5 ? ORANGE : (Math.random() < 0.6 ? BLUE : CYAN);
-      const mat = new THREE.SpriteMaterial({ map: mkTex(kind, color), transparent: true, blending: THREE.AdditiveBlending, depthWrite: false, opacity: 0.95 });
+      const mat = new THREE.SpriteMaterial({ map: mkTex(kind, color), transparent: true, depthWrite: false, opacity: 0.92 });
       iconMats.push(mat);
       const sp = new THREE.Sprite(mat);
       const ang = Math.random() * Math.PI * 2;
