@@ -309,7 +309,7 @@ select:focus, input:focus, textarea:focus { outline: none; border-color: var(--a
 /* Sections opaques posées au-dessus du fond ; on allège certaines pour laisser transparaître la couleur */
 .hero, .section:not(.section--alt) { background: transparent; }
 .section--alt { background: rgba(246, 247, 249, .82); backdrop-filter: blur(6px); }
-.nav { background: rgba(255, 255, 255, .72); }
+.nav:not(.nav--pill) { background: rgba(255, 255, 255, .72); }
 .footer { background: rgba(246, 247, 249, .9); }
 
 /* ---------- Apparition au défilement ---------- */
