@@ -295,6 +295,12 @@ select:focus, input:focus, textarea:focus { outline: none; border-color: var(--a
 /* ---------- Fond animé 3D (WebGL) ---------- */
 .three-bg { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
 .three-bg canvas { display: block; }
+/* Tunnel « réseaux sociaux » : fond sombre avec halo central */
+.three-bg--tunnel {
+  background:
+    radial-gradient(60% 55% at 50% 48%, rgba(38, 78, 170, .55), rgba(10, 18, 48, .9) 55%, #05070f 100%),
+    #05070f;
+}
 
 /* ---------- Fond animé (Aurora, couche de couleur) ---------- */
 .aurora { position: fixed; inset: 0; z-index: -2; overflow: hidden; pointer-events: none; }
@@ -307,8 +313,9 @@ select:focus, input:focus, textarea:focus { outline: none; border-color: var(--a
 @keyframes drift2 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-70px,40px) scale(1.08); } }
 @keyframes drift3 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(40px,-50px) scale(1.15); } }
 /* Sections opaques posées au-dessus du fond ; on allège certaines pour laisser transparaître la couleur */
-.hero, .section:not(.section--alt) { background: transparent; }
-.section--alt { background: rgba(246, 247, 249, .82); backdrop-filter: blur(6px); }
+.hero { background: transparent; }
+.section:not(.section--alt) { background: rgba(255, 255, 255, .82); backdrop-filter: blur(7px); }
+.section--alt { background: rgba(244, 246, 249, .82); backdrop-filter: blur(7px); }
 .nav:not(.nav--pill) { background: rgba(255, 255, 255, .72); }
 .footer { background: rgba(246, 247, 249, .9); }
 

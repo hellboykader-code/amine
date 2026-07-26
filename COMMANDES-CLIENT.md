@@ -47,9 +47,12 @@
 - Photo = **vraie photo d'un téléphone en réparation** (pas d'IA)
 
 ## Fond animé
-- **Appareils 3D en fil-de-fer vert** (iPhone, iPad, **MacBook**, **Apple Watch**)
-  qui flottent et tournent doucement. **Pas** de style Matrix / pluie de code.
-  Fond clair transparent (les appareils sont dessinés en lignes vertes).
+- **Tunnel digital « réseaux sociaux »** (inspiré d'une vidéo de référence, refait
+  from scratch, **sans le téléphone au centre**) : traînées de lumière bleues/orange
+  qui jaillissent du centre + **icônes néon** (cœur, like, utilisateur, message,
+  étoile, +) qui foncent vers la caméra, sur fond sombre bleu nuit avec halo central.
+- Placé en **fond du site uniquement** (le hero garde sa vraie photo de réparation) ;
+  l'animation transparaît dans les marges, les intervalles et le pied de page.
 
 ---
 *Dernière mise à jour : « texte sur la photo + billes métalliques petites et nombreuses ».*
