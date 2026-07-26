@@ -36,6 +36,34 @@ export default function ThreeBackground() {
     const camera = new THREE.PerspectiveCamera(55, w() / h(), 0.1, 100);
     camera.position.z = 16;
 
+    // ---- Champ d'étoiles 3D + alignements (constellations) ----
+    const SN = w() < 720 ? 160 : 320;      // étoiles
+    const SBX = 30, SBY = 20, SBZ = 16;
+    const starPos = new Float32Array(SN * 3);
+    const starVel = [];
+    for (let i = 0; i < SN; i++) {
+      starPos[i * 3] = (Math.random() - 0.5) * 2 * SBX;
+      starPos[i * 3 + 1] = (Math.random() - 0.5) * 2 * SBY;
+      starPos[i * 3 + 2] = (Math.random() - 0.5) * 2 * SBZ;
+      starVel.push([(Math.random() - 0.5) * 0.006, (Math.random() - 0.5) * 0.006, (Math.random() - 0.5) * 0.004]);
+    }
+    const starGeo = new THREE.BufferGeometry();
+    starGeo.setAttribute("position", new THREE.BufferAttribute(starPos, 3));
+    const starMat = new THREE.PointsMaterial({ color: 0x3b5bd9, size: 0.11, sizeAttenuation: true, transparent: true, opacity: 0.7 });
+    const stars = new THREE.Points(starGeo, starMat);
+    scene.add(stars);
+
+    // Lignes de constellation entre étoiles proches (sur un sous-ensemble)
+    const CN = Math.min(SN, 110), LINK = 4.2;
+    const linePos = new Float32Array(CN * CN * 3);
+    const lineGeo = new THREE.BufferGeometry();
+    lineGeo.setAttribute("position", new THREE.BufferAttribute(linePos, 3));
+    const lineMat = new THREE.LineBasicMaterial({ color: 0x7c93e8, transparent: true, opacity: 0.2 });
+    const constellation = new THREE.LineSegments(lineGeo, lineMat);
+    scene.add(constellation);
+    const starAttr = starGeo.getAttribute("position");
+    const lineAttr = lineGeo.getAttribute("position");
+
     const BX = 12, BY = 7, BZ = 4;
     const NB = w() < 720 ? 8 : 14;
     const cards = [];
@@ -78,6 +106,34 @@ export default function ThreeBackground() {
     let t = 0;
     const step = () => {
       t += 0.01;
+
+      // Étoiles : léger déplacement + scintillement
+      for (let i = 0; i < SN; i++) {
+        const ix = i * 3;
+        for (let k = 0; k < 3; k++) {
+          starPos[ix + k] += starVel[i][k];
+          const b = k === 0 ? SBX : k === 1 ? SBY : SBZ;
+          if (starPos[ix + k] > b || starPos[ix + k] < -b) starVel[i][k] *= -1;
+        }
+      }
+      starAttr.needsUpdate = true;
+      starMat.opacity = 0.55 + Math.sin(t * 1.6) * 0.18;
+
+      // Alignements (constellation) : relie les étoiles proches
+      let v = 0;
+      for (let i = 0; i < CN; i++) {
+        const ax = starPos[i * 3], ay = starPos[i * 3 + 1], az = starPos[i * 3 + 2];
+        for (let j = i + 1; j < CN; j++) {
+          const dx = ax - starPos[j * 3], dy = ay - starPos[j * 3 + 1], dz = az - starPos[j * 3 + 2];
+          if (dx * dx + dy * dy + dz * dz < LINK * LINK) {
+            linePos[v++] = ax; linePos[v++] = ay; linePos[v++] = az;
+            linePos[v++] = starPos[j * 3]; linePos[v++] = starPos[j * 3 + 1]; linePos[v++] = starPos[j * 3 + 2];
+          }
+        }
+      }
+      lineGeo.setDrawRange(0, v / 3);
+      lineAttr.needsUpdate = true;
+
       for (const g of cards) {
         const u = g.userData, v = u.v;
         g.position.x += v[0]; g.position.y += v[1]; g.position.z += v[2];
@@ -108,6 +164,7 @@ export default function ThreeBackground() {
       window.removeEventListener("resize", onResize);
       if (mount._onVis) document.removeEventListener("visibilitychange", mount._onVis);
       geos.forEach((g) => g.dispose()); mats.forEach((m) => m.dispose()); texs.forEach((x) => x.dispose());
+      starGeo.dispose(); starMat.dispose(); lineGeo.dispose(); lineMat.dispose();
       renderer.dispose();
       if (renderer.domElement.parentNode) renderer.domElement.parentNode.removeChild(renderer.domElement);
     };
