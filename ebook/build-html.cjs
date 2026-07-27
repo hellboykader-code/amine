@@ -1,6 +1,6 @@
 const fs = require('fs');
 const content = require('./content.cjs');
-const D = require('./diagrams.cjs');
+const D = require('./figures.cjs');
 
 const esc = (s) => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 

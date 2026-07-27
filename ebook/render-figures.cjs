@@ -1,7 +1,7 @@
 // Génère les schémas : écrit les .svg et rasterise en .png (Chromium) dans figs/
 const fs = require('fs');
 const { execFileSync } = require('child_process');
-const D = require('./diagrams.cjs');
+const D = require('./figures.cjs');
 
 const OUT = '/home/user/amine/ebook/figs';
 fs.mkdirSync(OUT, { recursive: true });
