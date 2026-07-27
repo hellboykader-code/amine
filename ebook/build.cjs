@@ -185,6 +185,31 @@ function benefitsTable(items) {
   });
 }
 
+// ---- Photo placeholder slot ----
+function photoSlot(label) {
+  const dash = { style: BorderStyle.DASHED, size: 8, color: '9BB8D4' };
+  return new Table({
+    width: { size: 100, type: WidthType.PERCENTAGE },
+    columnWidths: [CONTENT_W_DXA],
+    borders: { top: dash, bottom: dash, left: dash, right: dash, insideHorizontal: dash, insideVertical: dash },
+    rows: [ new TableRow({ children: [ new TableCell({
+      width: { size: CONTENT_W_DXA, type: WidthType.DXA },
+      shading: { type: ShadingType.CLEAR, fill: 'F5F8FC', color: 'auto' },
+      margins: { top: 260, bottom: 260, left: 200, right: 200 },
+      children: [
+        new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 40 },
+          children: [txt('[  PHOTO  ]', { bold: true, color: '5E86AE', size: 24, characterSpacing: 40 })] }),
+        new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 30 },
+          children: [txt('Emplacement photo', { bold: true, color: NAVY, size: 22 })] }),
+        new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 30 },
+          children: [txt(label || '', { color: '33404D', size: 19, bold: true })] }),
+        new Paragraph({ alignment: AlignmentType.CENTER,
+          children: [txt('À compléter avec une photo réelle (la vôtre ou une image libre de droits)', { italics: true, color: GREY, size: 16 })] }),
+      ],
+    }) ] }) ],
+  });
+}
+
 const isPart = (t) => /^Partie\s/i.test(t);
 
 for (const b of content) {
@@ -273,6 +298,10 @@ for (const b of content) {
       break;
     case 'benefits':
       children.push(benefitsTable(b.items));
+      children.push(spacerSmall());
+      break;
+    case 'photoslot':
+      children.push(photoSlot(b.label));
       children.push(spacerSmall());
       break;
     case 'pagebreak':

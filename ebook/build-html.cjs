@@ -57,6 +57,20 @@ for (const b of content) {
       ).join('') + '</div>';
       break;
     }
+    case 'photoslot': {
+      body += `<figure class="photoslot">
+        <svg viewBox="0 0 64 64" class="cam" aria-hidden="true">
+          <rect x="6" y="18" width="52" height="36" rx="6" fill="none" stroke="currentColor" stroke-width="3"/>
+          <path d="M22 18 l4 -7 h12 l4 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+          <circle cx="32" cy="36" r="10" fill="none" stroke="currentColor" stroke-width="3"/>
+          <circle cx="50" cy="26" r="2.2" fill="currentColor"/>
+        </svg>
+        <div class="ps-t">Emplacement photo</div>
+        <div class="ps-d">${esc(b.label||'')}</div>
+        <div class="ps-n">À compléter avec une photo réelle (la vôtre ou une image libre de droits)</div>
+      </figure>`;
+      break;
+    }
     case 'pagebreak': body += '<div class="pb"></div>'; break;
   }
 }
@@ -110,6 +124,15 @@ const html = `<!doctype html>
   figcaption{ font-size:8.8pt; color:var(--muted); font-style:italic; margin-top:6px; }
 
   .pb{ page-break-after:always; }
+
+  /* Photo placeholder slot */
+  .photoslot{ margin:14px 0 16px; border:2px dashed #9BB8D4; border-radius:12px;
+              background:repeating-linear-gradient(45deg,#F5F8FC,#F5F8FC 14px,#EFF4FA 14px,#EFF4FA 28px);
+              padding:26px 18px; text-align:center; color:#2E5E8C; page-break-inside:avoid; }
+  .photoslot .cam{ width:44px; height:44px; color:#5E86AE; }
+  .ps-t{ font-weight:800; color:var(--navy); font-size:12pt; margin-top:4px; letter-spacing:.5px; }
+  .ps-d{ color:#33404d; font-size:10pt; margin-top:2px; font-weight:600; }
+  .ps-n{ color:var(--muted); font-size:8.6pt; font-style:italic; margin-top:6px; }
 
   /* ---------- COVER ---------- */
   .cover{ position:relative; height:257mm; page-break-after:always; overflow:hidden;
