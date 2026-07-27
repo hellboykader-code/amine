@@ -12,6 +12,17 @@ module.exports = [
 {t:'p', text:"Un principe guide tout ce livre : on ne remplace pas une pièce au hasard. On diagnostique, on comprend la cause, on choisit la réparation la plus économique pour le client, et on teste avant de rendre l'appareil. C'est cette méthode qui distingue un vrai technicien d'un simple « changeur de pièces »."},
 {t:'note', title:"Comment lire cet ebook", text:"Les débutants ont intérêt à suivre l'ordre des chapitres : les fondamentaux (Partie 1) et la méthode de diagnostic (Partie 2) servent à TOUT le reste. Les techniciens déjà expérimentés peuvent aller directement à l'appareil ou à la technique qui les intéresse via le sommaire. Les encadrés « Attention » signalent les erreurs qui coûtent cher ; les encadrés « Astuce » partagent des raccourcis de pro."},
 
+{t:'h2', text:"Pourquoi ce guide"},
+{t:'p', text:"Parce que réparer soi-même, c'est économiser des centaines d'euros, éviter le gaspillage, et — si vous le souhaitez — bâtir une activité rentable dès les premières réparations. Ce guide condense l'essentiel pour passer de « je n'ose pas ouvrir » à « je diagnostique et je répare avec méthode »."},
+{t:'benefits', items:[
+["5 familles d'appareils","Smartphones, PC portables, tablettes, smartwatchs et AirPods réunis dans un seul guide."],
+["Du zéro au pro","Aucun prérequis. On démarre aux bases et on monte jusqu'à la micro-soudure."],
+["La méthode avant la pièce","Un système de diagnostic clair pour réparer la cause, pas au hasard."],
+["Des schémas explicatifs","Des visuels conçus pour comprendre d'un coup d'œil, pas des pavés de texte."],
+["Le volet business","Tarifs, marges, fournisseurs, garantie, marketing : de la compétence à la rentabilité."],
+["Sécurité & cadre légal","Batteries lithium, données clients, verrous : les bons réflexes dès le départ."]
+]},
+
 {t:'pagebreak'},
 
 // =====================================================================
@@ -27,6 +38,7 @@ module.exports = [
 "Niveau 3 — Reballing et reprogrammation. Rebilling de processeurs/mémoires (BGA), reprogrammation d'EEPROM, récupération de données sur puce NAND. Très spécialisé, matériel coûteux, clientèle souvent inter-professionnelle (autres réparateurs qui vous sous-traitent leurs cas difficiles)."
 ]},
 {t:'p', text:"Beaucoup de professionnels vivent très bien du seul niveau 1. Monter vers les niveaux 2 et 3 augmente votre marge et vous permet de récupérer les cas que vos concurrents refusent, mais ce n'est pas obligatoire pour démarrer. Cet ebook couvre les trois."},
+{t:'fig', name:'niveaux', caption:"Les trois niveaux d'intervention : la valeur ajoutée et la rareté augmentent à mesure qu'on monte."},
 
 {t:'h2', text:"2. Notions d'électronique essentielles"},
 {t:'p', text:"Vous n'avez pas besoin d'un diplôme d'ingénieur, mais quelques notions rendent le diagnostic infiniment plus rapide. Comprendre ce qui suit vous évitera de « changer des pièces au hasard »."},
@@ -54,9 +66,11 @@ module.exports = [
 
 {t:'h3', text:"Circuit ouvert et court-circuit : les deux ennemis"},
 {t:'p', text:"90 % des pannes matérielles se ramènent à l'une de ces deux situations. Un circuit ouvert (open) : le courant ne passe plus (piste coupée, soudure fissurée, connecteur débranché). Un court-circuit (short) : le courant passe là où il ne devrait pas, souvent vers la masse, ce qui fait chauffer un composant, décharge la batterie très vite, ou empêche l'allumage. Savoir mesurer l'un et l'autre au multimètre est LA compétence de diagnostic fondamentale (voir chapitre outils et Partie 8)."},
+{t:'fig', name:'shortopen', caption:"Court-circuit et circuit ouvert : les deux situations à identifier au multimètre."},
 
 {t:'h3', text:"Masse, rails d'alimentation et séquence de démarrage"},
 {t:'p', text:"Sur une carte mère, la « masse » (ground, GND) est la référence 0 V commune. À partir de la batterie ou du chargeur, des régulateurs créent plusieurs « rails » de tension (par ex. 1,8 V, 3,3 V…). Quand vous appuyez sur « marche », l'appareil exécute une séquence : alimentation principale → rails secondaires → horloge → processeur → chargement du logiciel de démarrage. Si la séquence se bloque à une étape, l'appareil ne démarre pas. Comprendre cette chaîne aide énormément au diagnostic des cartes mères."},
+{t:'fig', name:'boot', caption:"La séquence de démarrage : repérer la première étape manquante oriente tout le diagnostic."},
 
 {t:'h2', text:"3. L'atelier : outils et équipement"},
 {t:'p', text:"On peut commencer avec un kit à 50 € et progresser vers un atelier professionnel. Voici les paliers logiques d'investissement."},
@@ -121,6 +135,7 @@ module.exports = [
 "Réparer la cause, pas le symptôme. Un port de charge oxydé qui décharge la batterie : nettoyer/remplacer le port, pas seulement la batterie.",
 "Tester intégralement avant restitution. Après réparation, vérifiez TOUTES les fonctions (voir checklist en annexe), pas seulement celle réparée — un écran remplacé peut avoir désactivé le capteur de proximité ou le True Tone."
 ]},
+{t:'fig', name:'diagnostic', caption:"La méthode en 7 étapes, applicable à n'importe quel appareil."},
 {t:'note', title:"Le réflexe « chargeur, câble, prise »", text:"Devant tout problème de charge, éliminez d'abord l'externe et le gratuit : testez un autre câble, un autre chargeur, une autre prise, et nettoyez le port (voir chapitre dédié) avant de conclure à une panne interne. Une quantité surprenante de « pannes » se règle avec un cure-dent et de l'IPA."},
 {t:'tip', title:"Astuce — la règle du devis honnête", text:"Diagnostiquez avant de chiffrer. Annoncer 90 € pour un écran puis découvrir une carte mère noyée détruit la confiance. Prenez le temps d'ouvrir et d'inspecter (facturez éventuellement le diagnostic), puis donnez un devis ferme."},
 
@@ -142,6 +157,7 @@ module.exports = [
 "Caméras avant/arrière, haut-parleur d'oreille (earpiece), haut-parleur principal, micros, moteur de vibration (taptic), capteurs (proximité, luminosité, accéléromètre), lecteur d'empreinte / Face ID.",
 "Châssis / mid-frame et face arrière (verre ou métal)."
 ]},
+{t:'fig', name:'smartphone', caption:"Architecture type d'un smartphone : couches empilées et modules reliés par nappes."},
 
 {t:'h2', text:"6. Ouvrir un smartphone sans le casser"},
 {t:'p', text:"Il existe deux grandes philosophies d'ouverture selon le modèle :"},
@@ -190,6 +206,7 @@ module.exports = [
 "Si le connecteur est soudé à la carte mère : micro-soudure (niveau 2).",
 "Si le port est sain mais ça ne charge toujours pas : suspecter la puce/gestion de charge, une batterie HS, ou un problème logiciel."
 ]},
+{t:'fig', name:'charge', caption:"Arbre de décision « ne charge pas » : du plus simple et gratuit au plus technique."},
 
 {t:'h2', text:"10. Caméras, boutons, haut-parleurs, micros, capteurs"},
 {t:'ul', items:[
@@ -251,6 +268,7 @@ module.exports = [
 "Composants principaux : carte mère, RAM (parfois soudée), stockage (SSD SATA/NVMe, parfois soudé), batterie, ventilateur(s) + caloducs, dalle + nappe eDP + webcam, clavier, trackpad, haut-parleurs, carte Wi-Fi, connecteur de charge (DC jack ou USB-C).",
 "Débrancher la batterie interne dès l'ouverture (déconnecter le connecteur sur la carte mère)."
 ]},
+{t:'fig', name:'laptop', caption:"Disposition type d'un PC portable et interventions les plus fréquentes."},
 
 {t:'h2', text:"14. Diagnostic PC portable"},
 {t:'table', header:["Symptôme","Pistes à explorer"], rows:[
@@ -314,6 +332,7 @@ module.exports = [
 // =====================================================================
 {t:'h1', text:"Partie 7 — AirPods et écouteurs sans fil"},
 {t:'p', text:"Les AirPods (et écouteurs « true wireless » en général) sont conçus pour être scellés : ils sont assemblés à la colle et aux ultrasons, sans vis. Cela limite fortement les réparations possibles — il faut le savoir et le dire au client."},
+{t:'fig', name:'airpods', caption:"Ce qui est réellement réparable sur des écouteurs sans fil — et ce qui ne l'est pas."},
 
 {t:'h2', text:"18. Ce qui est réparable… et ce qui ne l'est pas"},
 {t:'ul', items:[
@@ -416,6 +435,7 @@ module.exports = [
 ["Marge / frais","Loyer, outillage, garantie, aléas, bénéfice"],
 ["Prix client","Coût pièce + main-d'œuvre + marge, aligné sur le marché local"]
 ]},
+{t:'fig', name:'prix', caption:"La structure de prix d'une intervention : la marge se fait sur la pièce ET la main-d'œuvre."},
 {t:'ul', items:[
 "Facturez le diagnostic (déductible si réparation acceptée) pour valoriser votre temps et filtrer les curieux.",
 "Proposez des niveaux de pièces (original vs compatible) avec des prix et garanties différents : le client choisit en connaissance de cause.",

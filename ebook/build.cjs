@@ -2,10 +2,11 @@ const fs = require('fs');
 const {
   Document, Packer, Paragraph, TextRun, HeadingLevel, AlignmentType,
   Table, TableRow, TableCell, WidthType, BorderStyle, ShadingType,
-  PageBreak, TableOfContents, LevelFormat, Footer, PageNumber
+  PageBreak, TableOfContents, LevelFormat, Footer, PageNumber, ImageRun
 } = require('docx');
 
 const content = require('./content.cjs');
+const figMeta = require('./figs/meta.json');
 
 // ---- Palette ----
 const NAVY = '1F3A5F';
@@ -106,14 +107,109 @@ function dataTable(header, rows) {
 const children = [];
 const spacerSmall = () => new Paragraph({ spacing: { after: 80 }, children: [] });
 
+// ---- Figure (rasterized PNG) ----
+const CONTENT_W_DXA = 9360;
+function figureParas(name, caption) {
+  const meta = figMeta[name];
+  const dispW = 470; // px at 96dpi (~4.9")
+  const dispH = Math.round(dispW * meta.h / meta.w);
+  const png = fs.readFileSync(`/home/user/amine/ebook/figs/${name}.png`);
+  const out = [
+    new Paragraph({
+      alignment: AlignmentType.CENTER,
+      spacing: { before: 120, after: 40 },
+      children: [ new ImageRun({ type: 'png', data: png, transformation: { width: dispW, height: dispH } }) ],
+    }),
+  ];
+  if (caption) {
+    out.push(new Paragraph({
+      alignment: AlignmentType.CENTER,
+      spacing: { after: 160 },
+      children: [txt(caption, { italics: true, size: 17, color: GREY })],
+    }));
+  }
+  return out;
+}
+
+// ---- Part opener banner ----
+function partBanner(kicker, title) {
+  const noB = { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' };
+  return new Table({
+    width: { size: 100, type: WidthType.PERCENTAGE },
+    columnWidths: [CONTENT_W_DXA],
+    borders: { top: noB, bottom: noB, left: noB, right: noB, insideHorizontal: noB, insideVertical: noB },
+    rows: [ new TableRow({ children: [
+      new TableCell({
+        width: { size: CONTENT_W_DXA, type: WidthType.DXA },
+        shading: { type: ShadingType.CLEAR, fill: NAVY, color: 'auto' },
+        margins: { top: 300, bottom: 320, left: 320, right: 320 },
+        children: [
+          new Paragraph({ spacing: { after: 40 }, children: [txt(kicker.toUpperCase(), { bold: true, color: '9FC4E6', size: 20, characterSpacing: 60 })] }),
+          new Paragraph({ children: [txt(title, { bold: true, color: 'FFFFFF', size: 40 })] }),
+        ],
+      }),
+    ]})],
+  });
+}
+
+// ---- Benefits grid (2 columns) ----
+function benefitsTable(items) {
+  const colW = Math.floor(CONTENT_W_DXA / 2);
+  const noB = { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' };
+  const cell = (t, d) => new TableCell({
+    width: { size: colW, type: WidthType.DXA },
+    shading: { type: ShadingType.CLEAR, fill: 'F4F8FC', color: 'auto' },
+    margins: { top: 120, bottom: 120, left: 160, right: 160 },
+    children: [
+      new Paragraph({ spacing: { after: 30 }, children: [txt(t, { bold: true, color: NAVY, size: 21 })] }),
+      new Paragraph({ children: [txt(d, { size: 18, color: '4A5563' })] }),
+    ],
+  });
+  const empty = () => new TableCell({ width: { size: colW, type: WidthType.DXA }, borders:{top:noB,bottom:noB,left:noB,right:noB}, children: [new Paragraph({ children: [] })] });
+  const rows = [];
+  for (let i = 0; i < items.length; i += 2) {
+    const c1 = cell(items[i][0], items[i][1]);
+    const c2 = items[i+1] ? cell(items[i+1][0], items[i+1][1]) : empty();
+    rows.push(new TableRow({ children: [c1, c2] }));
+    // spacer row
+    rows.push(new TableRow({ children: [
+      new TableCell({ width:{size:colW,type:WidthType.DXA}, borders:{top:noB,bottom:noB,left:noB,right:noB}, children:[new Paragraph({spacing:{after:40},children:[]})] }),
+      new TableCell({ width:{size:colW,type:WidthType.DXA}, borders:{top:noB,bottom:noB,left:noB,right:noB}, children:[new Paragraph({spacing:{after:40},children:[]})] }),
+    ]}));
+  }
+  return new Table({
+    width: { size: 100, type: WidthType.PERCENTAGE },
+    columnWidths: [colW, colW],
+    borders: { top: noB, bottom: noB, left: noB, right: noB, insideHorizontal: { style: BorderStyle.SINGLE, size: 6, color: 'FFFFFF' }, insideVertical: { style: BorderStyle.SINGLE, size: 12, color: 'FFFFFF' } },
+    rows,
+  });
+}
+
+const isPart = (t) => /^Partie\s/i.test(t);
+
 for (const b of content) {
   switch (b.t) {
     case 'h1':
-      children.push(new Paragraph({
-        heading: HeadingLevel.HEADING_1,
-        spacing: { before: 280, after: 140 },
-        children: [txt(b.text, { bold: true, color: NAVY, size: 32 })],
-      }));
+      if (isPart(b.text)) {
+        const m = b.text.match(/^(Partie\s*\d+)\s*[—-]\s*(.*)$/i);
+        const kicker = m ? m[1] : 'Partie';
+        const title = m ? m[2] : b.text;
+        children.push(new Paragraph({ children: [new PageBreak()] }));
+        // hidden heading for TOC anchor
+        children.push(new Paragraph({
+          heading: HeadingLevel.HEADING_1,
+          spacing: { before: 0, after: 0 },
+          children: [txt(b.text, { color: 'FFFFFF', size: 2 })],
+        }));
+        children.push(partBanner(kicker, title));
+        children.push(spacerSmall());
+      } else {
+        children.push(new Paragraph({
+          heading: HeadingLevel.HEADING_1,
+          spacing: { before: 280, after: 140 },
+          children: [txt(b.text, { bold: true, color: NAVY, size: 32 })],
+        }));
+      }
       break;
     case 'h2':
       children.push(new Paragraph({
@@ -172,6 +268,13 @@ for (const b of content) {
       children.push(dataTable(b.header, b.rows));
       children.push(spacerSmall());
       break;
+    case 'fig':
+      for (const p of figureParas(b.name, b.caption)) children.push(p);
+      break;
+    case 'benefits':
+      children.push(benefitsTable(b.items));
+      children.push(spacerSmall());
+      break;
     case 'pagebreak':
       children.push(new Paragraph({ children: [new PageBreak()] }));
       break;
@@ -179,8 +282,23 @@ for (const b of content) {
 }
 
 // ---- Title page ----
+const badge = new Table({
+  alignment: AlignmentType.CENTER,
+  width: { size: 30, type: WidthType.PERCENTAGE },
+  columnWidths: [2800],
+  borders: (() => { const n={style:BorderStyle.NONE,size:0,color:'FFFFFF'}; return {top:n,bottom:n,left:n,right:n,insideHorizontal:n,insideVertical:n}; })(),
+  rows: [ new TableRow({ children: [ new TableCell({
+    width: { size: 2800, type: WidthType.DXA },
+    shading: { type: ShadingType.CLEAR, fill: ACCENT, color: 'auto' },
+    margins: { top: 60, bottom: 60, left: 120, right: 120 },
+    children: [ new Paragraph({ alignment: AlignmentType.CENTER, children: [txt('ÉDITION COMPLÈTE · 2026', { bold: true, color: 'FFFFFF', size: 17, characterSpacing: 40 })] }) ],
+  }) ] }) ],
+});
+
 const titlePage = [
-  new Paragraph({ spacing: { before: 2600 }, children: [] }),
+  new Paragraph({ spacing: { before: 2400 }, children: [] }),
+  badge,
+  new Paragraph({ spacing: { after: 160 }, children: [] }),
   new Paragraph({
     alignment: AlignmentType.CENTER,
     spacing: { after: 120 },
@@ -214,7 +332,17 @@ const titlePage = [
   }),
   new Paragraph({
     alignment: AlignmentType.CENTER,
-    spacing: { before: 3200 },
+    spacing: { before: 2600, after: 120 },
+    children: [
+      txt('10 ', { bold: true, color: NAVY, size: 28 }), txt('parties   ·   ', { size: 18, color: GREY }),
+      txt('9 ', { bold: true, color: NAVY, size: 28 }), txt('schémas   ·   ', { size: 18, color: GREY }),
+      txt('5 ', { bold: true, color: NAVY, size: 28 }), txt('familles d’appareils   ·   ', { size: 18, color: GREY }),
+      txt('3 ', { bold: true, color: NAVY, size: 28 }), txt('niveaux', { size: 18, color: GREY }),
+    ],
+  }),
+  new Paragraph({
+    alignment: AlignmentType.CENTER,
+    spacing: { before: 200 },
     children: [txt('Diagnostic · Techniques de réparation · Micro-soudure · Business', { size: 18, color: GREY })],
   }),
   new Paragraph({ children: [new PageBreak()] }),
