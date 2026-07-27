@@ -26,12 +26,14 @@ export default function Booking({ prefill }) {
     }
   }, [modeles]); // eslint-disable-line
 
-  // Préremplissage depuis le bouton « Réserver »
+  // Préremplissage depuis le bouton « Réserver » ou une carte service
   useEffect(() => {
-    if (prefill?.marque) {
+    if (!prefill) return;
+    if (prefill.marque) {
       setMarque(prefill.marque);
       setModele(prefill.modele);
     }
+    if (prefill.reparation) setReparation(prefill.reparation);
   }, [prefill]);
 
   const prixRep = modeleData ? modeleData[reparation] : null;

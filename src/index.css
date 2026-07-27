@@ -148,6 +148,14 @@ h1, h2, h3, h4, .brand { font-family: "Space Grotesk", "Inter", sans-serif; lett
 .service p, .feature p { color: var(--muted); font-size: .93rem; }
 .service__from { margin-top: .8rem; font-weight: 600; color: var(--accent); font-size: .92rem; }
 
+/* Cartes services cliquables → redirigent vers la réparation */
+.service--clic { cursor: pointer; }
+.service--clic:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.service__cta { margin-top: .55rem; font-weight: 700; font-size: .9rem; color: var(--accent);
+  opacity: 0; transform: translateY(4px); transition: opacity .2s ease, transform .2s ease; }
+.service--clic:hover .service__cta, .service--clic:focus-visible .service__cta { opacity: 1; transform: none; }
+.service--photo .service__cta { color: #fff; }
+
 /* Cartes services avec photo de la réparation en fond */
 .service--photo {
   position: relative; overflow: hidden; border: none; color: #fff; min-height: 240px;

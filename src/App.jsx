@@ -36,6 +36,12 @@ export default function App() {
   const [prefill, setPrefill] = useState(null);
   useScrollReveal();
 
+  // Clic sur une carte service → préremplir la réparation + aller au formulaire
+  const choisirReparation = (cle) => {
+    setPrefill({ reparation: cle, _t: Date.now() });
+    setTimeout(() => document.getElementById("rdv")?.scrollIntoView({ behavior: "smooth" }), 60);
+  };
+
   // Au chargement : appliquer un préremplissage / scroll demandé depuis une autre page
   useEffect(() => {
     const pf = sessionStorage.getItem("prefill");
@@ -57,7 +63,7 @@ export default function App() {
       <Nav />
       <main>
         <Hero />
-        <Services />
+        <Services onChoisir={choisirReparation} />
         <TarifsCTA />
         <Process />
         <BuySell />
