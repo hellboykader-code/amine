@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 540" width="920" height="540"><defs>
+    <linearGradient id="wood" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#C9A36B"/><stop offset="1" stop-color="#A97F49"/>
+    </linearGradient>
+    <radialGradient id="mat" cx="0.42" cy="0.35" r="0.9">
+      <stop offset="0" stop-color="#20505C"/><stop offset="1" stop-color="#143840"/>
+    </radialGradient>
+    <linearGradient id="glove" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#7FB6E4"/><stop offset="0.45" stop-color="#3E86C4"/><stop offset="1" stop-color="#2C6AA0"/>
+    </linearGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E9EDF2"/><stop offset="0.5" stop-color="#B9C2CD"/><stop offset="1" stop-color="#8A95A2"/>
+    </linearGradient>
+    <linearGradient id="metalV" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E9EDF2"/><stop offset="1" stop-color="#5A6470"/>
+    </linearGradient>
+    <linearGradient id="phoneBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2A323C"/><stop offset="1" stop-color="#0E1218"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="0.7" y2="1">
+      <stop offset="0" stop-color="#2C3A55"/><stop offset="1" stop-color="#101A2E"/>
+    </linearGradient>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="7" stdDeviation="9" flood-color="#0a1420" flood-opacity="0.35"/>
+    </filter>
+    <filter id="soft2" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#0a1420" flood-opacity="0.30"/>
+    </filter>
+  </defs><rect x="0" y="0" width="920" height="540" fill="url(#wood)"/><g opacity="0.10"><rect x="0" y="0" width="920" height="2" fill="#5a3d1e"/><rect x="0" y="60" width="920" height="2" fill="#5a3d1e"/><rect x="0" y="120" width="920" height="2" fill="#5a3d1e"/><rect x="0" y="180" width="920" height="2" fill="#5a3d1e"/><rect x="0" y="240" width="920" height="2" fill="#5a3d1e"/><rect x="0" y="300" width="920" height="2" fill="#5a3d1e"/><rect x="0" y="360" width="920" height="2" fill="#5a3d1e"/><rect x="0" y="420" width="920" height="2" fill="#5a3d1e"/><rect x="0" y="480" width="920" height="2" fill="#5a3d1e"/></g><rect x="46" y="70" width="828" height="390" rx="26" fill="url(#mat)" filter="url(#soft)"/><rect x="46" y="70" width="828" height="390" rx="26" fill="none" stroke="#0c2a30" stroke-width="2" opacity="0.5"/><g transform="rotate(-4 460 300)"><g transform="translate(320 70) scale(1)" filter="url(#soft)">
+    <rect x="0" y="0" width="300" height="410" rx="22" fill="url(#phoneBody)" stroke="#05070a" stroke-width="3"/>
+    <g transform="translate(-18 -18) rotate(-3 150 205)">
+      <rect x="10" y="10" width="284" height="392" rx="18" fill="url(#screen)" stroke="#0a1220" stroke-width="3"/>
+      <path d="M30 28 L200 28 L80 240 Z" fill="#ffffff" opacity="0.06"/>
+    </g>
+    <rect x="24" y="30" width="120" height="150" rx="8" fill="#12203a" opacity="0.8"/>
+  </g></g><g transform="translate(300 210) rotate(8) scale(1.4)" filter="url(#soft2)">
+    <path d="M0 0 L60 -10 L58 8 Z" fill="#E8A13A" stroke="#b57f22" stroke-width="1.5"/>
+  </g><g opacity="0.8"><path d="M300 150 q8 -12 16 0 q8 12 16 0" fill="none" stroke="#C0392B" stroke-width="3.5"/><path d="M300 134 q8 -12 16 0 q8 12 16 0" fill="none" stroke="#C0392B" stroke-width="3.5"/><path d="M300 118 q8 -12 16 0 q8 12 16 0" fill="none" stroke="#C0392B" stroke-width="3.5"/></g><g transform="translate(600 180) scale(1.2)" filter="url(#soft2)">
+    <ellipse cx="0" cy="30" rx="34" ry="12" fill="#8a1f18"/>
+    <path d="M-34 30 Q0 6 34 30 Q0 42 -34 30 Z" fill="#C0392B"/>
+    <rect x="-6" y="-52" width="12" height="80" rx="5" fill="url(#metalV)" stroke="#5A6470" stroke-width="1.5"/>
+    <ellipse cx="0" cy="-52" rx="16" ry="7" fill="url(#metal)" stroke="#5A6470" stroke-width="1.5"/>
+  </g><g transform="translate(150 440) rotate(-16) scale(0.85)" filter="url(#soft2)">
+    <rect x="0" y="-14" width="70" height="28" rx="12" fill="#C0392B" stroke="#8a1f18" stroke-width="2"/>
+    <rect x="6" y="-9" width="54" height="4" rx="2" fill="#e06a5e" opacity="0.6"/>
+    <rect x="70" y="-4" width="70" height="8" rx="3" fill="url(#metal)" stroke="#8A95A2" stroke-width="1"/>
+    <rect x="138" y="-5" width="12" height="10" fill="#8A95A2"/>
+  </g><g><rect x="46" y="482" width="453.99999999999994" height="38" rx="19" fill="#0c2a30" opacity="0.9"/><text x="66" y="507" font-family="Helvetica Neue, Arial" font-size="16.5" font-weight="700" fill="#e8f1f8">Ouverture d'une tablette (chaleur + médiator)</text></g></svg>

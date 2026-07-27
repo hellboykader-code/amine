@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 540" width="920" height="540"><defs>
+    <linearGradient id="wood" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#C9A36B"/><stop offset="1" stop-color="#A97F49"/>
+    </linearGradient>
+    <radialGradient id="mat" cx="0.42" cy="0.35" r="0.9">
+      <stop offset="0" stop-color="#20505C"/><stop offset="1" stop-color="#143840"/>
+    </radialGradient>
+    <linearGradient id="glove" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#7FB6E4"/><stop offset="0.45" stop-color="#3E86C4"/><stop offset="1" stop-color="#2C6AA0"/>
+    </linearGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E9EDF2"/><stop offset="0.5" stop-color="#B9C2CD"/><stop offset="1" stop-color="#8A95A2"/>
+    </linearGradient>
+    <linearGradient id="metalV" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E9EDF2"/><stop offset="1" stop-color="#5A6470"/>
+    </linearGradient>
+    <linearGradient id="phoneBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2A323C"/><stop offset="1" stop-color="#0E1218"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="0.7" y2="1">
+      <stop offset="0" stop-color="#2C3A55"/><stop offset="1" stop-color="#101A2E"/>
+    </linearGradient>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="7" stdDeviation="9" flood-color="#0a1420" flood-opacity="0.35"/>
+    </filter>
+    <filter id="soft2" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#0a1420" flood-opacity="0.30"/>
+    </filter>
+  </defs><rect x="0" y="0" width="920" height="540" fill="url(#wood)"/><g opacity="0.10"><rect x="0" y="0" width="920" height="2" fill="#5a3d1e"/><rect x="0" y="60" width="920" height="2" fill="#5a3d1e"/><rect x="0" y="120" width="920" height="2" fill="#5a3d1e"/><rect x="0" y="180" width="920" height="2" fill="#5a3d1e"/><rect x="0" y="240" width="920" height="2" fill="#5a3d1e"/><rect x="0" y="300" width="920" height="2" fill="#5a3d1e"/><rect x="0" y="360" width="920" height="2" fill="#5a3d1e"/><rect x="0" y="420" width="920" height="2" fill="#5a3d1e"/><rect x="0" y="480" width="920" height="2" fill="#5a3d1e"/></g><rect x="46" y="70" width="828" height="390" rx="26" fill="url(#mat)" filter="url(#soft)"/><rect x="46" y="70" width="828" height="390" rx="26" fill="none" stroke="#0c2a30" stroke-width="2" opacity="0.5"/><g transform="translate(300 140) scale(1)" filter="url(#soft)">
+    <rect x="0" y="0" width="320" height="230" rx="12" fill="#12563a" stroke="#0a3a27" stroke-width="3"/>
+    <rect x="14" y="14" width="108.80000000000001" height="92" rx="5" fill="#0d3325"/>
+    <rect x="140.8" y="18" width="96" height="69" rx="4" fill="#0d3325"/>
+    <rect x="18" y="142.6" width="160" height="55.199999999999996" rx="4" fill="#0d3325"/>
+    <g fill="#E8A13A" opacity="0.9"><rect x="249.60000000000002" y="16" width="44.800000000000004" height="5" rx="1"/><rect x="249.60000000000002" y="36" width="44.800000000000004" height="5" rx="1"/><rect x="249.60000000000002" y="56" width="44.800000000000004" height="5" rx="1"/><rect x="249.60000000000002" y="76" width="44.800000000000004" height="5" rx="1"/><rect x="249.60000000000002" y="96" width="44.800000000000004" height="5" rx="1"/><rect x="249.60000000000002" y="116" width="44.800000000000004" height="5" rx="1"/><rect x="249.60000000000002" y="136" width="44.800000000000004" height="5" rx="1"/><rect x="249.60000000000002" y="156" width="44.800000000000004" height="5" rx="1"/><rect x="249.60000000000002" y="176" width="44.800000000000004" height="5" rx="1"/><rect x="249.60000000000002" y="196" width="44.800000000000004" height="5" rx="1"/></g>
+    <g fill="#0a2a1e"><circle cx="20" cy="214" r="2.4"/><circle cx="55" cy="214" r="2.4"/><circle cx="90" cy="214" r="2.4"/><circle cx="125" cy="214" r="2.4"/><circle cx="160" cy="214" r="2.4"/><circle cx="195" cy="214" r="2.4"/><circle cx="230" cy="214" r="2.4"/><circle cx="265" cy="214" r="2.4"/><circle cx="20" cy="202" r="2.4"/><circle cx="55" cy="202" r="2.4"/><circle cx="90" cy="202" r="2.4"/><circle cx="125" cy="202" r="2.4"/><circle cx="160" cy="202" r="2.4"/><circle cx="195" cy="202" r="2.4"/><circle cx="230" cy="202" r="2.4"/><circle cx="265" cy="202" r="2.4"/></g>
+  </g><g transform="translate(250 300) rotate(4) scale(1.05)" filter="url(#soft2)">
+    <rect x="0" y="-7" width="90" height="14" rx="6" fill="#7a4a1c"/>
+    <rect x="86" y="-9" width="16" height="18" rx="3" fill="#8A95A2"/>
+    <path d="M102 -9 q26 4 30 9 q-30 5 -30 9 Z" fill="#2b2b2b"/>
+    <g stroke="#111" stroke-width="1"><line x1="102" y1="-8" x2="134" y2="-4"/><line x1="102" y1="-5" x2="134" y2="-1.7999999999999998"/><line x1="102" y1="-2" x2="134" y2="0.40000000000000036"/><line x1="102" y1="1" x2="134" y2="2.6000000000000005"/><line x1="102" y1="4" x2="134" y2="4.800000000000001"/><line x1="102" y1="7" x2="134" y2="7"/></g>
+  </g><g transform="translate(690 300) scale(1.1)" filter="url(#soft2)"><rect x="0" y="0" width="52" height="90" rx="10" fill="#cfe0ef" opacity="0.85" stroke="#8A95A2" stroke-width="1.5"/><rect x="16" y="-16" width="20" height="20" rx="3" fill="#2b3542"/><rect x="8" y="34" width="36" height="34" rx="4" fill="#e8eef5"/><text x="26" y="56" font-family="Helvetica Neue, Arial" font-size="13" fill="#143840" text-anchor="middle" font-weight="800">IPA</text></g><g><path d="M360 110.2 Q367 120 360 124.2 Q353 120 360 110.2 Z" fill="#8fd0e8" opacity="0.8" stroke="#5aa9c8" stroke-width="1"/><path d="M430 101.6 Q436 110 430 113.6 Q424 110 430 101.6 Z" fill="#8fd0e8" opacity="0.8" stroke="#5aa9c8" stroke-width="1"/><path d="M520 115.2 Q527 125 520 129.2 Q513 125 520 115.2 Z" fill="#8fd0e8" opacity="0.8" stroke="#5aa9c8" stroke-width="1"/><path d="M600 123 Q605 130 600 133 Q595 130 600 123 Z" fill="#8fd0e8" opacity="0.8" stroke="#5aa9c8" stroke-width="1"/><path d="M470 133 Q475 140 470 143 Q465 140 470 133 Z" fill="#8fd0e8" opacity="0.8" stroke="#5aa9c8" stroke-width="1"/></g><g transform="translate(120 300) rotate(10) scale(0.7)" filter="url(#soft2)">
+    <path d="M0 0 L120 -26" stroke="url(#metal)" stroke-width="9" stroke-linecap="round"/>
+    <path d="M0 0 L120 -6" stroke="url(#metal)" stroke-width="9" stroke-linecap="round"/>
+    <path d="M118 -26 L134 -16 L118 -6" fill="none" stroke="#8A95A2" stroke-width="3"/>
+    <circle cx="6" cy="0" r="7" fill="#5A6470"/>
+  </g><g><rect x="46" y="482" width="444.79999999999995" height="38" rx="19" fill="#0c2a30" opacity="0.9"/><text x="66" y="507" font-family="Helvetica Neue, Arial" font-size="16.5" font-weight="700" fill="#e8f1f8">Désoxydation de la carte mère (IPA + brosse)</text></g></svg>

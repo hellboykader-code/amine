@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 540" width="920" height="540"><defs>
+    <linearGradient id="wood" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#C9A36B"/><stop offset="1" stop-color="#A97F49"/>
+    </linearGradient>
+    <radialGradient id="mat" cx="0.42" cy="0.35" r="0.9">
+      <stop offset="0" stop-color="#20505C"/><stop offset="1" stop-color="#143840"/>
+    </radialGradient>
+    <linearGradient id="glove" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#7FB6E4"/><stop offset="0.45" stop-color="#3E86C4"/><stop offset="1" stop-color="#2C6AA0"/>
+    </linearGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E9EDF2"/><stop offset="0.5" stop-color="#B9C2CD"/><stop offset="1" stop-color="#8A95A2"/>
+    </linearGradient>
+    <linearGradient id="metalV" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E9EDF2"/><stop offset="1" stop-color="#5A6470"/>
+    </linearGradient>
+    <linearGradient id="phoneBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2A323C"/><stop offset="1" stop-color="#0E1218"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="0.7" y2="1">
+      <stop offset="0" stop-color="#2C3A55"/><stop offset="1" stop-color="#101A2E"/>
+    </linearGradient>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="7" stdDeviation="9" flood-color="#0a1420" flood-opacity="0.35"/>
+    </filter>
+    <filter id="soft2" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#0a1420" flood-opacity="0.30"/>
+    </filter>
+  </defs><rect x="0" y="0" width="920" height="540" fill="url(#wood)"/><g opacity="0.10"><rect x="0" y="0" width="920" height="2" fill="#5a3d1e"/><rect x="0" y="60" width="920" height="2" fill="#5a3d1e"/><rect x="0" y="120" width="920" height="2" fill="#5a3d1e"/><rect x="0" y="180" width="920" height="2" fill="#5a3d1e"/><rect x="0" y="240" width="920" height="2" fill="#5a3d1e"/><rect x="0" y="300" width="920" height="2" fill="#5a3d1e"/><rect x="0" y="360" width="920" height="2" fill="#5a3d1e"/><rect x="0" y="420" width="920" height="2" fill="#5a3d1e"/><rect x="0" y="480" width="920" height="2" fill="#5a3d1e"/></g><rect x="46" y="70" width="828" height="390" rx="26" fill="url(#mat)" filter="url(#soft)"/><rect x="46" y="70" width="828" height="390" rx="26" fill="none" stroke="#0c2a30" stroke-width="2" opacity="0.5"/><g transform="translate(360 150) scale(1.5)" filter="url(#soft)">
+    <path d="M0 0 a44 44 0 0 1 78 0 l-8 40 a26 26 0 0 1 -50 6 Z" fill="#f3f5f8" stroke="#c7ccd3" stroke-width="2.5"/>
+    <path d="M52 40 q26 6 24 60 q-2 60 -30 78 q-22 -12 -20 -70 q2 -56 26 -68 Z" fill="#f3f5f8" stroke="#c7ccd3" stroke-width="2.5"/><ellipse cx="39" cy="24" rx="20" ry="14" fill="#e2e6eb" stroke="#b9c0c8" stroke-width="1.5"/><g stroke="#aab2bb" stroke-width="1"><line x1="24" y1="12" x2="24" y2="36"/><line x1="29" y1="12" x2="29" y2="36"/><line x1="34" y1="12" x2="34" y2="36"/><line x1="39" y1="12" x2="39" y2="36"/><line x1="44" y1="12" x2="44" y2="36"/><line x1="49" y1="12" x2="49" y2="36"/></g></g><g transform="translate(250 200) rotate(6) scale(1.1)" filter="url(#soft2)">
+    <rect x="0" y="-7" width="90" height="14" rx="6" fill="#7a4a1c"/>
+    <rect x="86" y="-9" width="16" height="18" rx="3" fill="#8A95A2"/>
+    <path d="M102 -9 q26 4 30 9 q-30 5 -30 9 Z" fill="#2b2b2b"/>
+    <g stroke="#111" stroke-width="1"><line x1="102" y1="-8" x2="134" y2="-4"/><line x1="102" y1="-5" x2="134" y2="-1.7999999999999998"/><line x1="102" y1="-2" x2="134" y2="0.40000000000000036"/><line x1="102" y1="1" x2="134" y2="2.6000000000000005"/><line x1="102" y1="4" x2="134" y2="4.800000000000001"/><line x1="102" y1="7" x2="134" y2="7"/></g>
+  </g><g transform="translate(640 320) scale(1.1)" filter="url(#soft)"><rect x="0" y="0" width="120" height="90" rx="26" fill="#f3f5f8" stroke="#c7ccd3" stroke-width="2.5"/><rect x="0" y="0" width="120" height="30" rx="14" fill="#e6e9ee"/><circle cx="60" cy="70" r="4" fill="#3ba55d"/></g><g><rect x="46" y="482" width="362" height="38" rx="19" fill="#0c2a30" opacity="0.9"/><text x="66" y="507" font-family="Helvetica Neue, Arial" font-size="16.5" font-weight="700" fill="#e8f1f8">Nettoyage des grilles d'un écouteur</text></g></svg>

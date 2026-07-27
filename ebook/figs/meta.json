@@ -86,5 +86,57 @@
   "g_airpods_embouts": {
     "w": 900,
     "h": 606
+  },
+  "sc_ecran_smartphone": {
+    "w": 920,
+    "h": 540
+  },
+  "sc_batterie_smartphone": {
+    "w": 920,
+    "h": 540
+  },
+  "sc_charge_smartphone": {
+    "w": 920,
+    "h": 540
+  },
+  "sc_eau_smartphone": {
+    "w": 920,
+    "h": 540
+  },
+  "sc_dalle_pc": {
+    "w": 920,
+    "h": 540
+  },
+  "sc_clavier_pc": {
+    "w": 920,
+    "h": 540
+  },
+  "sc_batterie_pc": {
+    "w": 920,
+    "h": 540
+  },
+  "sc_stockage_pc": {
+    "w": 920,
+    "h": 540
+  },
+  "sc_thermique_pc": {
+    "w": 920,
+    "h": 540
+  },
+  "sc_ecran_tablette": {
+    "w": 920,
+    "h": 540
+  },
+  "sc_montre": {
+    "w": 920,
+    "h": 540
+  },
+  "sc_airpods_nettoyage": {
+    "w": 920,
+    "h": 540
+  },
+  "sc_airpods_embouts": {
+    "w": 920,
+    "h": 540
   }
 }

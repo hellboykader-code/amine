@@ -185,6 +185,7 @@ module.exports = [
 "Recoller avec adhésif neuf, nettoyer, remonter, retester."
 ]},
 {t:'note', title:"True Tone, Face ID et messages « pièce inconnue »", text:"Sur iPhone récents, remplacer l'écran par une pièce non appairée peut désactiver le True Tone, afficher un avertissement « écran non authentique » et parfois casser la luminosité auto. Des programmateurs (ex. copie de l'EEPROM de l'écran d'origine vers le nouveau) permettent de restaurer ces fonctions. Renseignez-vous modèle par modèle et soyez transparent avec le client."},
+{t:'fig', name:'sc_ecran_smartphone', caption:"En atelier : décollage de l'écran à la ventouse."},
 {t:'fig', name:'g_ecran_smartphone', caption:"Étapes clés du remplacement d'un écran de smartphone."},
 
 {t:'h2', text:"8. Remplacement de batterie"},
@@ -196,6 +197,7 @@ module.exports = [
 "Sur iPhone récents : un message « batterie non authentique » peut apparaître si la puce d'origine n'est pas transférée/appairée — même logique que pour l'écran."
 ]},
 {t:'warn', title:"Attention batterie gonflée", text:"Ne percez jamais, ne pliez jamais. Déchargez l'appareil si possible, travaillez lentement, gardez le contenant ignifuge à côté. Une batterie qui a chauffé/gonflé va directement au recyclage batteries, jamais à la poubelle."},
+{t:'fig', name:'sc_batterie_smartphone', caption:"En atelier : retrait de la batterie collée."},
 {t:'fig', name:'g_batterie_smartphone', caption:"Étapes clés du remplacement d'une batterie de smartphone."},
 
 {t:'h2', text:"9. Connecteur de charge et problèmes de charge"},
@@ -209,6 +211,7 @@ module.exports = [
 "Si le port est sain mais ça ne charge toujours pas : suspecter la puce/gestion de charge, une batterie HS, ou un problème logiciel."
 ]},
 {t:'fig', name:'charge', caption:"Arbre de décision « ne charge pas » : du plus simple et gratuit au plus technique."},
+{t:'fig', name:'sc_charge_smartphone', caption:"En atelier : nettoyage du connecteur de charge."},
 {t:'fig', name:'g_charge_smartphone', caption:"Étapes : du nettoyage du port au remplacement du connecteur."},
 
 {t:'h2', text:"10. Caméras, boutons, haut-parleurs, micros, capteurs"},
@@ -232,6 +235,7 @@ module.exports = [
 "Remonter et tester fonction par fonction — les dégâts des eaux donnent des pannes multiples et parfois différées."
 ]},
 {t:'warn', title:"Attention au mythe du riz", text:"Le riz n'assèche pas l'intérieur et n'empêche pas la corrosion déjà en cours. La bonne réponse est l'ouverture et le nettoyage professionnel rapide. Prévenez le client : un appareil noyé peut sembler remarcher puis tomber en panne des semaines plus tard."},
+{t:'fig', name:'sc_eau_smartphone', caption:"En atelier : désoxydation de la carte mère."},
 {t:'fig', name:'g_eau_smartphone', caption:"Étapes de la désoxydation après un dégât des eaux."},
 
 {t:'h2', text:"12. Face arrière, châssis et problèmes logiciels"},
@@ -257,6 +261,7 @@ module.exports = [
 "Réparation de la nappe / connecteur de charge, caméras, haut-parleurs : même logique que smartphone."
 ]},
 {t:'tip', title:"Astuce", text:"Sur tablette, le budget « casse » (verre neuf, adhésif, temps) est plus élevé que sur téléphone. Chiffrez la main-d'œuvre en conséquence et prévenez le client du risque de casse du verre à l'ouverture, surtout sur les modèles laminés."},
+{t:'fig', name:'sc_ecran_tablette', caption:"En atelier : ouverture d'une tablette."},
 {t:'fig', name:'g_ecran_tablette', caption:"Étapes de l'ouverture et du remplacement d'écran d'une tablette."},
 
 {t:'pagebreak'},
@@ -296,8 +301,11 @@ module.exports = [
 "DC jack / connecteur de charge : nettoyage, resoudure ou remplacement.",
 "Surchauffe : démonter, dépoussiérer le radiateur et le ventilateur, remplacer la pâte thermique (et les pads thermiques si besoin). Réparation à forte valeur ajoutée et facile."
 ]},
+{t:'fig', name:'sc_dalle_pc', caption:"En atelier : dépose de la dalle d'un PC portable."},
 {t:'fig', name:'g_dalle_pc', caption:"Étapes du remplacement d'une dalle de PC portable."},
+{t:'fig', name:'sc_clavier_pc', caption:"En atelier : remplacement du clavier."},
 {t:'fig', name:'g_clavier_pc', caption:"Étapes du remplacement d'un clavier de PC portable."},
+{t:'fig', name:'sc_batterie_pc', caption:"En atelier : remplacement de la batterie."},
 {t:'fig', name:'g_batterie_pc', caption:"Étapes du remplacement d'une batterie de PC portable."},
 
 {t:'h2', text:"16. Améliorations (upgrades) rentables"},
@@ -306,7 +314,9 @@ module.exports = [
 "Ajout / remplacement de RAM (si non soudée) : vérifier type (DDR3/4/5), fréquence, capacité max de la carte mère.",
 "Nettoyage complet + pâte thermique neuve : redonne des années de vie."
 ]},
+{t:'fig', name:'sc_stockage_pc', caption:"En atelier : installation d'un SSD et de la RAM."},
 {t:'fig', name:'g_stockage_pc', caption:"Étapes de l'installation d'un SSD et de la RAM."},
+{t:'fig', name:'sc_thermique_pc', caption:"En atelier : application de pâte thermique neuve."},
 {t:'fig', name:'g_thermique_pc', caption:"Étapes du changement de pâte thermique et du nettoyage."},
 
 {t:'h2', text:"17. Logiciel : système, pilotes, données"},
@@ -334,6 +344,7 @@ module.exports = [
 "Autres montres (Samsung Galaxy Watch, Garmin, etc.) : verre parfois remplaçable séparément, boutons/couronnes, capteurs cardio. Pièces plus rares selon la marque."
 ]},
 {t:'warn', title:"Réalisme économique", text:"Sur beaucoup de smartwatchs, le coût de l'écran d'origine approche le prix d'une montre reconditionnée. Faites toujours un devis avant : parfois la réparation n'est pas rentable pour le client, et le dire honnêtement construit votre réputation."},
+{t:'fig', name:'sc_montre', caption:"En atelier : ouverture d'une Apple Watch."},
 {t:'fig', name:'g_montre', caption:"Étapes de l'ouverture d'une Apple Watch et du remplacement de batterie."},
 
 {t:'pagebreak'},
@@ -361,7 +372,9 @@ module.exports = [
 "Gestion des attentes : soyez clair — sur les vrais AirPods, la batterie interne n'est pas conçue pour être remplacée proprement ; orientez vers le SAV constructeur ou le reconditionné quand c'est plus pertinent."
 ]},
 {t:'tip', title:"Astuce service", text:"Proposez un « service de nettoyage écouteurs » à prix fixe et rapide. C'est un produit d'appel : peu de matériel, quelques minutes, client ravi, et ça amène du passage en boutique."},
+{t:'fig', name:'sc_airpods_nettoyage', caption:"En atelier : nettoyage des grilles d'un écouteur."},
 {t:'fig', name:'g_airpods_nettoyage', caption:"Étapes du nettoyage en profondeur des grilles d'AirPods."},
+{t:'fig', name:'sc_airpods_embouts', caption:"En atelier : remplacement de l'embout en silicone."},
 {t:'fig', name:'g_airpods_embouts', caption:"Étapes du remplacement des embouts et du reset (AirPods Pro)."},
 
 {t:'pagebreak'},
