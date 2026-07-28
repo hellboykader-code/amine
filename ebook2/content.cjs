@@ -95,6 +95,7 @@ module.exports = [
 "Charger le firmware officiel dans les emplacements prévus (les fichiers correspondants au format .tar).",
 "Lancer le flash sans débrancher ; l'appareil redémarre à la fin. Vérifier le démarrage complet."
 ]},
+{t:'fig', name:'fg_odin', caption:"Les étapes du flashage d'un Samsung via le mode Download et Odin."},
 {t:'note', title:"Compteur de flash et sécurité", text:"Certains fabricants enregistrent les flashages non officiels (compteur, indicateur de garantie). Un flash de firmware OFFICIEL est sans risque ; un firmware modifié peut affecter la garantie et certaines fonctions de sécurité. Informez le client."},
 
 {t:'h2', text:"8. Fastboot (Pixel et nombreux Android)"},
@@ -104,6 +105,7 @@ module.exports = [
 "Utiliser les images d'usine officielles du constructeur et le script de flash fourni, ou flasher les partitions une à une.",
 "Ne pas interrompre le processus ; redémarrer et vérifier."
 ]},
+{t:'fig', name:'fg_fastboot', caption:"Les étapes d'un flashage en mode Fastboot (images d'usine officielles)."},
 
 {t:'h2', text:"9. MediaTek (SP Flash Tool) et Qualcomm (EDL)"},
 {t:'ul', items:[
@@ -133,6 +135,7 @@ module.exports = [
 "Dans Finder/iTunes, choisir « Restaurer l'iPhone » ; l'outil télécharge/installe la version compatible signée par Apple.",
 "Laisser l'opération se terminer sans débrancher ; l'appareil redémarre « comme neuf »."
 ]},
+{t:'fig', name:'fg_iphone', caption:"Les étapes de la restauration d'un iPhone via Recovery / DFU."},
 {t:'warn', title:"Verrouillage d'activation (iCloud)", text:"Après restauration, l'iPhone redemandera l'identifiant Apple d'origine si le « Localiser » (verrouillage d'activation) était actif. C'est une protection antivol : elle ne se contourne PAS. Le propriétaire légitime doit se connecter avec son compte, ou faire retirer le verrou par Apple sur preuve d'achat. Un iPhone verrouillé sans preuve de propriété ne doit pas être accepté."},
 
 {t:'pagebreak'},
@@ -149,6 +152,7 @@ module.exports = [
 "Passage à l'eSIM / opérateur compatible selon les cas.",
 "Dans tous les cas : l'appareil ne doit pas être signalé perdu/volé, et la propriété doit être prouvée."
 ]},
+{t:'fig', name:'fg_deblocage', caption:"Les étapes d'un déblocage réseau légal (sur preuve de propriété)."},
 
 {t:'h2', text:"13. Ce qu'il ne faut jamais faire"},
 {t:'ul', items:[
@@ -187,6 +191,7 @@ module.exports = [
 "Échec persistant : suspecter un mauvais firmware (region/variante) ou un problème matériel (alimentation, stockage) — là on repasse côté réparation matérielle.",
 "Après récupération : reconfigurer, vérifier le réseau, le Wi-Fi, l'appareil photo, et surtout que l'appareil démarre de façon stable."
 ]},
+{t:'fig', name:'fg_bootloop', caption:"Les étapes pour sortir un appareil d'un bootloop par voie logicielle."},
 {t:'warn', title:"La cause n°1 de brick", text:"Débrancher ou couper l'alimentation pendant un flash. Ne touchez jamais au câble pendant l'opération, travaillez sur batterie chargée et port fiable."},
 
 {t:'pagebreak'},

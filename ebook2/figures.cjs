@@ -1,1 +1,1 @@
-module.exports = require('./diagrams.cjs');
+module.exports = Object.assign({}, require('./diagrams.cjs'), require('./flash-guides.cjs'));
