@@ -6,5 +6,6 @@ module.exports = Object.assign(
   {},
   require('./diagrams.cjs'),
   require('./repair-guides.cjs'),
-  sceneFns
+  sceneFns,
+  require('./material.cjs')
 );

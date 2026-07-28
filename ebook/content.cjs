@@ -87,6 +87,7 @@ module.exports = [
 "Sèche-cheveux ou, mieux, plaque chauffante / iOpener pour ramollir les colles.",
 "Alcool isopropylique (IPA 99 %) et brosse antistatique pour le nettoyage."
 ]},
+{t:'fig', name:'mt_outillage', caption:"Le kit de base : de quoi réaliser 80 à 90 % des réparations (niveau 1)."},
 
 {t:'h3', text:"Palier intermédiaire"},
 {t:'ul', items:[
@@ -187,7 +188,7 @@ module.exports = [
 {t:'note', title:"True Tone, Face ID et messages « pièce inconnue »", text:"Sur iPhone récents, remplacer l'écran par une pièce non appairée peut désactiver le True Tone, afficher un avertissement « écran non authentique » et parfois casser la luminosité auto. Des programmateurs (ex. copie de l'EEPROM de l'écran d'origine vers le nouveau) permettent de restaurer ces fonctions. Renseignez-vous modèle par modèle et soyez transparent avec le client."},
 {t:'fig', name:'sc_ecran_smartphone', caption:"En atelier : décollage de l'écran à la ventouse."},
 {t:'fig', name:'g_ecran_smartphone', caption:"Étapes clés du remplacement d'un écran de smartphone."},
-{t:'photoslot', label:"Remplacement d'écran de smartphone"},
+{t:'fig', name:'mt_ecran_smartphone', caption:"Matériel nécessaire pour cette réparation."},
 
 {t:'h2', text:"8. Remplacement de batterie"},
 {t:'p', text:"Une batterie se change quand sa capacité chute (autonomie faible, extinctions soudaines, gonflement, « santé » < 80 %)."},
@@ -200,7 +201,7 @@ module.exports = [
 {t:'warn', title:"Attention batterie gonflée", text:"Ne percez jamais, ne pliez jamais. Déchargez l'appareil si possible, travaillez lentement, gardez le contenant ignifuge à côté. Une batterie qui a chauffé/gonflé va directement au recyclage batteries, jamais à la poubelle."},
 {t:'fig', name:'sc_batterie_smartphone', caption:"En atelier : retrait de la batterie collée."},
 {t:'fig', name:'g_batterie_smartphone', caption:"Étapes clés du remplacement d'une batterie de smartphone."},
-{t:'photoslot', label:"Remplacement de batterie de smartphone"},
+{t:'fig', name:'mt_batterie_smartphone', caption:"Matériel nécessaire pour cette réparation."},
 
 {t:'h2', text:"9. Connecteur de charge et problèmes de charge"},
 {t:'p', text:"Démarche de diagnostic « ne charge pas / charge mal » :"},
@@ -215,7 +216,7 @@ module.exports = [
 {t:'fig', name:'charge', caption:"Arbre de décision « ne charge pas » : du plus simple et gratuit au plus technique."},
 {t:'fig', name:'sc_charge_smartphone', caption:"En atelier : nettoyage du connecteur de charge."},
 {t:'fig', name:'g_charge_smartphone', caption:"Étapes : du nettoyage du port au remplacement du connecteur."},
-{t:'photoslot', label:"Nettoyage / remplacement du port de charge"},
+{t:'fig', name:'mt_charge_smartphone', caption:"Matériel nécessaire pour cette réparation."},
 
 {t:'h2', text:"10. Caméras, boutons, haut-parleurs, micros, capteurs"},
 {t:'ul', items:[
@@ -240,7 +241,7 @@ module.exports = [
 {t:'warn', title:"Attention au mythe du riz", text:"Le riz n'assèche pas l'intérieur et n'empêche pas la corrosion déjà en cours. La bonne réponse est l'ouverture et le nettoyage professionnel rapide. Prévenez le client : un appareil noyé peut sembler remarcher puis tomber en panne des semaines plus tard."},
 {t:'fig', name:'sc_eau_smartphone', caption:"En atelier : désoxydation de la carte mère."},
 {t:'fig', name:'g_eau_smartphone', caption:"Étapes de la désoxydation après un dégât des eaux."},
-{t:'photoslot', label:"Désoxydation d'une carte mère"},
+{t:'fig', name:'mt_eau_smartphone', caption:"Matériel nécessaire pour cette réparation."},
 
 {t:'h2', text:"12. Face arrière, châssis et problèmes logiciels"},
 {t:'ul', items:[
@@ -267,7 +268,7 @@ module.exports = [
 {t:'tip', title:"Astuce", text:"Sur tablette, le budget « casse » (verre neuf, adhésif, temps) est plus élevé que sur téléphone. Chiffrez la main-d'œuvre en conséquence et prévenez le client du risque de casse du verre à l'ouverture, surtout sur les modèles laminés."},
 {t:'fig', name:'sc_ecran_tablette', caption:"En atelier : ouverture d'une tablette."},
 {t:'fig', name:'g_ecran_tablette', caption:"Étapes de l'ouverture et du remplacement d'écran d'une tablette."},
-{t:'photoslot', label:"Ouverture / écran de tablette"},
+{t:'fig', name:'mt_ecran_tablette', caption:"Matériel nécessaire pour cette réparation."},
 
 {t:'pagebreak'},
 
@@ -308,13 +309,13 @@ module.exports = [
 ]},
 {t:'fig', name:'sc_dalle_pc', caption:"En atelier : dépose de la dalle d'un PC portable."},
 {t:'fig', name:'g_dalle_pc', caption:"Étapes du remplacement d'une dalle de PC portable."},
-{t:'photoslot', label:"Remplacement de dalle de PC portable"},
+{t:'fig', name:'mt_dalle_pc', caption:"Matériel nécessaire pour cette réparation."},
 {t:'fig', name:'sc_clavier_pc', caption:"En atelier : remplacement du clavier."},
 {t:'fig', name:'g_clavier_pc', caption:"Étapes du remplacement d'un clavier de PC portable."},
-{t:'photoslot', label:"Remplacement de clavier de PC portable"},
+{t:'fig', name:'mt_clavier_pc', caption:"Matériel nécessaire pour cette réparation."},
 {t:'fig', name:'sc_batterie_pc', caption:"En atelier : remplacement de la batterie."},
 {t:'fig', name:'g_batterie_pc', caption:"Étapes du remplacement d'une batterie de PC portable."},
-{t:'photoslot', label:"Remplacement de batterie de PC portable"},
+{t:'fig', name:'mt_batterie_pc', caption:"Matériel nécessaire pour cette réparation."},
 
 {t:'h2', text:"16. Améliorations (upgrades) rentables"},
 {t:'ul', items:[
@@ -324,10 +325,10 @@ module.exports = [
 ]},
 {t:'fig', name:'sc_stockage_pc', caption:"En atelier : installation d'un SSD et de la RAM."},
 {t:'fig', name:'g_stockage_pc', caption:"Étapes de l'installation d'un SSD et de la RAM."},
-{t:'photoslot', label:"Installation SSD / RAM"},
+{t:'fig', name:'mt_stockage_pc', caption:"Matériel nécessaire pour cette réparation."},
 {t:'fig', name:'sc_thermique_pc', caption:"En atelier : application de pâte thermique neuve."},
 {t:'fig', name:'g_thermique_pc', caption:"Étapes du changement de pâte thermique et du nettoyage."},
-{t:'photoslot', label:"Application de pâte thermique"},
+{t:'fig', name:'mt_thermique_pc', caption:"Matériel nécessaire pour cette réparation."},
 
 {t:'h2', text:"17. Logiciel : système, pilotes, données"},
 {t:'ol', items:[
@@ -356,7 +357,7 @@ module.exports = [
 {t:'warn', title:"Réalisme économique", text:"Sur beaucoup de smartwatchs, le coût de l'écran d'origine approche le prix d'une montre reconditionnée. Faites toujours un devis avant : parfois la réparation n'est pas rentable pour le client, et le dire honnêtement construit votre réputation."},
 {t:'fig', name:'sc_montre', caption:"En atelier : ouverture d'une Apple Watch."},
 {t:'fig', name:'g_montre', caption:"Étapes de l'ouverture d'une Apple Watch et du remplacement de batterie."},
-{t:'photoslot', label:"Ouverture d'une smartwatch"},
+{t:'fig', name:'mt_montre', caption:"Matériel nécessaire pour cette réparation."},
 
 {t:'pagebreak'},
 
@@ -385,10 +386,10 @@ module.exports = [
 {t:'tip', title:"Astuce service", text:"Proposez un « service de nettoyage écouteurs » à prix fixe et rapide. C'est un produit d'appel : peu de matériel, quelques minutes, client ravi, et ça amène du passage en boutique."},
 {t:'fig', name:'sc_airpods_nettoyage', caption:"En atelier : nettoyage des grilles d'un écouteur."},
 {t:'fig', name:'g_airpods_nettoyage', caption:"Étapes du nettoyage en profondeur des grilles d'AirPods."},
-{t:'photoslot', label:"Nettoyage d'écouteurs sans fil"},
+{t:'fig', name:'mt_airpods_nettoyage', caption:"Matériel nécessaire pour cette réparation."},
 {t:'fig', name:'sc_airpods_embouts', caption:"En atelier : remplacement de l'embout en silicone."},
 {t:'fig', name:'g_airpods_embouts', caption:"Étapes du remplacement des embouts et du reset (AirPods Pro)."},
-{t:'photoslot', label:"Remplacement d'embouts d'AirPods"},
+{t:'fig', name:'mt_airpods_embouts', caption:"Matériel nécessaire pour cette réparation."},
 
 {t:'pagebreak'},
 
@@ -556,7 +557,7 @@ module.exports = [
 ]},
 
 {t:'h2', text:"Annexe D — Crédits & visuels"},
-{t:'p', text:"Les schémas conceptuels, les guides pas-à-pas et les scènes d'atelier de cet ebook sont des illustrations originales, créées spécialement pour ce guide et libres de droits pour son auteur. Les emplacements « photo » répartis dans le livre sont destinés à recevoir de véritables photographies de réparation."},
+{t:'p', text:"Tous les visuels de cet ebook — schémas conceptuels, guides pas-à-pas, scènes d'atelier et panneaux de matériel — sont des illustrations originales, créées spécialement pour ce guide et libres de droits pour son auteur. Vous pouvez les compléter par de véritables photographies de réparation si vous le souhaitez."},
 {t:'note', title:"Ajouter vos propres photos en toute légalité", text:"Pour illustrer les réparations avec de vraies photos sans risque juridique : utilisez vos propres clichés d'atelier, ou des images sous licence réutilisable (domaine public / CC0, ou CC-BY avec crédit) issues de Wikimedia Commons, Openverse, Pexels, Unsplash ou Pixabay. Évitez les captures de vidéos YouTube et les images trouvées au hasard sur internet : elles sont protégées par le droit d'auteur. Pour toute image sous licence CC-BY, indiquez ici l'auteur, la source et la licence."},
 {t:'p', text:"Crédits photos (à compléter) : —"},
 
