@@ -2,3 +2,12 @@ node_modules
 dist
 .DS_Store
 *.log
+
+# Sorties générées des ebooks/documents (régénérables via livrables/build)
+livrables/**/*.html
+!livrables/04-site-vente/**/*.html
+livrables/**/*.pdf
+
+# Clés locales du site de vente (ne jamais committer)
+livrables/04-site-vente/config.js
+livrables/04-site-vente/.env
