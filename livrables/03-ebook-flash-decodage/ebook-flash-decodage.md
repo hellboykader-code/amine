@@ -1149,6 +1149,1113 @@ De nombreux appareils sont **inscrits dans une gestion centralisée** : **MDM** 
 
 \newpage
 
+<!-- === EXTENSIONS (généré, ne pas éditer à la main) === -->
+
+\newpage
+
+# Flash par marque — compléments
+
+Cette section prolonge la Section 3 en couvrant des marques et des cas de figure supplémentaires que le technicien rencontre régulièrement en atelier : Huawei et Honor (et leurs particularités post-services Google), Motorola, Vivo/iQOO, Sony Xperia, Nokia/HMD, ainsi qu'un rappel structuré sur LG, marque disparue du marché mais toujours très présente au comptoir de réparation. Comme dans tout l'ouvrage, on ne traite ici que la **restauration du firmware stock officiel** dans un **cadre strictement légitime** : sortir un appareil d'un bootloop, réparer un système corrompu, mettre à jour lorsque l'OTA échoue, ou remettre à neuf un appareil **dont on est propriétaire**.
+
+> **🔒 Éthique & légalité — préalable à TOUTE procédure de cette section** :
+> 1. L'appareil vous appartient, ou vous disposez d'un **mandat écrit** du propriétaire.
+> 2. Vous avez relevé l'**IMEI / numéro de série** et consigné l'intervention au **registre client**.
+> 3. Vous avez **informé** le client des risques (brique, perte de données, perte de garantie) et fait signer une **décharge**.
+> 4. Le flash **ne retire pas** les verrous anti-vol (FRP, Activation Lock, verrou de compte constructeur). S'ils sont actifs, ils **subsistent** après le flash ; la seule voie est la récupération légitime ou le **SAV officiel sur preuve d'achat**.
+
+![Figure 7.1 — Poste de flash type : PC portable secteur + batterie, câble data court, appareil chargé, journal d'intervention](images/poste-flash-atelier.jpg)
+
+## 7.1 Huawei / Honor
+
+Huawei et Honor (Honor étant devenu une marque indépendante fin 2020) forment un cas particulier depuis le retrait des **Google Mobile Services (GMS)** sur les appareils Huawei récents. Ces appareils tournent sous **EMUI** ou **HarmonyOS** côté Huawei, et **Magic UI / MagicOS** côté Honor. Le point commun avec le reste du monde Android est le principe de restauration ; la différence tient à l'écosystème de mise à jour (**AppGallery**, **HiSuite**, cloud Huawei/Honor) et à un **bootloader dont le déverrouillage n'est plus proposé officiellement** sur la plupart des modèles récents.
+
+### Modes de connexion
+
+- **eRecovery** : mode de récupération réseau propre à Huawei/Honor. Appareil éteint, maintenir **Volume Haut + Power** en branchant le câble (ou en laissant la batterie), relâcher au logo. L'eRecovery propose notamment *« Download latest version and recovery »*, qui **télécharge le firmware officiel depuis les serveurs Huawei/Honor** via Wi-Fi et le réinstalle. C'est la voie la plus propre pour un appareil qu'on possède.
+- **Recovery stock** : effacement du cache, réinitialisation d'usine.
+- **Fastboot** : sur les modèles qui l'exposent encore, **Volume Bas + Power**. Sur beaucoup de modèles récents, le fastboot est verrouillé et n'accepte aucun flash non signé.
+- **dload (méthode carte SD / USB)** : méthode de mise à jour forcée à partir d'un dossier `dload` contenant un fichier `UPDATE.APP` officiel.
+
+### Où trouver le firmware stock officiel
+
+- **eRecovery en ligne** : la source la plus sûre — l'appareil récupère lui-même le firmware signé correspondant exactement à sa version.
+- **HiSuite** (l'utilitaire de bureau officiel Huawei, Windows/macOS) : gère la sauvegarde, la restauration et propose la **réparation du système** (« System recovery / repair ») en retéléchargeant le firmware officiel.
+- **Honor Suite** : équivalent côté Honor pour les modèles récents.
+- Le firmware complet officiel se présente comme un ensemble de fichiers (`UPDATE.APP` et parfois des paquets `update_data`/`update_full_*`) signés. **N'utilisez que des firmwares officiels correspondant exactement au modèle** (référence complète, ex. type `ANA-NX9`, `ELE-L29`) **et à la région**.
+
+### Procédure A — eRecovery en ligne (recommandée, la moins risquée)
+
+**Prérequis** : appareil qui accède encore à l'eRecovery, réseau Wi-Fi disponible, batterie > 50 %.
+**Temps estimé** : 15–40 min (dépend du débit Wi-Fi).
+
+1. Éteindre l'appareil.
+2. Maintenir **Volume Haut + Power** (branché) jusqu'à l'écran eRecovery.
+3. Choisir **« Download latest version and recovery »**.
+4. Se connecter à un Wi-Fi.
+5. L'appareil télécharge le firmware **officiel signé** et le réinstalle.
+6. Redémarrage (premier démarrage long).
+
+### Procédure B — dload (UPDATE.APP officiel)
+
+**Prérequis** : firmware officiel complet du modèle/région contenant `UPDATE.APP`, carte microSD (ou clé USB OTG selon modèle) formatée en FAT32.
+**Temps estimé** : 10–20 min.
+
+1. Créer à la racine de la carte SD un dossier nommé exactement **`dload`**.
+2. Y copier le fichier **`UPDATE.APP`** officiel.
+3. Insérer la carte, appareil éteint.
+4. Maintenir **Volume Haut + Volume Bas + Power** ; le firmware s'installe automatiquement (barre de progression).
+5. Attendre 100 %, l'appareil redémarre.
+
+> **🛠️ Astuce pro** — Si l'appareil ne lance pas le `dload`, vérifiez le nom exact du dossier (`dload`, minuscules), le format FAT32 de la carte, et que le `UPDATE.APP` correspond **exactement** à la référence du modèle. Un `UPDATE.APP` d'une autre variante régionale est refusé.
+
+### Particularité : appareils sans services Google
+
+Sur les Huawei récents privés de GMS, la restauration stock ramène **HarmonyOS/EMUI sans Google Play**. C'est l'état d'usine **normal** de ces appareils ; ce n'est pas une panne. N'essayez pas d'« ajouter » les services Google par des paquets tiers non officiels : c'est instable, non supporté, et souvent vecteur de logiciels malveillants. Informez le client que l'écosystème d'applications passe par **AppGallery**.
+
+### Erreurs courantes & solutions (Huawei / Honor)
+
+| Symptôme | Cause probable | Solution |
+|---|---|---|
+| eRecovery « Getting package info failed » | Serveur momentanément indisponible / version non hébergée | Réessayer plus tard ; sinon passer par HiSuite ou dload officiel. |
+| `dload` ne démarre pas | Nom de dossier / format / mauvais `UPDATE.APP` | Dossier `dload` en FAT32, `UPDATE.APP` exact du modèle. |
+| Fastboot « FRP Locked » / « Phone Relocked » | Bootloader verrouillé (normal sur modèles récents) | Ne pas forcer ; utiliser eRecovery/HiSuite/dload officiels. |
+| Reste au logo après flash | Firmware partiel / mauvaise variante | Reprendre le firmware **officiel complet** du bon modèle/région. |
+| Demande de compte Huawei/Honor après réinitialisation | Verrou de compte (anti-vol) | **Ne pas contourner.** Récupération de compte ou SAV sur preuve d'achat. |
+
+> **🔒 Éthique & légalité (Huawei / Honor)** — Le déverrouillage du bootloader n'étant plus proposé officiellement sur la plupart des modèles récents, méfiez-vous des « codes de déverrouillage » vendus en ligne : ils sont souvent frauduleux et associés à du contournement de verrou de compte. Le verrou de compte Huawei/Honor **survit au flash** et ne se lève que par le propriétaire ou le SAV sur preuve d'achat.
+
+---
+
+## 7.2 Motorola (Lenovo/Motorola)
+
+Motorola, propriété de Lenovo, propose un Android proche de l'AOSP (« My UX »), un **fastboot standard**, et — fait notable — un **déverrouillage de bootloader officiel** via un portail constructeur pour les modèles éligibles. La restauration stock se fait avec l'outil **Lenovo Rescue and Smart Assistant (RSA)** ou manuellement en fastboot.
+
+### Modes de connexion
+
+- **Fastboot / bootloader** : éteint, **Volume Bas + Power**. Menu fastboot Motorola.
+- **Recovery** : depuis le fastboot, sélectionner *Recovery*.
+
+### Où trouver le firmware stock officiel
+
+- **Lenovo Rescue and Smart Assistant (RSA)** (Windows) : l'outil **officiel** qui détecte le modèle, télécharge le **firmware signé** depuis les serveurs Lenovo/Motorola et le réinstalle (« Rescue »). C'est la voie recommandée pour un appareil qu'on possède.
+- Firmware au format « **factory / retail firmware** » (dossier d'images `.img` + un script `flashfile.xml`/`servicefile.xml`). **N'utilisez que des firmwares officiels** correspondant exactement au **codename** (ex. `nio`, `rhode`) et au **canal** (retail vs opérateur).
+
+### Procédure A — Lenovo RSA (recommandée)
+
+**Prérequis** : RSA installé, pilotes Motorola, câble data, batterie > 50 %.
+**Temps estimé** : 20–40 min (téléchargement inclus).
+
+1. Installer et lancer **RSA**.
+2. Brancher l'appareil (allumé si possible, sinon en mode détection selon l'assistant).
+3. Choisir **Rescue** ; RSA identifie l'appareil et récupère le firmware officiel.
+4. Lancer la restauration ; ne pas débrancher.
+5. Redémarrage automatique.
+
+### Procédure B — Flash fastboot manuel (technicien)
+
+**Prérequis** : Platform-Tools (fastboot officiel), firmware retail extrait, batterie > 50 %.
+
+1. Extraire le firmware ; ouvrir un terminal dans le dossier.
+2. Mettre l'appareil en **fastboot** et le brancher (`fastboot devices` doit le lister).
+3. Flasher les partitions dans l'ordre indiqué par le `flashfile.xml` officiel (bootloader, radio, puis les images système ; commandes `fastboot flash <partition> <image>` et `fastboot --slot all` pour les appareils A/B).
+4. `fastboot reboot`.
+
+> **🛠️ Astuce pro** — Suivez **exactement l'ordre** des commandes du `flashfile.xml` officiel. Sur les appareils A/B, pensez à flasher les deux slots (ou à laisser le script officiel gérer). Un `fastboot erase userdata` efface les données : ne l'incluez que si un effacement est voulu.
+
+### Erreurs courantes & solutions (Motorola)
+
+| Symptôme | Cause | Solution |
+|---|---|---|
+| `fastboot` : « preflash validation failed » | Anti-rollback / version antérieure | Flasher une version **≥** à celle installée. |
+| RSA ne détecte pas l'appareil | Pilote / câble / port | Réinstaller pilotes Motorola, câble data, USB 2.0 direct. |
+| Bootloop après flash partiel | Images manquantes / slot | Reprendre la séquence **complète** du `flashfile.xml`. |
+| « Your device has been unlocked and can't be trusted » au boot | Bootloader déverrouillé (avertissement normal) | Message informatif ; reverrouiller après reflash stock si souhaité. |
+
+> **🔒 Éthique & légalité (Motorola)** — Le déverrouillage du bootloader Motorola passe par le **portail officiel du constructeur** (obtention d'un code lié à l'appareil), s'effectue **sur son propre appareil**, **efface tout** et **peut annuler la garantie**. Ce n'est pas un moyen de contourner un verrou de compte. Le FRP subsiste après flash.
+
+---
+
+## 7.3 Vivo / iQOO
+
+Vivo et sa sous-marque **iQOO** (groupe BBK, comme OPPO/Realme/OnePlus) tournent sous **Funtouch OS** ou **OriginOS** selon la région. Comme chez OPPO/Realme, les outils de flash bas niveau sont **réservés au réseau agréé** ; la voie grand public est l'OTA et la mise à jour locale par firmware officiel.
+
+### Modes de connexion
+
+- **Recovery** : éteint, **Volume Haut + Power**.
+- **Fastboot** : exposé sur certains modèles (**Volume Bas + Power**), souvent verrouillé.
+
+### Où trouver le firmware stock officiel
+
+- **OTA** via *Paramètres > Mise à jour du système* (voie normale, la plus sûre).
+- **Firmware officiel local** : certains modèles acceptent un paquet firmware officiel signé (souvent une archive `.zip`/`PD****`) appliqué depuis la mise à jour locale. **Ne prendre que le firmware officiel du modèle/région exact** depuis le site support Vivo/iQOO.
+- **SAV agréé** pour les restaurations bas niveau (outils internes non distribués publiquement).
+
+### Procédure — mise à jour locale (firmware officiel)
+
+**Prérequis** : firmware officiel complet du modèle/région, batterie > 50 %.
+**Temps estimé** : 10–20 min.
+
+1. Copier le paquet firmware officiel dans le stockage interne (racine).
+2. Ouvrir l'app de mise à jour système, menu, **Mise à jour locale** (le chemin varie selon Funtouch/OriginOS).
+3. Sélectionner le paquet ; l'appareil vérifie la signature et applique.
+4. Redémarrage.
+
+### Erreurs courantes & solutions (Vivo / iQOO)
+
+| Symptôme | Cause | Solution |
+|---|---|---|
+| Firmware local refusé | Paquet non signé / mauvaise région | Reprendre le **firmware officiel** exact. |
+| Bloqué au logo | Système corrompu | Recovery → *Wipe data* (efface) ; sinon SAV. |
+| Fastboot indisponible/verrouillé | Non exposé / bootloader locked | Passer par OTA/mise à jour locale/SAV. |
+| Compte Vivo demandé après réinitialisation | Verrou anti-vol | **Ne pas contourner** ; récupération de compte ou SAV sur preuve d'achat. |
+
+> **🔒 Éthique & légalité (Vivo / iQOO)** — Les outils et serveurs de flash bas niveau Vivo circulent avec des offres de « bypass » : **nous ne les documentons pas**. En cas de verrou de compte, orientez vers le SAV Vivo/iQOO sur preuve d'achat.
+
+---
+
+## 7.4 Sony Xperia
+
+Sony est l'un des rares constructeurs à fournir des outils de flash et de mise à jour **officiels et publics** pour le grand public, ainsi qu'un **déverrouillage de bootloader officiel** documenté sur son site développeur pour les modèles éligibles.
+
+### Modes de connexion
+
+- **Fastboot** : éteint, maintenir **Volume Haut** en branchant le câble USB (LED bleue).
+- **Flash mode (S1/Emma)** : éteint, maintenir **Volume Bas** en branchant (LED verte) ; utilisé par les outils de flash Sony.
+- **Recovery** : les Xperia récents n'ont pas de recovery à combinaison classique ; la maintenance passe par les outils PC.
+
+### Où trouver le firmware stock officiel et les outils
+
+- **Xperia Companion** (Windows/macOS, officiel Sony) : sauvegarde, mise à jour, et surtout **« Réparation du logiciel »** (*Software repair*) qui **retélécharge le firmware officiel** et le réinstalle. Voie recommandée pour un appareil qu'on possède.
+- **Emma (Emma Flash Tool)** : outil de flash **officiel Sony**, à l'origine destiné au réseau de service, qui télécharge et flashe le firmware signé du modèle détecté.
+- **Newflasher** : outil en ligne de commande **utilisé avec des firmwares officiels Sony** (souvent obtenus via **XperiFirm**, qui récupère les firmwares depuis les serveurs officiels Sony). À réserver aux techniciens avertis.
+
+### Procédure A — Xperia Companion « Réparation du logiciel » (recommandée)
+
+**Prérequis** : Xperia Companion installé, câble data, batterie > 50 %.
+**Temps estimé** : 20–40 min.
+
+1. Installer et lancer **Xperia Companion**.
+2. Choisir **Réparation du logiciel** et suivre l'assistant.
+3. À l'invite, **éteindre** l'appareil, maintenir la touche indiquée et brancher le câble.
+4. L'outil télécharge le firmware **officiel** et le réinstalle.
+5. Redémarrage automatique.
+
+### Procédure B — Newflasher + firmware XperiFirm (technicien)
+
+**Prérequis** : firmware officiel récupéré via **XperiFirm** (serveurs Sony), **Newflasher** dans le même dossier, pilotes Sony, batterie > 50 %.
+**Temps estimé** : 15–30 min.
+
+1. Télécharger le firmware **officiel** du modèle/région exact via XperiFirm.
+2. Placer les fichiers du firmware dans le dossier de **Newflasher**.
+3. Mettre l'appareil en **Flash mode** (Volume Bas + branchement, LED verte).
+4. Lancer Newflasher ; il flashe les partitions. Par défaut, adapter les options selon qu'on veut conserver ou effacer `userdata`.
+5. Débrancher et redémarrer à la fin.
+
+> **🛠️ Astuce pro** — Avec Newflasher, si vous voulez **conserver les données**, veillez à ne pas inclure/valider l'effacement d'`userdata` (l'outil demande ou se paramètre selon les fichiers présents). Pour une remise à neuf, laissez l'effacement se faire.
+
+### Erreurs courantes & solutions (Sony Xperia)
+
+| Symptôme | Cause | Solution |
+|---|---|---|
+| Companion ne détecte pas en réparation | Mauvaise touche / pilote | Suivre l'assistant à la lettre (touche + branchement), réinstaller pilotes Sony. |
+| Newflasher s'arrête sur une partition | Firmware incomplet / mauvaise variante | Reprendre le firmware **complet** du bon modèle/région via XperiFirm. |
+| Pas de réseau après flash | Firmware d'une autre région | Flasher la **variante régionale** correcte. |
+| Compte Google demandé après reset | FRP actif | **Ne pas contourner** ; compte du propriétaire ou SAV sur preuve d'achat. |
+
+> **🔒 Éthique & légalité (Sony)** — Le déverrouillage du bootloader Xperia se demande sur le **site développeur officiel Sony** (code lié à l'IMEI), **sur son propre appareil** ; il **efface tout**, **peut invalider certaines fonctions caméra** et la garantie. À présenter uniquement comme opération du propriétaire, jamais comme contournement.
+
+---
+
+## 7.5 Nokia / HMD
+
+Les smartphones Nokia (édités par **HMD Global**, puis progressivement sous marque **HMD**) reposent sur **Android One / Android quasi-stock**, avec un **fastboot standard**. HMD fournit un service de récupération officiel, mais les images d'usine ne sont pas librement publiées : la restauration bas niveau passe par le **SAV** ou l'outil de récupération en ligne.
+
+### Modes de connexion
+
+- **Fastboot / bootloader** : éteint, **Volume Bas + Power** (parfois Volume Bas + branchement USB).
+- **Recovery** : depuis le fastboot, sélectionner *Recovery*.
+
+### Où trouver le firmware stock officiel
+
+- **OTA officielle** (Android One garantit des mises à jour régulières) : voie normale, la plus sûre.
+- **Outil de récupération / SAV HMD** : pour un système gravement corrompu, HMD propose une récupération via le support officiel. Les **images d'usine ne sont pas distribuées publiquement** ; méfiez-vous des firmwares Nokia « OST » circulant sur des forums, souvent non officiels.
+
+### Procédure — récupération
+
+**Prérequis** : appareil qu'on possède, accès au support officiel HMD si l'OTA ne suffit pas.
+**Temps estimé** : variable.
+
+1. Tenter d'abord une **mise à jour OTA** ou un *Wipe data* en recovery si l'appareil démarre partiellement.
+2. Si le système est irrécupérable, passer par l'**outil de récupération officiel HMD** / le SAV avec preuve d'achat.
+
+### Erreurs courantes & solutions (Nokia / HMD)
+
+| Symptôme | Cause | Solution |
+|---|---|---|
+| Fastboot « not allowed in locked state » | Bootloader verrouillé | Ne pas forcer ; OTA / SAV officiel. |
+| Firmware « OST » tiers refusé ou risqué | Fichier non officiel | Éviter ; passer par le canal officiel HMD. |
+| FRP demandé après reset | Verrou anti-vol | **Ne pas contourner** ; compte du propriétaire ou SAV. |
+
+> **🔒 Éthique & légalité (Nokia / HMD)** — Les outils « OST LA » et firmwares Nokia diffusés hors canal officiel sont fréquemment associés à des offres de contournement FRP : **nous ne les documentons pas**. Restauration par OTA ou SAV sur preuve d'achat.
+
+---
+
+## 7.6 Rappel LG (LGUP et méthode « legacy »)
+
+LG a quitté le marché des smartphones en 2021, mais ses appareils restent nombreux en réparation. La restauration stock LG s'appuie sur l'outil **LGUP** (et l'ancien **LG Flash Tool** pour les modèles plus anciens), avec des **KDZ/TOT** officiels.
+
+### Modes de connexion
+
+- **Download mode** : éteint, maintenir **Volume Haut** en branchant le câble USB → écran « Firmware Update » / « Download mode ».
+- **Recovery** : combinaison Volume Bas + Power puis relâcher/represser selon le modèle (efface les données).
+
+### Où trouver le firmware stock officiel
+
+- **KDZ** : firmware officiel complet LG (un seul fichier), utilisé par **LGUP**.
+- **TOT** (+ fichier **.dll**) : format bas niveau utilisé par l'ancien **LG Flash Tool** (méthode « legacy »).
+- Les firmwares officiels LG restent archivés sur des miroirs communautaires réputés ; vérifier la correspondance **modèle exact** (ex. `LM-G710`) et **région/opérateur**.
+
+### Procédure A — LGUP (KDZ)
+
+**Prérequis** : **LGUP** installé (avec le patch DLL du modèle si requis), pilotes LG Mobile, câble data, batterie > 50 %.
+**Temps estimé** : 10–20 min.
+
+1. Installer pilotes LG + **LGUP**.
+2. Mettre l'appareil en **Download mode** et le brancher ; LGUP le détecte.
+3. Sélectionner le **KDZ** officiel.
+4. Choisir le mode :
+   - **UPGRADE** : met à jour en conservant les données ;
+   - **REFURBISH** : remise à neuf, **efface tout** ;
+   - **(éviter les modes de partitionnement avancés sans maîtrise)**.
+5. Lancer, ne pas débrancher, attendre la fin et le redémarrage.
+
+### Procédure B — LG Flash Tool (TOT, legacy)
+
+Réservée aux modèles anciens fournis en **TOT + DLL**. Suivre la notice de l'outil : sélectionner le `.dll`, le `.tot`, mettre l'appareil en Download mode, flasher. Méthode plus fragile, à privilégier seulement quand aucun KDZ n'est disponible.
+
+### Erreurs courantes & solutions (LG)
+
+| Symptôme | Cause | Solution |
+|---|---|---|
+| LGUP ne détecte pas | Pilote / DLL modèle manquant | Réinstaller pilotes LG, patch LGUP adapté au modèle. |
+| Flash bloqué à un % | Câble/port instable | Câble data, USB 2.0 direct, réessayer. |
+| Bootloop après flash | KDZ d'une mauvaise région | Reprendre le **KDZ** du bon modèle/région. |
+| FRP demandé après REFURBISH | Verrou anti-vol | **Ne pas contourner** ; compte du propriétaire ou SAV. |
+
+> **🔒 Éthique & légalité (LG)** — Le mode **REFURBISH** efface tout et sert à remettre à neuf **un appareil qu'on possède**. Il ne retire pas le FRP. Bien que LG ait cessé son activité mobile, le principe reste : pas de contournement de verrou de compte.
+
+---
+
+# Outils par plateforme SoC (flash stock légitime)
+
+Au-delà des outils par marque, il est utile de raisonner par **plateforme SoC** (le fabricant du processeur), car les modes bas niveau et les outils de flash en dépendent directement. Trois grandes familles couvrent l'écrasante majorité des smartphones Android : **Qualcomm** (Snapdragon), **MediaTek** (Dimensity/Helio) et **Unisoc/Spreadtrum**. Cette section décrit leur usage **exclusivement pour la restauration d'un firmware stock officiel sur un appareil qu'on possède**.
+
+> **🔒 Éthique & légalité** — Les outils SoC de bas niveau sont puissants et neutres : leur légitimité dépend entièrement de **l'usage** et de la **preuve de propriété**. Ils sont fréquemment détournés pour du contournement de verrou anti-vol ; **cet ouvrage ne couvre que la restauration stock signée** et exige la preuve de propriété.
+
+![Figure 8.1 — Vue Gestionnaire de périphériques : pilotes QDLoader 9008 (Qualcomm) et VCOM (MediaTek) correctement installés](images/pilotes-soc-gestionnaire.jpg)
+
+## 8.1 Tableau de synthèse : modes, outils, OS
+
+| Plateforme | Mode bas niveau | Outil de flash | OS hôte | Fichier clé |
+|---|---|---|---|---|
+| Qualcomm | **EDL (9008)** / Fastboot | Mi Flash, QFIL/QPST, outils constructeur | Windows | firehose/`prog_*.mbn`, `rawprogram*.xml` |
+| MediaTek | **BROM / Preloader** | **SP Flash Tool** | Windows (Linux possible) | **scatter** `MT****_Android_scatter.txt` |
+| Unisoc/Spreadtrum | **BootROM / Download** | Outils Spreadtrum (type ResearchDownload/UpgradeDownload) | Windows | `.pac` |
+
+## 8.2 Qualcomm — EDL / mode 9008
+
+### Ce qu'est l'EDL
+
+L'**EDL** (*Emergency Download*, exposé comme périphérique **Qualcomm HS-USB QDLoader 9008**) est un mode d'urgence **gravé dans le SoC**. Il sert quand l'appareil est trop endommagé pour entrer en Fastboot ou dans le mode Download du constructeur (bootloader HS, système et recovery détruits). Le PC communique alors avec le SoC via un programme signé appelé **firehose** (`prog_*.mbn` / `xbl_*`), piloté par des fichiers `rawprogram*.xml` et `patch*.xml` qui décrivent le découpage des partitions.
+
+### Usage légitime de restauration
+
+- **Réanimer un appareil « mort »** (écran noir, aucun mode accessible) **qu'on possède**, en réécrivant le firmware **officiel signé** complet.
+- **Réinstaller après une intervention matérielle** (remplacement/reprogrammation de mémoire) sur son propre appareil.
+
+### Prérequis
+
+- **Pilotes Qualcomm HS-USB QDLoader 9008** correctement installés (vérifier dans le Gestionnaire de périphériques).
+- **Firehose officiel** et paquet de partitions **signés et exactement adaptés au modèle** (fournis par le constructeur/SAV ou une box pro sous licence).
+- Outil de flash EDL : **QFIL** (QPST) de Qualcomm, ou l'outil du constructeur (ex. Mi Flash en mode EDL).
+- Batterie suffisante ; câble et alimentation stables.
+
+### Entrer en EDL
+
+Selon le modèle : commande logicielle (`adb reboot edl` ou `fastboot oem edl` sur certains), combinaison de touches spécifique, ou — **réservé aux professionnels** — **test point** sur la carte (deux points à court-circuiter à l'insertion du câble). La méthode test point ne se pratique qu'ouvert, avec compétence, sur un appareil qu'on possède/mandaté.
+
+### Procédure générale (QFIL)
+
+**Temps estimé** : 10–25 min.
+
+1. Installer les pilotes 9008 ; brancher l'appareil en EDL (il apparaît en **QDLoader 9008**).
+2. Ouvrir **QFIL**, choisir **Flat Build**.
+3. Sélectionner le **firehose** (`prog_*.mbn`) officiel.
+4. Charger les fichiers **`rawprogram*.xml`** et **`patch*.xml`** du firmware officiel.
+5. Lancer **Download** ; ne pas débrancher.
+6. À la fin, l'appareil redémarre sur le firmware stock.
+
+> **⚠️ Risques (Qualcomm EDL)** — L'EDL avec des fichiers de provenance douteuse ou d'un **mauvais modèle** est l'une des **premières causes de brique définitive et de perte d'IMEI**. Un firehose ou un `rawprogram` non adapté peut écraser des partitions critiques (`persist`, `modem`, `efs`). N'y recourez qu'avec des **ressources officielles signées**, une **compétence avérée**, et jamais « pour essayer ».
+
+> **🔒 Éthique & légalité (Qualcomm EDL)** — L'EDL est souvent mis en avant pour du contournement de verrou : **nous ne le documentons que pour restaurer un firmware stock signé** sur un appareil dont la propriété est prouvée. Les firehose signés sont distribués sous contrôle du constructeur/réseau agréé.
+
+### Erreurs courantes & solutions (Qualcomm)
+
+| Symptôme | Cause | Solution |
+|---|---|---|
+| « Sahara fail » / « Sahara communication failure » | Firehose non signé/inadapté, câble | Utiliser le **firehose officiel du modèle**, câble data, port USB 2.0. |
+| Appareil non reconnu en 9008 | Pilotes QDLoader manquants | Installer/mettre à jour les pilotes Qualcomm. |
+| Flash « fail » sur une partition | `rawprogram` d'un autre modèle | Prendre le paquet **exact** du modèle/région. |
+| Perte d'IMEI après flash | Écrasement `efs`/`modem` | Restaurer depuis une **sauvegarde EFS** de l'appareil (voir §10) ; sinon SAV. |
+
+## 8.3 MediaTek — SP Flash Tool
+
+### Ce qu'est le mode BROM / Preloader
+
+Les SoC MediaTek exposent un **BootROM (BROM)** et un **Preloader** qui acceptent un flash via **SP Flash Tool** (SmartPhone Flash Tool, Windows, aussi disponible sous Linux). Le pilote de communication est le **MTK USB VCOM / Preloader**. Le fichier central est le **scatter** (`MT****_Android_scatter.txt`), qui décrit l'adresse et la taille de chaque partition du firmware.
+
+### Usage légitime : réinstaller un stock officiel
+
+- **Sortir d'un bootloop** ou réparer un système corrompu **sur son propre appareil** en réécrivant le firmware **officiel** décrit par le scatter.
+- Se fait souvent **sans allumer** l'appareil : SP Flash Tool attend, on branche l'appareil **éteint** et le Preloader se connecte quelques secondes.
+
+### Prérequis
+
+- **SP Flash Tool** (version compatible avec le SoC/modèle).
+- **Pilotes MTK VCOM / Preloader** installés.
+- Firmware **officiel** complet du modèle/région, contenant le **scatter** et les images.
+- Batterie chargée ; câble/alimentation stables.
+
+### Les modes de SP Flash Tool
+
+- **Download Only** : écrit les partitions du firmware **sans toucher** à ce qui n'est pas listé — **mode recommandé** pour réinstaller un stock officiel. Selon la config du scatter, on peut cocher/décocher les partitions à écrire (garder `userdata` intact pour conserver les données, ou tout réécrire pour une remise à neuf).
+- **Firmware Upgrade** : met à jour l'ensemble, y compris certaines partitions supplémentaires ; efface généralement les données.
+- **Format All + Download** : **à éviter** — formate tout, y compris des zones sensibles ; risque élevé de perte de calibration/IMEI.
+
+### Procédure — Download Only (réinstaller un stock officiel)
+
+**Temps estimé** : 5–15 min.
+
+1. Installer les pilotes **VCOM/Preloader**.
+2. Ouvrir **SP Flash Tool**, onglet **Download**.
+3. Charger le **scatter** officiel (`MT****_Android_scatter.txt`) → la liste des partitions se remplit.
+4. Choisir **Download Only**.
+5. Décocher `userdata` si l'on veut **conserver les données** (ou tout laisser coché pour une remise à neuf).
+6. Cliquer **Download**, puis brancher l'appareil **éteint** ; le Preloader se connecte, le flash démarre.
+7. Attendre l'anneau vert (« Download OK »).
+
+> **⚠️ Risques (MediaTek)** — Ne **jamais** utiliser **Format All** ni écraser `nvram`/`nvdata`/`protect*`/`persist` sans nécessité : c'est la voie directe vers la **perte d'IMEI** et de calibration. Un scatter/firmware d'un **autre modèle** peut briquer l'appareil. Vérifiez la correspondance exacte et l'**anti-rollback** le cas échéant.
+
+> **🔒 Éthique & légalité (MediaTek)** — SP Flash Tool est massivement détourné pour du contournement de verrou et des « auth bypass ». **Cet ouvrage ne l'emploie que pour réinstaller un firmware stock officiel signé** sur un appareil dont la propriété est prouvée. Sur les modèles récents, MediaTek impose une **authentification (DAA/SLA)** ; ne cherchez pas à la contourner — c'est une protection.
+
+### Erreurs courantes & solutions (MediaTek)
+
+| Symptôme | Code / message | Solution |
+|---|---|---|
+| Rien ne se passe au branchement | Pilotes VCOM absents | Installer les pilotes MTK VCOM/Preloader ; brancher **éteint**. |
+| « STATUS_BROM_CMD_STARTCMD_FAIL » | Mauvais moment de branchement / câble | Rebrancher éteint, câble data, USB 2.0. |
+| « SP Flash Tool authentication » requise | Auth DAA/SLA (modèles récents) | **Ne pas contourner** ; utiliser les fichiers/auth **officiels** du modèle. |
+| Scatter refusé | Firmware d'un autre modèle | Prendre le firmware **exact** du modèle/région. |
+| Perte d'IMEI après flash | Écrasement `nvram`/`nvdata` | Restaurer depuis sauvegarde (voir §10) ; sinon SAV. |
+
+## 8.4 Unisoc / Spreadtrum (aperçu)
+
+**Unisoc** (anciennement **Spreadtrum**) équipe de nombreux appareils d'entrée de gamme. Le mode bas niveau est un **BootROM/Download mode**, et le firmware se présente au format **`.pac`**, flashé par les outils Spreadtrum de type **ResearchDownload** / **UpgradeDownload** (Windows), avec les **pilotes SPRD/Unisoc**.
+
+### Principe (restauration stock)
+
+**Temps estimé** : 5–15 min.
+
+1. Installer les **pilotes Unisoc/SPRD**.
+2. Ouvrir l'outil (ResearchDownload/UpgradeDownload), charger le **`.pac`** officiel du modèle.
+3. Lancer le téléchargement, puis brancher l'appareil **éteint** (le BootROM se connecte).
+4. Attendre « Passed ».
+
+> **⚠️ Risques (Unisoc)** — Comme ailleurs, un `.pac` d'un **mauvais modèle** ou l'écrasement des zones NV peut détruire l'IMEI/la calibration. Ne flashez que le **firmware officiel** exact, et évitez les options d'effacement des partitions NV sans nécessité.
+
+> **🔒 Éthique & légalité (Unisoc)** — Restauration stock signée uniquement, sur preuve de propriété. Les usages de contournement ne sont pas couverts.
+
+---
+
+# Recovery, root et ROMs personnalisées (sur SON appareil)
+
+Ce chapitre traite d'opérations **avancées et facultatives** que **le propriétaire** peut réaliser **sur son propre appareil** : installer un recovery personnalisé, obtenir les droits root, ou installer une ROM personnalisée. Elles supposent toutes un **bootloader déverrouillé par la méthode officielle du constructeur** (option « Déverrouillage OEM » des options développeur, portail constructeur le cas échéant). Elles ne sont **jamais** un moyen de contourner un verrou de compte ou un verrou anti-vol.
+
+> **🔒 Éthique & légalité — exiger la preuve de propriété** : ces manipulations ne se pratiquent que sur un appareil **dont on est propriétaire** (ou avec mandat écrit), après vérification. Le déverrouillage du bootloader **exige de se connecter au compte du propriétaire** (protection FRP) : c'est précisément ce qui empêche de les employer sur un appareil volé. **Elles ne retirent aucun verrou de compte.**
+
+> **⚠️ Risques — à énoncer AVANT toute opération de ce chapitre** :
+> - **Efface tout** : déverrouiller le bootloader **supprime l'intégralité des données** de l'appareil.
+> - **Sécurité affaiblie** : un bootloader déverrouillé et/ou le root **cassent la chaîne de démarrage vérifié**. Les applications sensibles (**banque, paiement sans contact, DRM vidéo, applications d'entreprise**) peuvent **cesser de fonctionner** (échec de l'attestation Play Integrity), et l'appareil devient plus exposé aux logiciels malveillants.
+> - **Garantie** : ces opérations **peuvent annuler la garantie** et déclencher des indicateurs **irréversibles** (Knox 0x1, e-fuse, bit de garantie).
+> - **Risque de brique** : une erreur (mauvaise image, mauvais modèle, ARB) peut rendre l'appareil inutilisable.
+
+## 9.1 Le custom recovery (TWRP / OrangeFox)
+
+### À quoi il sert
+
+Un **recovery personnalisé** remplace le recovery stock (volontairement limité) par un environnement de maintenance étendu. Les plus connus sont **TWRP** (Team Win Recovery Project) et **OrangeFox**. Ses fonctions typiques, **sur son propre appareil** :
+
+- **Sauvegarde et restauration NANDroid** : image complète des partitions (voir §10) — l'un de ses usages les plus utiles et les plus légitimes.
+- Installation de paquets `.zip` (ROM, correctifs) non signés par le constructeur.
+- Gestion des partitions, effacements ciblés, montage du stockage pour transférer des fichiers.
+
+### Prérequis et principe d'installation
+
+- **Bootloader déverrouillé officiellement** (obligatoire).
+- **Image de recovery correspondant exactement au modèle** (un TWRP d'un autre modèle peut briquer ou empêcher le démarrage).
+- Platform-Tools (fastboot).
+
+Principe général (varie selon les appareils, notamment A/B et sans partition recovery dédiée) :
+
+1. Démarrer en **fastboot**.
+2. Tester d'abord sans installer : `fastboot boot twrp.img` (démarre le recovery sans l'écrire) lorsque l'appareil le supporte.
+3. Si tout fonctionne, installer selon la méthode documentée pour le modèle (flash de la partition recovery, ou installation via l'image bootée sur les appareils A/B).
+
+> **🛠️ Astuce pro** — **`fastboot boot`** (démarrer le recovery sans l'écrire) est le réflexe de prudence : on vérifie la compatibilité **avant** de rendre le changement permanent. Si l'écran reste noir ou boucle, on n'a rien écrit.
+
+> **⚠️ Risques** — Un recovery d'un **mauvais modèle/variante** est une cause classique de brique. Vérifiez le **codename** exact.
+
+## 9.2 Le root (Magisk)
+
+### Ce qu'est le root et ses bénéfices
+
+Le **root** confère les droits **superutilisateur** (administrateur) sur Android. **Magisk** est la solution de référence : elle obtient le root en **modifiant l'image de démarrage (`boot.img`)** de manière « systemless » (sans altérer la partition system), ce qui facilite la réversibilité.
+
+Bénéfices, **pour le propriétaire averti** : contrôle fin du système, pare-feu avancés, sauvegardes complètes, automatisations, suppression d'applications préinstallées, modules communautaires.
+
+### Principe d'installation (sur son appareil, bootloader déverrouillé)
+
+1. Récupérer le **`boot.img`** correspondant **exactement** au firmware installé (issu du firmware officiel du modèle/version).
+2. Le **patcher** avec l'application **Magisk** (fonction « Sélectionner et corriger un fichier »).
+3. Rapatrier le `boot.img` patché sur le PC.
+4. En fastboot : `fastboot flash boot boot_patched.img` (ou `fastboot boot` pour tester d'abord).
+5. Redémarrer ; vérifier le root dans l'app Magisk.
+
+### Risques spécifiques du root
+
+- **Sécurité** : le root **casse l'attestation d'intégrité** (Play Integrity). Les applications **bancaires, de paiement (NFC), de streaming (DRM), et certaines applications d'entreprise/MDM** peuvent **refuser de fonctionner**. Les contournements existent mais sont fragiles et relèvent d'un choix assumé.
+- **Surface d'attaque** : une application malveillante à qui l'on accorde le root a un contrôle **total** de l'appareil.
+- **Mises à jour** : les OTA échouent souvent sur un appareil rooté ; il faut généralement réintégrer le `boot.img` stock avant de mettre à jour.
+- **Garantie** : indicateurs irréversibles possibles (Knox, e-fuse).
+
+> **🔒 Éthique & légalité** — Le root est un choix **du propriétaire sur son appareil**. Ce **n'est pas** un moyen d'accéder à un appareil verrouillé par un compte : il **exige** un bootloader déverrouillé, lequel exige le compte du propriétaire et **efface tout**.
+
+## 9.3 Installer une ROM personnalisée (LineageOS)
+
+### Ce qu'est une ROM personnalisée
+
+Une **ROM personnalisée** est une version d'Android maintenue par la communauté. **LineageOS** en est l'exemple le plus connu (héritier de CyanogenMod) : Android proche de l'AOSP, sans surcouche, souvent plus léger, et prolongeant la durée de vie logicielle d'appareils qui ne reçoivent plus de mises à jour officielles. C'est un usage **légitime et écologique** — **sur son propre appareil**.
+
+### Étapes générales (sur son appareil, bootloader déverrouillé officiellement)
+
+**Prérequis** : bootloader déverrouillé (efface tout), build LineageOS **du codename exact**, éventuellement un recovery adapté, Platform-Tools, batterie chargée, **sauvegarde des données faite au préalable**.
+**Temps estimé** : 30–60 min.
+
+1. **Sauvegarder** toutes les données (elles seront effacées).
+2. Se rendre sur le site **officiel LineageOS** et suivre les **instructions spécifiques au modèle** (chaque appareil a sa page ; la procédure varie sensiblement — A/B, `dynamic partitions`, recovery Lineage vs générique).
+3. Installer le **recovery** indiqué et/ou démarrer dessus.
+4. **Effacer** (format data) comme indiqué.
+5. **Installer** le `.zip` LineageOS (via recovery ou `adb sideload`).
+6. Installer, si souhaité, un paquet de services applicatifs compatible **de son choix** (ou rester sans, pour un appareil dégooglisé).
+7. Redémarrer ; premier démarrage long.
+
+> **🛠️ Astuce pro** — La règle absolue : **suivre le guide officiel du modèle exact**, pas un tutoriel générique. Les différences entre appareils (slots A/B, vbmeta, copy-partitions) font qu'une procédure valable pour un modèle **brique** un autre.
+
+### Risques et limites
+
+- **Efface tout** (dès le déverrouillage du bootloader).
+- **Sécurité et compatibilité** : mêmes limites que le root (banque, paiement, DRM, MDM d'entreprise peuvent échouer selon l'état de l'attestation).
+- **Fonctions matérielles** : certaines fonctions (caméra avancée, capteurs, VoLTE) peuvent être partiellement supportées selon la maturité du portage.
+- **Support** : une ROM communautaire dépend de la disponibilité d'un mainteneur pour le modèle.
+
+> **🔒 Éthique & légalité — exiger la preuve de propriété** : installer une ROM personnalisée est un droit du **propriétaire** sur **son** appareil. Ce **n'est pas** un moyen de contourner un verrou de compte : le déverrouillage préalable du bootloader passe par le compte du propriétaire et efface l'appareil. On n'installe pas de ROM sur un appareil dont la propriété n'est pas prouvée.
+
+### Revenir au stock
+
+À tout moment, le propriétaire peut **revenir au firmware officiel** (voir Sections 3 et 7) puis, s'il le souhaite, **reverrouiller le bootloader** après avoir reflashé une image d'usine intacte (`fastboot flashing lock` / mode « lock » de l'outil constructeur). Reverrouiller sur une ROM non stock **brique** l'appareil : ne reverrouiller que sur un firmware **stock officiel exact**.
+
+---
+
+# Sauvegarde avant intervention
+
+Aucune opération de flash sérieuse ne se lance sans **sauvegarde préalable**. C'est la différence entre un incident récupérable et une perte définitive. Ce chapitre détaille les niveaux de sauvegarde, la sauvegarde d'image complète (NANDroid), le cas particulier et sensible des partitions **EFS/IMEI**, et les bonnes pratiques d'atelier.
+
+> **🔒 Éthique & légalité** — Sauvegarder les données d'un client, c'est manipuler des **données personnelles** : appliquez le RGPD (ne copier que le nécessaire, ne rien conserver ni divulguer, effacement sécurisé ensuite). La sauvegarde se fait **sur l'appareil du propriétaire, avec son accord**, jamais pour extraire des données d'un appareil dont la propriété n'est pas prouvée.
+
+![Figure 10.1 — Les niveaux de sauvegarde : données utilisateur, image NANDroid par partition, sauvegarde EFS/IMEI dédiée](images/niveaux-sauvegarde.jpg)
+
+## 10.1 Pourquoi et quoi sauvegarder
+
+Les niveaux, du plus simple au plus technique :
+
+1. **Données utilisateur** : photos, contacts, messages, documents. Voie normale : **sauvegarde cloud du propriétaire** (compte Google/Apple/Samsung), ou copie via l'outil officiel (**Smart Switch**, **HiSuite**, **Xperia Companion**, **Finder/Apple Devices**). À faire **avant** tout flash qui efface `userdata`.
+2. **Image complète des partitions (NANDroid)** : capture l'état exact du système, utile pour revenir en arrière après une modification (root, ROM). Se fait via un **recovery personnalisé** sur un appareil au bootloader déverrouillé.
+3. **Partitions d'identité et de calibration (EFS/IMEI, persist, nvram)** : les plus critiques ; leur sauvegarde permet de **restaurer son propre appareil** si un flash les corrompt.
+
+> **⚠️ Risques** — Beaucoup d'opérations de flash **effacent `userdata`** (CSC Samsung, clean all Xiaomi, Restaurer iPhone, déverrouillage de bootloader). **Toujours** vérifier avec le propriétaire que ses données sont sauvegardées avant de lancer.
+
+## 10.2 La sauvegarde NANDroid (via recovery, sur son appareil)
+
+Une **sauvegarde NANDroid** est une **image des partitions** réalisée depuis un recovery personnalisé (TWRP/OrangeFox), sur un appareil **qu'on possède** au bootloader déverrouillé. Elle permet de **restaurer l'état exact** de l'appareil (système, données, boot) — un filet de sécurité idéal avant de rooter ou d'installer une ROM.
+
+### Principe
+
+**Prérequis** : recovery personnalisé installé, espace de stockage suffisant (interne ou microSD/OTG), batterie chargée.
+**Temps estimé** : 5–20 min selon le volume.
+
+1. Démarrer sur le **recovery**.
+2. Choisir **Backup / Sauvegarde**.
+3. Sélectionner les partitions à sauvegarder — typiquement **boot**, **system**, **data** (et **vendor** selon les cas). Pour une image « retour arrière » complète, inclure boot + system(+vendor) ; ajouter data pour tout figer.
+4. Choisir la destination (**stockage externe recommandé** : microSD/OTG, pour ne pas perdre la sauvegarde en cas de format du stockage interne).
+5. Lancer ; conserver l'archive sur un support **externe** au PC/atelier également.
+
+### Restauration
+
+Depuis le même recovery : **Restore / Restaurer**, choisir la sauvegarde, sélectionner les partitions, valider. Utile pour revenir à l'état d'avant intervention.
+
+> **🛠️ Astuce pro** — Copiez la sauvegarde NANDroid **hors de l'appareil** (PC de l'atelier, support externe) immédiatement : une sauvegarde stockée uniquement dans la partition qui sera effacée ne sert à rien.
+
+## 10.3 EFS / IMEI : la partition à comprendre et à ne JAMAIS altérer
+
+### Ce qu'est l'EFS et ce qu'est l'IMEI
+
+La partition **EFS** (et selon les plateformes **nvram/nvdata**, **modemst**, **persist**) contient l'**identité réseau** de l'appareil : notamment son ou ses **IMEI**, les identifiants radio, et des données de **calibration** (Wi-Fi/Bluetooth, capteurs). L'**IMEI** (*International Mobile Equipment Identity*) est un **numéro d'identité légal, unique, attribué à l'appareil par le fabricant**. Il identifie le terminal sur les réseaux mobiles et sert notamment au **blocage des appareils déclarés volés** (listes IMEI). 
+
+> **🔒 Éthique & légalité — point capital** : l'IMEI est une **donnée d'identité légale de l'appareil**. On ne le **modifie JAMAIS**. Changer, falsifier ou « réparer » un IMEI pour le faire différer de celui d'origine est **illégal** dans de très nombreux pays et sert typiquement à maquiller un appareil volé. Ce que l'on fait légitimement, c'est **sauvegarder** l'EFS de **son propre appareil** afin de pouvoir le **restaurer à l'identique** si un flash le corrompt — c'est-à-dire remettre l'appareil dans **son état d'origine**, avec **son propre IMEI d'usine**, jamais un autre.
+
+### Pourquoi sauvegarder l'EFS
+
+Certaines opérations bas niveau (EDL, SP Flash Tool mal ciblé, écrasement de `nvram`/`modem`/`persist`) peuvent **corrompre l'EFS** et entraîner une **perte d'IMEI** (« IMEI 0 » / « null », plus de réseau). Si l'on dispose d'une **sauvegarde EFS de l'appareil réalisée avant l'incident**, on peut **restaurer l'identité d'origine** de **ce même appareil**. Sans sauvegarde, la récupération est difficile, parfois impossible sans passer par le SAV.
+
+### Principe de sauvegarde EFS (sur son appareil)
+
+**Prérequis** : recovery personnalisé (ou méthode adaptée à la plateforme), bootloader déverrouillé, appareil qu'on possède.
+
+1. Démarrer sur le **recovery**.
+2. Dans **Backup**, inclure explicitement **EFS** (et selon la plateforme **Modem/nvram/persist**) parmi les partitions.
+3. Sauvegarder sur un support **externe** et **copier l'archive hors de l'appareil**.
+4. Conserver cette sauvegarde **associée au modèle et à l'IMEI d'origine** de l'appareil dans le journal d'atelier.
+
+> **⚠️ Risques** — Ne **restaurez jamais** une sauvegarde EFS **d'un autre appareil** : cela dupliquerait un IMEI et corromprait la calibration — illégal et techniquement destructeur. Une sauvegarde EFS ne sert qu'à **restaurer l'appareil dont elle provient**.
+
+## 10.4 Bonnes pratiques de sauvegarde en atelier
+
+| Bonne pratique | Détail |
+|---|---|
+| **Sauvegarder d'abord, flasher ensuite** | Aucune exception dès que `userdata` peut être touché. |
+| **Privilégier les outils officiels** | Smart Switch, HiSuite, Xperia Companion, Finder/Apple Devices pour les données utilisateur. |
+| **NANDroid + EFS avant modification** | Sur appareil au bootloader déverrouillé, image complète et EFS **avant** root/ROM. |
+| **Stockage externe et copie déportée** | Ne jamais laisser l'unique sauvegarde dans la partition qui sera effacée. |
+| **Journal d'atelier** | Modèle exact, IMEI d'origine, firmware flashé (nom + somme de contrôle), version des outils, emplacement de la sauvegarde. |
+| **Vérifier l'intégrité** | Contrôler que la sauvegarde s'ouvre/monte avant de lancer l'opération risquée. |
+| **RGPD** | Ne copier que le nécessaire, ne rien conserver après restitution, **effacement sécurisé** documenté. |
+| **Restituer et effacer** | Après intervention, restaurer les données du propriétaire puis **supprimer** toute copie de l'atelier. |
+
+> **🛠️ Astuce pro** — Datez et nommez clairement chaque sauvegarde (`modele_IMEI-tronqué_date`). En cas d'incident, retrouver rapidement la bonne archive **du bon appareil** évite les erreurs de restauration croisée.
+
+> **🔒 Éthique & légalité — synthèse du chapitre** : sauvegarder protège le propriétaire et le technicien. On sauvegarde **sur l'appareil du propriétaire, avec son accord**, on restaure **le même appareil**, on **ne modifie jamais l'IMEI**, et on **efface** les copies après restitution. Toute manipulation d'identité d'appareil (IMEI) est exclue de cet ouvrage.
+
+---
+
+## Récapitulatif de cette extension
+
+Ces chapitres complètent l'ouvrage sur trois axes : d'autres marques (Huawei/Honor, Motorola, Vivo/iQOO, Sony Xperia, Nokia/HMD, rappel LG), le raisonnement par plateforme SoC (Qualcomm EDL, MediaTek SP Flash Tool, Unisoc), et les opérations avancées facultatives du propriétaire (recovery personnalisé, root Magisk, ROM LineageOS), le tout encadré par une méthodologie de sauvegarde rigoureuse. Le fil directeur reste constant : **restauration de firmware stock officiel signé, sur un appareil dont la propriété est prouvée, avec sauvegarde préalable et information du client**. Les verrous anti-vol et de compte, ainsi que l'IMEI, ne sont **jamais** contournés ni modifiés ; en cas de verrou de propriété, la seule voie demeure la récupération légitime ou le **SAV officiel sur preuve d'achat**.
+
+\newpage
+
+# SECTION 11 — THÉORIE APPROFONDIE DU FIRMWARE ANDROID
+
+Cette section prolonge la Section 1 en descendant d'un cran dans la mécanique interne d'Android. Comprendre la carte des partitions, le système A/B, le démarrage vérifié (AVB), Project Treble et l'anti-rollback n'est pas un luxe académique : c'est **ce qui distingue un flash réussi d'une brique définitive**. Chaque fois qu'un technicien « se trompe de slot », « downgrade sans regarder l'indice binaire » ou « désactive une vérification sans comprendre », il transforme une réparation à 15 minutes en un composant à ressouder — ou en un appareil bon pour la benne. On explique donc ici les mécanismes **pour les respecter**, jamais pour les contourner.
+
+## 11.1 La carte des partitions Android
+
+Le stockage interne d'un smartphone Android (mémoire **UFS** ou **eMMC**) n'est pas un disque unique et homogène. Il est découpé en **partitions**, chacune ayant un rôle précis. Le nombre exact varie selon le fabricant et le SoC (Qualcomm, MediaTek, Exynos, Google Tensor), mais on retrouve partout une même ossature logique. Confondre ces partitions, ou en écraser une par erreur, est la première cause de brique logicielle.
+
+![Figure 11.1 — Schéma de la disposition des partitions d'un smartphone Android moderne](images/partitions-android.jpg)
+
+| Partition | Rôle | Effacement = perte de… | Criticité |
+|---|---|---|---|
+| **bootloader / aboot / xbl / abl** | Premier code exécuté après la ROM de démarrage ; charge et vérifie la suite. | Le démarrage lui-même. | **Vitale** — écraser avec une mauvaise version peut être **définitif**. |
+| **boot** | Noyau Linux (kernel) + ramdisk de démarrage. | La capacité à démarrer le système. | Haute — se reflashe, mais un mauvais boot = bootloop. |
+| **init_boot** (appareils récents) | Ramdisk séparé du noyau (nouvelle organisation GKI). | Le ramdisk de démarrage. | Haute. |
+| **vendor_boot** | Modules et ramdisk propres au fabricant. | Le démarrage matériel spécifique. | Haute. |
+| **dtbo** | Overlays de l'arbre de périphériques (Device Tree). | La description matérielle chargée par le noyau. | Moyenne à haute. |
+| **system** | Le système d'exploitation Android lui-même (framework, apps système). | L'OS. | Haute — se reflashe intégralement. |
+| **vendor** | Couche du fabricant du matériel : pilotes (HAL), binaires propriétaires. | Le pont entre Android et le matériel. | Haute (voir Treble, 11.4). |
+| **product / system_ext / odm** | Personnalisations opérateur/région, surcouches. | Apps et réglages régionaux. | Moyenne. |
+| **vbmeta / vbmeta_system / vbmeta_vendor** | Métadonnées et empreintes de vérification (AVB). | L'intégrité vérifiée du démarrage. | Vitale pour la sécurité (voir 11.3). |
+| **userdata** | Données utilisateur : apps installées, photos, comptes, chiffrement. | **Toutes les données de l'utilisateur.** | Critique côté données (jamais côté démarrage). |
+| **metadata** | Clés et état du chiffrement (FBE — File-Based Encryption). | L'accès aux données chiffrées. | Critique — corrompre = données illisibles. |
+| **persist** | Données d'étalonnage matériel persistantes (capteurs, Wi-Fi/BT MAC, DRM). | Étalonnages usine **non régénérables**. | **Vitale et unique à l'appareil** — ne jamais flasher celle d'un autre. |
+| **modem / NON-HLOS / radio** | Firmware du modem (baseband) : réseau cellulaire. | La connectivité mobile. | Haute. |
+| **EFS / nvram / protect_f/s** | Identité radio : **IMEI**, numéros de série, calibrations réseau. | **L'IMEI et l'identité de l'appareil** — souvent irrécupérable. | **Vitale et légalement sensible.** |
+| **misc** | Petits drapeaux de commande (mode recovery, slot actif). | La commande de démarrage en cours. | Basse individuellement, mais utile. |
+| **recovery** (appareils A-only) | Environnement de récupération (recovery). | L'accès au mode recovery. | Moyenne. |
+
+> **⚠️ Risques (partitions sensibles)** — Les partitions **persist**, **EFS/nvram** et **modem** contiennent des données **propres à chaque appareil**, calibrées en usine. Flasher un `persist.img` ou un `EFS` provenant d'un autre téléphone, même du même modèle, peut **casser définitivement** le Wi-Fi, le Bluetooth, les capteurs ou l'**IMEI**. On ne les touche que via un firmware officiel complet destiné **exactement** à cet appareil, et jamais en pièce détachée récupérée ailleurs.
+
+> **🔒 Éthique & légalité (EFS/IMEI)** — L'**IMEI** est l'identité légale de l'appareil sur le réseau. **Toute modification, réécriture ou usurpation d'IMEI est un délit** dans la plupart des pays (et notamment en France et dans l'UE). Ce livre n'explique **aucune** manipulation d'IMEI. En cas de perte d'IMEI après un incident de flash, la seule voie est le **SAV constructeur** avec preuve de propriété.
+
+## 11.2 Systèmes A/B (seamless updates) vs A-only
+
+Historiquement, Android n'avait qu'un seul jeu de partitions système : c'est l'architecture **A-only**. Depuis Android 7 (et généralisé sur les appareils récents), Google a introduit l'architecture **A/B** (« seamless updates », mises à jour transparentes).
+
+### Principe A/B
+
+L'appareil possède **deux copies** des partitions critiques (boot, system, vendor, vbmeta…), appelées **slot A** et **slot B**. À un instant donné, l'appareil démarre sur un seul slot **actif**. Lors d'une mise à jour OTA, le nouveau système est écrit **sur le slot inactif pendant que l'utilisateur continue d'utiliser le slot actif**. Au redémarrage, le bootloader bascule sur le slot fraîchement mis à jour.
+
+| Aspect | A-only | A/B (seamless) |
+|---|---|---|
+| Copies des partitions système | Une seule | Deux (slot_a / slot_b) |
+| Partition **recovery** dédiée | Oui | Non — le recovery est intégré au boot |
+| Mise à jour | Appareil indisponible pendant l'installation | Installée en arrière-plan, bascule au reboot |
+| Sécurité en cas d'échec OTA | Risque de rester bloqué | **Rollback automatique** sur l'ancien slot |
+| Espace de stockage | Moins consommé | Plus consommé (duplication) |
+| Repère technique du slot | — | Suffixe `_a` / `_b` sur les partitions |
+
+### Conséquences pratiques pour le flash
+
+- Sur A/B, la commande `fastboot flash boot boot.img` ne vise que le **slot courant**. Pour couvrir les deux, on utilise `fastboot flash boot_a` et `fastboot flash boot_b`, ou `fastboot --set-active=a` pour choisir le slot.
+- Un système qui **bootloop après un flash partiel** vient très souvent d'une **incohérence de slots** : slot A à jour, slot B non, et l'appareil bascule sur le mauvais. La solution propre est un **reflash complet** via le script officiel (`flash-all`), qui gère les deux slots.
+- Sur A/B, **il n'y a pas de partition recovery séparée** : chercher à « flasher un recovery » comme sur A-only n'a pas de sens et peut endommager le boot.
+
+> **⚠️ Risques (slots A/B)** — Ne forcez jamais un slot actif « au hasard » pour sortir d'un bootloop : vous pouvez activer un slot vide ou obsolète. Reflashez plutôt l'ensemble avec le paquet officiel complet, qui restaure les deux slots de manière cohérente.
+
+## 11.3 dm-verity et Android Verified Boot (AVB)
+
+### Le démarrage vérifié, maillon par maillon
+
+Android met en œuvre un **démarrage vérifié** (Verified Boot) qui établit une **chaîne de confiance** depuis le tout premier code matériel jusqu'au système. L'idée : à chaque étage, le code en cours vérifie **cryptographiquement** que l'étage suivant n'a pas été modifié avant de le lancer.
+
+1. La **racine de confiance matérielle** (Root of Trust, gravée dans le SoC) vérifie le bootloader primaire.
+2. Le bootloader vérifie le **boot** (noyau/ramdisk) via **AVB** et la partition **vbmeta**.
+3. Le noyau vérifie la partition **system** en continu grâce à **dm-verity**.
+
+**dm-verity** est un module du noyau Linux qui traite `system` (et les partitions en lecture seule) comme un volume à intégrité vérifiée : il calcule des empreintes (hash) organisées en **arbre de Merkle** et compare chaque bloc lu à l'empreinte attendue, signée dans **vbmeta**. Si un seul bloc a été altéré, la lecture échoue — c'est ce qui empêche un logiciel malveillant de modifier discrètement le système.
+
+**AVB (Android Verified Boot 2.0)** est le cadre qui rassemble ces empreintes et les signe. La partition **vbmeta** contient les hachages et la signature de référence ; c'est le « sommet » que le bootloader vérifie.
+
+### L'avertissement au démarrage après déverrouillage
+
+Lorsqu'on **déverrouille le bootloader** (opération légitime sur son propre appareil), l'état de démarrage vérifié change et l'appareil affiche un **avertissement au démarrage** — écran orange ou rouge du type *« The bootloader is unlocked and software integrity cannot be guaranteed »*. Beaucoup de débutants pensent à un bug ou cherchent à « faire disparaître » ce message. **C'est une fonctionnalité de sécurité, pas une erreur.**
+
+| État de démarrage (AVB) | Couleur d'avertissement | Signification |
+|---|---|---|
+| **GREEN** | Aucun (démarrage normal) | Bootloader verrouillé, tout est signé par le fabricant : confiance totale. |
+| **YELLOW** | Jaune + empreinte de la clé | Bootloader verrouillé mais avec une **clé personnalisée** vérifiée. |
+| **ORANGE** | Orange | Bootloader **déverrouillé** : l'intégrité ne peut plus être garantie. |
+| **RED** | Rouge (démarrage bloqué ou dégradé) | Vérification **échouée** : partition corrompue ou altérée. |
+
+L'avertissement orange est **voulu** : il informe l'utilisateur (et un éventuel acheteur d'occasion) que l'appareil n'est plus dans son état d'usine vérifié. Il ne se supprime **légitimement** qu'en **reverrouillant le bootloader** avec un système officiel signé cohérent.
+
+> **🔒 Éthique & légalité (avertissement de démarrage)** — Chercher à masquer l'avertissement orange tout en gardant un bootloader déverrouillé revient à **tromper un futur acheteur** sur l'état de sécurité de l'appareil. On ne le fait pas. Sur son propre appareil, le seul geste propre est soit d'assumer l'avertissement, soit de **reverrouiller** proprement avec la ROM stock officielle.
+
+### Message « device is corrupt »
+
+Le message *« Your device is corrupt. It can't be trusted »* au démarrage correspond à l'état **RED** : AVB a détecté une incohérence entre une partition et ses empreintes dans vbmeta (par exemple après un flash partiel ou un vbmeta qui ne correspond plus au system flashé). La correction propre est de **reflasher le firmware officiel complet** (y compris `vbmeta`) pour rétablir la cohérence.
+
+## 11.4 Project Treble et les images génériques (GSI)
+
+**Project Treble** (Android 8.0) a introduit une séparation nette entre :
+
+- le **framework Android** (partition `system`), commun et fourni par Google ;
+- l'**implémentation du fabricant du matériel** (partition `vendor`), qui contient les pilotes (HAL — Hardware Abstraction Layer).
+
+L'interface entre les deux est stabilisée (**VINTF** — Vendor Interface). Concrètement, cela permet de **mettre à jour le framework Android sans réécrire toute la couche matérielle**, et rend possible le démarrage d'une **GSI** (Generic System Image), une image `system` générique publiée par Google, sur des appareils compatibles Treble — utile pour le test et le diagnostic.
+
+| Notion | Avant Treble | Avec Treble |
+|---|---|---|
+| Séparation system / vendor | Floue, imbriquée | Stricte, via interface VINTF |
+| Mise à jour du framework | Nécessite l'intervention du fabricant matériel | Possible plus indépendamment |
+| Image générique (GSI) | Impossible | Possible sur appareils compatibles |
+| Intérêt pour le technicien | — | Diagnostic, test de compatibilité |
+
+Pour le réparateur, Treble explique pourquoi il faut **respecter le couple system/vendor** : flasher un `system` incompatible avec le `vendor` en place (mauvaise version d'interface) provoque un non-démarrage. On reste sur les paquets officiels adaptés au modèle.
+
+## 11.5 Anti-rollback (ARB) : pourquoi on ne downgrade pas
+
+L'**anti-rollback (ARB)** est un mécanisme de sécurité qui **empêche d'installer une version de firmware plus ancienne** que celle déjà présente. Le but : empêcher un attaquant de « rétrograder » un appareil vers une ancienne version vulnérable pour exploiter une faille déjà corrigée.
+
+### Comment ça marche
+
+Le firmware embarque un **indice ARB** (un compteur de version de sécurité). Le matériel conserve, dans une zone **non réinscriptible** (souvent des **e-fuses** — fusibles électroniques grillés une fois pour toutes), le plus haut indice jamais installé. Au démarrage, si l'indice du firmware présent est **inférieur** à l'indice mémorisé dans le matériel, l'appareil **refuse de démarrer**.
+
+| Situation | Indice firmware vs matériel | Résultat |
+|---|---|---|
+| Flash d'une version ≥ à l'actuelle | firmware ≥ e-fuse | OK |
+| Flash d'une version plus ancienne (downgrade) | firmware < e-fuse | **Refus de démarrer / brique** |
+| Reverrouillage avec ancienne ROM | firmware < e-fuse | **Brique définitive possible** |
+
+### Pourquoi c'est définitif
+
+Le compteur ARB matériel **ne se remet jamais à zéro** : les e-fuses grillés ne se « dégrillent » pas. Une fois qu'un appareil est passé à un indice ARB donné (par une mise à jour), **on ne peut plus jamais y installer un firmware d'indice inférieur**. C'est la raison pour laquelle « downgrader pour retrouver l'ancienne version » est souvent **impossible** et **brique** l'appareil de façon **irréversible**.
+
+> **⚠️ Risques (anti-rollback)** — Avant tout flash, **vérifiez l'indice ARB** du firmware cible par rapport à celui de l'appareil. Ne flashez **jamais** une version d'indice inférieur, et **ne reverrouillez jamais** le bootloader avec un firmware d'indice ARB plus ancien. C'est l'une des erreurs les plus fréquentes menant à une brique irrécupérable.
+
+## 11.6 VBMeta et désactivation de la vérification
+
+La partition **vbmeta** est le sommet de la chaîne AVB : elle contient les empreintes signées des autres partitions. Dans certains scénarios de développement **sur son propre appareil, bootloader déverrouillé**, on peut être amené à flasher une image vbmeta avec des **drapeaux de désactivation de la vérification** (par exemple `--disable-verity --disable-verification`) pour permettre à un système modifié de démarrer.
+
+Il faut être limpide sur ce que cela signifie :
+
+- **Ce n'est utile que sur un appareil qu'on possède**, bootloader déjà déverrouillé, dans un cadre de développement/test assumé.
+- Cela **désactive une protection de sécurité** : dm-verity ne vérifie plus l'intégrité, ce qui **réduit la sécurité** de l'appareil et **maintient l'avertissement** de démarrage.
+- Ce **n'est pas** un moyen de contourner un verrou de propriété (FRP, compte constructeur) : cela ne les touche pas.
+
+| Drapeau vbmeta | Effet | Cadre d'usage |
+|---|---|---|
+| Vérification active (défaut) | Intégrité vérifiée à chaque démarrage/lecture | État d'usine, recommandé |
+| `--disable-verity` | dm-verity désactivé sur les partitions concernées | Développement, appareil personnel |
+| `--disable-verification` | Vérification AVB de la chaîne désactivée | Développement, appareil personnel |
+
+> **🔒 Éthique & légalité (vbmeta)** — Désactiver la vérification n'a de sens **que sur un appareil vous appartenant**, en connaissance de cause, et **n'ouvre aucun verrou anti-vol**. Sur un appareil dont la propriété n'est pas prouvée, on n'y touche pas. Pour rendre un appareil « comme neuf » et sécurisé avant revente, on **réactive** la vérification en reflashant un vbmeta officiel et en reverrouillant le bootloader.
+
+\newpage
+
+# SECTION 12 — SÉCURITÉ MOBILE EXPLIQUÉE (POUR LA RESPECTER)
+
+Cette section ne contient **aucune** méthode de contournement. Son objet est l'inverse : comprendre **pourquoi** les protections de sécurité mobile existent, **à qui elles profitent**, et pourquoi un professionnel sérieux **exige la preuve de propriété** plutôt que de chercher à les casser. Un bon technicien est celui qui sait expliquer à un client, calmement, pourquoi certains verrous ne se lèvent que par la voie officielle — et pourquoi c'est une **bonne** chose.
+
+## 12.1 Le Secure Boot : garantir que le logiciel est authentique
+
+Le **Secure Boot** (démarrage sécurisé) est le principe selon lequel un appareil ne démarre que du **code signé** par une autorité de confiance, vérifié depuis une **racine de confiance matérielle** gravée dans le processeur. On l'a détaillé côté Android (AVB, section 11.3) ; le même principe existe sur iOS (**Secure Boot Chain**) et sur PC (UEFI Secure Boot, section 13).
+
+Son but n'est pas de « gêner les réparateurs ». Il répond à des menaces réelles :
+
+- empêcher un **logiciel malveillant** de s'installer sous le système, là où aucun antivirus ne le verrait (rootkit de bas niveau) ;
+- garantir à l'utilisateur que le système qu'il exécute est **bien celui du fabricant**, non trafiqué ;
+- protéger les mécanismes de **chiffrement** et de **paiement** qui reposent sur l'intégrité du démarrage.
+
+## 12.2 TEE et Secure Enclave : un coffre-fort dans la puce
+
+Les smartphones modernes embarquent un **environnement d'exécution de confiance** isolé du système principal :
+
+- **TEE (Trusted Execution Environment)** côté Android, souvent bâti sur **ARM TrustZone**, avec des implémentations comme **Qualcomm QSEE** ou **Trusty**. Samsung y ajoute **Knox** et un processeur/zone sécurisée.
+- **Secure Enclave** côté Apple : un coprocesseur dédié, isolé de l'application processor.
+
+Ce « coffre-fort » stocke et manipule les secrets les plus sensibles **sans jamais les exposer** au système Android/iOS principal :
+
+| Élément protégé | Rôle | Pourquoi l'isoler |
+|---|---|---|
+| Clés de **chiffrement** du stockage | Déverrouiller les données utilisateur | Empêcher l'extraction des données sans le code |
+| **Empreintes / visage** (biométrie) | Authentifier l'utilisateur | Les gabarits ne quittent jamais l'enclave |
+| Clés de **paiement** (NFC) | Sécuriser les transactions | Conformité bancaire, anti-fraude |
+| **Compteurs anti-rollback**, état des verrous | Faire respecter ARB et l'état de propriété | Zone inviolable par le système |
+
+Le TEE impose aussi des **délais et limites de tentatives** sur le code de déverrouillage, ce qui rend la force brute impraticable : c'est ce qui fait qu'un téléphone perdu **protège réellement** les données de son propriétaire.
+
+## 12.3 Le verrou d'activation : une protection anti-vol au bénéfice des victimes
+
+Les verrous d'activation — **Apple Activation Lock** (via « Localiser »), **FRP / Factory Reset Protection** (compte Google), **Samsung Reactivation Lock**, comptes **Mi / OPPO / Realme / OnePlus** — répondent à un problème de société bien concret : le **vol de smartphones**.
+
+Avant leur généralisation, un téléphone volé se réinitialisait en deux minutes et se revendait comme neuf. Le vol était **rentable**. Depuis que ces verrous existent :
+
+- un appareil volé, une fois réinitialisé, **redemande le compte du propriétaire légitime** et reste **inutilisable** pour le voleur ;
+- la **valeur de revente d'un appareil volé s'effondre**, ce qui **décourage le vol à la source** ;
+- les **victimes** (souvent des particuliers, parfois dans des situations d'agression) sont **protégées** : leurs données restent inaccessibles et leur appareil n'enrichit pas le voleur.
+
+Autrement dit, ces verrous ne sont pas dirigés contre les utilisateurs honnêtes : **ils les protègent**. Le « client » naturel de ces protections, c'est la personne à qui on a volé son téléphone.
+
+> **🔒 Éthique & légalité (verrous d'activation)** — C'est précisément parce que ces verrous protègent les victimes de vol qu'un professionnel **ne les contourne pas**. Contourner un verrou d'activation, c'est potentiellement **remettre en circulation un appareil volé** et **priver une victime** de sa protection. La seule voie est la **preuve de propriété** + les **canaux officiels** (SAV constructeur), documentés à la Section 6 du manuel principal.
+
+## 12.4 Pourquoi un professionnel exige la preuve de propriété
+
+Un technicien qui accepterait de « débloquer n'importe quoi » deviendrait, de fait, le **maillon final de la chaîne du vol** : celui qui transforme un appareil volé et inutilisable en appareil revendable. C'est exactement ce que les verrous cherchent à empêcher.
+
+Exiger la **preuve de propriété** (facture d'achat, mandat écrit, pièce d'identité) protège **tout le monde** :
+
+- la **victime** potentielle, dont l'appareil ne sera pas remis en circulation ;
+- le **client honnête**, qui obtient un service traçable et légal ;
+- le **professionnel lui-même**, qui se met à l'abri d'une accusation de **recel** (section 15.4) et préserve sa réputation.
+
+Refuser une intervention faute de preuve de propriété n'est pas de la rigidité : c'est le **cœur du métier bien fait**. La bonne réponse au client dont la propriété n'est pas prouvée n'est jamais « je ne peux pas vous aider », mais « **voici la procédure officielle**, avec votre preuve d'achat, auprès du constructeur ou de l'opérateur ».
+
+\newpage
+
+# SECTION 13 — BIOS/UEFI APPROFONDI (PC PORTABLES)
+
+La Section 4 du manuel principal a posé les bases du flash côté PC. On approfondit ici l'architecture **UEFI**, le **Secure Boot**, la **mise à jour du BIOS par marque**, la **récupération d'un BIOS corrompu**, la **réinitialisation CMOS** et la question des **mots de passe BIOS** — toujours dans le seul cadre légitime : **sa propre machine** ou une machine confiée **avec preuve de propriété**.
+
+## 13.1 UEFI vs BIOS legacy
+
+Le firmware d'un PC est le premier logiciel exécuté à l'allumage. Deux générations coexistent :
+
+| Caractéristique | BIOS legacy | UEFI |
+|---|---|---|
+| Époque | Historique (jusqu'aux années 2010) | Standard actuel |
+| Table de partitionnement | **MBR** (max 2 To, 4 partitions primaires) | **GPT** (>2 To, nombreuses partitions) |
+| Interface | 16 bits, texte | 32/64 bits, souris, graphique |
+| Amorçage | Secteur d'amorçage MBR | Fichiers `.efi` sur la partition **ESP** (EFI System Partition) |
+| Sécurité de démarrage | Aucune native | **Secure Boot**, chaîne signée |
+| Extensibilité | Limitée | Pilotes et applications UEFI, mode **CSM** pour compatibilité legacy |
+
+L'**ESP** (partition système EFI, formatée en FAT32) contient les chargeurs d'amorçage (`bootmgfw.efi` pour Windows, `grubx64.efi`/`shimx64.efi` pour Linux). Comprendre l'ESP est essentiel pour diagnostiquer un PC qui « ne trouve plus le système d'exploitation » : souvent, l'entrée d'amorçage UEFI ou l'ESP est en cause, pas le disque entier.
+
+## 13.2 Secure Boot côté PC
+
+Le **Secure Boot** de l'UEFI vérifie que chaque chargeur d'amorçage est **signé** par une clé reconnue avant de l'exécuter. Il s'appuie sur une hiérarchie de clés :
+
+| Clé | Rôle |
+|---|---|
+| **PK** (Platform Key) | Clé racine de la plateforme, contrôlée par le propriétaire/OEM. |
+| **KEK** (Key Exchange Key) | Autorise la mise à jour des bases de signatures. |
+| **db** | Base des signatures **autorisées** (chargeurs de confiance). |
+| **dbx** | Base des signatures **révoquées** (interdites). |
+
+Sur son propre PC, on peut **gérer ces clés** depuis le setup UEFI (désactiver Secure Boot, restaurer les clés d'usine, ajouter la clé d'une distribution Linux via **shim/MOK**). Ce sont des opérations légitimes de configuration, pas des contournements. Désactiver Secure Boot **réduit** la protection contre les bootkits ; on ne le fait qu'en connaissance de cause et, idéalement, on le réactive ensuite.
+
+## 13.3 Mise à jour du BIOS/UEFI par marque
+
+La mise à jour du BIOS/UEFI (firmware update) corrige des bugs, ajoute la prise en charge de nouveaux CPU, colmate des failles de sécurité (microcode). Elle se fait **exclusivement** avec le fichier officiel **du modèle exact** de la machine, obtenu sur le site du fabricant.
+
+| Marque | Outil / méthode officielle | Sécurité intégrée |
+|---|---|---|
+| **Dell** | Dell **SupportAssist** / BIOS Flash Update ; fichier `.exe` ou update depuis le menu **F12** | **BIOS Recovery** (F2+alimentation), image de secours |
+| **HP** | **HP Support Assistant** ; **HP BIOS Update** (Win+B au démarrage) | **HP Sure Start** (auto-réparation du BIOS) |
+| **Lenovo** | **Vantage** / Lenovo BIOS Update Utility ; ISO amorçable | **Crisis Recovery** sur certains modèles |
+| **Asus** | **MyASUS** / EZ Flash (dans l'UEFI, depuis une clé USB) | **USB BIOS FlashBack** (bouton dédié) |
+| **Acer** | **Care Center** ; utilitaire de flash Windows/DOS | Récupération par **clé USB** de secours |
+
+### Bonnes pratiques de flash BIOS
+
+1. **Alimentation secteur branchée** (jamais sur batterie seule) et batterie chargée — une coupure pendant l'écriture du BIOS peut **briquer la carte mère**.
+2. Vérifier **exactement** le modèle et la révision (numéro de série / service tag).
+3. Ne **jamais** interrompre, ne pas éteindre, ne pas retirer la clé USB pendant l'opération.
+4. Fermer les autres applications ; désactiver temporairement le chiffrement de disque si l'outil le demande.
+
+> **⚠️ Risques (flash BIOS)** — Un flash BIOS interrompu ou avec un fichier destiné à un **autre modèle** peut rendre la carte mère **inopérante**. Beaucoup de portables disposent d'un mécanisme de secours (voir 13.4), mais **pas tous**. En cas de doute sur le fichier ou le modèle, on ne flashe pas.
+
+### BIOS de secours, dual-BIOS et EC
+
+Certaines machines embarquent un **double BIOS** (dual-BIOS) : une copie principale et une copie de secours en lecture seule, capable de restaurer la principale si elle est corrompue. Le **Contrôleur Embarqué (EC — Embedded Controller)** est un micro-contrôleur distinct qui gère l'alimentation, le clavier, les ventilateurs et orchestre souvent la récupération BIOS. Des dispositifs comme **HP Sure Start** vérifient et **réparent automatiquement** le BIOS à chaque démarrage. Ces mécanismes expliquent pourquoi un PC « briqué » n'est pas toujours perdu.
+
+## 13.4 Récupération d'un BIOS corrompu (crisis recovery officiel)
+
+Quand un flash a échoué et que la machine ne démarre plus (écran noir, pas de POST), les fabricants proposent une **procédure de récupération officielle** — souvent appelée **Crisis Recovery** ou **BIOS Recovery** — qui restaure le firmware depuis une **clé USB** préparée avec le fichier officiel :
+
+1. Télécharger, depuis **une autre machine**, le fichier BIOS officiel du modèle exact et le **renommer** selon la consigne du fabricant (chaque marque impose un nom de fichier précis).
+2. Copier ce fichier à la **racine** d'une clé USB formatée en **FAT32**.
+3. PC éteint et **branché au secteur**, maintenir la **combinaison de récupération** propre à la marque tout en appuyant sur le bouton d'alimentation :
+   - **Dell** : `Ctrl + Esc` (ou `F2` selon modèle) + alimentation → BIOS Recovery.
+   - **HP** : `Win + B` (ou `Win + V`) + alimentation → HP BIOS Update.
+   - **Asus** : bouton **USB BIOS FlashBack** dédié.
+   - **Lenovo** : procédure Crisis Recovery du modèle (voir la documentation officielle).
+4. Laisser le processus se dérouler **sans interruption** (l'écran peut clignoter, la machine peut redémarrer plusieurs fois).
+
+Les combinaisons et noms de fichiers **varient selon le modèle** : on suit **toujours** la notice officielle du fabricant, jamais une recette générique.
+
+> **⚠️ Risques (crisis recovery)** — Utiliser un fichier BIOS d'un **autre modèle** pendant une récupération peut **aggraver** la corruption. Vérifiez trois fois le modèle et la révision. Si la récupération échoue, la voie suivante est le **SAV du fabricant** (reprogrammation matérielle de la puce SPI), pas le bricolage à l'aveugle.
+
+## 13.5 Réinitialisation CMOS (sur SA machine)
+
+La mémoire **CMOS** conserve les réglages du BIOS/UEFI (ordre d'amorçage, heure, options matérielles), alimentée par une **pile bouton (CR2032)**. La réinitialiser remet les réglages **par défaut d'usine** — utile après un mauvais réglage empêchant le démarrage. Sur **sa propre machine** :
+
+| Méthode | Procédure | Remarque |
+|---|---|---|
+| **Retrait de la pile** | PC éteint et **débranché**, ouvrir, retirer la pile CR2032 quelques minutes, remettre. | Plus délicat sur portables (démontage). |
+| **Jumper Clear CMOS** | Déplacer le cavalier `CLR_CMOS`/`JBAT` selon la notice de la carte mère. | Surtout sur cartes de bureau. |
+| **Bouton Clear CMOS** | Presser le bouton dédié (certaines cartes). | Le plus simple quand présent. |
+
+La réinitialisation CMOS **remet les réglages à zéro** ; elle ne « déverrouille » pas une machine dont on n'est pas propriétaire (voir 13.6) et n'efface pas les données du disque.
+
+> **⚠️ Risques (CMOS)** — Manipulez toujours **hors tension et débranché**, en vous déchargeant de l'électricité statique. Sur un portable, le démontage peut affecter la garantie et abîmer des nappes. En cas de doute, confiez l'opération à un atelier.
+
+## 13.6 Mots de passe BIOS : uniquement les voies légitimes
+
+Un mot de passe BIOS (mot de passe d'allumage, mot de passe superviseur, ou verrou de type disque/HDD) est une **protection** voulue par le propriétaire ou l'entreprise. Ce livre **ne fournit aucun « master password », outil de génération, ni méthode de contournement**. Les seules voies légitimes sont :
+
+1. **Sur SA propre machine**, mot de passe **utilisateur/allumage** oublié : sur beaucoup de cartes de **bureau**, le **retrait de la pile CMOS** ou le **jumper Clear CMOS** efface les réglages, mot de passe d'allumage inclus. **Sur les portables modernes et les machines d'entreprise, ce n'est généralement PAS le cas** : le mot de passe est stocké dans une mémoire sécurisée indépendante.
+2. **Machine d'entreprise / verrou superviseur** : la levée passe par le **service informatique** ou l'**administrateur** qui a posé le mot de passe.
+3. **Tous les autres cas** : **support officiel du fabricant**, sur présentation de la **preuve de propriété** (facture, numéro de série). Le fabricant peut, selon sa politique, fournir une procédure de déverrouillage ou intervenir.
+
+> **🔒 Éthique & légalité (mot de passe BIOS)** — Un mot de passe BIOS que l'on ne peut pas lever avec la preuve de propriété est le signe qu'il faut passer par le **propriétaire légitime** ou le **fabricant**, pas chercher un contournement. Les « master passwords » et outils de bypass sont exclus de cet ouvrage : les employer sur une machine qui n'est pas la vôtre peut relever de l'**accès frauduleux** à un système et du **recel**.
+
+\newpage
+
+# SECTION 14 — POSTE DE TRAVAIL DU TECHNICIEN FIRMWARE
+
+Un flash rate rarement à cause du « logiciel magique » : il rate à cause d'un **câble médiocre**, d'une **alimentation instable**, d'un **firmware venu d'une source douteuse** ou d'un poste mal organisé. Cette section décrit l'installation matérielle et logicielle d'un atelier fiable, l'hygiène des sources et la **traçabilité** des interventions.
+
+## 14.1 Matériel de l'atelier
+
+![Figure 14.1 — Poste de travail type d'un technicien firmware](images/poste-technicien.jpg)
+
+| Élément | Pourquoi c'est important | Recommandation |
+|---|---|---|
+| **PC de travail fiable** | Un flash interrompu par un plantage PC peut briquer l'appareil. | Machine stable, SSD, RAM suffisante, à jour. |
+| **Onduleur / alimentation stable** | Une coupure secteur pendant un flash = brique. | **Onduleur (UPS)** pour le poste ; portable chargé + secteur. |
+| **Câbles data de qualité** | Un câble « charge seule » ou usé provoque des déconnexions en plein flash. | Câbles **data certifiés**, courts, testés ; les remplacer régulièrement. |
+| **Hub USB alimenté** | Les ports en cascade et sous-alimentés causent des chutes de tension. | Hub **avec alimentation externe**, éviter les rallonges. |
+| **Ports USB directs** | Certains modes (EDL, DFU) sont sensibles à l'USB 3 vs 2. | Privilégier les **ports arrière** sur fixe, essayer USB 2.0 si détection capricieuse. |
+| **Adaptateurs** (USB-C/A, Lightning, micro-USB) | Couvrir tous les connecteurs sans improviser. | Adaptateurs de qualité, pas de convertisseurs douteux. |
+| **Câbles EDL / deep-flash / test point** | Restauration bas niveau **sur appareils qu'on possède / mandatés**. | **Usage légitime uniquement** ; matériel réservé aux techniciens formés. |
+| **Alimentation de labo** | Diagnostic de consommation, test post-flash. | Affichage tension/intensité pour repérer un court-circuit. |
+| **Station propre, tapis antistatique** | Éviter décharges statiques et pertes de vis. | Bracelet ESD, éclairage, rangement. |
+
+> **🔒 Éthique & légalité (câbles EDL / deep-flash)** — Les câbles et modes de restauration bas niveau (EDL en 9008 côté Qualcomm, deep flash) ont un **usage légitime** : remettre en service un appareil **qu'on possède** ou pour lequel on a un **mandat écrit**, avec un **firmware officiel**. Ils ne servent **jamais**, dans cet ouvrage, à contourner un verrou de propriété. Leur possession et leur emploi doivent rester dans ce cadre.
+
+## 14.2 Logiciels et pilotes
+
+Un poste de flash bien préparé dispose, **installés depuis les sources officielles**, des éléments suivants :
+
+| Catégorie | Exemples (officiels) | Rôle |
+|---|---|---|
+| **Pilotes USB** | Google USB Driver (ADB/Fastboot), pilotes Qualcomm, MediaTek VCOM, Samsung, Apple (via Finder/iTunes). | Faire reconnaître l'appareil dans chaque mode. |
+| **Outils Android** | **Android Platform-Tools** (adb, fastboot) officiels de Google. | Sideload OTA, flash fastboot, diagnostic. |
+| **Outils constructeur** | Outils **officiels** du fabricant du modèle (flash de ROM stock signée). | Restauration stock par marque. |
+| **Environnement Apple** | **Finder** (macOS) / **Apple Devices** ou iTunes (Windows) à jour. | Restauration/mise à jour iPhone/iPad (DFU/Recovery). |
+| **Utilitaires** | Vérificateur de **somme de contrôle** (SHA-256), gestionnaire d'archives, outil de formatage USB (FAT32). | Vérifier l'intégrité des firmwares, préparer les supports. |
+
+**Toujours** installer pilotes et outils depuis le **site officiel** de l'éditeur/constructeur, jamais depuis un lien de forum reconditionné (risque de logiciel piégé).
+
+## 14.3 Organisation des firmwares
+
+Une ROM, c'est plusieurs centaines de Mo à plusieurs Go, propre à un **modèle**, une **région** et une **version**. Le désordre mène tôt ou tard à flasher le **mauvais** fichier. Une organisation robuste :
+
+- Arborescence claire : `Marque / Modèle (nom de code) / Région / Version / fichiers`.
+- **Nom de code** de l'appareil noté explicitement (ex. codename), car c'est lui qui garantit la compatibilité, pas le nom commercial.
+- **Somme de contrôle SHA-256** consignée à côté de chaque firmware et **vérifiée** avant chaque flash.
+- Conserver le **numéro de version / indice binaire / indice ARB** dans le nom de dossier pour éviter tout downgrade accidentel (section 11.5).
+- Sauvegarde des firmwares officiels sur un stockage fiable ; ne jamais réutiliser une ROM « bricolée » d'origine inconnue.
+
+## 14.4 Hygiène et sources
+
+| Principe | Mise en œuvre |
+|---|---|
+| **Sources officielles uniquement** | Firmwares et outils venant du constructeur ou de dépôts officiels reconnus ; méfiance envers les liens de forum, les archives « modifiées ». |
+| **Vérification d'intégrité** | Contrôle **SHA-256** systématique avant flash ; un hash qui ne correspond pas = fichier rejeté. |
+| **Antivirus / poste sain** | Poste de travail scanné, à jour ; les paquets de flash sont une cible fréquente de logiciels malveillants. |
+| **Isolation** | Éviter d'utiliser le PC de flash pour la navigation à risque ; compte dédié. |
+| **Pas de « box » ni crédits douteux** | On n'emploie ni serveurs, ni « crédits de bypass », ni outils dont la finalité est le contournement de verrous. |
+
+## 14.5 Traçabilité des interventions
+
+La traçabilité protège le client **et** le technicien. Pour chaque intervention firmware, on consigne :
+
+- l'**identité du client** et la **preuve de propriété** vérifiée ;
+- le **modèle**, le **numéro de série / IMEI** (relevé, jamais modifié), l'**état initial** ;
+- l'**opération réalisée** (firmware exact, version, indice), la **date**, le **technicien** ;
+- la **sauvegarde** proposée/réalisée et le **consentement** du client (RGPD, section 15.3) ;
+- la **décharge signée** et le **résultat** (succès, aléa, refus motivé).
+
+Ce registre s'articule avec le **registre des objets d'occasion** (section 15.2) et les **modèles de documents** de l'Annexe C du manuel principal.
+
+\newpage
+
+# SECTION 15 — CADRE JURIDIQUE & RGPD APPROFONDI (FRANCE/UE)
+
+Cette section approfondit l'Avertissement légal et l'Annexe C du manuel principal. Elle n'est **pas** un conseil juridique personnalisé : la réglementation évolue et s'apprécie au cas par cas. Elle donne les **repères essentiels** au réparateur pour exercer proprement en France et dans l'Union européenne. En cas de doute, **consultez un juriste** et vérifiez les textes en vigueur.
+
+## 15.1 Responsabilité du réparateur et preuve de propriété
+
+Le réparateur est un **professionnel** : il est tenu à un **devoir de vigilance** sur la provenance des appareils qu'on lui confie et à une **obligation d'information** envers le client. Concrètement :
+
+- **Vérifier la propriété** avant toute intervention touchant à la sécurité ou à l'identité de l'appareil : **pièce d'identité + preuve d'achat / mandat écrit**.
+- **Informer par écrit** des risques (perte de garantie, perte de données, risque de brique) et recueillir la **décharge signée**.
+- **Refuser** l'intervention si la propriété n'est pas prouvée, et **orienter vers la voie officielle** (SAV constructeur/opérateur).
+- Ne réaliser que des opérations **dans son domaine de compétence**, avec un **devoir de conseil** honnête.
+
+## 15.2 Registre des objets d'occasion (registre de police)
+
+En France, l'achat-revente et certaines activités portant sur des **objets mobiliers usagés** (dont les téléphones et PC d'occasion) sont soumis à la tenue d'un **registre des objets mobiliers** (couramment appelé « registre de police »), consultable par les autorités. Ce registre vise à **lutter contre le recel** en traçant l'origine des biens.
+
+| Information typiquement consignée | Finalité |
+|---|---|
+| Identité et coordonnées du **vendeur/déposant** | Traçabilité de la provenance |
+| **Pièce d'identité** présentée | Vérification |
+| **Description** de l'objet (marque, modèle, n° de série/IMEI) | Identification de l'appareil |
+| **Date** d'entrée / de transaction | Chronologie |
+| **Prix** / nature de l'opération | Traçabilité commerciale |
+
+Selon la nature exacte de l'activité (rachat, dépôt-vente, simple réparation), les obligations diffèrent : vérifiez **votre** régime auprès de la préfecture / des textes applicables. La logique reste la même : **savoir d'où vient l'appareil**.
+
+> **🔒 Éthique & légalité (traçabilité)** — La tenue rigoureuse du registre n'est pas une formalité tatillonne : c'est votre **meilleure protection** en cas de contrôle et la preuve de votre bonne foi. Un appareil sans provenance claire est un appareil qu'on **ne traite pas**.
+
+## 15.3 Données personnelles des clients (RGPD)
+
+Dès qu'un appareil client passe entre vos mains, vous êtes susceptible d'accéder à des **données personnelles** ; en les traitant (sauvegarde, effacement, tenue d'un fichier client), vous êtes **responsable de traitement** au sens du **RGPD** (Règlement UE 2016/679) et de la loi Informatique et Libertés.
+
+| Principe RGPD | Application concrète en atelier |
+|---|---|
+| **Licéité, base légale** | Traiter les données sur une base valable (exécution du contrat de réparation, consentement pour une sauvegarde). |
+| **Minimisation** | N'accéder qu'à ce qui est **strictement nécessaire** à l'intervention ; ne pas « fouiller » l'appareil. |
+| **Consentement / information** | Informer le client, recueillir son **accord écrit** pour toute sauvegarde ou manipulation de ses données. |
+| **Sécurité / confidentialité** | Protéger les données (poste sécurisé, accès restreint) ; **secret professionnel** de fait. |
+| **Limitation de conservation** | Ne pas garder les données du client au-delà du besoin ; **supprimer** les sauvegardes après restitution. |
+| **Effacement sécurisé** | Lors d'une remise à neuf/revente, procéder à un **effacement sécurisé** (réinitialisation d'usine avec **chiffrement actif**, écrasement) empêchant toute récupération. |
+| **Droits des personnes** | Permettre au client d'exercer ses droits (accès, effacement) sur les données que vous détenez. |
+| **Registre / violations** | Tenir un registre des traitements si requis ; savoir réagir en cas de **violation de données** (notification). |
+
+**Effacement sécurisé — repère technique.** Sur un appareil moderne **chiffré** (Android FBE, iOS), la réinitialisation d'usine détruit les **clés de chiffrement**, rendant les données illisibles : c'est la méthode standard. On documente l'opération et on informe le client que la sauvegarde éventuelle a été **supprimée** après restitution.
+
+> **🔒 Éthique & légalité (RGPD)** — Copier, conserver ou divulguer les données d'un client (photos, messages, comptes) **sans base légale** est une faute grave, pénalement et civilement sanctionnable. La règle d'or : **on regarde le strict nécessaire, on ne conserve rien, on efface de façon sécurisée.**
+
+## 15.4 Risques pénaux : recel et atteintes aux systèmes
+
+Deux familles de risques pénaux encadrent particulièrement ce métier :
+
+- **Recel** : détenir, manipuler ou aider à écouler un bien que l'on **sait** (ou aurait dû savoir) provenir d'un délit — typiquement un appareil **volé**. « Débloquer » un appareil volé pour le rendre revendable peut caractériser le recel et/ou la complicité. La **vérification de propriété** est la parade.
+- **Atteintes aux systèmes de traitement automatisé de données** (accès/maintien frauduleux, contournement de mesures de sécurité) : contourner un verrou de sécurité sur un appareil **qui n'est pas le vôtre et sans droit** peut tomber sous cette qualification.
+
+C'est la raison profonde pour laquelle cet ouvrage **exclut tout contournement** de verrou anti-vol ou de mot de passe : au-delà de l'éthique, ce sont des **risques pénaux réels** pour le professionnel.
+
+> **⚠️ Risques (pénal)** — Un « bon geste » pour dépanner un client sans preuve de propriété peut vous exposer à des **poursuites**. La prudence — preuve de propriété, refus motivé, orientation officielle — n'est pas de la frilosité, c'est la condition d'exercice.
+
+## 15.5 Désimlockage légitime (verrouillage opérateur)
+
+Le **désimlockage** (retrait du verrou SIM/opérateur) est **licite** lorsqu'il est demandé par le **titulaire de la ligne / propriétaire de l'appareil** et réalisé par la **voie officielle** :
+
+- En France et dans l'UE, les opérateurs **désimlockent gratuitement** sur demande du client (souvent sans délai désormais), via un **code officiel** ou une procédure serveur.
+- La démarche légitime consiste à **orienter le client vers son opérateur** avec son numéro d'abonnement / son IMEI et sa preuve de propriété.
+
+Ce qui est exclu : le désimlockage **hors cadre** (appareil non prouvé, contournement de la protection opérateur par des moyens non autorisés). Le manuel principal (section 6.6) détaille la voie légitime.
+
+> **🔒 Éthique & légalité (désimlockage)** — Le désimlockage n'est légitime que **demandé par le propriétaire** et fait par **l'opérateur**. Il ne se confond pas avec la levée d'un verrou anti-vol (FRP, iCloud), qui, elle, ne se lève que par le **compte du propriétaire** ou le **SAV constructeur**.
+
+## 15.6 Garanties légales
+
+Le professionnel informe et respecte les **garanties légales** dues au consommateur :
+
+| Garantie | Portée |
+|---|---|
+| **Garantie légale de conformité** | Le bien/service doit être conforme ; défauts couverts sur la période légale. |
+| **Garantie des vices cachés** | Défauts antérieurs, non apparents, rendant le bien impropre. |
+| **Garantie commerciale / constructeur** | Contractuelle ; **attention** : certaines interventions (déverrouillage bootloader, flash non officiel, Knox 0x1) **annulent** la garantie constructeur. |
+
+Le client doit être **informé par écrit** qu'une opération de flash/déverrouillage peut **faire perdre la garantie constructeur** et déclencher des indicateurs **irréversibles** (e-fuse, bit de garantie). Ce consentement éclairé figure dans la décharge.
+
+## 15.7 Modèle de mentions et de décharge
+
+Ce modèle **complète** l'Annexe C du manuel principal. Il est fourni à titre indicatif ; **adaptez-le à votre situation et faites-le valider juridiquement**.
+
+**Mentions d'information client (à afficher / remettre)**
+
+- « Toute intervention firmware (flash, restauration, déverrouillage bootloader) présente un **risque de perte de données et de dysfonctionnement irréversible (brique)**. »
+- « Certaines opérations **annulent la garantie constructeur** et déclenchent des indicateurs **irréversibles**. »
+- « Nous **n'intervenons que sur preuve de propriété**. Les verrous anti-vol (FRP, iCloud, comptes constructeur) **ne se lèvent que par le compte du propriétaire ou le SAV officiel** sur preuve d'achat. »
+- « Vos **données personnelles** sont traitées conformément au **RGPD** : minimisation, confidentialité, effacement sécurisé après restitution. »
+
+**Décharge de responsabilité (trame)**
+
+> Je soussigné(e) [Nom, Prénom], titulaire de la pièce d'identité n° […], déclare être **propriétaire légitime** de l'appareil [marque / modèle / IMEI ou n° de série] et en apporte la **preuve** ([facture / mandat écrit]).
+> Je demande à [Atelier] de réaliser l'intervention suivante : […].
+> Je reconnais avoir été **informé(e)** des risques (perte de données, perte de garantie, risque de brique irréversible) et **accepte** que l'atelier ne saurait être tenu responsable d'un dommage résultant d'un aléa inhérent à ce type d'opération.
+> J'autorise / je n'autorise pas (rayer la mention inutile) la **sauvegarde** de mes données, et demande leur **effacement sécurisé** après restitution.
+> Fait à […], le […]. Signature du client — Signature du technicien.
+
+> **🔒 Éthique & légalité (synthèse Section 15)** — Propriété prouvée, client informé par écrit, données protégées selon le RGPD, aucune manipulation d'IMEI, **aucun contournement** de verrou anti-vol ou de mot de passe. Face à un appareil dont la propriété n'est pas établie, la seule bonne réponse reste : **preuve d'achat + canal officiel**.
+
+---
+
+**Récapitulatif de ce fragment additionnel**
+
+- **Sections ajoutées :** 5 chapitres de niveau `#` (Section 11 à Section 15), soit 30 sous-sections `##` numérotées (11.1–11.6, 12.1–12.4, 13.1–13.6, 14.1–14.5, 15.1–15.7).
+- **Figures numérotées :** 11.1 (partitions Android), 14.1 (poste de travail) — numérotation ≥ 11 pour éviter toute collision avec le manuscrit principal.
+- **Tableaux :** ~20 tableaux Markdown ; encadrés récurrents « 🔒 Éthique & légalité » et « ⚠️ Risques » présents dans chaque section.
+- **Contrainte de sécurité respectée :** ce fragment **n'explique AUCUN contournement** de verrou anti-vol (FRP, Activation Lock/iCloud, Knox/Reactivation Lock, comptes Mi/OPPO/Realme/OnePlus), **aucun** master password/bypass BIOS, **aucune** manipulation d'IMEI ni désimlockage hors cadre. Les mécanismes de sécurité sont expliqués **pour être compris et respectés**, avec renvoi systématique à la **preuve de propriété + canaux officiels**.
+
+<!-- === FIN EXTENSIONS === -->
+
 # ANNEXE A — Glossaire
 
 **ADB (Android Debug Bridge)** — Outil en ligne de commande de Google communiquant avec un appareil Android **démarré** (débogage USB activé) : installer des paquets, lire des logs, redémarrer en bootloader/recovery, faire un `sideload`.
