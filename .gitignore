@@ -1,0 +1,8 @@
+.DS_Store
+*.log
+# Sorties générées (régénérables via contenu/build)
+contenu/**/*.pdf
+contenu/**/*.html
+# Clés locales — NE JAMAIS committer
+config.js
+.env

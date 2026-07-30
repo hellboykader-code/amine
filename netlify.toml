@@ -1,0 +1,9 @@
+# Déploiement du site de vente (statique, à la racine du dépôt).
+[build]
+  publish = "."
+  # Pas d'étape de build : site HTML/CSS/JS pur.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
