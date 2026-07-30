@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Merci pour votre achat ! | MK Phone — Éditions Techniques</title>
+  <meta name="description" content="Confirmation de votre commande MK Phone. Téléchargez vos ebooks : les liens définitifs vous sont aussi envoyés par email.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23f97316'/%3E%3Cpath d='M9 8h5l2 4 2-4h5v16h-4v-9l-3 6-3-6v9H9z' fill='white'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header class="entete">
+    <div class="conteneur nav">
+      <a href="index.html" class="logo" aria-label="Accueil MK Phone Éditions Techniques">
+        <span class="logo__icone" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span>
+        <span class="logo__marque">MK Phone<small>Éditions Techniques</small></span>
+      </a>
+      <nav class="nav__liens" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="ebook-reparation.html">Réparation</a>
+        <a href="ebook-flash-decodage.html">Flash &amp; Décodage</a>
+        <a href="a-propos.html">À propos</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+      <div class="nav__actions">
+        <a href="panier.html" class="btn btn--secondaire panier-btn" aria-label="Voir le panier"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg> Panier <span class="panier-compteur">0</span></a>
+        <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu-mobile"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="menu-mobile" class="section">
+    <div class="conteneur">
+      <div class="merci-hero">
+        <div class="merci-check" aria-hidden="true">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        </div>
+        <span class="surtitre">Commande confirmée</span>
+        <h1>Merci pour votre achat !</h1>
+        <p class="lead txt-centre" style="margin:0 auto">Votre paiement a bien été pris en compte. Vos ebooks sont disponibles ci-dessous, et un email contenant vos liens de téléchargement sécurisés vient de vous être envoyé.</p>
+      </div>
+
+      <!-- Zone de téléchargement -->
+      <div style="max-width:680px;margin:40px auto 0">
+        <div class="bandeau-info" role="note">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <span>Les liens ci-dessous sont des <strong>exemples</strong>. En production, les vrais liens de téléchargement sécurisés (à durée limitée) sont générés à la commande et envoyés à votre adresse email — voir README-site.md.</span>
+        </div>
+
+        <h3>Vos fichiers</h3>
+
+        <div class="telechargement">
+          <div class="telechargement__info">
+            <div class="telechargement__ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+            <div>
+              <h4 style="margin:0">Guide Complet de Réparation d'Appareils Électroniques</h4>
+              <span class="txt-secondaire" style="font-size:.85rem">PDF · lien envoyé par email</span>
+            </div>
+          </div>
+          <a href="#" class="btn btn--primaire" aria-label="Télécharger le Guide de Réparation" onclick="return protegerLien(event)">Télécharger</a>
+        </div>
+
+        <div class="telechargement">
+          <div class="telechargement__info">
+            <div class="telechargement__ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+            <div>
+              <h4 style="margin:0">Flash &amp; Décodage : Maîtrise Complète</h4>
+              <span class="txt-secondaire" style="font-size:.85rem">PDF · lien envoyé par email</span>
+            </div>
+          </div>
+          <a href="#" class="btn btn--primaire" aria-label="Télécharger Flash et Décodage" onclick="return protegerLien(event)">Télécharger</a>
+        </div>
+
+        <div class="carte" style="padding:24px;margin-top:24px">
+          <h3 style="margin-top:0">Que faire maintenant ?</h3>
+          <ul class="carte-produit__liste">
+            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--succes)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Vérifiez votre boîte email (et le dossier « courrier indésirable »).</li>
+            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--succes)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Enregistrez vos fichiers PDF sur un appareil sûr.</li>
+            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--succes)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Une question ? Écrivez-nous, un technicien vous répond.</li>
+          </ul>
+          <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+            <a href="mailto:aminemekhfi45@gmail.com" class="btn btn--secondaire">Contacter le support</a>
+            <a href="index.html" class="btn btn--secondaire">Retour à l'accueil</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="conteneur">
+      <div class="footer__grille">
+        <div class="footer__marque">
+          <a href="index.html" class="logo" style="color:#fff"><span class="logo__icone" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span><span class="logo__marque" style="color:#fff">MK Phone<small style="color:#8ea3c4">Éditions Techniques</small></span></a>
+          <p style="margin-top:14px">Des guides techniques concrets, écrits par un professionnel de la réparation en Île-de-France.</p>
+        </div>
+        <div><h4>Nos ebooks</h4><ul><li><a href="ebook-reparation.html">Guide de Réparation</a></li><li><a href="ebook-flash-decodage.html">Flash &amp; Décodage</a></li><li><a href="index.html#pack">Pack Complet</a></li></ul></div>
+        <div><h4>Informations</h4><ul><li><a href="a-propos.html">À propos</a></li><li><a href="faq.html">FAQ</a></li><li><a href="mentions-legales.html">Mentions légales</a></li><li><a href="confidentialite.html">Confidentialité (RGPD)</a></li></ul></div>
+        <div class="footer__contact"><h4>Contact</h4><ul><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> <a href="mailto:aminemekhfi45@gmail.com">aminemekhfi45@gmail.com</a></li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> <a href="tel:+33751484392">07 51 48 43 92</a></li></ul></div>
+      </div>
+      <div class="footer__bas"><span>© <span data-annee>2026</span> MK Phone — Éditions Techniques. Tous droits réservés.</span><nav aria-label="Liens légaux"><a href="mentions-legales.html">Mentions légales</a><a href="confidentialite.html">Confidentialité</a><a href="faq.html">FAQ</a></nav></div>
+    </div>
+  </footer>
+
+  <script src="config.js" onerror="void 0"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/checkout.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    /* La commande est confirmée : on vide le panier local. */
+    try { localStorage.removeItem("mkphone_panier"); } catch (e) {}
+    document.querySelectorAll(".panier-compteur").forEach(function (el) { el.textContent = "0"; el.style.display = "none"; });
+
+    /* Les liens de démonstration ne pointent pas vers de vrais fichiers. */
+    function protegerLien(e) {
+      e.preventDefault();
+      alert("Lien de démonstration.\n\nEn production, ce bouton pointe vers un lien de téléchargement sécurisé et à durée limitée, généré à la commande et également envoyé par email.");
+      return false;
+    }
+  </script>
+</body>
+</html>

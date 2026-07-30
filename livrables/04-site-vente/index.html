@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MK Phone — Éditions Techniques | Ebooks de réparation & flash électronique</title>
+  <meta name="description" content="Apprenez la réparation d'appareils électroniques et le flash/décodage grâce à deux ebooks pratiques écrits par un professionnel du SAV. Téléchargement immédiat, mises à jour à vie, paiement sécurisé.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="MK Phone — Éditions Techniques">
+  <meta property="og:description" content="Deux ebooks pratiques pour maîtriser la réparation électronique et le flash/décodage. Par un pro du SAV.">
+  <meta property="og:locale" content="fr_FR">
+
+  <!-- Favicon SVG en data-uri -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23f97316'/%3E%3Cpath d='M9 8h5l2 4 2-4h5v16h-4v-9l-3 6-3-6v9H9z' fill='white'/%3E%3C/svg%3E">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ============================ EN-TÊTE ============================ -->
+  <header class="entete">
+    <div class="conteneur nav">
+      <a href="index.html" class="logo" aria-label="Accueil MK Phone Éditions Techniques">
+        <span class="logo__icone" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </span>
+        <span class="logo__marque">MK Phone<small>Éditions Techniques</small></span>
+      </a>
+
+      <nav class="nav__liens" aria-label="Navigation principale">
+        <a href="index.html" aria-current="page">Accueil</a>
+        <a href="ebook-reparation.html">Réparation</a>
+        <a href="ebook-flash-decodage.html">Flash &amp; Décodage</a>
+        <a href="a-propos.html">À propos</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+
+      <div class="nav__actions">
+        <a href="panier.html" class="btn btn--secondaire panier-btn" aria-label="Voir le panier">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          Panier
+          <span class="panier-compteur" aria-live="polite">0</span>
+        </a>
+        <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu-mobile">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="menu-mobile">
+
+    <!-- ============================ HERO ============================ -->
+    <section class="hero">
+      <div class="conteneur hero__grille">
+        <div>
+          <span class="badge badge--best">Par un professionnel du SAV</span>
+          <h1 style="margin-top:14px">Devenez autonome en <span class="surligne">réparation électronique</span> et en flash &amp; décodage</h1>
+          <p class="hero__sous">Deux ebooks pratiques, illustrés et directement issus du terrain, pour diagnostiquer, réparer et remettre en service smartphones, tablettes et appareils électroniques — étape par étape.</p>
+          <div class="hero__cta">
+            <a href="#ebooks" class="btn btn--primaire btn--gros">Voir les ebooks</a>
+            <a href="#extrait" class="btn btn--fantome btn--gros">Télécharger l'extrait gratuit</a>
+          </div>
+          <ul class="hero__confiance">
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Paiement 100% sécurisé</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Téléchargement immédiat</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Mises à jour à vie</li>
+          </ul>
+        </div>
+        <div class="hero__visuel" aria-hidden="true">
+          <div class="couverture couverture--1">
+            <small>Ebook 1</small>
+            <strong>Guide Complet de Réparation d'Appareils Électroniques</strong>
+            <span class="prix-couv">39 €</span>
+          </div>
+          <div class="couverture couverture--2">
+            <small>Ebook 2</small>
+            <strong>Flash &amp; Décodage : Maîtrise Complète</strong>
+            <span class="prix-couv">49 €</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ BANDEAU CONFIANCE ============================ -->
+    <div class="bandeau-confiance">
+      <div class="conteneur">
+        <ul>
+          <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Paiement sécurisé (Stripe / PayPal)</li>
+          <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg> Téléchargement immédiat (PDF)</li>
+          <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg> Mises à jour à vie incluses</li>
+          <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg> Support par un vrai technicien</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ============================ EBOOKS ============================ -->
+    <section class="section" id="ebooks">
+      <div class="conteneur">
+        <div class="entete-section reveal">
+          <span class="surtitre">Nos ebooks</span>
+          <h2>Deux guides, une seule ambition : votre autonomie</h2>
+          <p class="lead txt-centre" style="margin:0 auto">Rédigés par un technicien qui répare au quotidien en boutique. Du concret, pas de théorie inutile.</p>
+        </div>
+
+        <div class="grille grille-2">
+
+          <!-- Carte ebook 1 -->
+          <article class="carte carte-produit reveal">
+            <div class="carte-produit__visuel">
+              <div class="carte-produit__badges"><span class="badge badge--best">Best-seller</span></div>
+              <div>
+                <small style="letter-spacing:.14em;text-transform:uppercase;opacity:.85">Ebook 1</small>
+                <div class="titre-mini">Guide Complet de Réparation d'Appareils Électroniques</div>
+              </div>
+            </div>
+            <div class="carte-produit__corps">
+              <div class="etoiles" aria-label="Noté 5 sur 5">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+              <h3>Guide Complet de Réparation d'Appareils Électroniques</h3>
+              <p class="carte-produit__desc">Diagnostic, dessoudage, remplacement d'écran, réparation de connecteurs de charge, micro-soudure, gestion des pannes récurrentes. Le manuel de référence pour réparer proprement et durablement.</p>
+              <ul class="carte-produit__liste">
+                <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Méthodes de diagnostic pas à pas</li>
+                <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Micro-soudure &amp; outillage expliqués</li>
+                <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Schémas et photos d'intervention</li>
+              </ul>
+              <div class="prix-bloc">
+                <span class="prix">39 €</span>
+                <span class="txt-secondaire">TVA incluse · PDF</span>
+              </div>
+              <div class="carte-produit__actions">
+                <button class="btn btn--primaire btn--large" data-produit="reparation" data-direct="true">Acheter maintenant</button>
+                <a href="ebook-reparation.html" class="btn btn--secondaire btn--large">Voir le détail</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Carte ebook 2 -->
+          <article class="carte carte-produit reveal">
+            <div class="carte-produit__visuel carte-produit__visuel--orange">
+              <div class="carte-produit__badges"><span class="badge badge--neuf">Nouveau</span></div>
+              <div>
+                <small style="letter-spacing:.14em;text-transform:uppercase;opacity:.85">Ebook 2</small>
+                <div class="titre-mini">Flash &amp; Décodage : Maîtrise Complète</div>
+              </div>
+            </div>
+            <div class="carte-produit__corps">
+              <div class="etoiles" aria-label="Noté 5 sur 5">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+              <h3>Flash &amp; Décodage : Maîtrise Complète</h3>
+              <p class="carte-produit__desc">Installer un firmware, réparer un système logiciel, sortir d'un bootloop, gérer les logiciels d'atelier. Un guide clair, encadré par une démarche 100% légale et éthique réservée aux propriétaires légitimes.</p>
+              <ul class="carte-produit__liste">
+                <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Flash de firmware pas à pas</li>
+                <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Récupération système &amp; bootloop</li>
+                <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Cadre légal &amp; rôle du SAV officiel</li>
+              </ul>
+              <div class="prix-bloc">
+                <span class="prix">49 €</span>
+                <span class="txt-secondaire">TVA incluse · PDF</span>
+              </div>
+              <div class="carte-produit__actions">
+                <button class="btn btn--primaire btn--large" data-produit="flash-decodage" data-direct="true">Acheter maintenant</button>
+                <a href="ebook-flash-decodage.html" class="btn btn--secondaire btn--large">Voir le détail</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ CE QUI EST INCLUS ============================ -->
+    <section class="section section--claire">
+      <div class="conteneur">
+        <div class="entete-section reveal">
+          <span class="surtitre">Ce qui est inclus</span>
+          <h2>Bien plus qu'un simple PDF</h2>
+        </div>
+        <div class="grille grille-3">
+          <div class="bloc-icone reveal">
+            <div class="bloc-icone__ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+            <h3>Contenu illustré</h3>
+            <p>Des centaines de photos et schémas d'intervention réels, pas de théorie abstraite.</p>
+          </div>
+          <div class="bloc-icone reveal">
+            <div class="bloc-icone__ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg></div>
+            <h3>Accès immédiat</h3>
+            <p>Vos fichiers sont disponibles dès le paiement validé, envoyés par email.</p>
+          </div>
+          <div class="bloc-icone reveal">
+            <div class="bloc-icone__ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg></div>
+            <h3>Mises à jour à vie</h3>
+            <p>Nouveaux modèles, nouvelles méthodes : vous recevez chaque révision gratuitement.</p>
+          </div>
+          <div class="bloc-icone reveal">
+            <div class="bloc-icone__ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg></div>
+            <h3>Méthodes éprouvées</h3>
+            <p>Chaque procédure a été testée en boutique sur des cas réels de clients.</p>
+          </div>
+          <div class="bloc-icone reveal">
+            <div class="bloc-icone__ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+            <h3>Support technicien</h3>
+            <p>Une question sur une réparation ? Écrivez-nous, un vrai technicien vous répond.</p>
+          </div>
+          <div class="bloc-icone reveal">
+            <div class="bloc-icone__ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+            <h3>Cadre légal clair</h3>
+            <p>L'ouvrage Flash &amp; Décodage rappelle en permanence l'éthique et la légalité.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ BÉNÉFICES ============================ -->
+    <section class="section section--marine">
+      <div class="conteneur">
+        <div class="entete-section reveal">
+          <span class="surtitre">Pourquoi ces guides</span>
+          <h2>Gagnez du temps, de l'argent et de la confiance</h2>
+        </div>
+        <div class="grille grille-3">
+          <div class="bloc-icone reveal">
+            <div class="bloc-icone__ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+            <h3>Économisez sur chaque panne</h3>
+            <p>Réparez vous-même au lieu de payer un remplacement complet. Rentabilisé dès la première intervention.</p>
+          </div>
+          <div class="bloc-icone reveal">
+            <div class="bloc-icone__ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <h3>Apprenez vite, sans détour</h3>
+            <p>Un contenu structuré du plus simple au plus avancé. Vous progressez à votre rythme, sans jargon.</p>
+          </div>
+          <div class="bloc-icone reveal">
+            <div class="bloc-icone__ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l7 4v6c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6z"/></svg></div>
+            <h3>Un savoir-faire monétisable</h3>
+            <p>Lancez votre activité de réparation ou étoffez votre atelier avec des compétences recherchées.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ AVIS ============================ -->
+    <section class="section" id="avis">
+      <div class="conteneur">
+        <div class="entete-section reveal">
+          <span class="surtitre">Ils nous font confiance</span>
+          <h2>Ce qu'en disent les lecteurs</h2>
+        </div>
+        <div class="grille grille-3">
+          <div class="carte-avis reveal">
+            <div class="etoiles" aria-label="5 sur 5"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+            <p class="carte-avis__texte">« J'ai réparé le connecteur de charge de mon téléphone en suivant le guide, du premier coup. Les photos étape par étape font toute la différence. »</p>
+            <div class="carte-avis__auteur"><div class="carte-avis__avatar">KB</div><div><div class="carte-avis__nom">Karim B.</div><div class="carte-avis__role">Bricoleur passionné</div></div></div>
+          </div>
+          <div class="carte-avis reveal">
+            <div class="etoiles" aria-label="5 sur 5"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+            <p class="carte-avis__texte">« Le guide Flash &amp; Décodage est très pédagogique et surtout honnête sur le cadre légal. Parfait pour un technicien qui veut se former sérieusement. »</p>
+            <div class="carte-avis__auteur"><div class="carte-avis__avatar">SL</div><div><div class="carte-avis__nom">Sophie L.</div><div class="carte-avis__role">Gérante d'atelier</div></div></div>
+          </div>
+          <div class="carte-avis reveal">
+            <div class="etoiles" aria-label="5 sur 5"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+            <p class="carte-avis__texte">« J'ai pris le pack. Rapport qualité-prix imbattable, et l'auteur répond vraiment aux questions. Je recommande à tous les débutants. »</p>
+            <div class="carte-avis__auteur"><div class="carte-avis__avatar">YM</div><div><div class="carte-avis__nom">Yanis M.</div><div class="carte-avis__role">Étudiant en électronique</div></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ PACK PROMO ============================ -->
+    <section class="section section--claire" id="pack">
+      <div class="conteneur">
+        <div class="pack reveal">
+          <div class="pack__grille">
+            <div>
+              <span class="badge badge--promo">Offre pack · -22%</span>
+              <h2 style="margin-top:14px">Le Pack Complet : les 2 ebooks à prix réduit</h2>
+              <p class="txt-secondaire" style="color:#cdd8ec">Maîtrisez à la fois la réparation matérielle et le flash logiciel. Tout ce qu'il faut pour devenir un réparateur complet, réuni en une seule offre.</p>
+              <ul>
+                <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Guide Complet de Réparation (valeur 39 €)</li>
+                <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Flash &amp; Décodage : Maîtrise Complète (valeur 49 €)</li>
+                <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Mises à jour à vie sur les deux ouvrages</li>
+              </ul>
+            </div>
+            <div class="pack__prix-carte">
+              <div class="prix-bloc" style="justify-content:center">
+                <span class="prix">69 €</span>
+                <span class="prix-barre">88 €</span>
+              </div>
+              <p class="prix-eco" style="margin:0 0 16px">Vous économisez 19 €</p>
+              <button class="btn btn--promo btn--large btn--gros" data-produit="pack" data-direct="true">Profiter du pack</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ EXTRAIT GRATUIT ============================ -->
+    <section class="section" id="extrait">
+      <div class="conteneur" style="max-width:760px;text-align:center">
+        <div class="reveal">
+          <span class="surtitre">Essayez avant d'acheter</span>
+          <h2>Recevez un extrait gratuit</h2>
+          <p class="lead txt-centre" style="margin:0 auto 26px">Laissez votre email : nous vous envoyons un chapitre offert de chaque ebook pour découvrir la qualité du contenu, sans engagement.</p>
+          <form class="footer__news" data-demo style="max-width:480px;margin:0 auto;gap:10px">
+            <input type="email" required placeholder="votre@email.fr" aria-label="Votre adresse email" style="border-color:var(--bordure);background:#fff;color:var(--texte)">
+            <button type="submit" class="btn btn--primaire">Recevoir l'extrait</button>
+          </form>
+          <p class="txt-secondaire" style="font-size:.85rem;margin-top:12px">Pas de spam. Désinscription en un clic. Voir notre <a href="confidentialite.html" style="color:var(--accent)">politique de confidentialité</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ FAQ COURTE ============================ -->
+    <section class="section section--claire">
+      <div class="conteneur">
+        <div class="entete-section reveal">
+          <span class="surtitre">Questions fréquentes</span>
+          <h2>Vous hésitez encore ?</h2>
+        </div>
+        <div class="faq-liste">
+          <div class="faq-item reveal">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-a1">Sous quel format vais-je recevoir les ebooks ?<span class="faq-question__ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+            <div class="faq-reponse" id="faq-a1"><p>Au format PDF haute définition, lisible sur ordinateur, tablette et smartphone. Le lien de téléchargement est envoyé par email juste après le paiement.</p></div>
+          </div>
+          <div class="faq-item reveal">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-a2">Le contenu convient-il aux débutants ?<span class="faq-question__ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+            <div class="faq-reponse" id="faq-a2"><p>Oui. Chaque guide démarre par les bases (outillage, sécurité, méthode) puis monte progressivement en compétence jusqu'aux techniques avancées.</p></div>
+          </div>
+          <div class="faq-item reveal">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-a3">L'ebook Flash &amp; Décodage est-il légal ?<span class="faq-question__ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+            <div class="faq-reponse" id="faq-a3"><p>Oui. Il traite la maintenance logicielle et la récupération d'accès sur preuve de propriété, réservées aux propriétaires légitimes et techniciens. Il ne propose aucun contournement de verrou anti-vol et rappelle systématiquement le rôle du SAV officiel.</p></div>
+          </div>
+        </div>
+        <p class="txt-centre" style="margin-top:26px"><a href="faq.html" class="btn btn--secondaire">Voir toutes les questions</a></p>
+      </div>
+    </section>
+
+    <!-- ============================ CTA FINAL ============================ -->
+    <section class="section section--marine">
+      <div class="conteneur txt-centre reveal" style="max-width:640px">
+        <h2>Prêt à réparer par vous-même ?</h2>
+        <p class="lead txt-centre" style="margin:0 auto 26px;color:#cdd8ec">Rejoignez les lecteurs qui ont repris le contrôle de leurs appareils. Téléchargement immédiat, satisfait ou accompagné.</p>
+        <div class="hero__cta" style="justify-content:center">
+          <button class="btn btn--primaire btn--gros" data-produit="pack" data-direct="true">Obtenir le pack à 69 €</button>
+          <a href="#ebooks" class="btn btn--fantome btn--gros">Voir les ebooks</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="footer">
+    <div class="conteneur">
+      <div class="footer__grille">
+        <div class="footer__marque">
+          <a href="index.html" class="logo" style="color:#fff">
+            <span class="logo__icone" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span>
+            <span class="logo__marque" style="color:#fff">MK Phone<small style="color:#8ea3c4">Éditions Techniques</small></span>
+          </a>
+          <p style="margin-top:14px">Des guides techniques concrets, écrits par un professionnel de la réparation en Île-de-France.</p>
+          <div class="footer__reseaux">
+            <a href="#" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="#" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+            <a href="#" aria-label="YouTube"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.5-.45-5.17a2.78 2.78 0 0 0-1.95-2C18.88 4.34 12 4.34 12 4.34s-6.88 0-8.6.49a2.78 2.78 0 0 0-1.95 2C1 8.5 1 12 1 12s0 3.5.45 5.17a2.78 2.78 0 0 0 1.95 2c1.72.49 8.6.49 8.6.49s6.88 0 8.6-.49a2.78 2.78 0 0 0 1.95-2C23 15.5 23 12 23 12zM9.75 15.5v-7l6 3.5z"/></svg></a>
+            <a href="#" aria-label="TikTok"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8.2a6.9 6.9 0 0 0 4 1.3V6.7a3.9 3.9 0 0 1-2.6-1.3A3.9 3.9 0 0 1 16.3 3H13.4v11.6a2.5 2.5 0 1 1-2.4-2.5V9.2a5.4 5.4 0 1 0 5 5.4z"/></svg></a>
+          </div>
+        </div>
+
+        <div>
+          <h4>Nos ebooks</h4>
+          <ul>
+            <li><a href="ebook-reparation.html">Guide de Réparation</a></li>
+            <li><a href="ebook-flash-decodage.html">Flash &amp; Décodage</a></li>
+            <li><a href="index.html#pack">Pack Complet</a></li>
+            <li><a href="index.html#extrait">Extrait gratuit</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Informations</h4>
+          <ul>
+            <li><a href="a-propos.html">À propos</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="mentions-legales.html">Mentions légales</a></li>
+            <li><a href="confidentialite.html">Confidentialité (RGPD)</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__contact">
+          <h4>Contact &amp; newsletter</h4>
+          <ul>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> <a href="mailto:aminemekhfi45@gmail.com">aminemekhfi45@gmail.com</a></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> <a href="tel:+33751484392">07 51 48 43 92</a></li>
+          </ul>
+          <form class="footer__news" data-demo>
+            <input type="email" required placeholder="Votre email" aria-label="Email newsletter">
+            <button type="submit" class="btn btn--primaire">OK</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer__bas">
+        <span>© <span data-annee>2026</span> MK Phone — Éditions Techniques. Tous droits réservés.</span>
+        <nav aria-label="Liens légaux">
+          <a href="mentions-legales.html">Mentions légales</a>
+          <a href="confidentialite.html">Confidentialité</a>
+          <a href="faq.html">FAQ</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts (config.js optionnel, non commité) -->
+  <script src="config.js" onerror="void 0"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/checkout.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
