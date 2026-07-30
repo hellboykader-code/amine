@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<style>
+  @page { size: A4; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: Georgia, 'Times New Roman', serif; color: #1a1a2e; line-height: 1.65; }
+
+  .page {
+    width: 210mm; min-height: 297mm; padding: 24mm 22mm;
+    page-break-after: always; position: relative; background: #fff;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  /* ---------- COVER ---------- */
+  .cover {
+    background: linear-gradient(150deg, #0f2027 0%, #203a43 45%, #2c5364 100%);
+    color: #fff; display: flex; flex-direction: column; justify-content: center;
+    padding: 30mm 24mm;
+  }
+  .cover .kicker { letter-spacing: 6px; text-transform: uppercase; font-size: 13px; color: #7fd7c4; font-family: Arial, sans-serif; margin-bottom: 30px; }
+  .cover h1 { font-size: 58px; line-height: 1.1; font-weight: 800; margin-bottom: 20px; }
+  .cover h1 span { color: #f5c451; }
+  .cover .sub { font-size: 20px; color: #cfe9e2; font-style: italic; max-width: 130mm; margin-bottom: 60px; }
+  .cover .rule { width: 80px; height: 5px; background: #f5c451; margin-bottom: 30px; }
+  .cover .foot { position: absolute; bottom: 28mm; left: 24mm; right: 24mm; display: flex; justify-content: space-between; font-family: Arial, sans-serif; font-size: 13px; color: #9fc7bd; }
+
+  h2.chapter-title { font-size: 32px; color: #0f2027; margin-bottom: 6px; font-weight: 800; }
+  .chapter-num { font-family: Arial, sans-serif; letter-spacing: 3px; text-transform: uppercase; font-size: 12px; color: #2c5364; font-weight: bold; }
+  .accent-bar { width: 60px; height: 4px; background: #f5c451; margin: 14px 0 26px; }
+
+  h3 { font-size: 19px; color: #203a43; margin: 24px 0 8px; font-family: Arial, sans-serif; }
+  p { margin-bottom: 12px; font-size: 15px; }
+  ul { margin: 8px 0 14px 22px; }
+  li { margin-bottom: 8px; font-size: 15px; }
+  strong { color: #0f2027; }
+
+  .toc-item { display: flex; align-items: baseline; margin-bottom: 16px; font-size: 17px; }
+  .toc-item .n { font-family: Arial, sans-serif; font-weight: bold; color: #f5c451; background: #0f2027; width: 34px; height: 34px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 15px; margin-right: 16px; flex-shrink: 0; }
+  .toc-item .dots { flex: 1; border-bottom: 2px dotted #ccc; margin: 0 10px; }
+
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+  th { background: #0f2027; color: #fff; text-align: left; padding: 10px 12px; font-family: Arial, sans-serif; font-size: 13px; }
+  td { padding: 10px 12px; border-bottom: 1px solid #e5e5e5; vertical-align: top; }
+  tr:nth-child(even) td { background: #f6f9f8; }
+
+  .tip { background: #fff8e6; border-left: 5px solid #f5c451; padding: 14px 18px; margin: 18px 0; font-size: 14.5px; border-radius: 0 6px 6px 0; }
+  .tip b { color: #b8860b; }
+  .warn { background: #fdecec; border-left: 5px solid #e07a5f; padding: 14px 18px; margin: 18px 0; font-size: 14.5px; border-radius: 0 6px 6px 0; }
+
+  .pagenum { position: absolute; bottom: 12mm; right: 22mm; font-family: Arial, sans-serif; font-size: 12px; color: #9aa; }
+  .brand-foot { position: absolute; bottom: 12mm; left: 22mm; font-family: Arial, sans-serif; font-size: 11px; color: #bbb; letter-spacing: 2px; text-transform: uppercase; }
+
+  .goldbox { background: linear-gradient(135deg,#0f2027,#2c5364); color:#fff; padding: 22px 26px; border-radius: 10px; margin: 18px 0; }
+  .goldbox h3 { color: #f5c451; margin-top: 0; }
+  .goldbox ol { margin-left: 20px; }
+  .goldbox li { color: #eaf4f1; }
+
+  .final { background: #0f2027; color: #fff; display: flex; flex-direction: column; justify-content: center; text-align: center; padding: 40mm 26mm; }
+  .final h2 { color: #f5c451; font-size: 30px; margin-bottom: 20px; }
+  .final p { color: #cfe9e2; font-size: 16px; }
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<div class="page cover">
+  <div class="kicker">Guide Pratique &middot; Édition 2026</div>
+  <div class="rule"></div>
+  <h1>Le Marketing<br>qui <span>Vend</span></h1>
+  <div class="sub">Les meilleures stratégies, astuces psychologiques et tactiques business pour faire décoller votre activité — même avec un petit budget.</div>
+  <div class="foot">
+    <span>MÉTHODES ÉPROUVÉES</span>
+    <span>ÉDITION 2026</span>
+  </div>
+</div>
+
+<!-- ============ TABLE OF CONTENTS ============ -->
+<div class="page">
+  <div class="chapter-num">Sommaire</div>
+  <h2 class="chapter-title">Ce que vous allez apprendre</h2>
+  <div class="accent-bar"></div>
+
+  <div class="toc-item"><span class="n">1</span> Les 7 leviers psychologiques de la persuasion <span class="dots"></span></div>
+  <div class="toc-item"><span class="n">2</span> Le tunnel de vente : le cœur du système <span class="dots"></span></div>
+  <div class="toc-item"><span class="n">3</span> Les formules de copywriting qui vendent <span class="dots"></span></div>
+  <div class="toc-item"><span class="n">4</span> La psychologie des prix <span class="dots"></span></div>
+  <div class="toc-item"><span class="n">5</span> Croissance à petit budget (Growth Hacking) <span class="dots"></span></div>
+  <div class="toc-item"><span class="n">6</span> Réseaux sociaux en 2026 <span class="dots"></span></div>
+  <div class="toc-item"><span class="n">7</span> Les canaux qui rapportent le plus <span class="dots"></span></div>
+  <div class="toc-item"><span class="n">★</span> Les 5 règles d'or à retenir <span class="dots"></span></div>
+
+  <div class="tip" style="margin-top:40px;"><b>Comment lire cet ebook :</b> chaque chapitre est actionnable. Prenez une seule idée par jour, appliquez-la à votre business, mesurez le résultat. La constance bat l'intensité.</div>
+  <div class="brand-foot">Le Marketing qui Vend</div>
+  <div class="pagenum">2</div>
+</div>
+
+<!-- ============ CHAPTER 1 ============ -->
+<div class="page">
+  <div class="chapter-num">Chapitre 1</div>
+  <h2 class="chapter-title">Les 7 leviers de la persuasion</h2>
+  <div class="accent-bar"></div>
+  <p>Ce sont les fondations invisibles de toute vente. Le psychologue <strong>Robert Cialdini</strong> a prouvé scientifiquement que ces déclencheurs influencent la décision d'achat. Maîtrisez-les, et vous influencez éthiquement.</p>
+
+  <table>
+    <tr><th>Principe</th><th>Comment l'utiliser concrètement</th></tr>
+    <tr><td><strong>Réciprocité</strong></td><td>Donnez d'abord (échantillon, guide gratuit, conseil). Le client se sent redevable et achète plus facilement.</td></tr>
+    <tr><td><strong>Engagement</strong></td><td>Faites dire « oui » à une petite chose d'abord (email, essai). Les gens veulent rester cohérents.</td></tr>
+    <tr><td><strong>Preuve sociale</strong></td><td>Avis, témoignages, « 10 000 clients satisfaits ». On imite les autres.</td></tr>
+    <tr><td><strong>Autorité</strong></td><td>Affichez expertise, certifications, résultats chiffrés, mentions presse.</td></tr>
+    <tr><td><strong>Sympathie</strong></td><td>On achète aux gens qu'on aime. Soyez authentique, trouvez un terrain commun.</td></tr>
+    <tr><td><strong>Rareté</strong></td><td>« Stock limité », « offre jusqu'à dimanche ». La peur de manquer (FOMO) déclenche l'action.</td></tr>
+    <tr><td><strong>Unité</strong></td><td>Créez un sentiment d'appartenance (« notre communauté »).</td></tr>
+  </table>
+
+  <div class="tip"><b>Astuce :</b> combinez-les. Un email de rareté (« plus que 3 places ») renforcé par une preuve sociale (« déjà 500 inscrits ») est bien plus puissant qu'un seul levier.</div>
+  <div class="brand-foot">Le Marketing qui Vend</div>
+  <div class="pagenum">3</div>
+</div>
+
+<!-- ============ CHAPTER 2 ============ -->
+<div class="page">
+  <div class="chapter-num">Chapitre 2</div>
+  <h2 class="chapter-title">Le tunnel de vente</h2>
+  <div class="accent-bar"></div>
+  <p>Chaque client passe par un parcours. À chaque étape correspond une tactique différente. Ne vendez jamais trop tôt.</p>
+
+  <h3>TOFU — Découverte</h3>
+  <p>SEO, contenu de valeur, vidéos courtes, réseaux sociaux, publicités de notoriété. Objectif : être vu.</p>
+  <h3>MOFU — Considération</h3>
+  <p>Email marketing, retargeting, études de cas, webinaires, comparatifs. Objectif : construire la confiance.</p>
+  <h3>BOFU — Décision</h3>
+  <p>Offres personnalisées, garantie, chat en direct, checkout simplifié, urgence. Objectif : lever les derniers freins.</p>
+  <h3>Rétention — Le vrai profit</h3>
+  <p>Programme de fidélité, upsell, service client irréprochable.</p>
+
+  <div class="tip"><b>Chiffre clé :</b> le nurturing génère <b>+50 % de leads qualifiés à -33 % de coût</b> (Forrester). Et acquérir un nouveau client coûte 5× plus cher que d'en garder un.</div>
+  <div class="brand-foot">Le Marketing qui Vend</div>
+  <div class="pagenum">4</div>
+</div>
+
+<!-- ============ CHAPTER 3 ============ -->
+<div class="page">
+  <div class="chapter-num">Chapitre 3</div>
+  <h2 class="chapter-title">Le copywriting qui vend</h2>
+  <div class="accent-bar"></div>
+  <p>Le bon message vaut plus qu'un gros budget. Choisissez votre formule selon le niveau de conscience du client.</p>
+
+  <h3>AIDA — Attention, Intérêt, Désir, Action</h3>
+  <p>Pour un public peu conscient de son problème. Vend un futur désirable.</p>
+  <h3>PAS — Problème, Agitation, Solution</h3>
+  <p>Pour un public qui souffre déjà. On appuie sur la douleur, puis on soulage.</p>
+  <h3>BAB — Avant, Après, Pont</h3>
+  <p>Parfait pour les pages de vente et témoignages. Montre la transformation.</p>
+
+  <div class="goldbox">
+    <h3>Le combo gagnant</h3>
+    <p style="color:#eaf4f1;">PAS dans une pub Facebook (agiter la douleur) &rarr; landing page en AIDA &rarr; témoignages en BAB. Cette approche hybride convertit bien mieux qu'une formule seule.</p>
+  </div>
+  <div class="brand-foot">Le Marketing qui Vend</div>
+  <div class="pagenum">5</div>
+</div>
+
+<!-- ============ CHAPTER 4 ============ -->
+<div class="page">
+  <div class="chapter-num">Chapitre 4</div>
+  <h2 class="chapter-title">La psychologie des prix</h2>
+  <div class="accent-bar"></div>
+  <p>Le prix n'est pas logique, il est <strong>perçu</strong>. Le contexte et la comparaison comptent plus que le chiffre lui-même.</p>
+
+  <h3>L'ancrage</h3>
+  <p>Affichez d'abord un prix élevé (200 €) à côté de votre offre (100 €) : la vôtre paraît une bonne affaire. Les marques de luxe (Mercedes) utilisent leur modèle « vitrine » pour valoriser le reste de la gamme.</p>
+  <h3>Le prix premium</h3>
+  <p>Un prix élevé signale la qualité et filtre les clients « chercheurs de rabais ».</p>
+  <h3>L'offre à 3 niveaux</h3>
+  <p>La plupart des gens choisissent l'option du milieu. Placez donc votre offre cible au centre.</p>
+
+  <div class="warn"><b>Éthique :</b> n'inventez jamais de faux « prix barrés ». Un prix de référence doit être réel. La confiance perdue ne se rachète pas.</div>
+  <div class="brand-foot">Le Marketing qui Vend</div>
+  <div class="pagenum">6</div>
+</div>
+
+<!-- ============ CHAPTER 5 ============ -->
+<div class="page">
+  <div class="chapter-num">Chapitre 5</div>
+  <h2 class="chapter-title">Croissance à petit budget</h2>
+  <div class="accent-bar"></div>
+  <p>Grandir vite sans gros moyens. La règle d'or du growth hacking : <strong>testez au lieu de deviner</strong>. Commencez petit, mesurez, scalez ce qui marche.</p>
+
+  <ul>
+    <li><strong>Marketing de contenu</strong> — devenez la référence de votre niche (blog, vidéos, podcast).</li>
+    <li><strong>Programme de parrainage</strong> — vos clients deviennent vos vendeurs.</li>
+    <li><strong>Guest posting</strong> — écrivez pour d'autres audiences pour emprunter la leur.</li>
+    <li><strong>SEO local + Google Business</strong> — 46 % des recherches Google ont une intention locale.</li>
+    <li><strong>Communauté</strong> — Slack, Discord, groupe : un noyau d'ambassadeurs fidèles.</li>
+    <li><strong>Guérilla</strong> — surprise, créativité, installations mémorables, défis viraux.</li>
+  </ul>
+
+  <div class="tip"><b>État d'esprit :</b> les marques qui grandissent testent au lieu de deviner. Une petite expérience par semaine = 52 apprentissages par an.</div>
+  <div class="brand-foot">Le Marketing qui Vend</div>
+  <div class="pagenum">7</div>
+</div>
+
+<!-- ============ CHAPTER 6 ============ -->
+<div class="page">
+  <div class="chapter-num">Chapitre 6</div>
+  <h2 class="chapter-title">Réseaux sociaux en 2026</h2>
+  <div class="accent-bar"></div>
+
+  <h3>TikTok — la plus forte croissance</h3>
+  <p>+200 % de followers en moyenne pour les marques. La clé : <strong>authenticité &gt; perfection</strong>. Éduquez avant de vendre. Rythme réaliste : 4 à 6 posts/semaine pendant 8 semaines minimum avant de voir des résultats.</p>
+
+  <h3>Le recyclage de contenu</h3>
+  <p>Produisez « TikTok-first », puis adaptez en Reels, Shorts et LinkedIn. Résultat : <strong>3 à 4× plus de ROI</strong> par contenu, sans coût supplémentaire.</p>
+
+  <h3>Instagram</h3>
+  <p>La portée organique baisse : misez sur le <strong>taux d'engagement</strong>. Répondez à chaque commentaire dans la première heure après publication.</p>
+
+  <div class="tip"><b>Règle :</b> la valeur d'abord, la vente ensuite. Enseignez quelque chose d'utile lié à votre offre plutôt que de vanter votre produit.</div>
+  <div class="brand-foot">Le Marketing qui Vend</div>
+  <div class="pagenum">8</div>
+</div>
+
+<!-- ============ CHAPTER 7 ============ -->
+<div class="page">
+  <div class="chapter-num">Chapitre 7</div>
+  <h2 class="chapter-title">Les canaux qui rapportent</h2>
+  <div class="accent-bar"></div>
+
+  <ul>
+    <li><strong>Email marketing</strong> — 36 € gagnés pour 1 € investi. Et c'est le SEUL canal que vous possédez vraiment : personne ne peut vous le couper.</li>
+    <li><strong>Vidéo verticale authentique</strong> — + optimisation pour la recherche vocale.</li>
+    <li><strong>Génération d'avis</strong> — de façon constante et systématique.</li>
+    <li><strong>Intelligence artificielle</strong> — création de contenu assistée, chatbots service client, publicités optimisées, emails personnalisés à grande échelle.</li>
+  </ul>
+
+  <div class="goldbox">
+    <h3>La hiérarchie des canaux</h3>
+    <p style="color:#eaf4f1;">Possédez (email, communauté) &gt; Gagnez (SEO, bouche-à-oreille) &gt; Louez (publicité). Bâtissez toujours vers ce que vous possédez.</p>
+  </div>
+  <div class="brand-foot">Le Marketing qui Vend</div>
+  <div class="pagenum">9</div>
+</div>
+
+<!-- ============ GOLDEN RULES ============ -->
+<div class="page">
+  <div class="chapter-num">L'essentiel</div>
+  <h2 class="chapter-title">Les 5 règles d'or</h2>
+  <div class="accent-bar"></div>
+
+  <div class="goldbox">
+    <ol>
+      <li style="margin-bottom:14px;"><strong style="color:#f5c451;">L'exécution systématique</strong> bat les rafales sporadiques. Un processus répétable &gt; un coup de génie ponctuel.</li>
+      <li style="margin-bottom:14px;"><strong style="color:#f5c451;">Possédez votre audience</strong> (email, communauté) plutôt que de la louer aux algorithmes.</li>
+      <li style="margin-bottom:14px;"><strong style="color:#f5c451;">Donnez de la valeur</strong> avant de demander la vente.</li>
+      <li style="margin-bottom:14px;"><strong style="color:#f5c451;">Testez petit</strong>, mesurez, scalez ce qui marche.</li>
+      <li><strong style="color:#f5c451;">La confiance et l'autorité</strong> sont votre vrai capital — surtout face à des concurrents plus gros.</li>
+    </ol>
+  </div>
+  <div class="brand-foot">Le Marketing qui Vend</div>
+  <div class="pagenum">10</div>
+</div>
+
+<!-- ============ FINAL ============ -->
+<div class="page final">
+  <h2>À vous de jouer</h2>
+  <p>Le savoir sans action ne vaut rien.<br>Choisissez UNE stratégie de cet ebook.<br>Appliquez-la cette semaine. Mesurez. Recommencez.</p>
+  <p style="margin-top:40px; color:#7fd7c4; letter-spacing:3px; text-transform:uppercase; font-size:13px;">Le Marketing qui Vend &middot; 2026</p>
+</div>
+
+</body>
+</html>
