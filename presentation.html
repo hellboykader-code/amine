@@ -1,0 +1,342 @@
+<title>MK Phone — Éditions Techniques</title>
+<meta name="description" content="Présentation des deux ebooks techniques MK Phone (Réparation ; Flash & Décodage) et de la stratégie marketing de lancement." />
+<style>
+  :root{
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+    /* Thème clair par défaut */
+    --bg:#eaeef6; --panel:#ffffff; --panel2:#f3f6fc; --ink:#0d1e38;
+    --muted:#54657f; --line:rgba(13,30,56,.13); --accent:#dd5a0b; --accent2:#b5470a;
+    --grid:rgba(13,30,56,.055); --shadow:0 18px 44px -22px rgba(13,30,56,.42);
+    --chip:rgba(221,90,11,.10);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0a182e; --panel:#112648; --panel2:#0e2140; --ink:#e9f0fb;
+      --muted:#96a8c7; --line:rgba(255,255,255,.10); --accent:#f97316; --accent2:#fb923c;
+      --grid:rgba(120,160,220,.09); --shadow:0 24px 60px -28px rgba(0,0,0,.7);
+      --chip:rgba(249,115,22,.14);
+    }
+  }
+  :root[data-theme="light"]{
+    --bg:#eaeef6; --panel:#ffffff; --panel2:#f3f6fc; --ink:#0d1e38;
+    --muted:#54657f; --line:rgba(13,30,56,.13); --accent:#dd5a0b; --accent2:#b5470a;
+    --grid:rgba(13,30,56,.055); --shadow:0 18px 44px -22px rgba(13,30,56,.42);
+    --chip:rgba(221,90,11,.10);
+  }
+  :root[data-theme="dark"]{
+    --bg:#0a182e; --panel:#112648; --panel2:#0e2140; --ink:#e9f0fb;
+    --muted:#96a8c7; --line:rgba(255,255,255,.10); --accent:#f97316; --accent2:#fb923c;
+    --grid:rgba(120,160,220,.09); --shadow:0 24px 60px -28px rgba(0,0,0,.7);
+    --chip:rgba(249,115,22,.14);
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--bg); color:var(--ink); font-family:var(--sans);
+    line-height:1.6; -webkit-font-smoothing:antialiased;
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size:44px 44px;
+  }
+  .wrap{max-width:1080px; margin:0 auto; padding:0 22px}
+  a{color:inherit}
+  .mono{font-family:var(--mono)}
+  .eyebrow{
+    font-family:var(--mono); font-size:.72rem; letter-spacing:.22em; text-transform:uppercase;
+    color:var(--accent); font-weight:600;
+  }
+
+  /* ---- Barre ---- */
+  header.bar{
+    position:sticky; top:0; z-index:20; backdrop-filter:blur(10px);
+    background:color-mix(in srgb, var(--bg) 82%, transparent);
+    border-bottom:1px solid var(--line);
+  }
+  .bar .wrap{display:flex; align-items:center; justify-content:space-between; height:60px}
+  .logo{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:-.01em}
+  .logo .mk{
+    display:grid; place-items:center; width:32px; height:32px; border-radius:8px;
+    background:linear-gradient(145deg,var(--accent),var(--accent2)); color:#fff;
+    font-family:var(--mono); font-weight:700; font-size:.85rem;
+  }
+  .logo small{display:block; font-family:var(--mono); font-weight:500; font-size:.62rem;
+    letter-spacing:.18em; text-transform:uppercase; color:var(--muted)}
+  .themebtn{
+    font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; color:var(--muted);
+    background:var(--panel2); border:1px solid var(--line); border-radius:999px;
+    padding:7px 13px; cursor:pointer;
+  }
+  .themebtn:hover{color:var(--ink)}
+
+  /* ---- Hero ---- */
+  .hero{padding:76px 0 40px}
+  .hero h1{
+    font-size:clamp(2.3rem,6vw,4rem); line-height:1.02; letter-spacing:-.03em; font-weight:800;
+    margin:.5rem 0 .8rem; text-wrap:balance; max-width:16ch;
+  }
+  .hero h1 .hl{color:var(--accent)}
+  .hero p.lede{font-size:clamp(1.05rem,2.4vw,1.3rem); color:var(--muted); max-width:56ch; margin:0}
+  .meta-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:26px}
+  .tag{
+    font-family:var(--mono); font-size:.74rem; letter-spacing:.04em; color:var(--ink);
+    background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:8px 12px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .tag b{color:var(--accent)}
+
+  /* ---- Sections ---- */
+  section{padding:34px 0}
+  .sec-head{display:flex; align-items:baseline; gap:14px; margin-bottom:20px}
+  .sec-head h2{font-size:1.5rem; letter-spacing:-.02em; margin:0; font-weight:800}
+  .sec-head .num{font-family:var(--mono); color:var(--accent); font-size:.8rem}
+
+  /* ---- Fiche ebook ---- */
+  .fiche{
+    display:grid; grid-template-columns:200px 1fr; gap:26px; align-items:stretch;
+    background:var(--panel); border:1px solid var(--line); border-radius:18px;
+    padding:22px; box-shadow:var(--shadow); margin-bottom:22px;
+    opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease;
+  }
+  .fiche.in{opacity:1; transform:none}
+  /* Couverture rendue en CSS */
+  .cover{
+    border-radius:12px; padding:18px 16px; color:#fff; min-height:270px;
+    display:flex; flex-direction:column; justify-content:space-between;
+    background:linear-gradient(155deg,#0f2747,#14315b 60%,#1c3a6e);
+    position:relative; overflow:hidden; box-shadow:0 12px 26px -14px rgba(0,0,0,.55);
+  }
+  .cover::after{content:""; position:absolute; inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);
+    background-size:22px 22px; opacity:.5}
+  .cover.c2{background:linear-gradient(155deg,#111a2e,#1a2440 55%,#26203f)}
+  .cover .rule{width:44px; height:4px; border-radius:3px; background:var(--accent); position:relative; z-index:1}
+  .cover .ctitle{font-weight:800; font-size:1.12rem; line-height:1.14; position:relative; z-index:1}
+  .cover .cbrand{font-family:var(--mono); font-size:.6rem; letter-spacing:.2em; text-transform:uppercase;
+    color:#9fb2cf; position:relative; z-index:1}
+  .cover .cnum{font-family:var(--mono); font-size:.68rem; color:#cbd6e8; position:relative; z-index:1}
+
+  .fiche .body h3{margin:.1rem 0 .3rem; font-size:1.35rem; letter-spacing:-.015em}
+  .fiche .body .price{font-family:var(--mono); color:var(--accent); font-weight:700}
+  .fiche .body p{margin:.5rem 0 0; color:var(--muted)}
+  .spec{
+    margin-top:16px; border-top:1px dashed var(--line); width:100%;
+    border-collapse:collapse; font-family:var(--mono); font-size:.8rem;
+  }
+  .spec td{padding:7px 0; vertical-align:top; border-bottom:1px solid var(--line)}
+  .spec td:first-child{color:var(--muted); letter-spacing:.03em; width:40%; text-transform:uppercase; font-size:.68rem}
+  .spec td:last-child{color:var(--ink); font-variant-numeric:tabular-nums}
+  .chips{display:flex; flex-wrap:wrap; gap:7px; margin-top:14px}
+  .chip{font-family:var(--mono); font-size:.7rem; color:var(--accent); background:var(--chip);
+    border:1px solid color-mix(in srgb,var(--accent) 30%,transparent); border-radius:6px; padding:4px 9px}
+  .legal{margin-top:14px; font-size:.82rem; color:var(--muted); border-left:3px solid var(--accent);
+    background:var(--panel2); padding:10px 14px; border-radius:0 8px 8px 0}
+  .legal b{color:var(--ink)}
+
+  /* ---- Inclus ---- */
+  .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+  .inc{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:18px}
+  .inc .ic{width:34px; height:34px; color:var(--accent)}
+  .inc h4{margin:12px 0 4px; font-size:1rem}
+  .inc p{margin:0; color:var(--muted); font-size:.9rem}
+
+  /* ---- Stratégie ---- */
+  .strat{background:var(--panel); border:1px solid var(--line); border-radius:18px; padding:26px; box-shadow:var(--shadow)}
+  .strat .kpis{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:20px}
+  .kpi{border-left:2px solid var(--accent); padding-left:14px}
+  .kpi .v{font-family:var(--mono); font-size:1.5rem; font-weight:700; letter-spacing:-.02em; color:var(--ink); font-variant-numeric:tabular-nums}
+  .kpi .l{font-size:.8rem; color:var(--muted)}
+  .phases{display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-top:24px; counter-reset:p}
+  .phase{position:relative; padding:16px 14px 0; border-top:2px solid var(--line)}
+  .phase::before{counter-increment:p; content:"0" counter(p); font-family:var(--mono); color:var(--accent);
+    font-size:.72rem; position:absolute; top:-11px; left:14px; background:var(--panel); padding:0 6px}
+  .phase h5{margin:0 0 3px; font-size:.95rem}
+  .phase p{margin:0; font-size:.82rem; color:var(--muted)}
+
+  /* ---- CTA / pied ---- */
+  .cta{margin-top:14px; text-align:center; background:linear-gradient(155deg,var(--accent),var(--accent2));
+    color:#fff; border-radius:18px; padding:40px 24px}
+  .cta h2{margin:0 0 8px; font-size:1.8rem; letter-spacing:-.02em}
+  .cta p{margin:0 auto; max-width:52ch; color:#fff4ec}
+  .steps{display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-top:22px}
+  .step{background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.28); border-radius:999px;
+    padding:8px 15px; font-family:var(--mono); font-size:.78rem}
+  footer{padding:34px 0 60px; color:var(--muted); font-size:.86rem; text-align:center}
+  footer .contact{font-family:var(--mono); color:var(--ink); margin-top:6px}
+
+  @media (max-width:760px){
+    .fiche{grid-template-columns:1fr}
+    .cover{min-height:190px; flex-direction:row; align-items:flex-end; justify-content:space-between}
+    .grid3,.strat .kpis,.phases{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:480px){ .grid3,.strat .kpis,.phases{grid-template-columns:1fr} }
+  @media (prefers-reduced-motion: reduce){ .fiche{opacity:1; transform:none; transition:none} html{scroll-behavior:auto} }
+</style>
+
+<header class="bar">
+  <div class="wrap">
+    <div class="logo">
+      <span class="mk">MK</span>
+      <span>MK Phone<small>Éditions Techniques</small></span>
+    </div>
+    <button class="themebtn" id="themebtn" aria-label="Basculer le thème clair/sombre">◐ Thème</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <div class="eyebrow">Deux ouvrages · Une stratégie de lancement</div>
+    <h1>La réparation et le firmware, <span class="hl">mis en méthode.</span></h1>
+    <p class="lede">Deux ebooks techniques issus de l'atelier MK Phone, accompagnés d'une stratégie marketing complète pour les commercialiser. Contenu testé sur l'établi, en français, prêt à vendre.</p>
+    <div class="meta-row">
+      <span class="tag"><b>2</b> ebooks PDF</span>
+      <span class="tag"><b>~238</b> pages cumulées</span>
+      <span class="tag"><b>~61 000</b> mots</span>
+      <span class="tag">Mises à jour <b>à vie</b></span>
+    </div>
+  </section>
+
+  <section class="wrap" id="ebooks">
+    <div class="sec-head"><span class="num">01</span><h2>Les deux ebooks</h2></div>
+
+    <!-- Ebook 1 -->
+    <article class="fiche">
+      <div class="cover">
+        <div class="cbrand">MK Phone · Éditions Techniques</div>
+        <div>
+          <div class="rule"></div>
+          <div class="ctitle" style="margin-top:12px">Guide Complet de Réparation d'Appareils Électroniques</div>
+        </div>
+        <div class="cnum">EBOOK 01 · ~144 p.</div>
+      </div>
+      <div class="body">
+        <div class="eyebrow">Ebook 1 · Réparation</div>
+        <h3>Réparer soi-même, de l'écran à la carte-mère</h3>
+        <div class="price">39 € <span style="color:var(--muted); font-weight:400">· ou 69 € le pack</span></div>
+        <p>Chaque réparation détaillée avec un gabarit constant : niveau de difficulté, temps, outils, pièces, étapes photo, points critiques, erreurs à éviter et dépannage.</p>
+        <div class="chips">
+          <span class="chip">Smartphones</span><span class="chip">Tablettes</span>
+          <span class="chip">PC portables</span><span class="chip">AirPods</span>
+          <span class="chip">Montres connectées</span><span class="chip">Micro-soudure</span>
+          <span class="chip">Atelier &amp; devis</span>
+        </div>
+        <table class="spec">
+          <tr><td>Volume</td><td>~144 pages · ~32 700 mots</td></tr>
+          <tr><td>Niveau</td><td>Débutant → professionnel</td></tr>
+          <tr><td>Figures</td><td>+100 emplacements photo prêts</td></tr>
+          <tr><td>Format</td><td>PDF A4 · sources Markdown incluses</td></tr>
+        </table>
+      </div>
+    </article>
+
+    <!-- Ebook 2 -->
+    <article class="fiche">
+      <div class="cover c2">
+        <div class="cbrand">MK Phone · Éditions Techniques</div>
+        <div>
+          <div class="rule"></div>
+          <div class="ctitle" style="margin-top:12px">Flash &amp; Décodage : Maîtrise Complète</div>
+        </div>
+        <div class="cnum">EBOOK 02 · ~94 p.</div>
+      </div>
+      <div class="body">
+        <div class="eyebrow">Ebook 2 · Firmware</div>
+        <h3>Flasher, restaurer, remettre à neuf — proprement</h3>
+        <div class="price">49 € <span style="color:var(--muted); font-weight:400">· ou 69 € le pack</span></div>
+        <p>Théorie du firmware, flash de la ROM stock officielle par marque, BIOS/UEFI, et gestion <b>légitime</b> des verrous : récupération d'accès sur preuve de propriété via les canaux officiels.</p>
+        <div class="chips">
+          <span class="chip">Samsung · Xiaomi · Pixel</span><span class="chip">OPPO · OnePlus</span>
+          <span class="chip">Outils SoC (EDL, SP Flash)</span><span class="chip">BIOS / UEFI</span>
+          <span class="chip">Sauvegarde EFS</span>
+        </div>
+        <table class="spec">
+          <tr><td>Volume</td><td>~94 pages · ~28 600 mots</td></tr>
+          <tr><td>Niveau</td><td>Intermédiaire → technicien</td></tr>
+          <tr><td>Encadrés</td><td>25+ rappels éthique &amp; légalité</td></tr>
+          <tr><td>Format</td><td>PDF A4 · sources Markdown incluses</td></tr>
+        </table>
+        <div class="legal"><b>Cadre légal &amp; éthique.</b> Aucun contournement de verrou anti-vol (FRP, iCloud, Knox…). L'ouvrage documente la récupération d'accès <b>sur preuve de propriété</b> et le rôle du SAV officiel — réservé aux propriétaires légitimes et techniciens.</div>
+      </div>
+    </article>
+  </section>
+
+  <section class="wrap" id="inclus">
+    <div class="sec-head"><span class="num">02</span><h2>Inclus dans chaque ebook</h2></div>
+    <div class="grid3">
+      <div class="inc">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h16v14H4z"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>
+        <h4>Gabarit par réparation</h4>
+        <p>Difficulté, temps, outils, pièces, étapes, points critiques, dépannage.</p>
+      </div>
+      <div class="inc">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l8 4v6c0 5-4 7-8 8-4-1-8-3-8-8V7z"/></svg>
+        <h4>Cadre sûr &amp; légal</h4>
+        <p>Sécurité batteries lithium, RGPD, preuve de propriété, charte d'atelier.</p>
+      </div>
+      <div class="inc">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v12H4z"/><path d="M2 20h20M9 8l3 3 3-4"/></svg>
+        <h4>Prêt à personnaliser</h4>
+        <p>Sources Markdown + emplacements photo + build PDF en une commande.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" id="strategie">
+    <div class="sec-head"><span class="num">03</span><h2>La stratégie marketing</h2></div>
+    <div class="strat">
+      <div class="eyebrow">Plan de lancement · 90 jours</div>
+      <p style="margin:.5rem 0 0; color:var(--muted); max-width:60ch">Un plan actionnable pour transformer l'expertise en revenus : positionnement, prix, canaux, calendrier, mesure et budget.</p>
+      <div class="kpis">
+        <div class="kpi"><div class="v">39/49/69€</div><div class="l">Grille de prix + pack</div></div>
+        <div class="kpi"><div class="v">5</div><div class="l">Canaux d'acquisition</div></div>
+        <div class="kpi"><div class="v">150–300</div><div class="l">Ventes visées / 90 j</div></div>
+        <div class="kpi"><div class="v">~7–9 k€</div><div class="l">Marge nette cible</div></div>
+      </div>
+      <div class="phases">
+        <div class="phase"><h5>Préparation</h5><p>PDF, site, paiement testé, aimant gratuit.</p></div>
+        <div class="phase"><h5>Pré-lancement</h5><p>Capture d'emails, teasing, liste d'attente.</p></div>
+        <div class="phase"><h5>Lancement</h5><p>Offre −30 %, ads, order bump, relances.</p></div>
+        <div class="phase"><h5>Croissance</h5><p>SEO, retargeting, avis, partenariats.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="cta">
+      <div class="eyebrow" style="color:#ffe9d8">Livrables prêts</div>
+      <h2>Tout est en main pour lancer</h2>
+      <p>Les 3 PDF vous ont été remis séparément. Le site de vente et le kit marketing (emails, scripts réseaux, checklist) sont prêts à déployer.</p>
+      <div class="steps">
+        <span class="step">1 · Ajouter vos photos</span>
+        <span class="step">2 · Clés Stripe / PayPal</span>
+        <span class="step">3 · Déployer le site</span>
+        <span class="step">4 · Ouvrir les ventes</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <div>MK Phone — Éditions Techniques · Réparation &amp; firmware, mis en méthode.</div>
+  <div class="contact">aminemekhfi45@gmail.com · 07 51 48 43 92</div>
+</footer>
+
+<script>
+  (function(){
+    var btn=document.getElementById('themebtn');
+    function cur(){ return document.documentElement.getAttribute('data-theme')
+      || (matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'); }
+    btn.addEventListener('click',function(){
+      var next=cur()==='dark'?'light':'dark';
+      document.documentElement.setAttribute('data-theme',next);
+    });
+    // Révélation au défilement
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    },{threshold:.15});
+    document.querySelectorAll('.fiche').forEach(function(el){ io.observe(el); });
+  })();
+</script>

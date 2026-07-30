@@ -6,3 +6,6 @@ contenu/**/*.html
 # Clés locales — NE JAMAIS committer
 config.js
 .env
+
+# PDF exportés (produit payant) — ne pas committer dans un dépôt public
+pdf/
