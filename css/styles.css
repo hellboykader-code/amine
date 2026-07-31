@@ -283,8 +283,42 @@ p{margin:0}
 @media (max-width:520px){
   .stats,.phases{grid-template-columns:1fr}
 }
+/* ---- Hero : fond 3D animé + vitrine des couvertures ---- */
+.hero__canvas{position:absolute; inset:0; width:100%; height:100%; z-index:0; opacity:.95; pointer-events:none}
+.hero .hero__inner{position:relative; z-index:2}
+.hero__inner--split{display:grid; grid-template-columns:1.05fr .95fr; gap:44px; align-items:center; max-width:none}
+.hero__col{min-width:0}
+.hero__showcase{position:relative; height:440px; perspective:1500px}
+.book{position:absolute; width:238px; min-height:328px; border-radius:14px; padding:24px 20px 20px; color:#fff;
+  display:flex; flex-direction:column; justify-content:space-between; overflow:hidden; will-change:transform;
+  box-shadow:0 44px 90px -32px rgba(0,0,0,.85), inset 0 0 0 1px rgba(255,255,255,.08)}
+.book::before{content:""; position:absolute; left:0; top:0; bottom:0; width:12px; background:linear-gradient(90deg, rgba(0,0,0,.34), rgba(0,0,0,0))}
+.book::after{content:""; position:absolute; inset:0; opacity:.5;
+  background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);
+  background-size:22px 22px}
+.book>*{position:relative; z-index:1}
+.book--1{left:4%; top:14px; background:linear-gradient(158deg,#13294c,#0f2140 60%,#1c3a6e);
+  transform:rotateY(20deg) rotateZ(-6deg); animation:float1 7s ease-in-out infinite}
+.book--2{right:2%; top:74px; background:linear-gradient(158deg,#141a2e,#1a2340 55%,#2a2140);
+  transform:rotateY(-17deg) rotateZ(6deg); animation:float2 8s ease-in-out infinite}
+.book .b-brand{font-family:var(--mono); font-size:.58rem; letter-spacing:.2em; text-transform:uppercase; color:#9fb2cf}
+.book .b-rule{width:44px; height:4px; border-radius:3px; background:var(--accent)}
+.book .b-title{font-weight:800; font-size:1.18rem; line-height:1.14; margin-top:12px}
+.book .b-num{font-family:var(--mono); font-size:.66rem; color:#cbd6e8}
+@keyframes float1{0%,100%{transform:rotateY(20deg) rotateZ(-6deg) translateY(0)}50%{transform:rotateY(20deg) rotateZ(-6deg) translateY(-16px)}}
+@keyframes float2{0%,100%{transform:rotateY(-17deg) rotateZ(6deg) translateY(0)}50%{transform:rotateY(-17deg) rotateZ(6deg) translateY(14px)}}
+@media (max-width:860px){
+  .hero__inner--split{grid-template-columns:1fr; gap:20px}
+  .hero__showcase{height:330px; margin-top:6px}
+  .book{width:186px; min-height:258px}
+  .book--1{left:12%}
+  .book--2{right:10%}
+}
+
 @media (prefers-reduced-motion: reduce){
   .reveal{opacity:1; transform:none; transition:none}
   .marquee__track{animation:none}
+  .book--1{animation:none}
+  .book--2{animation:none}
   html{scroll-behavior:auto}
 }

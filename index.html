@@ -36,20 +36,35 @@
 <main>
   <!-- HERO -->
   <section class="hero">
+    <canvas class="hero__canvas" id="bg3d" aria-hidden="true"></canvas>
     <div class="hero__grid"></div>
-    <div class="container hero__inner">
-      <span class="eyebrow">Deux ebooks · Une méthode d'atelier</span>
-      <h1>La réparation et le firmware, <span class="hl">mis en méthode.</span></h1>
-      <p class="hero__lede">Deux guides techniques écrits sur l'établi d'un réparateur en activité. Étape par étape, en français, prêts à appliquer — pour réparer, restaurer et remettre à neuf smartphones, tablettes et PC.</p>
-      <div class="hero__actions">
-        <a href="#ebooks" class="btn btn--primaire btn--large">Voir les ebooks</a>
-        <a href="ebook-reparation.html#extrait" class="btn btn--secondaire btn--large">Extrait gratuit</a>
+    <div class="container hero__inner hero__inner--split">
+      <div class="hero__col">
+        <span class="eyebrow">Deux ebooks · Une méthode d'atelier</span>
+        <h1>La réparation et le firmware, <span class="hl">mis en méthode.</span></h1>
+        <p class="hero__lede">Deux guides techniques écrits sur l'établi d'un réparateur en activité. Étape par étape, en français, prêts à appliquer — pour réparer, restaurer et remettre à neuf smartphones, tablettes et PC.</p>
+        <div class="hero__actions">
+          <a href="#ebooks" class="btn btn--primaire btn--large">Voir les ebooks</a>
+          <a href="ebook-reparation.html#extrait" class="btn btn--secondaire btn--large">Extrait gratuit</a>
+        </div>
+        <div class="hero__meta">
+          <span class="tag"><b>2</b> ebooks PDF</span>
+          <span class="tag"><b>~238</b> pages</span>
+          <span class="tag"><b>~61 000</b> mots</span>
+          <span class="tag">Mises à jour <b>à vie</b></span>
+        </div>
       </div>
-      <div class="hero__meta">
-        <span class="tag"><b>2</b> ebooks PDF</span>
-        <span class="tag"><b>~238</b> pages</span>
-        <span class="tag"><b>~61 000</b> mots</span>
-        <span class="tag">Mises à jour <b>à vie</b></span>
+      <div class="hero__showcase" aria-hidden="true">
+        <div class="book book--1">
+          <div class="b-brand">MK Phone · Éditions</div>
+          <div><div class="b-rule"></div><div class="b-title">Guide Complet de Réparation d'Appareils Électroniques</div></div>
+          <div class="b-num">EBOOK 01 · ~144 p.</div>
+        </div>
+        <div class="book book--2">
+          <div class="b-brand">MK Phone · Éditions</div>
+          <div><div class="b-rule"></div><div class="b-title">Flash &amp; Décodage : Maîtrise Complète</div></div>
+          <div class="b-num">EBOOK 02 · ~94 p.</div>
+        </div>
       </div>
     </div>
   </section>
@@ -221,6 +236,7 @@
 <script src="config.js"></script>
 <script src="js/cart.js"></script>
 <script src="js/checkout.js"></script>
+<script src="js/bg3d.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
