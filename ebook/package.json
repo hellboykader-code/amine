@@ -1,0 +1,13 @@
+{
+  "name": "guide-reparation-ebook",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Générateur de l'ebook « Le Guide Complet de la Réparation » (Word + PDF)",
+  "scripts": {
+    "build:docx": "node build.cjs",
+    "build:html": "node build-html.cjs"
+  },
+  "dependencies": {
+    "docx": "^9.7.1"
+  }
+}

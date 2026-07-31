@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 540" width="920" height="540"><defs>
+    <linearGradient id="wood" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#C9A36B"/><stop offset="1" stop-color="#A97F49"/>
+    </linearGradient>
+    <radialGradient id="mat" cx="0.42" cy="0.35" r="0.9">
+      <stop offset="0" stop-color="#20505C"/><stop offset="1" stop-color="#143840"/>
+    </radialGradient>
+    <linearGradient id="glove" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#7FB6E4"/><stop offset="0.45" stop-color="#3E86C4"/><stop offset="1" stop-color="#2C6AA0"/>
+    </linearGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E9EDF2"/><stop offset="0.5" stop-color="#B9C2CD"/><stop offset="1" stop-color="#8A95A2"/>
+    </linearGradient>
+    <linearGradient id="metalV" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E9EDF2"/><stop offset="1" stop-color="#5A6470"/>
+    </linearGradient>
+    <linearGradient id="phoneBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2A323C"/><stop offset="1" stop-color="#0E1218"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="0.7" y2="1">
+      <stop offset="0" stop-color="#2C3A55"/><stop offset="1" stop-color="#101A2E"/>
+    </linearGradient>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="7" stdDeviation="9" flood-color="#0a1420" flood-opacity="0.35"/>
+    </filter>
+    <filter id="soft2" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#0a1420" flood-opacity="0.30"/>
+    </filter>
+  </defs><rect x="0" y="0" width="920" height="540" fill="url(#wood)"/><g opacity="0.10"><rect x="0" y="0" width="920" height="2" fill="#5a3d1e"/><rect x="0" y="60" width="920" height="2" fill="#5a3d1e"/><rect x="0" y="120" width="920" height="2" fill="#5a3d1e"/><rect x="0" y="180" width="920" height="2" fill="#5a3d1e"/><rect x="0" y="240" width="920" height="2" fill="#5a3d1e"/><rect x="0" y="300" width="920" height="2" fill="#5a3d1e"/><rect x="0" y="360" width="920" height="2" fill="#5a3d1e"/><rect x="0" y="420" width="920" height="2" fill="#5a3d1e"/><rect x="0" y="480" width="920" height="2" fill="#5a3d1e"/></g><rect x="46" y="70" width="828" height="390" rx="26" fill="url(#mat)" filter="url(#soft)"/><rect x="46" y="70" width="828" height="390" rx="26" fill="none" stroke="#0c2a30" stroke-width="2" opacity="0.5"/><g filter="url(#soft)">
+    <rect x="200" y="110" width="470" height="300" rx="20" fill="#2a3038" stroke="#0e1218" stroke-width="3"/>
+    <rect x="216" y="266" width="438" height="120" rx="10" fill="#161b22"/>
+    <g fill="#0d1117"><rect x="222" y="275" width="134" height="102.00000000000001" rx="6"/><rect x="364" y="275" width="134" height="102.00000000000001" rx="6"/><rect x="506" y="275" width="134" height="102.00000000000001" rx="6"/></g>
+    <rect x="216" y="124" width="150.4" height="120" rx="8" fill="#12563a" stroke="#0a3a27" stroke-width="2"/>
+    <rect x="341" y="126" width="75.2" height="102.00000000000001" rx="6" fill="#161b22"/>
+  </g><g filter="url(#soft2)"><rect x="300" y="180" width="90" height="90" rx="8" fill="#c9cdd3" stroke="#8a8f96" stroke-width="2"/><rect x="316" y="196" width="58" height="58" rx="4" fill="#3a4552"/><circle cx="345" cy="225" r="9" fill="#C0392B"/></g><g transform="translate(360 150) rotate(24) scale(1)" filter="url(#soft2)"><rect x="0" y="-13" width="86" height="26" rx="8" fill="#dfe6ee" stroke="#8A95A2" stroke-width="1.5"/><rect x="8" y="-9" width="60" height="18" rx="5" fill="#9aa6b3" opacity="0.5"/><path d="M86 -6 l22 6 l-22 6 Z" fill="#8A95A2"/><rect x="-16" y="-9" width="16" height="18" rx="3" fill="#C0392B"/><circle cx="112" cy="0" r="5" fill="#8a8f96"/></g><g transform="translate(600 250) scale(1)" filter="url(#soft2)"><circle cx="0" cy="0" r="46" fill="#20262e" stroke="#0e1218" stroke-width="3"/><circle cx="0" cy="0" r="12" fill="#3a4552"/><path d="M0 0 Q28 -16 35.10330247561491 19.17702154416812" fill="none" stroke="#586472" stroke-width="7" stroke-linecap="round"/><path d="M0 0 Q17.4050791115786 5.933153469569536 6.798685716009642 39.417989199538404" fill="none" stroke="#586472" stroke-width="7" stroke-linecap="round"/><path d="M0 0 Q-6.361658651406439 11.267733664589464 -26.65104085119296 29.82820848706881" fill="none" stroke="#586472" stroke-width="7" stroke-linecap="round"/><path d="M0 0 Q-25.314019976477713 -4.033363353452767 -39.93179103179013 -2.3349657371032033" fill="none" stroke="#586472" stroke-width="7" stroke-linecap="round"/><path d="M0 0 Q-25.109235657356116 -28.39057241225587 -22.992957861330765 -32.73108444257641" fill="none" stroke="#586472" stroke-width="7" stroke-linecap="round"/><path d="M0 0 Q-5.902282384061832 -43.370843294622716 11.34648741852905 -38.35697098652554" fill="none" stroke="#586472" stroke-width="7" stroke-linecap="round"/><path d="M0 0 Q17.77140052639377 -37.63740565156764 37.09913722976144 -14.955066593209441" fill="none" stroke="#586472" stroke-width="7" stroke-linecap="round"/></g><g><rect x="46" y="482" width="362" height="38" rx="19" fill="#0c2a30" opacity="0.9"/><text x="66" y="507" font-family="Helvetica Neue, Arial" font-size="16.5" font-weight="700" fill="#e8f1f8">Application de pâte thermique neuve</text></g></svg>

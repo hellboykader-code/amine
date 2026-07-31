@@ -1,0 +1,198 @@
+{
+  "niveaux": {
+    "w": 900,
+    "h": 430
+  },
+  "smartphone": {
+    "w": 900,
+    "h": 470
+  },
+  "diagnostic": {
+    "w": 900,
+    "h": 430
+  },
+  "shortopen": {
+    "w": 900,
+    "h": 380
+  },
+  "charge": {
+    "w": 900,
+    "h": 470
+  },
+  "laptop": {
+    "w": 900,
+    "h": 430
+  },
+  "boot": {
+    "w": 900,
+    "h": 300
+  },
+  "prix": {
+    "w": 900,
+    "h": 380
+  },
+  "airpods": {
+    "w": 900,
+    "h": 360
+  },
+  "g_ecran_smartphone": {
+    "w": 900,
+    "h": 860
+  },
+  "g_batterie_smartphone": {
+    "w": 900,
+    "h": 606
+  },
+  "g_charge_smartphone": {
+    "w": 900,
+    "h": 606
+  },
+  "g_eau_smartphone": {
+    "w": 900,
+    "h": 606
+  },
+  "g_dalle_pc": {
+    "w": 900,
+    "h": 606
+  },
+  "g_clavier_pc": {
+    "w": 900,
+    "h": 606
+  },
+  "g_batterie_pc": {
+    "w": 900,
+    "h": 606
+  },
+  "g_stockage_pc": {
+    "w": 900,
+    "h": 606
+  },
+  "g_thermique_pc": {
+    "w": 900,
+    "h": 606
+  },
+  "g_ecran_tablette": {
+    "w": 900,
+    "h": 606
+  },
+  "g_montre": {
+    "w": 900,
+    "h": 606
+  },
+  "g_airpods_nettoyage": {
+    "w": 900,
+    "h": 606
+  },
+  "g_airpods_embouts": {
+    "w": 900,
+    "h": 606
+  },
+  "sc_ecran_smartphone": {
+    "w": 920,
+    "h": 540
+  },
+  "sc_batterie_smartphone": {
+    "w": 920,
+    "h": 540
+  },
+  "sc_charge_smartphone": {
+    "w": 920,
+    "h": 540
+  },
+  "sc_eau_smartphone": {
+    "w": 920,
+    "h": 540
+  },
+  "sc_dalle_pc": {
+    "w": 920,
+    "h": 540
+  },
+  "sc_clavier_pc": {
+    "w": 920,
+    "h": 540
+  },
+  "sc_batterie_pc": {
+    "w": 920,
+    "h": 540
+  },
+  "sc_stockage_pc": {
+    "w": 920,
+    "h": 540
+  },
+  "sc_thermique_pc": {
+    "w": 920,
+    "h": 540
+  },
+  "sc_ecran_tablette": {
+    "w": 920,
+    "h": 540
+  },
+  "sc_montre": {
+    "w": 920,
+    "h": 540
+  },
+  "sc_airpods_nettoyage": {
+    "w": 920,
+    "h": 540
+  },
+  "sc_airpods_embouts": {
+    "w": 920,
+    "h": 540
+  },
+  "mt_outillage": {
+    "w": 900,
+    "h": 460
+  },
+  "mt_ecran_smartphone": {
+    "w": 900,
+    "h": 440
+  },
+  "mt_batterie_smartphone": {
+    "w": 900,
+    "h": 440
+  },
+  "mt_charge_smartphone": {
+    "w": 900,
+    "h": 252
+  },
+  "mt_eau_smartphone": {
+    "w": 900,
+    "h": 252
+  },
+  "mt_dalle_pc": {
+    "w": 900,
+    "h": 252
+  },
+  "mt_clavier_pc": {
+    "w": 900,
+    "h": 252
+  },
+  "mt_batterie_pc": {
+    "w": 900,
+    "h": 252
+  },
+  "mt_stockage_pc": {
+    "w": 900,
+    "h": 252
+  },
+  "mt_thermique_pc": {
+    "w": 900,
+    "h": 252
+  },
+  "mt_ecran_tablette": {
+    "w": 900,
+    "h": 440
+  },
+  "mt_montre": {
+    "w": 900,
+    "h": 252
+  },
+  "mt_airpods_nettoyage": {
+    "w": 900,
+    "h": 252
+  },
+  "mt_airpods_embouts": {
+    "w": 900,
+    "h": 252
+  }
+}

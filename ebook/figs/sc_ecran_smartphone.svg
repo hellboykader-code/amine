@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 540" width="920" height="540"><defs>
+    <linearGradient id="wood" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#C9A36B"/><stop offset="1" stop-color="#A97F49"/>
+    </linearGradient>
+    <radialGradient id="mat" cx="0.42" cy="0.35" r="0.9">
+      <stop offset="0" stop-color="#20505C"/><stop offset="1" stop-color="#143840"/>
+    </radialGradient>
+    <linearGradient id="glove" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#7FB6E4"/><stop offset="0.45" stop-color="#3E86C4"/><stop offset="1" stop-color="#2C6AA0"/>
+    </linearGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E9EDF2"/><stop offset="0.5" stop-color="#B9C2CD"/><stop offset="1" stop-color="#8A95A2"/>
+    </linearGradient>
+    <linearGradient id="metalV" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E9EDF2"/><stop offset="1" stop-color="#5A6470"/>
+    </linearGradient>
+    <linearGradient id="phoneBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2A323C"/><stop offset="1" stop-color="#0E1218"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="0.7" y2="1">
+      <stop offset="0" stop-color="#2C3A55"/><stop offset="1" stop-color="#101A2E"/>
+    </linearGradient>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="7" stdDeviation="9" flood-color="#0a1420" flood-opacity="0.35"/>
+    </filter>
+    <filter id="soft2" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#0a1420" flood-opacity="0.30"/>
+    </filter>
+  </defs><rect x="0" y="0" width="920" height="540" fill="url(#wood)"/><g opacity="0.10"><rect x="0" y="0" width="920" height="2" fill="#5a3d1e"/><rect x="0" y="60" width="920" height="2" fill="#5a3d1e"/><rect x="0" y="120" width="920" height="2" fill="#5a3d1e"/><rect x="0" y="180" width="920" height="2" fill="#5a3d1e"/><rect x="0" y="240" width="920" height="2" fill="#5a3d1e"/><rect x="0" y="300" width="920" height="2" fill="#5a3d1e"/><rect x="0" y="360" width="920" height="2" fill="#5a3d1e"/><rect x="0" y="420" width="920" height="2" fill="#5a3d1e"/><rect x="0" y="480" width="920" height="2" fill="#5a3d1e"/></g><rect x="46" y="70" width="828" height="390" rx="26" fill="url(#mat)" filter="url(#soft)"/><rect x="46" y="70" width="828" height="390" rx="26" fill="none" stroke="#0c2a30" stroke-width="2" opacity="0.5"/><g transform="rotate(-6 460 300)"><g transform="translate(360 70) scale(1.06)" filter="url(#soft)">
+    <rect x="0" y="0" width="200" height="410" rx="34" fill="url(#phoneBody)" stroke="#05070a" stroke-width="3"/>
+    <!-- lifted screen -->
+    <g transform="translate(-28 -32) rotate(-4 100 205)">
+      <rect x="10" y="10" width="180" height="390" rx="28" fill="url(#screen)" stroke="#0a1220" stroke-width="3"/>
+      <path d="M28 26 L150 26 L60 210 Z" fill="#ffffff" opacity="0.06"/>
+      <rect x="70" y="20" width="60" height="10" rx="5" fill="#05070a"/>
+    </g>
+    <!-- internal hint under screen -->
+    <rect x="20" y="30" width="70" height="150" rx="8" fill="#12203a" opacity="0.8"/>
+    <rect x="110" y="30" width="70" height="120" rx="8" fill="#1a2c1f" opacity="0.7"/>
+  </g></g><g transform="translate(360 210) rotate(6) scale(1.35)" filter="url(#soft2)">
+    <path d="M0 0 L60 -10 L58 8 Z" fill="#E8A13A" stroke="#b57f22" stroke-width="1.5"/>
+  </g><g transform="translate(560 180) scale(1.25)" filter="url(#soft2)">
+    <ellipse cx="0" cy="30" rx="34" ry="12" fill="#8a1f18"/>
+    <path d="M-34 30 Q0 6 34 30 Q0 42 -34 30 Z" fill="#C0392B"/>
+    <rect x="-6" y="-52" width="12" height="80" rx="5" fill="url(#metalV)" stroke="#5A6470" stroke-width="1.5"/>
+    <ellipse cx="0" cy="-52" rx="16" ry="7" fill="url(#metal)" stroke="#5A6470" stroke-width="1.5"/>
+  </g><path d="M560 120 q0 -36 0 -60" stroke="#eaf1f8" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.55"/><path d="M552 66 l8 -12 l8 12" stroke="#eaf1f8" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.55"/><g transform="translate(120 430) rotate(-18) scale(0.9)" filter="url(#soft2)">
+    <rect x="0" y="-14" width="70" height="28" rx="12" fill="#C0392B" stroke="#8a1f18" stroke-width="2"/>
+    <rect x="6" y="-9" width="54" height="4" rx="2" fill="#e06a5e" opacity="0.6"/>
+    <rect x="70" y="-4" width="70" height="8" rx="3" fill="url(#metal)" stroke="#8A95A2" stroke-width="1"/>
+    <rect x="138" y="-5" width="12" height="10" fill="#8A95A2"/>
+  </g><g transform="translate(690 400) rotate(-8) scale(0.8)" filter="url(#soft2)">
+    <path d="M0 0 L120 -26" stroke="url(#metal)" stroke-width="9" stroke-linecap="round"/>
+    <path d="M0 0 L120 -6" stroke="url(#metal)" stroke-width="9" stroke-linecap="round"/>
+    <path d="M118 -26 L134 -16 L118 -6" fill="none" stroke="#8A95A2" stroke-width="3"/>
+    <circle cx="6" cy="0" r="7" fill="#5A6470"/>
+  </g><g filter="url(#soft2)"><circle cx="250" cy="470" r="6" fill="url(#metal)" stroke="#8A95A2" stroke-width="1.5"/><path d="M247 470 h6 M250 467 v6" stroke="#5A6470" stroke-width="1.4"/></g><g filter="url(#soft2)"><circle cx="300" cy="455" r="6" fill="url(#metal)" stroke="#8A95A2" stroke-width="1.5"/><path d="M297 455 h6 M300 452 v6" stroke="#5A6470" stroke-width="1.4"/></g><g filter="url(#soft2)"><circle cx="720" cy="300" r="6" fill="url(#metal)" stroke="#8A95A2" stroke-width="1.5"/><path d="M717 300 h6 M720 297 v6" stroke="#5A6470" stroke-width="1.4"/></g><g filter="url(#soft2)"><circle cx="150" cy="300" r="6" fill="url(#metal)" stroke="#8A95A2" stroke-width="1.5"/><path d="M147 300 h6 M150 297 v6" stroke="#5A6470" stroke-width="1.4"/></g><g filter="url(#soft2)"><circle cx="790" cy="210" r="6" fill="url(#metal)" stroke="#8A95A2" stroke-width="1.5"/><path d="M787 210 h6 M790 207 v6" stroke="#5A6470" stroke-width="1.4"/></g><g><rect x="46" y="482" width="453.99999999999994" height="38" rx="19" fill="#0c2a30" opacity="0.9"/><text x="66" y="507" font-family="Helvetica Neue, Arial" font-size="16.5" font-weight="700" fill="#e8f1f8">Décollage de l'écran à la ventouse + médiator</text></g></svg>
