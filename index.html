@@ -292,4 +292,24 @@ html,body{background:transparent !important;}
   frame();
 })();
 </script>
+<script id="mk-nav-fix">
+(function(){
+  function leaf(txt){var e=document.querySelectorAll('h1,h2,h3,h4,p,span,div');for(var i=0;i<e.length;i++){if(e[i].children.length===0&&e[i].textContent.trim()===txt)return e[i];}return null;}
+  function go(txt){var el=leaf(txt);if(el){el.scrollIntoView({behavior:'smooth',block:'start'});return true;}return false;}
+  var MAP={'Réparations':'Ce qu’on répare','Services':'Ce qu’on répare','À propos':'Avis clients','Avis':'Avis clients','Contact':'Un appareil à réparer ?','Mentions légales':'Un appareil à réparer ?','Politique de confidentialité':'Un appareil à réparer ?','Blog':'Avis clients','Works':'Ce qu’on répare','About':'Avis clients'};
+  var DEAD=/^\.\/|x\.com|linkedin\.com|dribbble\.com|awwwards|cssdesignawards|dandad|thedanceawards|bestarchitects|framer\.(com|app)|fonts\.gstatic/;
+  document.querySelectorAll('a').forEach(function(a){
+    var href=a.getAttribute('href')||'';
+    if(!DEAD.test(href)) return;
+    a.addEventListener('click',function(e){
+      e.preventDefault();e.stopPropagation();
+      var t=(a.textContent||'').trim();
+      if(MAP[t]){ if(go(MAP[t])) return; }
+      if(href==='./#pricing'||t==='Voir les tarifs'){ if(go('Nos tarifs')) return; }
+      if(t==='MK Phone'||href==='./'||href==='./#hero'){ window.scrollTo({top:0,behavior:'smooth'}); return; }
+      if(!go('Un appareil à réparer ?')) window.scrollTo({top:0,behavior:'smooth'});
+    },true);
+  });
+})();
+</script>
 </body></html>
