@@ -434,6 +434,19 @@ table.mkf-t tr:hover td{background:rgba(242,78,30,.04);}
                     :'iPhone · Samsung · Xiaomi · Huawei · Google · iPad · Réparé en 30 min · Diagnostic gratuit · 2000+ clients satisfaits · ';
       tk.innerHTML='<div class="mk-marquee"><span>'+txt.repeat(6)+'</span></div>';
     });
+    // Resserrer la zone des bandes (supprimer le vide autour)
+    var vis=[].filter.call(document.querySelectorAll('[data-framer-name^="Ticker"]'),function(t){return t.getBoundingClientRect().height>10;});
+    if(vis.length){
+      var w=vis[0];
+      while(w && !vis.every(function(bd){return w.contains(bd);})) w=w.parentElement;
+      if(w){
+        w.style.setProperty('min-height','0px','important');
+        w.style.setProperty('height','200px','important');
+        var pr=w.parentElement;
+        if(pr){pr.style.setProperty('min-height','0px','important');pr.style.setProperty('padding-top','6px','important');pr.style.setProperty('padding-bottom','6px','important');}
+        var gp=pr&&pr.parentElement; if(gp){gp.style.setProperty('min-height','0px','important');}
+      }
+    }
   }
   function init(){buildTarifs();buildBooking();wireServices();buildTickers();}
   if(document.readyState!=='loading')init();else document.addEventListener('DOMContentLoaded',init);
