@@ -546,10 +546,10 @@ table.mkf-t tr:hover td{background:rgba(242,78,30,.04);}
 
   function buildRachat(){
     if(document.getElementById('mk-rachat'))return;
-    var anchor=topSection('Nos tarifs');if(!anchor)return;
+    var anchor=document.querySelector('[data-framer-name="Services-Section"]')||topSection('Ce qu');if(!anchor)return;
     var sec=document.createElement('section');sec.id='mk-rachat';
     sec.innerHTML='<div class="mkf-sec"><p class="mkf-eyebrow">Vente & rachat</p><h2 class="mkf-title">Estimez la reprise de votre téléphone</h2><p class="mkf-lead">Choisissez votre appareil, son stockage et son état : obtenez une estimation immédiate. Reprise même écran cassé, paiement immédiat.</p><div class="mkf-rlayout" style="margin-top:20px"><div class="mkf-card"><div class="mkf-grid"><div class="mkf-field"><label>1. Marque</label><select id="rc-marque"></select></div><div class="mkf-field"><label>2. Modèle</label><select id="rc-modele"></select></div></div><div class="mkf-field"><label>3. Stockage</label><select id="rc-stock"></select></div><div class="mkf-field"><label>4. État de l\'appareil</label><div class="mkf-etats" id="rc-etats"></div></div></div><div class="mkf-card mkf-rresult"><p style="font-size:13px;color:#666;margin:0">Estimation de reprise</p><p class="mkf-rprice" id="rc-price">—</p><p id="rc-note" style="font-size:13px;color:#777;margin:0 0 12px"></p><a class="mkf-btn mkf-btn-lnk" id="rc-sell" href="#">Vendre mon téléphone</a><a class="mkf-btn-outline" href="tel:'+TELLINK+'">Ou appelez le '+TEL+'</a><p style="font-size:11px;color:#999;margin-top:10px">Prix indicatif, confirmé après vérification. Paiement immédiat, reprise même écran cassé.</p></div></div></div>';
-    anchor.insertAdjacentElement('afterend',sec);
+    anchor.insertAdjacentElement('beforebegin',sec);
     var rm=sec.querySelector('#rc-marque'),ro=sec.querySelector('#rc-modele'),rs=sec.querySelector('#rc-stock'),re=sec.querySelector('#rc-etats'),rp=sec.querySelector('#rc-price'),rn=sec.querySelector('#rc-note'),rsell=sec.querySelector('#rc-sell');
     var etat='bon';
     MARQUES.forEach(function(m){var o=document.createElement('option');o.textContent=m;rm.appendChild(o);});
