@@ -561,7 +561,13 @@ table.mkf-t tr:hover td{background:rgba(242,78,30,.04);}
     fillModeles();calc();
   }
 
-  function init(){buildServices();buildProcess();buildRachat();}
+  function moveContact(){
+    if(window.__mkMovedContact)return;
+    var contact=topSection('Un appareil à réparer');
+    var services=document.querySelector('[data-framer-name="Services-Section"]');
+    if(contact&&services&&services.parentNode&&!services.contains(contact)){services.parentNode.insertBefore(contact,services);window.__mkMovedContact=1;}
+  }
+  function init(){buildServices();buildProcess();buildRachat();moveContact();}
   if(document.readyState!=='loading')setTimeout(init,60);else document.addEventListener('DOMContentLoaded',function(){setTimeout(init,60);});
 })();
 </script>
