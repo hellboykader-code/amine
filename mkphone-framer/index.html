@@ -572,4 +572,64 @@ table.mkf-t tr:hover td{background:rgba(242,78,30,.04);}
 })();
 </script>
 
+<style id="mk-hero-style">
+[data-framer-name="Hero-Section"]{min-height:0 !important;padding:0 !important;}
+.mk-hero{max-width:940px;margin:0 auto;padding:40px 20px 54px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:22px;}
+.mk-hero-title{font-size:clamp(36px,5.4vw,66px);font-weight:800;line-height:1.06;letter-spacing:-0.02em;color:#141414;margin:0;}
+.mk-hero-title .o{color:#F24E1E;}
+.mk-hero-sub{font-size:clamp(15px,1.6vw,19px);color:#3f3f46;max-width:620px;line-height:1.55;margin:0;}
+.mk-hero-cta{display:flex;gap:13px;flex-wrap:wrap;justify-content:center;margin-top:2px;}
+.mk-hero-cta a{padding:15px 28px;border-radius:999px;font-weight:700;font-size:16px;text-decoration:none;transition:.15s;}
+.mk-hero-cta .p{background:#141414;color:#fff;}
+.mk-hero-cta .p:hover{background:#F24E1E;}
+.mk-hero-cta .g{background:rgba(255,255,255,.7);border:1.5px solid rgba(0,0,0,.16);color:#141414;}
+.mk-hero-cta .g:hover{border-color:#F24E1E;color:#F24E1E;}
+.mk-hero-trust{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;font-size:14px;color:#555;font-weight:600;}
+.mk-hero-trust span{display:inline-flex;align-items:center;gap:6px;}
+.mk-hero-trust b{color:#F24E1E;}
+</style>
+<script id="mk-hero-js">
+(function(){
+  function build(){
+    var hero=document.querySelector('[data-framer-name="Hero-Section"]');
+    if(!hero||document.getElementById('mk-hero'))return;
+    hero.innerHTML='<div class="mk-hero" id="mk-hero">'
+      +'<h1 class="mk-hero-title">Réparation <span class="o">express</span> de smartphone<br>partout en Île-de-France</h1>'
+      +'<p class="mk-hero-sub">Écran, batterie, connecteur, caméra… On répare votre téléphone en 30 minutes, 30 à 40 € moins cher qu’ailleurs. Sans rendez-vous, garanti.</p>'
+      +'<div class="mk-hero-cta"><a class="p" href="#" id="mk-hero-tarifs">Voir les tarifs →</a><a class="g" href="tel:+33751484392">📞 07 51 48 43 92</a></div>'
+      +'<div class="mk-hero-trust"><span>★★★★★ <b>4,9/5</b></span><span><b>2000+</b> réparations</span><span>⚡ Réparé en <b>30 min</b></span><span>✓ Garantie incluse</span></div>'
+      +'</div>';
+    var t=document.getElementById('mk-hero-tarifs');
+    if(t)t.addEventListener('click',function(e){e.preventDefault();var el=[].slice.call(document.querySelectorAll('*')).filter(function(x){return x.children.length===0&&x.textContent.trim()==='Nos tarifs';})[0];if(el)el.scrollIntoView({behavior:'smooth',block:'start'});});
+  }
+  if(document.readyState!=='loading')setTimeout(build,90);else document.addEventListener('DOMContentLoaded',function(){setTimeout(build,90);});
+})();
+</script>
+
+<script id="mk-compress">
+(function(){
+  var px=function(v){return parseFloat(v)||0;};
+  function run(){
+    ['About-Section','Testimonials-Section','Services-Section','Hero-Section'].forEach(function(nm){
+      var sec=document.querySelector('[data-framer-name="'+nm+'"]');
+      if(!sec)return;
+      sec.style.setProperty('height','auto','important');
+      sec.style.setProperty('min-height','0px','important');
+      sec.querySelectorAll('div').forEach(function(el){
+        if(el.closest('#mk-services')||el.closest('.mkf')) return;
+        var cs=getComputedStyle(el);
+        if(cs.height!=='auto' && px(cs.height)>140 && (cs.justifyContent==='center'||cs.alignItems==='center'||(el.innerText||'').trim().length<80)){
+          el.style.setProperty('height','auto','important');
+          el.style.setProperty('min-height','0px','important');
+        }
+      });
+    });
+    // Contact: supprime la grande zone sombre vide sous le formulaire
+    var lbl=[].slice.call(document.querySelectorAll('*')).filter(function(x){return x.children.length===0&&x.textContent.trim()==='Un appareil à réparer ?';})[0];
+    if(lbl){var e=lbl;for(var i=0;i<9&&e;i++){var r=e.getBoundingClientRect();if(r.height>760){e.style.setProperty('height','auto','important');e.style.setProperty('min-height','0px','important');e.style.setProperty('padding-bottom','40px','important');}e=e.parentElement;}}
+  }
+  function boot(){run();setTimeout(run,250);}
+  if(document.readyState!=='loading')setTimeout(boot,340);else document.addEventListener('DOMContentLoaded',function(){setTimeout(boot,340);});
+})();
+</script>
 </body></html>
