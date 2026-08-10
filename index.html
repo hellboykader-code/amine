@@ -350,7 +350,7 @@ table.mkf-t tr:hover td{background:rgba(242,78,30,.04);}
 <script id="mk-app">
 (function(){
   var CAT=[{"marque":"Apple","modele":"iPhone 16 Pro Max","ecran":234,"batterie":84,"charge":74,"camera":104,"vitre":134,"desox":64},{"marque":"Apple","modele":"iPhone 16 Pro","ecran":214,"batterie":79,"charge":69,"camera":94,"vitre":124,"desox":64},{"marque":"Apple","modele":"iPhone 16","ecran":174,"batterie":74,"charge":64,"camera":84,"vitre":114,"desox":64},{"marque":"Apple","modele":"iPhone 15 Pro Max","ecran":204,"batterie":79,"charge":69,"camera":94,"vitre":124,"desox":64},{"marque":"Apple","modele":"iPhone 15","ecran":154,"batterie":69,"charge":59,"camera":79,"vitre":104,"desox":64},{"marque":"Apple","modele":"iPhone 14 Pro Max","ecran":184,"batterie":69,"charge":64,"camera":84,"vitre":114,"desox":59},{"marque":"Apple","modele":"iPhone 14","ecran":134,"batterie":59,"charge":54,"camera":74,"vitre":94,"desox":59},{"marque":"Apple","modele":"iPhone 13 Pro Max","ecran":154,"batterie":64,"charge":59,"camera":79,"vitre":104,"desox":59},{"marque":"Apple","modele":"iPhone 13","ecran":114,"batterie":54,"charge":49,"camera":64,"vitre":84,"desox":54},{"marque":"Apple","modele":"iPhone 12 Pro Max","ecran":124,"batterie":54,"charge":54,"camera":69,"vitre":94,"desox":54},{"marque":"Apple","modele":"iPhone 12","ecran":94,"batterie":49,"charge":49,"camera":59,"vitre":74,"desox":54},{"marque":"Apple","modele":"iPhone 11 Pro Max","ecran":104,"batterie":49,"charge":49,"camera":64,"vitre":84,"desox":49},{"marque":"Apple","modele":"iPhone 11","ecran":74,"batterie":44,"charge":44,"camera":54,"vitre":69,"desox":49},{"marque":"Apple","modele":"iPhone XR","ecran":69,"batterie":44,"charge":44,"camera":49,"vitre":64,"desox":49},{"marque":"Apple","modele":"iPhone X","ecran":74,"batterie":44,"charge":44,"camera":49,"vitre":64,"desox":49},{"marque":"Apple","modele":"iPhone 8 / SE 2020","ecran":44,"batterie":39,"charge":39,"camera":44,"vitre":54,"desox":44},{"marque":"Apple","modele":"iPhone 7","ecran":39,"batterie":34,"charge":39,"camera":44,"vitre":null,"desox":44},{"marque":"Samsung","modele":"Galaxy S24 Ultra","ecran":264,"batterie":79,"charge":69,"camera":94,"vitre":114,"desox":64},{"marque":"Samsung","modele":"Galaxy S24","ecran":194,"batterie":69,"charge":64,"camera":84,"vitre":94,"desox":64},{"marque":"Samsung","modele":"Galaxy S23","ecran":174,"batterie":64,"charge":59,"camera":79,"vitre":89,"desox":59},{"marque":"Samsung","modele":"Galaxy S22","ecran":154,"batterie":59,"charge":54,"camera":74,"vitre":84,"desox":59},{"marque":"Samsung","modele":"Galaxy S21","ecran":134,"batterie":54,"charge":54,"camera":69,"vitre":79,"desox":54},{"marque":"Samsung","modele":"Galaxy A54","ecran":104,"batterie":49,"charge":49,"camera":59,"vitre":64,"desox":49},{"marque":"Samsung","modele":"Galaxy A53","ecran":94,"batterie":44,"charge":44,"camera":54,"vitre":59,"desox":49},{"marque":"Samsung","modele":"Galaxy A34","ecran":89,"batterie":44,"charge":44,"camera":54,"vitre":59,"desox":49},{"marque":"Samsung","modele":"Galaxy A14","ecran":64,"batterie":39,"charge":39,"camera":44,"vitre":49,"desox":44},{"marque":"Xiaomi","modele":"Xiaomi 13","ecran":134,"batterie":54,"charge":49,"camera":64,"vitre":74,"desox":54},{"marque":"Xiaomi","modele":"Xiaomi 12","ecran":119,"batterie":49,"charge":49,"camera":59,"vitre":69,"desox":54},{"marque":"Xiaomi","modele":"Redmi Note 13","ecran":84,"batterie":44,"charge":44,"camera":49,"vitre":54,"desox":49},{"marque":"Xiaomi","modele":"Redmi Note 12","ecran":74,"batterie":39,"charge":39,"camera":44,"vitre":49,"desox":49},{"marque":"Xiaomi","modele":"Redmi 12","ecran":64,"batterie":39,"charge":39,"camera":44,"vitre":44,"desox":44},{"marque":"Huawei","modele":"P40 Pro","ecran":129,"batterie":54,"charge":49,"camera":64,"vitre":74,"desox":54},{"marque":"Huawei","modele":"P30 Pro","ecran":104,"batterie":49,"charge":44,"camera":59,"vitre":64,"desox":49},{"marque":"Huawei","modele":"P30 Lite","ecran":74,"batterie":39,"charge":39,"camera":44,"vitre":49,"desox":44},{"marque":"Huawei","modele":"Mate 20 Pro","ecran":94,"batterie":44,"charge":44,"camera":54,"vitre":59,"desox":49},{"marque":"Google","modele":"Pixel 8 Pro","ecran":154,"batterie":59,"charge":54,"camera":74,"vitre":84,"desox":54},{"marque":"Google","modele":"Pixel 8","ecran":129,"batterie":54,"charge":49,"camera":64,"vitre":74,"desox":54},{"marque":"Google","modele":"Pixel 7","ecran":104,"batterie":49,"charge":49,"camera":59,"vitre":64,"desox":49},{"marque":"Google","modele":"Pixel 6","ecran":94,"batterie":44,"charge":44,"camera":54,"vitre":59,"desox":49},{"marque":"iPad","modele":"iPad Pro 12.9\"","ecran":224,"batterie":89,"charge":74,"camera":84,"vitre":null,"desox":74},{"marque":"iPad","modele":"iPad Pro 11\"","ecran":194,"batterie":79,"charge":69,"camera":79,"vitre":null,"desox":74},{"marque":"iPad","modele":"iPad Air","ecran":154,"batterie":69,"charge":59,"camera":69,"vitre":null,"desox":64},{"marque":"iPad","modele":"iPad 10 / 9","ecran":104,"batterie":59,"charge":54,"camera":59,"vitre":null,"desox":59},{"marque":"iPad","modele":"iPad mini","ecran":114,"batterie":59,"charge":54,"camera":59,"vitre":null,"desox":59}];
-  var TYPES=[['ecran','Écran'],['batterie','Batterie'],['charge','Connecteur de charge'],['camera','Caméra'],['vitre','Vitre arrière'],['desox','Désoxydation']];
+  window.MK_CATALOGUE=CAT;var TYPES=[['ecran','Écran'],['batterie','Batterie'],['charge','Connecteur de charge'],['camera','Caméra'],['vitre','Vitre arrière'],['desox','Désoxydation']];
   var MARQUES=[];CAT.forEach(function(m){if(MARQUES.indexOf(m.marque)<0)MARQUES.push(m.marque);});
   var TEL='07 51 48 43 92', MAIL='aminemekhfi45@gmail.com';
   var euro=function(v){return v==null?'sur devis':v+' €';};
@@ -438,4 +438,118 @@ table.mkf-t tr:hover td{background:rgba(242,78,30,.04);}
   if(document.readyState!=='loading')init();else document.addEventListener('DOMContentLoaded',init);
 })();
 </script>
+<style id="mk-app2-style">
+.mkf-sec{max-width:1060px;margin:0 auto;padding:44px 20px;}
+.mkf-eyebrow{color:#F24E1E;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.06em;text-align:center;margin:0;}
+.mkf-title{text-align:center;font-size:clamp(26px,4vw,36px);font-weight:800;margin:6px 0 8px;color:#151515;line-height:1.1;}
+.mkf-lead{text-align:center;color:#555;max-width:660px;margin:0 auto 6px;font-size:15px;line-height:1.5;}
+/* services grid */
+.mkf-sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px;}
+@media(max-width:900px){.mkf-sgrid{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.mkf-sgrid{grid-template-columns:1fr;}}
+.mkf-scard{position:relative;min-height:240px;border-radius:18px;overflow:hidden;background-size:cover;background-position:center;text-decoration:none;display:flex;align-items:flex-end;box-shadow:0 12px 34px rgba(0,0,0,.18);transition:transform .2s;}
+.mkf-scard:hover{transform:translateY(-5px);}
+.mkf-scard-in{position:relative;width:100%;padding:18px;background:linear-gradient(to top,rgba(12,10,8,.94),rgba(12,10,8,.4) 62%,rgba(12,10,8,.05));color:#fff;}
+.mkf-scard h3{font-size:20px;font-weight:700;margin:0 0 6px;color:#fff;}
+.mkf-scard p{font-size:13px;color:rgba(255,255,255,.86);margin:0 0 10px;line-height:1.4;}
+.mkf-price{display:inline-block;background:#F24E1E;color:#fff;font-weight:700;padding:5px 12px;border-radius:999px;font-size:14px;}
+.mkf-go{display:block;margin-top:9px;font-size:12.5px;font-weight:600;color:#ffb59b;opacity:.0;transition:.2s;}
+.mkf-scard:hover .mkf-go{opacity:1;}
+/* process */
+.mkf-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:22px;}
+@media(max-width:900px){.mkf-steps{grid-template-columns:1fr 1fr;}}
+.mkf-step{background:rgba(255,255,255,.92);border:1px solid rgba(0,0,0,.08);border-radius:16px;padding:20px;box-shadow:0 8px 26px rgba(0,0,0,.05);}
+.mkf-step b{font-size:26px;color:#F24E1E;font-weight:800;}
+.mkf-step h4{margin:8px 0 6px;font-size:16px;color:#151515;}
+.mkf-step p{font-size:13px;color:#555;line-height:1.5;margin:0;}
+/* rachat */
+.mkf-etats{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.mkf-etat{text-align:left;padding:10px 12px;border:1px solid rgba(0,0,0,.14);border-radius:12px;background:#fff;cursor:pointer;transition:.15s;}
+.mkf-etat.on{border-color:#F24E1E;background:rgba(242,78,30,.08);}
+.mkf-etat b{display:block;font-size:14px;color:#151515;}
+.mkf-etat span{font-size:11px;color:#777;}
+.mkf-rlayout{display:grid;grid-template-columns:1.4fr 1fr;gap:16px;align-items:start;}
+@media(max-width:820px){.mkf-rlayout{grid-template-columns:1fr;}}
+.mkf-rresult{text-align:center;}
+.mkf-rprice{font-size:40px;font-weight:800;color:#F24E1E;margin:6px 0;}
+.mkf-btn-outline{display:block;width:100%;text-align:center;padding:13px;border-radius:999px;border:1.5px solid #F24E1E;color:#F24E1E;background:#fff;font-weight:700;text-decoration:none;margin-top:8px;}
+.mkf-btn-lnk{display:block;text-align:center;text-decoration:none;}
+/* atelier photo */
+.mkf-atelier{max-width:1060px;margin:10px auto 0;padding:0 20px;}
+.mkf-atelier img{width:100%;height:320px;object-fit:cover;border-radius:20px;box-shadow:0 14px 40px rgba(0,0,0,.15);}
+</style>
+<script id="mk-app2">
+(function(){
+  if(window.__mkapp2)return; window.__mkapp2=1;
+  var CAT=window.MK_CATALOGUE||[];
+  var RACHAT={"iPhone 16 Pro Max":700,"iPhone 16 Pro":620,"iPhone 16":480,"iPhone 15 Pro Max":560,"iPhone 15":420,"iPhone 14 Pro Max":470,"iPhone 14":360,"iPhone 13 Pro Max":400,"iPhone 13":300,"iPhone 12 Pro Max":300,"iPhone 12":220,"iPhone 11 Pro Max":240,"iPhone 11":170,"iPhone XR":120,"iPhone X":110,"iPhone 8 / SE 2020":70,"iPhone 7":45,"Galaxy S24 Ultra":620,"Galaxy S24":430,"Galaxy S23":340,"Galaxy S22":250,"Galaxy S21":180,"Galaxy A54":150,"Galaxy A53":110,"Galaxy A34":100,"Galaxy A14":70,"Xiaomi 13":200,"Xiaomi 12":160,"Redmi Note 13":120,"Redmi Note 12":90,"Redmi 12":70,"P40 Pro":140,"P30 Pro":110,"P30 Lite":60,"Mate 20 Pro":90,"Pixel 8 Pro":340,"Pixel 8":280,"Pixel 7":190,"Pixel 6":140,'iPad Pro 12.9"':500,'iPad Pro 11"':420,"iPad Air":320,"iPad 10 / 9":200,"iPad mini":250};
+  var ETATS=[["neuf","Comme neuf","Aucune rayure",1.0],["tbe","Très bon état","Micro-rayures",0.9],["bon","Bon état","Rayures légères",0.75],["correct","État correct","Marques d'usage",0.55],["hs","Écran cassé / panne","Fissuré ou HS",0.3]];
+  var STOCK=[["64 Go",0.95],["128 Go",1.0],["256 Go",1.08],["512 Go",1.15],["1 To",1.22]];
+  var TEL='07 51 48 43 92',TELLINK='+33751484392',MAIL='aminemekhfi45@gmail.com';
+  var MARQUES=[];CAT.forEach(function(m){if(MARQUES.indexOf(m.marque)<0)MARQUES.push(m.marque);});
+  var round5=function(n){return Math.round(n/5)*5;};
+  function minPrix(cle){var v=CAT.map(function(m){return m[cle];}).filter(function(x){return x!=null;});return v.length?Math.min.apply(null,v):null;}
+  function leaf(txt){var e=document.querySelectorAll('h1,h2,h3,h4,p,span,div,button');for(var i=0;i<e.length;i++){if(e[i].children.length===0&&e[i].textContent.trim()===txt)return e[i];}return null;}
+  function sectionOf(txt){var e=leaf(txt);while(e&&e.getBoundingClientRect().height<250)e=e.parentElement;return e;}
+  function mainContainer(){var best=null,bs=0;document.querySelectorAll('div').forEach(function(c){var k=[].slice.call(c.children).filter(function(x){var r=x.getBoundingClientRect();return r.width>1000&&r.height>80;});if(k.length>bs){bs=k.length;best=c;}});return best;}
+  function topSection(txt){var mc=mainContainer();if(!mc)return null;var kids=[].slice.call(mc.children);for(var i=0;i<kids.length;i++){if(kids[i].innerText&&kids[i].innerText.indexOf(txt)>=0)return kids[i];}return null;}
+  function preselect(cle){var s=document.getElementById('bk-rep');if(s){s.value=cle;s.dispatchEvent(new Event('change'));}var h=document.getElementById('mk-booking');if(h)h.scrollIntoView({behavior:'smooth',block:'center'});}
+
+  var SERVICES=[
+    ['ecran','Écran',"Écran cassé ou tactile qui ne répond plus ? Remplacement rapide.",'img/services/ecran.jpg'],
+    ['batterie','Batterie',"Autonomie en chute libre ? Batterie neuve, garantie 6 mois.",'img/services/batterie.jpg'],
+    ['charge','Connecteur de charge',"Ne charge plus ou faux contact ? On répare le connecteur.",'img/services/charge.jpg'],
+    ['camera','Caméra',"Photos floues ou caméra HS ? Remplacement du module.",'img/services/camera.jpg'],
+    ['vitre','Vitre arrière',"Vitre arrière fissurée ? On la remplace proprement.",'img/services/vitre.jpg'],
+    ['desox','Désoxydation',"Tombé dans l'eau ? Traitement de désoxydation complet.",'img/services/desox.jpg']
+  ];
+
+  function buildServices(){
+    if(document.getElementById('mk-services'))return;
+    var sec=document.querySelector('[data-framer-name="Services-Section"]');if(!sec)return;
+    // hide the sparse Framer tabs row (contains Écran / Batterie / Connecteur de charge)
+    var tab=[].slice.call(sec.querySelectorAll('*')).filter(function(x){return x.children.length===0&&x.textContent.trim()==='Connecteur de charge';})[0];
+    if(tab){var row=tab;while(row&&row.parentElement&&row.parentElement!==sec&&!(row.textContent.indexOf('Écran')>=0&&row.textContent.indexOf('Batterie')>=0&&row.textContent.indexOf('Connecteur de charge')>=0))row=row.parentElement;if(row)row.style.display='none';}
+    var host=document.createElement('div');host.id='mk-services';host.className='mkf';
+    var g='<div class="mkf-sgrid">';
+    SERVICES.forEach(function(s){g+='<a class="mkf-scard" href="#" data-rep="'+s[0]+'" style="background-image:url('+s[3]+')"><div class="mkf-scard-in"><h3>'+s[1]+'</h3><p>'+s[2]+'</p><span class="mkf-price">Dès '+minPrix(s[0])+' €</span><span class="mkf-go">Prendre rendez-vous →</span></div></a>';});
+    host.innerHTML=g+'</div>';
+    sec.appendChild(host);
+    host.querySelectorAll('.mkf-scard').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();preselect(a.getAttribute('data-rep'));});});
+  }
+
+  var STEPS=[['01','Vous réservez',"Choisissez l'appareil, la réparation et un créneau, ou appelez-nous."],['02','Diagnostic gratuit',"On identifie la panne et on vous donne un devis clair, sans engagement."],['03','Réparation express',"La plupart des réparations en 30 minutes, pièces garanties."],['04','Garantie incluse',"Écrans garantis 3 mois à 1 an, batteries 6 mois."]];
+  function buildProcess(){
+    if(document.getElementById('mk-process'))return;
+    var anchor=topSection('On redonne vie')||document.querySelector('[data-framer-name="About-Section"]');
+    if(!anchor)return;
+    var sec=document.createElement('section');sec.id='mk-process';
+    var s='<div class="mkf-sec"><p class="mkf-eyebrow">Comment ça marche</p><h2 class="mkf-title">Réparé en 4 étapes</h2><div class="mkf-steps">';
+    STEPS.forEach(function(e){s+='<div class="mkf-step"><b>'+e[0]+'</b><h4>'+e[1]+'</h4><p>'+e[2]+'</p></div>';});
+    sec.innerHTML=s+'</div><div class="mkf-atelier"><img src="img/atelier.jpg" alt="Atelier MK Phone" loading="lazy"></div>';
+    anchor.insertAdjacentElement('afterend',sec);
+  }
+
+  function buildRachat(){
+    if(document.getElementById('mk-rachat'))return;
+    var anchor=topSection('Nos tarifs');if(!anchor)return;
+    var sec=document.createElement('section');sec.id='mk-rachat';
+    sec.innerHTML='<div class="mkf-sec"><p class="mkf-eyebrow">Vente & rachat</p><h2 class="mkf-title">Estimez la reprise de votre téléphone</h2><p class="mkf-lead">Choisissez votre appareil, son stockage et son état : obtenez une estimation immédiate. Reprise même écran cassé, paiement immédiat.</p><div class="mkf-rlayout" style="margin-top:20px"><div class="mkf-card"><div class="mkf-grid"><div class="mkf-field"><label>1. Marque</label><select id="rc-marque"></select></div><div class="mkf-field"><label>2. Modèle</label><select id="rc-modele"></select></div></div><div class="mkf-field"><label>3. Stockage</label><select id="rc-stock"></select></div><div class="mkf-field"><label>4. État de l\'appareil</label><div class="mkf-etats" id="rc-etats"></div></div></div><div class="mkf-card mkf-rresult"><p style="font-size:13px;color:#666;margin:0">Estimation de reprise</p><p class="mkf-rprice" id="rc-price">—</p><p id="rc-note" style="font-size:13px;color:#777;margin:0 0 12px"></p><a class="mkf-btn mkf-btn-lnk" id="rc-sell" href="#">Vendre mon téléphone</a><a class="mkf-btn-outline" href="tel:'+TELLINK+'">Ou appelez le '+TEL+'</a><p style="font-size:11px;color:#999;margin-top:10px">Prix indicatif, confirmé après vérification. Paiement immédiat, reprise même écran cassé.</p></div></div></div>';
+    anchor.insertAdjacentElement('afterend',sec);
+    var rm=sec.querySelector('#rc-marque'),ro=sec.querySelector('#rc-modele'),rs=sec.querySelector('#rc-stock'),re=sec.querySelector('#rc-etats'),rp=sec.querySelector('#rc-price'),rn=sec.querySelector('#rc-note'),rsell=sec.querySelector('#rc-sell');
+    var etat='bon';
+    MARQUES.forEach(function(m){var o=document.createElement('option');o.textContent=m;rm.appendChild(o);});
+    STOCK.forEach(function(s){var o=document.createElement('option');o.textContent=s[0];if(s[0]==='128 Go')o.selected=true;rs.appendChild(o);});
+    ETATS.forEach(function(e){var btn=document.createElement('button');btn.type='button';btn.className='mkf-etat'+(e[0]===etat?' on':'');btn.dataset.cle=e[0];btn.innerHTML='<b>'+e[1]+'</b><span>'+e[2]+'</span>';btn.onclick=function(){etat=e[0];[].forEach.call(re.children,function(c){c.classList.toggle('on',c.dataset.cle===etat);});calc();};re.appendChild(btn);});
+    function fillModeles(){ro.innerHTML='';CAT.filter(function(m){return m.marque===rm.value&&RACHAT[m.modele]!=null;}).forEach(function(m){var o=document.createElement('option');o.textContent=m.modele;ro.appendChild(o);});}
+    function calc(){var base=RACHAT[ro.value];var ec=(ETATS.find(function(x){return x[0]===etat;})||[])[3];var sc=(STOCK.find(function(x){return x[0]===rs.value;})||[])[1];var prix=(base!=null&&ec&&sc)?round5(base*ec*sc):null;rp.textContent=prix!=null?prix+' €':'—';rn.textContent=rm.value+' '+ro.value+' · '+rs.value;var corps='Bonjour, je souhaite vendre mon appareil :\n- Appareil : '+rm.value+' '+ro.value+'\n- Stockage : '+rs.value+'\n- Estimation : '+(prix!=null?prix+' €':'—')+'\n\nMerci de me recontacter.';rsell.href='mailto:'+MAIL+'?subject='+encodeURIComponent('Reprise '+rm.value+' '+ro.value)+'&body='+encodeURIComponent(corps);}
+    rm.onchange=function(){fillModeles();calc();};ro.onchange=calc;rs.onchange=calc;
+    fillModeles();calc();
+  }
+
+  function init(){buildServices();buildProcess();buildRachat();}
+  if(document.readyState!=='loading')setTimeout(init,60);else document.addEventListener('DOMContentLoaded',function(){setTimeout(init,60);});
+})();
+</script>
+
 </body></html>
