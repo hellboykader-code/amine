@@ -2,7 +2,7 @@ name: Déploiement GitHub Pages
 
 on:
   push:
-    branches: [mk-phone-site]
+    branches: [claude/role-french-language-0sj136]
   workflow_dispatch:
 
 permissions:
@@ -17,15 +17,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-      - run: npm ci
-      - run: npm run build
-      # Publie le contenu de dist/ sur la branche gh-pages (avec .nojekyll)
+      # Publie le site vitrine statique (copie Framer adaptée MK Phone) sur gh-pages
       - uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          publish_dir: ./mkphone-framer
           publish_branch: gh-pages
