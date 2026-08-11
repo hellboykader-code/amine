@@ -632,4 +632,21 @@ table.mkf-t tr:hover td{background:rgba(242,78,30,.04);}
   if(document.readyState!=='loading')setTimeout(boot,340);else document.addEventListener('DOMContentLoaded',function(){setTimeout(boot,340);});
 })();
 </script>
+<script id="mk-tarifs-link">
+(function(){
+  function retarget(){
+    document.querySelectorAll('a').forEach(function(a){
+      var t=(a.textContent||'').trim();
+      if(t==='Réparations'){var c=a.cloneNode(true);c.setAttribute('href','reparation.html');c.removeAttribute('target');a.replaceWith(c);}
+    });
+    // "Voir les tarifs" bouton -> page dédiée (si c'est un lien)
+    [].forEach.call(document.querySelectorAll('*'),function(el){
+      if(el.children.length===0 && el.textContent.trim()==='Voir les tarifs'){
+        var a=el.closest('a'); if(a){var c=a.cloneNode(true);c.setAttribute('href','reparation.html');a.replaceWith(c);}
+      }
+    });
+  }
+  setTimeout(retarget,500);
+})();
+</script>
 </body></html>
