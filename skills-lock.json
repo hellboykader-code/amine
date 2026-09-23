@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "Ethical Hacking Methodology": {
+      "source": "zebbern/secops-cli-guides",
+      "sourceType": "github",
+      "skillPath": "skills/ethical-hacking-methodology/SKILL.md",
+      "computedHash": "17ad1ce8a9ce1900115ab2e8bd809c00abe9c420502df8aedbc87f71cc6dc3d5"
+    }
+  }
+}
